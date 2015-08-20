@@ -17,8 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.telNumTextFiled setValue:[UIColor colorWithHexString:@"#8a8d9f"] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.passwordTextFiled setValue:[UIColor colorWithHexString:@"#8a8d9f"] forKeyPath:@"_placeholderLabel.textColor"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

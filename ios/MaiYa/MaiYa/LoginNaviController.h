@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseNavigationController.h"
 
-@interface LoginNaviController : UINavigationController
+@interface LoginNaviController : BaseNavigationController
 
 @end

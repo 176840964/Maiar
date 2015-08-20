@@ -21,6 +21,9 @@
 		824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD71B7B311900206E0C /* UIColor+Custom.m */; };
 		829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31701B8486CB001EB9DA /* BaseViewController.m */; };
 		829D31741B84874C001EB9DA /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31731B84874C001EB9DA /* RegistViewController.m */; };
+		829D31771B857E2A001EB9DA /* UITextField+PlaceholderTextColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31761B857E2A001EB9DA /* UITextField+PlaceholderTextColor.m */; };
+		829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31791B858AC7001EB9DA /* ForgotViewController.m */; };
+		829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317C1B858BDC001EB9DA /* BaseNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,12 @@
 		829D31701B8486CB001EB9DA /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		829D31721B84874C001EB9DA /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
 		829D31731B84874C001EB9DA /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
+		829D31751B857E2A001EB9DA /* UITextField+PlaceholderTextColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+PlaceholderTextColor.h"; sourceTree = "<group>"; };
+		829D31761B857E2A001EB9DA /* UITextField+PlaceholderTextColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+PlaceholderTextColor.m"; sourceTree = "<group>"; };
+		829D31781B858AC7001EB9DA /* ForgotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotViewController.h; sourceTree = "<group>"; };
+		829D31791B858AC7001EB9DA /* ForgotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotViewController.m; sourceTree = "<group>"; };
+		829D317B1B858BDC001EB9DA /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		829D317C1B858BDC001EB9DA /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +102,8 @@
 				82158E1C1B82DBDB00193FC3 /* LoginViewController.m */,
 				829D31721B84874C001EB9DA /* RegistViewController.h */,
 				829D31731B84874C001EB9DA /* RegistViewController.m */,
+				829D31781B858AC7001EB9DA /* ForgotViewController.h */,
+				829D31791B858AC7001EB9DA /* ForgotViewController.m */,
 			);
 			name = 5.Login;
 			sourceTree = "<group>";
@@ -170,6 +181,8 @@
 				824CDDD31B7B2C7F00206E0C /* UIView+frameAdjust.m */,
 				824CDDD61B7B311900206E0C /* UIColor+Custom.h */,
 				824CDDD71B7B311900206E0C /* UIColor+Custom.m */,
+				829D31751B857E2A001EB9DA /* UITextField+PlaceholderTextColor.h */,
+				829D31761B857E2A001EB9DA /* UITextField+PlaceholderTextColor.m */,
 			);
 			path = Category;
 			sourceTree = SOURCE_ROOT;
@@ -216,6 +229,8 @@
 			children = (
 				829D316F1B8486CB001EB9DA /* BaseViewController.h */,
 				829D31701B8486CB001EB9DA /* BaseViewController.m */,
+				829D317B1B858BDC001EB9DA /* BaseNavigationController.h */,
+				829D317C1B858BDC001EB9DA /* BaseNavigationController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -322,8 +337,11 @@
 			files = (
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
 				829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */,
+				829D31771B857E2A001EB9DA /* UITextField+PlaceholderTextColor.m in Sources */,
 				824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */,
 				824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */,
+				829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */,
+				829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */,
 				829D31741B84874C001EB9DA /* RegistViewController.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,
