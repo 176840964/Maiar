@@ -1,5 +1,5 @@
 //
-//  UITextField+PlaceholderTextColor.h
+//  UITextField+PlaceholderText.h
 //  MaiYa
 //
 //  Created by zxl on 15/8/20.
@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UITextField (PlaceholderTextColor)
+@interface UITextField (PlaceholderText)
 
 - (UIColor *)placeholderTextColor;
 - (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor;
+
+- (UIFont *)placeholderFont;
+- (void)setPlaceholderFont:(UIFont *)placeholderFont;
 
 @end
