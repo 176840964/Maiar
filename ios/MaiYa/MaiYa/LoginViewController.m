@@ -27,7 +27,12 @@
 
 #pragma mark - IBAction
 - (IBAction)onTapLoginBtn:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [UserConfigManager shareManager].userTelNumStr = @"1";
+    
+    __weak typeof(self) weakSelf = self;
+    [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 @end

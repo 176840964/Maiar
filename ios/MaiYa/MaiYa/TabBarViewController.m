@@ -31,7 +31,6 @@
     
     UITabBarItem *item3 = [self.tabBar.items objectAtIndex:3];
     item3.selectedImage = [UIImage imageNamed:@"wo_h"];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +44,13 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self performSegueWithIdentifier:@"PresentLoginNaviController" sender:self];
+    
+    NSString* userTelStr = [UserConfigManager shareManager].userTelNumStr;
+    if ([userTelStr isKindOfClass:[NSString class]] && 0 != userTelStr.length) {
+        self.selectedIndex = 1;
+    } else {
+        [self performSegueWithIdentifier:@"PresentLoginNaviController" sender:self];
+    }
 }
 
 /*

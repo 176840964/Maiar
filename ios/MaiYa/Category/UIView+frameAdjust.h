@@ -25,4 +25,10 @@
 - (CGFloat)cornerRadius;
 - (void)setCornerRadius:(CGFloat)cornerRadius;
 
+- (CGFloat)borderWidth;
+- (void)setBorderWidth:(CGFloat)borderWidth;
+
+- (UIColor *)borderColor;
+- (void)setBorderColor:(UIColor *)borderColor;
+
 @end
