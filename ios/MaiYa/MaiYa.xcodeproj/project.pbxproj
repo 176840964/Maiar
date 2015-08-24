@@ -11,11 +11,23 @@
 		820D094C1B86CE050054DB66 /* CustomTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D094B1B86CE050054DB66 /* CustomTools.m */; };
 		820D09501B86D71A0054DB66 /* HintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D094F1B86D71A0054DB66 /* HintView.m */; };
 		820D09531B8718D10054DB66 /* MeNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09521B8718D10054DB66 /* MeNaviController.m */; };
-		820D09561B8719060054DB66 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09551B8719060054DB66 /* MeViewController.m */; };
 		820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09581B872C6C0054DB66 /* LoginWithTelNumViewController.m */; };
 		82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E191B82DBA200193FC3 /* LoginNaviController.m */; };
 		82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1C1B82DBDB00193FC3 /* LoginViewController.m */; };
 		82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */; };
+		821688C31B8AC9D8000A1B2D /* MeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688C21B8AC9D8000A1B2D /* MeTableViewController.m */; };
+		821688C91B8ACE65000A1B2D /* MeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688C81B8ACE65000A1B2D /* MeHeaderView.m */; };
+		821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688D51B8ADB63000A1B2D /* NaviTopViewController.m */; };
+		821688DB1B8AED83000A1B2D /* MyZoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688DA1B8AED83000A1B2D /* MyZoneViewController.m */; };
+		821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688DD1B8AED95000A1B2D /* MyCollectionViewController.m */; };
+		821688E41B8B0C39000A1B2D /* MyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688E31B8B0C39000A1B2D /* MyWalletViewController.m */; };
+		821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688EC1B8B0CF3000A1B2D /* NoticeViewController.m */; };
+		821688F01B8B0D00000A1B2D /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688EF1B8B0D00000A1B2D /* SettingViewController.m */; };
+		821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688F31B8B1A4E000A1B2D /* UserInfoViewController.m */; };
+		821688F71B8B26AC000A1B2D /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688F61B8B26AC000A1B2D /* UserInfoCell.m */; };
+		821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688FC1B8B2B22000A1B2D /* UserNameViewController.m */; };
+		821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688FF1B8B32EA000A1B2D /* UserSexViewController.m */; };
+		821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821689021B8B37CF000A1B2D /* UserSexCell.m */; };
 		824CDDA51B7B25B000206E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA41B7B25B000206E0C /* main.m */; };
 		824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA71B7B25B000206E0C /* AppDelegate.m */; };
 		824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824CDDAF1B7B25B000206E0C /* Main.storyboard */; };
@@ -51,8 +63,6 @@
 		820D094F1B86D71A0054DB66 /* HintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HintView.m; sourceTree = "<group>"; };
 		820D09511B8718D10054DB66 /* MeNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeNaviController.h; sourceTree = "<group>"; };
 		820D09521B8718D10054DB66 /* MeNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeNaviController.m; sourceTree = "<group>"; };
-		820D09541B8719060054DB66 /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
-		820D09551B8719060054DB66 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		820D09571B872C6C0054DB66 /* LoginWithTelNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWithTelNumViewController.h; sourceTree = "<group>"; };
 		820D09581B872C6C0054DB66 /* LoginWithTelNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWithTelNumViewController.m; sourceTree = "<group>"; };
 		82158E181B82DBA200193FC3 /* LoginNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNaviController.h; sourceTree = "<group>"; };
@@ -61,6 +71,32 @@
 		82158E1C1B82DBDB00193FC3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		82158E1E1B82E12200193FC3 /* LoginFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFirstViewController.h; sourceTree = "<group>"; };
 		82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFirstViewController.m; sourceTree = "<group>"; };
+		821688C11B8AC9D8000A1B2D /* MeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeTableViewController.h; sourceTree = "<group>"; };
+		821688C21B8AC9D8000A1B2D /* MeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeTableViewController.m; sourceTree = "<group>"; };
+		821688C71B8ACE65000A1B2D /* MeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeHeaderView.h; sourceTree = "<group>"; };
+		821688C81B8ACE65000A1B2D /* MeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeHeaderView.m; sourceTree = "<group>"; };
+		821688D41B8ADB63000A1B2D /* NaviTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviTopViewController.h; sourceTree = "<group>"; };
+		821688D51B8ADB63000A1B2D /* NaviTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviTopViewController.m; sourceTree = "<group>"; };
+		821688D91B8AED83000A1B2D /* MyZoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyZoneViewController.h; sourceTree = "<group>"; };
+		821688DA1B8AED83000A1B2D /* MyZoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyZoneViewController.m; sourceTree = "<group>"; };
+		821688DC1B8AED95000A1B2D /* MyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewController.h; sourceTree = "<group>"; };
+		821688DD1B8AED95000A1B2D /* MyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewController.m; sourceTree = "<group>"; };
+		821688E21B8B0C39000A1B2D /* MyWalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWalletViewController.h; sourceTree = "<group>"; };
+		821688E31B8B0C39000A1B2D /* MyWalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWalletViewController.m; sourceTree = "<group>"; };
+		821688EB1B8B0CF3000A1B2D /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
+		821688EC1B8B0CF3000A1B2D /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
+		821688EE1B8B0D00000A1B2D /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		821688EF1B8B0D00000A1B2D /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		821688F21B8B1A4E000A1B2D /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		821688F31B8B1A4E000A1B2D /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		821688F51B8B26AC000A1B2D /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
+		821688F61B8B26AC000A1B2D /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
+		821688FB1B8B2B22000A1B2D /* UserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNameViewController.h; sourceTree = "<group>"; };
+		821688FC1B8B2B22000A1B2D /* UserNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNameViewController.m; sourceTree = "<group>"; };
+		821688FE1B8B32EA000A1B2D /* UserSexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSexViewController.h; sourceTree = "<group>"; };
+		821688FF1B8B32EA000A1B2D /* UserSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSexViewController.m; sourceTree = "<group>"; };
+		821689011B8B37CF000A1B2D /* UserSexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSexCell.h; sourceTree = "<group>"; };
+		821689021B8B37CF000A1B2D /* UserSexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSexCell.m; sourceTree = "<group>"; };
 		824CDD9F1B7B25B000206E0C /* MaiYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaiYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824CDDA31B7B25B000206E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824CDDA41B7B25B000206E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -144,6 +180,101 @@
 				820D09581B872C6C0054DB66 /* LoginWithTelNumViewController.m */,
 			);
 			name = 5.Login;
+			sourceTree = "<group>";
+		};
+		821688CA1B8AD96C000A1B2D /* NaviTopViewController */ = {
+			isa = PBXGroup;
+			children = (
+				821688D41B8ADB63000A1B2D /* NaviTopViewController.h */,
+				821688D51B8ADB63000A1B2D /* NaviTopViewController.m */,
+			);
+			name = NaviTopViewController;
+			sourceTree = "<group>";
+		};
+		821688D71B8AED44000A1B2D /* 4.1Zone */ = {
+			isa = PBXGroup;
+			children = (
+				821688D91B8AED83000A1B2D /* MyZoneViewController.h */,
+				821688DA1B8AED83000A1B2D /* MyZoneViewController.m */,
+			);
+			name = 4.1Zone;
+			sourceTree = "<group>";
+		};
+		821688D81B8AED51000A1B2D /* 4.2Collection */ = {
+			isa = PBXGroup;
+			children = (
+				821688DC1B8AED95000A1B2D /* MyCollectionViewController.h */,
+				821688DD1B8AED95000A1B2D /* MyCollectionViewController.m */,
+			);
+			name = 4.2Collection;
+			sourceTree = "<group>";
+		};
+		821688DF1B8B0BFC000A1B2D /* 4.3Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				821688E21B8B0C39000A1B2D /* MyWalletViewController.h */,
+				821688E31B8B0C39000A1B2D /* MyWalletViewController.m */,
+			);
+			name = 4.3Wallet;
+			sourceTree = "<group>";
+		};
+		821688E01B8B0C07000A1B2D /* 4.4Message */ = {
+			isa = PBXGroup;
+			children = (
+				821688EB1B8B0CF3000A1B2D /* NoticeViewController.h */,
+				821688EC1B8B0CF3000A1B2D /* NoticeViewController.m */,
+			);
+			name = 4.4Message;
+			sourceTree = "<group>";
+		};
+		821688E11B8B0C10000A1B2D /* 4.5Setting */ = {
+			isa = PBXGroup;
+			children = (
+				821688EE1B8B0D00000A1B2D /* SettingViewController.h */,
+				821688EF1B8B0D00000A1B2D /* SettingViewController.m */,
+			);
+			name = 4.5Setting;
+			sourceTree = "<group>";
+		};
+		821688F11B8B1A2A000A1B2D /* 4.6UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				821688F81B8B2AD0000A1B2D /* 4.6.1 */,
+				821688FA1B8B2AE5000A1B2D /* 4.6.2UserNameViewController */,
+				821688F91B8B2AD9000A1B2D /* 4.6.3UserSexViewController */,
+				821688F21B8B1A4E000A1B2D /* UserInfoViewController.h */,
+				821688F31B8B1A4E000A1B2D /* UserInfoViewController.m */,
+				821688F51B8B26AC000A1B2D /* UserInfoCell.h */,
+				821688F61B8B26AC000A1B2D /* UserInfoCell.m */,
+			);
+			name = 4.6UserInfo;
+			sourceTree = "<group>";
+		};
+		821688F81B8B2AD0000A1B2D /* 4.6.1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = 4.6.1;
+			sourceTree = "<group>";
+		};
+		821688F91B8B2AD9000A1B2D /* 4.6.3UserSexViewController */ = {
+			isa = PBXGroup;
+			children = (
+				821688FE1B8B32EA000A1B2D /* UserSexViewController.h */,
+				821688FF1B8B32EA000A1B2D /* UserSexViewController.m */,
+				821689011B8B37CF000A1B2D /* UserSexCell.h */,
+				821689021B8B37CF000A1B2D /* UserSexCell.m */,
+			);
+			name = 4.6.3UserSexViewController;
+			sourceTree = "<group>";
+		};
+		821688FA1B8B2AE5000A1B2D /* 4.6.2UserNameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				821688FB1B8B2B22000A1B2D /* UserNameViewController.h */,
+				821688FC1B8B2B22000A1B2D /* UserNameViewController.m */,
+			);
+			name = 4.6.2UserNameViewController;
 			sourceTree = "<group>";
 		};
 		824CDD961B7B25B000206E0C = {
@@ -258,10 +389,18 @@
 		824CDDDD1B7B3D6F00206E0C /* 4.Me */ = {
 			isa = PBXGroup;
 			children = (
+				821688D71B8AED44000A1B2D /* 4.1Zone */,
+				821688D81B8AED51000A1B2D /* 4.2Collection */,
+				821688DF1B8B0BFC000A1B2D /* 4.3Wallet */,
+				821688E01B8B0C07000A1B2D /* 4.4Message */,
+				821688E11B8B0C10000A1B2D /* 4.5Setting */,
+				821688F11B8B1A2A000A1B2D /* 4.6UserInfo */,
 				820D09511B8718D10054DB66 /* MeNaviController.h */,
 				820D09521B8718D10054DB66 /* MeNaviController.m */,
-				820D09541B8719060054DB66 /* MeViewController.h */,
-				820D09551B8719060054DB66 /* MeViewController.m */,
+				821688C11B8AC9D8000A1B2D /* MeTableViewController.h */,
+				821688C21B8AC9D8000A1B2D /* MeTableViewController.m */,
+				821688C71B8ACE65000A1B2D /* MeHeaderView.h */,
+				821688C81B8ACE65000A1B2D /* MeHeaderView.m */,
 			);
 			name = 4.Me;
 			sourceTree = "<group>";
@@ -269,6 +408,7 @@
 		829D316E1B8486A5001EB9DA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				821688CA1B8AD96C000A1B2D /* NaviTopViewController */,
 				820D094D1B86D6ED0054DB66 /* HintView */,
 				820D09461B86CBAB0054DB66 /* UserConfigManager */,
 				820D094A1B86CE050054DB66 /* CustomTools.h */,
@@ -381,18 +521,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				820D09561B8719060054DB66 /* MeViewController.m in Sources */,
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
 				820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */,
+				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
+				821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */,
 				829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */,
+				821688DB1B8AED83000A1B2D /* MyZoneViewController.m in Sources */,
+				821688C91B8ACE65000A1B2D /* MeHeaderView.m in Sources */,
 				824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */,
 				820D09501B86D71A0054DB66 /* HintView.m in Sources */,
 				824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */,
+				821688F71B8B26AC000A1B2D /* UserInfoCell.m in Sources */,
+				821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */,
+				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
+				821688E41B8B0C39000A1B2D /* MyWalletViewController.m in Sources */,
 				820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */,
 				820D09531B8718D10054DB66 /* MeNaviController.m in Sources */,
 				820D094C1B86CE050054DB66 /* CustomTools.m in Sources */,
 				829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */,
 				829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */,
+				821688F01B8B0D00000A1B2D /* SettingViewController.m in Sources */,
+				821688C31B8AC9D8000A1B2D /* MeTableViewController.m in Sources */,
+				821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */,
+				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
+				821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */,
 				829D31741B84874C001EB9DA /* RegistViewController.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,

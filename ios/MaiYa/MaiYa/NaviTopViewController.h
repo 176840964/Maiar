@@ -1,17 +1,19 @@
 //
-//  BaseViewController.h
+//  NaviTopViewController.h
 //  MaiYa
 //
-//  Created by zxl on 15/8/19.
+//  Created by zxl on 15/8/24.
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface BaseViewController : UIViewController
+@interface NaviTopViewController : UIViewController
 @property (nonatomic, copy) NSString *backBtnTitle;
 @property (nonatomic, copy) NSString *titleLabStr;
 @property (nonatomic, copy) NSString *rightBtnImgStr;
-@property (nonatomic, copy) TapViewHandler TapNaviRightBtnHandler;
+
+@property (nonatomic, copy) TapViewHandler tapBackBtnHandler;
+@property (nonatomic, copy) TapViewHandler tapRightBtnHandler;
 
 @end

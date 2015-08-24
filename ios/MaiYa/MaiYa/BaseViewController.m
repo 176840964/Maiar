@@ -7,8 +7,32 @@
 //
 
 #import "BaseViewController.h"
+#import "NaviTopViewController.h"
 
 @implementation BaseViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddTopView"]) {
+        NaviTopViewController* controller = segue.destinationViewController;
+        controller.titleLabStr = self.titleLabStr;
+        controller.backBtnTitle = self.backBtnTitle;
+        controller.rightBtnImgStr = self.rightBtnImgStr;
+        
+        __weak typeof(self) weakSelf = self;
+        controller.tapBackBtnHandler = ^() {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        };
+        controller.tapRightBtnHandler = self.TapNaviRightBtnHandler;
+    }
+}
 
 #pragma mark - IBAction
 - (IBAction)onTapBackBtn:(id)sender {

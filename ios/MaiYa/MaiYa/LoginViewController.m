@@ -29,10 +29,11 @@
 - (IBAction)onTapLoginBtn:(id)sender {
     [UserConfigManager shareManager].userTelNumStr = @"1";
     
-    __weak typeof(self) weakSelf = self;
-    [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    __weak typeof(self) weakSelf = self;
+//    [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
+//        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//    }];
 }
 
 @end
