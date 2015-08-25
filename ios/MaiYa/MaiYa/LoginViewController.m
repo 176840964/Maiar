@@ -25,6 +25,11 @@
     [self.telNumTextFiled becomeFirstResponder];
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.telNumTextFiled resignFirstResponder];
+    [self.passwordTextFiled resignFirstResponder];
+}
+
 #pragma mark - IBAction
 - (IBAction)onTapLoginBtn:(id)sender {
     [UserConfigManager shareManager].userTelNumStr = @"1";

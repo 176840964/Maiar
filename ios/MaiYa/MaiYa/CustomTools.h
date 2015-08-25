@@ -17,5 +17,6 @@
 + (BOOL)isValidMessageCode:(NSString*)code;
 + (BOOL)isValidInvitationCode:(NSString*)code;
 + (void)simpleAlertShow:(NSString*)title content:(NSString*)content container:(id<UIAlertViewDelegate>)container;
++ (void)alertShow:(NSString*)title content:(NSString*)content cancelBtnTitle:(NSString*)cancelTitle okBtnTitle:(NSString*)okTitle container:(id<UIAlertViewDelegate>)container;
 
 @end

@@ -148,4 +148,13 @@
     [alert show];
 }
 
++ (void)alertShow:(NSString*)title content:(NSString*)content cancelBtnTitle:(NSString*)cancelTitle okBtnTitle:(NSString*)okTitle container:(id<UIAlertViewDelegate>)container {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title
+                                                   message:content
+                                                  delegate:container
+                                         cancelButtonTitle:cancelTitle
+                                         otherButtonTitles:okTitle, nil];
+    [alert show];
+}
+
 @end

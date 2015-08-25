@@ -28,6 +28,9 @@
 		821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688FC1B8B2B22000A1B2D /* UserNameViewController.m */; };
 		821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688FF1B8B32EA000A1B2D /* UserSexViewController.m */; };
 		821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821689021B8B37CF000A1B2D /* UserSexCell.m */; };
+		821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219379F1B8C2D0C0061C002 /* NoticeSetViewController.m */; };
+		821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A21B8C2D1D0061C002 /* AboutViewController.m */; };
+		821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A51B8C7E4D0061C002 /* NoticeCell.m */; };
 		824CDDA51B7B25B000206E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA41B7B25B000206E0C /* main.m */; };
 		824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA71B7B25B000206E0C /* AppDelegate.m */; };
 		824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824CDDAF1B7B25B000206E0C /* Main.storyboard */; };
@@ -97,6 +100,12 @@
 		821688FF1B8B32EA000A1B2D /* UserSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSexViewController.m; sourceTree = "<group>"; };
 		821689011B8B37CF000A1B2D /* UserSexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSexCell.h; sourceTree = "<group>"; };
 		821689021B8B37CF000A1B2D /* UserSexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSexCell.m; sourceTree = "<group>"; };
+		8219379E1B8C2D0C0061C002 /* NoticeSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeSetViewController.h; sourceTree = "<group>"; };
+		8219379F1B8C2D0C0061C002 /* NoticeSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeSetViewController.m; sourceTree = "<group>"; };
+		821937A11B8C2D1D0061C002 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		821937A21B8C2D1D0061C002 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		821937A41B8C7E4D0061C002 /* NoticeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeCell.h; sourceTree = "<group>"; };
+		821937A51B8C7E4D0061C002 /* NoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeCell.m; sourceTree = "<group>"; };
 		824CDD9F1B7B25B000206E0C /* MaiYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaiYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824CDDA31B7B25B000206E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824CDDA41B7B25B000206E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -218,18 +227,22 @@
 			name = 4.3Wallet;
 			sourceTree = "<group>";
 		};
-		821688E01B8B0C07000A1B2D /* 4.4Message */ = {
+		821688E01B8B0C07000A1B2D /* 4.4Notice */ = {
 			isa = PBXGroup;
 			children = (
 				821688EB1B8B0CF3000A1B2D /* NoticeViewController.h */,
 				821688EC1B8B0CF3000A1B2D /* NoticeViewController.m */,
+				821937A41B8C7E4D0061C002 /* NoticeCell.h */,
+				821937A51B8C7E4D0061C002 /* NoticeCell.m */,
 			);
-			name = 4.4Message;
+			name = 4.4Notice;
 			sourceTree = "<group>";
 		};
 		821688E11B8B0C10000A1B2D /* 4.5Setting */ = {
 			isa = PBXGroup;
 			children = (
+				8219379C1B8C2C5C0061C002 /* 4.5.1NoticeSet */,
+				8219379D1B8C2C8B0061C002 /* 4.5.2About */,
 				821688EE1B8B0D00000A1B2D /* SettingViewController.h */,
 				821688EF1B8B0D00000A1B2D /* SettingViewController.m */,
 			);
@@ -239,9 +252,8 @@
 		821688F11B8B1A2A000A1B2D /* 4.6UserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				821688F81B8B2AD0000A1B2D /* 4.6.1 */,
-				821688FA1B8B2AE5000A1B2D /* 4.6.2UserNameViewController */,
-				821688F91B8B2AD9000A1B2D /* 4.6.3UserSexViewController */,
+				821688FA1B8B2AE5000A1B2D /* 4.6.1UserNameViewController */,
+				821688F91B8B2AD9000A1B2D /* 4.6.2UserSexViewController */,
 				821688F21B8B1A4E000A1B2D /* UserInfoViewController.h */,
 				821688F31B8B1A4E000A1B2D /* UserInfoViewController.m */,
 				821688F51B8B26AC000A1B2D /* UserInfoCell.h */,
@@ -250,14 +262,7 @@
 			name = 4.6UserInfo;
 			sourceTree = "<group>";
 		};
-		821688F81B8B2AD0000A1B2D /* 4.6.1 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = 4.6.1;
-			sourceTree = "<group>";
-		};
-		821688F91B8B2AD9000A1B2D /* 4.6.3UserSexViewController */ = {
+		821688F91B8B2AD9000A1B2D /* 4.6.2UserSexViewController */ = {
 			isa = PBXGroup;
 			children = (
 				821688FE1B8B32EA000A1B2D /* UserSexViewController.h */,
@@ -265,16 +270,34 @@
 				821689011B8B37CF000A1B2D /* UserSexCell.h */,
 				821689021B8B37CF000A1B2D /* UserSexCell.m */,
 			);
-			name = 4.6.3UserSexViewController;
+			name = 4.6.2UserSexViewController;
 			sourceTree = "<group>";
 		};
-		821688FA1B8B2AE5000A1B2D /* 4.6.2UserNameViewController */ = {
+		821688FA1B8B2AE5000A1B2D /* 4.6.1UserNameViewController */ = {
 			isa = PBXGroup;
 			children = (
 				821688FB1B8B2B22000A1B2D /* UserNameViewController.h */,
 				821688FC1B8B2B22000A1B2D /* UserNameViewController.m */,
 			);
-			name = 4.6.2UserNameViewController;
+			name = 4.6.1UserNameViewController;
+			sourceTree = "<group>";
+		};
+		8219379C1B8C2C5C0061C002 /* 4.5.1NoticeSet */ = {
+			isa = PBXGroup;
+			children = (
+				8219379E1B8C2D0C0061C002 /* NoticeSetViewController.h */,
+				8219379F1B8C2D0C0061C002 /* NoticeSetViewController.m */,
+			);
+			name = 4.5.1NoticeSet;
+			sourceTree = "<group>";
+		};
+		8219379D1B8C2C8B0061C002 /* 4.5.2About */ = {
+			isa = PBXGroup;
+			children = (
+				821937A11B8C2D1D0061C002 /* AboutViewController.h */,
+				821937A21B8C2D1D0061C002 /* AboutViewController.m */,
+			);
+			name = 4.5.2About;
 			sourceTree = "<group>";
 		};
 		824CDD961B7B25B000206E0C = {
@@ -392,7 +415,7 @@
 				821688D71B8AED44000A1B2D /* 4.1Zone */,
 				821688D81B8AED51000A1B2D /* 4.2Collection */,
 				821688DF1B8B0BFC000A1B2D /* 4.3Wallet */,
-				821688E01B8B0C07000A1B2D /* 4.4Message */,
+				821688E01B8B0C07000A1B2D /* 4.4Notice */,
 				821688E11B8B0C10000A1B2D /* 4.5Setting */,
 				821688F11B8B1A2A000A1B2D /* 4.6UserInfo */,
 				820D09511B8718D10054DB66 /* MeNaviController.h */,
@@ -522,6 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
+				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
 				820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
 				821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */,
@@ -535,6 +559,7 @@
 				821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */,
 				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
 				821688E41B8B0C39000A1B2D /* MyWalletViewController.m in Sources */,
+				821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */,
 				820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */,
 				820D09531B8718D10054DB66 /* MeNaviController.m in Sources */,
 				820D094C1B86CE050054DB66 /* CustomTools.m in Sources */,
@@ -550,6 +575,7 @@
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,
 				82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */,
 				824CDDA51B7B25B000206E0C /* main.m in Sources */,
+				821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,
 			);
