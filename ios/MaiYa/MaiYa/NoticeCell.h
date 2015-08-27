@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface NoticeCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UIView *bgView;
+@property (nonatomic, weak) IBOutlet UITextView *contentTextView;
 
+- (void)layoutNoticCellSubviewsByDic:(NSDictionary*)dic;
 @end
