@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */; };
+		820C0B1F1B8EF1D6005E85D4 /* MasterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */; };
 		820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09481B86CBD10054DB66 /* UserConfigManager.m */; };
 		820D094C1B86CE050054DB66 /* CustomTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D094B1B86CE050054DB66 /* CustomTools.m */; };
 		820D09501B86D71A0054DB66 /* HintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D094F1B86D71A0054DB66 /* HintView.m */; };
@@ -58,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		820C0B1B1B8EF1D6005E85D4 /* MasterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterCell.h; sourceTree = "<group>"; };
+		820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterCell.m; sourceTree = "<group>"; };
+		820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterCell.xib; sourceTree = "<group>"; };
 		820D09471B86CBD10054DB66 /* UserConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserConfigManager.h; sourceTree = "<group>"; };
 		820D09481B86CBD10054DB66 /* UserConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserConfigManager.m; sourceTree = "<group>"; };
 		820D094A1B86CE050054DB66 /* CustomTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTools.h; sourceTree = "<group>"; };
@@ -154,6 +159,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		820C0B1A1B8EF197005E85D4 /* MasterCell */ = {
+			isa = PBXGroup;
+			children = (
+				820C0B1B1B8EF1D6005E85D4 /* MasterCell.h */,
+				820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */,
+				820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */,
+			);
+			name = MasterCell;
+			sourceTree = "<group>";
+		};
 		820D09461B86CBAB0054DB66 /* UserConfigManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +446,7 @@
 		829D316E1B8486A5001EB9DA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				820C0B1A1B8EF197005E85D4 /* MasterCell */,
 				821688CA1B8AD96C000A1B2D /* NaviTopViewController */,
 				820D094D1B86D6ED0054DB66 /* HintView */,
 				820D09461B86CBAB0054DB66 /* UserConfigManager */,
@@ -527,6 +543,7 @@
 				824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */,
 				824CDDB61B7B25B000206E0C /* LaunchScreen.xib in Resources */,
 				824CDDB31B7B25B000206E0C /* Images.xcassets in Resources */,
+				820C0B1F1B8EF1D6005E85D4 /* MasterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +586,7 @@
 				821688C31B8AC9D8000A1B2D /* MeTableViewController.m in Sources */,
 				821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */,
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
+				820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */,
 				821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */,
 				829D31741B84874C001EB9DA /* RegistViewController.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
