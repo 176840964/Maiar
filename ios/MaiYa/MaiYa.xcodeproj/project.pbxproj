@@ -14,6 +14,9 @@
 		820D09501B86D71A0054DB66 /* HintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D094F1B86D71A0054DB66 /* HintView.m */; };
 		820D09531B8718D10054DB66 /* MeNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09521B8718D10054DB66 /* MeNaviController.m */; };
 		820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09581B872C6C0054DB66 /* LoginWithTelNumViewController.m */; };
+		8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */; };
+		8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */; };
+		8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8CB1B9011A50048B27C /* NSArray+sortBy.m */; };
 		82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E191B82DBA200193FC3 /* LoginNaviController.m */; };
 		82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1C1B82DBDB00193FC3 /* LoginViewController.m */; };
 		82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */; };
@@ -73,6 +76,12 @@
 		820D09521B8718D10054DB66 /* MeNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeNaviController.m; sourceTree = "<group>"; };
 		820D09571B872C6C0054DB66 /* LoginWithTelNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWithTelNumViewController.h; sourceTree = "<group>"; };
 		820D09581B872C6C0054DB66 /* LoginWithTelNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWithTelNumViewController.m; sourceTree = "<group>"; };
+		8213C8C41B9008260048B27C /* UILabel+VerticalAlign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+VerticalAlign.h"; sourceTree = "<group>"; };
+		8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+VerticalAlign.m"; sourceTree = "<group>"; };
+		8213C8C71B900DB10048B27C /* WorkingTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingTimeViewController.h; sourceTree = "<group>"; };
+		8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingTimeViewController.m; sourceTree = "<group>"; };
+		8213C8CA1B9011A50048B27C /* NSArray+sortBy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+sortBy.h"; sourceTree = "<group>"; };
+		8213C8CB1B9011A50048B27C /* NSArray+sortBy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+sortBy.m"; sourceTree = "<group>"; };
 		82158E181B82DBA200193FC3 /* LoginNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNaviController.h; sourceTree = "<group>"; };
 		82158E191B82DBA200193FC3 /* LoginNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNaviController.m; sourceTree = "<group>"; };
 		82158E1B1B82DBDB00193FC3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -220,6 +229,8 @@
 			children = (
 				821688D91B8AED83000A1B2D /* MyZoneViewController.h */,
 				821688DA1B8AED83000A1B2D /* MyZoneViewController.m */,
+				8213C8C71B900DB10048B27C /* WorkingTimeViewController.h */,
+				8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */,
 			);
 			name = 4.1Zone;
 			sourceTree = "<group>";
@@ -384,12 +395,16 @@
 		824CDDCE1B7B2BC400206E0C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8213C8CA1B9011A50048B27C /* NSArray+sortBy.h */,
+				8213C8CB1B9011A50048B27C /* NSArray+sortBy.m */,
 				824CDDD21B7B2C7F00206E0C /* UIView+frameAdjust.h */,
 				824CDDD31B7B2C7F00206E0C /* UIView+frameAdjust.m */,
 				824CDDD61B7B311900206E0C /* UIColor+Custom.h */,
 				824CDDD71B7B311900206E0C /* UIColor+Custom.m */,
 				829D317E1B858E9D001EB9DA /* UITextField+PlaceholderText.h */,
 				829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */,
+				8213C8C41B9008260048B27C /* UILabel+VerticalAlign.h */,
+				8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */,
 			);
 			path = Category;
 			sourceTree = SOURCE_ROOT;
@@ -564,6 +579,7 @@
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
 				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
 				820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */,
+				8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
 				821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */,
 				829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */,
@@ -585,6 +601,7 @@
 				821688F01B8B0D00000A1B2D /* SettingViewController.m in Sources */,
 				821688C31B8AC9D8000A1B2D /* MeTableViewController.m in Sources */,
 				821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */,
+				8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */,
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
 				820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */,
 				821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */,
@@ -593,6 +610,7 @@
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,
 				82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */,
 				824CDDA51B7B25B000206E0C /* main.m in Sources */,
+				8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */,
 				821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,

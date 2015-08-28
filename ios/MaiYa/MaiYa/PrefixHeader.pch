@@ -15,10 +15,13 @@
 
 #import "UserConfigManager.h"
 #import "HintView.h"
+#import "CustomTools.h"
+
 #import "UIColor+Custom.h"
 #import "UIView+frameAdjust.h"
 #import "UITextField+PlaceholderText.h"
-#import "CustomTools.h"
+#import "NSArray+sortBy.h"
+#import "UILabel+VerticalAlign.h"
 
 typedef void(^TapViewHandler)(void);
 
