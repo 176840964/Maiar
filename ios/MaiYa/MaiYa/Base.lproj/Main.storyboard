@@ -2875,24 +2875,9 @@
                                                             </mask>
                                                         </variation>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#占星" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBG-4O-w4r">
-                                                        <rect key="frame" x="78" y="28" width="32" height="14"/>
-                                                        <color key="backgroundColor" red="0.16078431369999999" green="0.70588235290000001" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="14" id="3rt-mF-bps"/>
-                                                            <constraint firstAttribute="width" constant="32" id="5bx-ss-SFx"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#塔罗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fg8-Dr-IV2">
                                                         <rect key="frame" x="113" y="28" width="32" height="14"/>
                                                         <color key="backgroundColor" red="0.47450980390000003" green="0.76078431369999999" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="32" id="2pb-UN-aVO"/>
-                                                            <constraint firstAttribute="height" constant="14" id="GCT-tI-Odj"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -2900,10 +2885,6 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#周易" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6q-hR-fsd">
                                                         <rect key="frame" x="148" y="28" width="32" height="14"/>
                                                         <color key="backgroundColor" red="0.93725490199999995" green="0.68627450980000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="14" id="DBN-c6-lOd"/>
-                                                            <constraint firstAttribute="width" constant="32" id="wgu-07-4ft"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -2990,11 +2971,36 @@
                                                             </mask>
                                                         </variation>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#占星" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBG-4O-w4r">
+                                                        <rect key="frame" x="78" y="28" width="32" height="14"/>
+                                                        <color key="backgroundColor" red="0.16078431369999999" green="0.70588235290000001" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="32" id="L0N-sr-jwf"/>
+                                                            <constraint firstAttribute="height" constant="14" id="mNE-1G-4mF"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="L0N-sr-jwf"/>
+                                                                <exclude reference="mNE-1G-4mF"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                            <mask key="constraints">
+                                                                <include reference="L0N-sr-jwf"/>
+                                                                <include reference="mNE-1G-4mF"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="Fg8-Dr-IV2" firstAttribute="width" secondItem="WBG-4O-w4r" secondAttribute="width" id="0wa-HW-zzK"/>
                                                     <constraint firstItem="Fg8-Dr-IV2" firstAttribute="leading" secondItem="WBG-4O-w4r" secondAttribute="trailing" constant="3" id="1yE-aR-1gO"/>
                                                     <constraint firstItem="J4m-PR-RX7" firstAttribute="top" secondItem="NbW-U2-jke" secondAttribute="top" constant="8" id="37d-Zs-zc5"/>
+                                                    <constraint firstItem="Fg8-Dr-IV2" firstAttribute="height" secondItem="WBG-4O-w4r" secondAttribute="height" id="5Kc-b4-eKv"/>
                                                     <constraint firstItem="J4m-PR-RX7" firstAttribute="top" secondItem="Bs7-K2-HTz" secondAttribute="top" constant="4" id="6WU-HB-PDO">
                                                         <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                                     </constraint>
@@ -3009,6 +3015,7 @@
                                                     <constraint firstItem="J4m-PR-RX7" firstAttribute="leading" secondItem="urd-vF-2dN" secondAttribute="trailing" constant="6" id="Zja-dc-8vb"/>
                                                     <constraint firstItem="OVl-bD-HHk" firstAttribute="leading" secondItem="urd-vF-2dN" secondAttribute="leading" id="asg-ro-glb"/>
                                                     <constraint firstItem="Bs7-K2-HTz" firstAttribute="leading" secondItem="J4m-PR-RX7" secondAttribute="trailing" id="cCp-F5-VcQ"/>
+                                                    <constraint firstItem="Fg8-Dr-IV2" firstAttribute="width" secondItem="L6q-hR-fsd" secondAttribute="width" id="cUb-AP-2uG"/>
                                                     <constraint firstItem="urd-vF-2dN" firstAttribute="leading" secondItem="NbW-U2-jke" secondAttribute="leading" constant="6" id="dWG-Jx-kX0"/>
                                                     <constraint firstItem="Yxc-v1-Lal" firstAttribute="leading" secondItem="3rC-ej-5fs" secondAttribute="trailing" id="hmH-1F-cXs"/>
                                                     <constraint firstAttribute="bottom" secondItem="3rC-ej-5fs" secondAttribute="bottom" constant="4" id="kaf-yk-WxT"/>
@@ -3021,6 +3028,7 @@
                                                     <constraint firstItem="OVl-bD-HHk" firstAttribute="top" secondItem="urd-vF-2dN" secondAttribute="top" constant="43" id="w1K-9A-URa">
                                                         <variation key="heightClass=regular-widthClass=compact" constant="2"/>
                                                     </constraint>
+                                                    <constraint firstItem="Fg8-Dr-IV2" firstAttribute="height" secondItem="L6q-hR-fsd" secondAttribute="height" id="xM4-3B-F3v"/>
                                                     <constraint firstItem="otZ-FD-vgD" firstAttribute="leading" secondItem="kgZ-0x-FF9" secondAttribute="trailing" id="y8V-Dw-QD2"/>
                                                     <constraint firstAttribute="bottom" secondItem="Yxc-v1-Lal" secondAttribute="bottom" constant="4" id="z2L-rZ-SP9"/>
                                                 </constraints>
@@ -3031,12 +3039,12 @@
                                                         <exclude reference="OVl-bD-HHk"/>
                                                         <exclude reference="Bs7-K2-HTz"/>
                                                         <exclude reference="otZ-FD-vgD"/>
-                                                        <exclude reference="WBG-4O-w4r"/>
                                                         <exclude reference="Fg8-Dr-IV2"/>
                                                         <exclude reference="L6q-hR-fsd"/>
                                                         <exclude reference="kgZ-0x-FF9"/>
                                                         <exclude reference="3rC-ej-5fs"/>
                                                         <exclude reference="Yxc-v1-Lal"/>
+                                                        <exclude reference="WBG-4O-w4r"/>
                                                     </mask>
                                                     <mask key="constraints">
                                                         <exclude reference="r9R-uN-qjz"/>
@@ -3051,8 +3059,12 @@
                                                         <exclude reference="Y9Q-K7-ryt"/>
                                                         <exclude reference="lQ3-i6-IKk"/>
                                                         <exclude reference="kaf-yk-WxT"/>
+                                                        <exclude reference="0wa-HW-zzK"/>
                                                         <exclude reference="1yE-aR-1gO"/>
+                                                        <exclude reference="5Kc-b4-eKv"/>
                                                         <exclude reference="VgV-Mc-8wC"/>
+                                                        <exclude reference="cUb-AP-2uG"/>
+                                                        <exclude reference="xM4-3B-F3v"/>
                                                         <exclude reference="cCp-F5-VcQ"/>
                                                         <exclude reference="QAB-rB-w2y"/>
                                                         <exclude reference="VRM-Db-fiy"/>
@@ -3072,12 +3084,12 @@
                                                         <include reference="OVl-bD-HHk"/>
                                                         <include reference="Bs7-K2-HTz"/>
                                                         <include reference="otZ-FD-vgD"/>
-                                                        <include reference="WBG-4O-w4r"/>
                                                         <include reference="Fg8-Dr-IV2"/>
                                                         <include reference="L6q-hR-fsd"/>
                                                         <include reference="kgZ-0x-FF9"/>
                                                         <include reference="3rC-ej-5fs"/>
                                                         <include reference="Yxc-v1-Lal"/>
+                                                        <include reference="WBG-4O-w4r"/>
                                                     </mask>
                                                     <mask key="constraints">
                                                         <include reference="r9R-uN-qjz"/>
@@ -3092,8 +3104,12 @@
                                                         <include reference="Y9Q-K7-ryt"/>
                                                         <include reference="lQ3-i6-IKk"/>
                                                         <include reference="kaf-yk-WxT"/>
+                                                        <include reference="0wa-HW-zzK"/>
                                                         <include reference="1yE-aR-1gO"/>
+                                                        <include reference="5Kc-b4-eKv"/>
                                                         <include reference="VgV-Mc-8wC"/>
+                                                        <include reference="cUb-AP-2uG"/>
+                                                        <include reference="xM4-3B-F3v"/>
                                                         <include reference="cCp-F5-VcQ"/>
                                                         <include reference="QAB-rB-w2y"/>
                                                         <include reference="VRM-Db-fiy"/>
