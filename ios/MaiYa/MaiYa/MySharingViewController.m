@@ -1,35 +1,22 @@
 //
-//  WorkingTimeViewController.m
+//  MySharingViewController.m
 //  MaiYa
 //
 //  Created by zxl on 15/8/28.
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
-#import "WorkingTimeViewController.h"
+#import "MySharingViewController.h"
 
-@interface WorkingTimeViewController ()
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labsArr;
+@interface MySharingViewController ()
 
 @end
 
-@implementation WorkingTimeViewController
+@implementation MySharingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.labsArr = [self.labsArr sortByUIViewOriginY];
-    
-    for (NSInteger index = 0; index < self.labsArr.count; ++index) {
-        NSString *str = [self.testArr objectAtIndex:index];
-        UILabel *lab = [self.labsArr objectAtIndex:index];
-        lab.text = str;
-        
-        if (2 <= index) {
-            [lab alignTop];
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning {

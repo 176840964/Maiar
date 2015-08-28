@@ -12,6 +12,7 @@
 @interface MyZoneViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *workingTimeCellView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) NSMutableArray *testArr;
 
@@ -26,10 +27,13 @@
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
-    self.mainViewHeight.constant = 716 * 2;
+    NSLog(@"%f", self.view.width);
+    CGFloat height = 631 + 20 + 107.0 / 320 * self.view.width;
+    self.mainViewHeight.constant = height;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
     if ([segue.identifier containsString:@"ShowWorkTime"]) {
         NSArray *arr = [segue.identifier componentsSeparatedByString:@"_"];
         NSInteger index = ((NSString*)[arr lastObject]).integerValue;

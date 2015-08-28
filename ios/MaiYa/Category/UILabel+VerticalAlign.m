@@ -12,7 +12,7 @@
 - (void)alignTop {
 //    CGSize fontSize =[self.text sizeWithFont:self.font];
     CGSize fontSize = [self.text sizeWithAttributes:@{NSFontAttributeName: self.font}];
-    double finalHeight = fontSize.height *self.numberOfLines;
+    double finalHeight = fontSize.height * self.numberOfLines;
     double finalWidth = self.frame.size.width;//expected width of label
 //    CGSize theStringSize =[self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(finalWidth, finalHeight) lineBreakMode:self.lineBreakMode];
     CGSize theStringSize = [self.text boundingRectWithSize:CGSizeMake(finalWidth, finalHeight) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: self.font} context:nil].size;

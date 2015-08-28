@@ -17,6 +17,10 @@
 		8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */; };
 		8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */; };
 		8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8CB1B9011A50048B27C /* NSArray+sortBy.m */; };
+		8213C8D31B9061340048B27C /* AbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8D21B9061340048B27C /* AbstractViewController.m */; };
+		8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8D51B9061A40048B27C /* MySharingViewController.m */; };
+		8213C8D91B9061E40048B27C /* WorkingSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8D81B9061E40048B27C /* WorkingSettingViewController.m */; };
+		8213C8DC1B9061FC0048B27C /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8DB1B9061FC0048B27C /* CommentViewController.m */; };
 		82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E191B82DBA200193FC3 /* LoginNaviController.m */; };
 		82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1C1B82DBDB00193FC3 /* LoginViewController.m */; };
 		82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */; };
@@ -82,6 +86,14 @@
 		8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingTimeViewController.m; sourceTree = "<group>"; };
 		8213C8CA1B9011A50048B27C /* NSArray+sortBy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+sortBy.h"; sourceTree = "<group>"; };
 		8213C8CB1B9011A50048B27C /* NSArray+sortBy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+sortBy.m"; sourceTree = "<group>"; };
+		8213C8D11B9061340048B27C /* AbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractViewController.h; sourceTree = "<group>"; };
+		8213C8D21B9061340048B27C /* AbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractViewController.m; sourceTree = "<group>"; };
+		8213C8D41B9061A40048B27C /* MySharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySharingViewController.h; sourceTree = "<group>"; };
+		8213C8D51B9061A40048B27C /* MySharingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySharingViewController.m; sourceTree = "<group>"; };
+		8213C8D71B9061E40048B27C /* WorkingSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingSettingViewController.h; sourceTree = "<group>"; };
+		8213C8D81B9061E40048B27C /* WorkingSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingSettingViewController.m; sourceTree = "<group>"; };
+		8213C8DA1B9061FC0048B27C /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		8213C8DB1B9061FC0048B27C /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		82158E181B82DBA200193FC3 /* LoginNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNaviController.h; sourceTree = "<group>"; };
 		82158E191B82DBA200193FC3 /* LoginNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNaviController.m; sourceTree = "<group>"; };
 		82158E1B1B82DBDB00193FC3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -196,6 +208,42 @@
 			name = HintView;
 			sourceTree = "<group>";
 		};
+		8213C8CD1B905F970048B27C /* 4.1.1AbstractViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8213C8D11B9061340048B27C /* AbstractViewController.h */,
+				8213C8D21B9061340048B27C /* AbstractViewController.m */,
+			);
+			name = 4.1.1AbstractViewController;
+			sourceTree = "<group>";
+		};
+		8213C8CE1B905FA00048B27C /* 4.1.3WorkingSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8213C8D71B9061E40048B27C /* WorkingSettingViewController.h */,
+				8213C8D81B9061E40048B27C /* WorkingSettingViewController.m */,
+			);
+			name = 4.1.3WorkingSettingViewController;
+			sourceTree = "<group>";
+		};
+		8213C8CF1B905FA30048B27C /* 4.1.2MySharingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8213C8D41B9061A40048B27C /* MySharingViewController.h */,
+				8213C8D51B9061A40048B27C /* MySharingViewController.m */,
+			);
+			name = 4.1.2MySharingViewController;
+			sourceTree = "<group>";
+		};
+		8213C8D01B905FEF0048B27C /* 4.1.4CommentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8213C8DA1B9061FC0048B27C /* CommentViewController.h */,
+				8213C8DB1B9061FC0048B27C /* CommentViewController.m */,
+			);
+			name = 4.1.4CommentViewController;
+			sourceTree = "<group>";
+		};
 		82158E171B82DA4700193FC3 /* 5.Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +275,10 @@
 		821688D71B8AED44000A1B2D /* 4.1Zone */ = {
 			isa = PBXGroup;
 			children = (
+				8213C8CD1B905F970048B27C /* 4.1.1AbstractViewController */,
+				8213C8CF1B905FA30048B27C /* 4.1.2MySharingViewController */,
+				8213C8CE1B905FA00048B27C /* 4.1.3WorkingSettingViewController */,
+				8213C8D01B905FEF0048B27C /* 4.1.4CommentViewController */,
 				821688D91B8AED83000A1B2D /* MyZoneViewController.h */,
 				821688DA1B8AED83000A1B2D /* MyZoneViewController.m */,
 				8213C8C71B900DB10048B27C /* WorkingTimeViewController.h */,
@@ -587,8 +639,10 @@
 				821688C91B8ACE65000A1B2D /* MeHeaderView.m in Sources */,
 				824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */,
 				820D09501B86D71A0054DB66 /* HintView.m in Sources */,
+				8213C8D91B9061E40048B27C /* WorkingSettingViewController.m in Sources */,
 				824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */,
 				821688F71B8B26AC000A1B2D /* UserInfoCell.m in Sources */,
+				8213C8D31B9061340048B27C /* AbstractViewController.m in Sources */,
 				821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */,
 				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
 				821688E41B8B0C39000A1B2D /* MyWalletViewController.m in Sources */,
@@ -604,6 +658,7 @@
 				8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */,
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
 				820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */,
+				8213C8DC1B9061FC0048B27C /* CommentViewController.m in Sources */,
 				821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */,
 				829D31741B84874C001EB9DA /* RegistViewController.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
@@ -612,6 +667,7 @@
 				824CDDA51B7B25B000206E0C /* main.m in Sources */,
 				8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */,
 				821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */,
+				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,
 			);
