@@ -23,6 +23,7 @@
 		820A6F121B94774B002385A4 /* BankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F111B94774B002385A4 /* BankViewController.m */; };
 		820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F141B94775F002385A4 /* BankCityViewController.m */; };
 		820A6F181B947A1A002385A4 /* BankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F171B947A1A002385A4 /* BankCell.m */; };
+		820A6F1D1B9482FE002385A4 /* RealInfoComfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F1C1B9482FE002385A4 /* RealInfoComfirmViewController.m */; };
 		820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */; };
 		820C0B1F1B8EF1D6005E85D4 /* MasterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */; };
 		820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09481B86CBD10054DB66 /* UserConfigManager.m */; };
@@ -112,6 +113,8 @@
 		820A6F141B94775F002385A4 /* BankCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCityViewController.m; sourceTree = "<group>"; };
 		820A6F161B947A1A002385A4 /* BankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCell.h; sourceTree = "<group>"; };
 		820A6F171B947A1A002385A4 /* BankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCell.m; sourceTree = "<group>"; };
+		820A6F1B1B9482FE002385A4 /* RealInfoComfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealInfoComfirmViewController.h; sourceTree = "<group>"; };
+		820A6F1C1B9482FE002385A4 /* RealInfoComfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealInfoComfirmViewController.m; sourceTree = "<group>"; };
 		820C0B1B1B8EF1D6005E85D4 /* MasterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterCell.h; sourceTree = "<group>"; };
 		820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterCell.m; sourceTree = "<group>"; };
 		820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterCell.xib; sourceTree = "<group>"; };
@@ -294,6 +297,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		820A6F1A1B948291002385A4 /* 4.3.4RealInfo comfirm */ = {
+			isa = PBXGroup;
+			children = (
+				820A6F1B1B9482FE002385A4 /* RealInfoComfirmViewController.h */,
+				820A6F1C1B9482FE002385A4 /* RealInfoComfirmViewController.m */,
+			);
+			name = "4.3.4RealInfo comfirm";
+			sourceTree = "<group>";
+		};
 		820C0B1A1B8EF197005E85D4 /* MasterCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +438,7 @@
 				820A6EFF1B9461DC002385A4 /* 4.3.1Withdrawals details */,
 				820A6F001B9461E4002385A4 /* 4.3.2Withdrawal rules */,
 				820A6F011B9461F0002385A4 /* 4.3.3Withdrawal */,
+				820A6F1A1B948291002385A4 /* 4.3.4RealInfo comfirm */,
 				821688E21B8B0C39000A1B2D /* MyWalletViewController.h */,
 				821688E31B8B0C39000A1B2D /* MyWalletViewController.m */,
 				820A6EFC1B9455C7002385A4 /* CouponCell.h */,
@@ -815,6 +828,7 @@
 				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,
+				820A6F1D1B9482FE002385A4 /* RealInfoComfirmViewController.m in Sources */,
 				820A6F0D1B9468D8002385A4 /* WithdrawalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,12 +25,14 @@
         controller.titleLabStr = self.titleLabStr;
         controller.backBtnTitle = self.backBtnTitle;
         controller.rightBtnImgStr = self.rightBtnImgStr;
+        controller.rightSecondBtnImgStr = self.rightSecondBtnImgStr;
         
         __weak typeof(self) weakSelf = self;
         controller.tapBackBtnHandler = ^() {
             [weakSelf.navigationController popViewControllerAnimated:YES];
         };
         controller.tapRightBtnHandler = self.TapNaviRightBtnHandler;
+        controller.tapRightSecondBtnHandler = self.TapNaviRightSecondBtnHandler;
     }
 }
 

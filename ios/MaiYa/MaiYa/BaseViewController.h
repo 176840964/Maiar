@@ -12,6 +12,8 @@
 @property (nonatomic, copy) NSString *backBtnTitle;
 @property (nonatomic, copy) NSString *titleLabStr;
 @property (nonatomic, copy) NSString *rightBtnImgStr;
+@property (nonatomic, copy) NSString *rightSecondBtnImgStr;
 @property (nonatomic, copy) TapViewHandler TapNaviRightBtnHandler;
+@property (nonatomic, copy) TapViewHandler TapNaviRightSecondBtnHandler;
 
 @end

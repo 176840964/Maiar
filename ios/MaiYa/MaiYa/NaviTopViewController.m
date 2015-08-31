@@ -12,6 +12,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *backBtn;
 @property (nonatomic, weak) IBOutlet UILabel *titleLab;
 @property (nonatomic, weak) IBOutlet UIButton *rightBtn;
+@property (nonatomic, weak) IBOutlet UIButton *rightSecondBtn;
 @end
 
 @implementation NaviTopViewController
@@ -23,12 +24,8 @@
     self.backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.titleLab.text = self.titleLabStr;
     
-    if (0 != self.rightBtnImgStr.length && [self.rightBtnImgStr isKindOfClass:[NSString class]]) {
-        self.rightBtn.hidden = NO;
-        [self.rightBtn setImage:[UIImage imageNamed:self.rightBtnImgStr] forState:UIControlStateNormal];
-    } else {
-        self.rightBtn.hidden = YES;
-    }
+    [self layoutRightBtn:self.rightBtn withBtnTitle:self.rightBtnImgStr];
+    [self layoutRightBtn:self.rightSecondBtn withBtnTitle:self.rightSecondBtnImgStr];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -37,6 +34,14 @@
 
 
 #pragma mark -
+- (void)layoutRightBtn:(UIButton *)btn withBtnTitle:(NSString *)str;{
+    if (0 != str.length && [str isKindOfClass:[NSString class]]) {
+        btn.hidden = NO;
+        [btn setImage:[UIImage imageNamed:str] forState:UIControlStateNormal];
+    } else {
+        btn.hidden = YES;
+    }
+}
 
 #pragma mark - IBAction
 - (IBAction)onTapBackBtn:(id)sender {
@@ -48,6 +53,12 @@
 - (IBAction)onTapRightBtn:(id)sender {
     if (self.tapRightBtnHandler) {
         self.tapRightBtnHandler();
+    }
+}
+
+- (IBAction)onTapRightSecondBtn:(id)sender {
+    if (self.tapRightSecondBtnHandler) {
+        self.tapRightSecondBtnHandler();
     }
 }
 
