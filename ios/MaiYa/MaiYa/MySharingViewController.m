@@ -7,9 +7,10 @@
 //
 
 #import "MySharingViewController.h"
+#import "MySharingCell.h"
 
-@interface MySharingViewController ()
-
+@interface MySharingViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak ,nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation MySharingViewController
@@ -17,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UINib *cellNib = [UINib nibWithNibName:@"MySharingCell" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"MySharingCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +37,20 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MySharingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MySharingCell"];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820A6EE61B93FDAA002385A4 /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6EE41B93FDAA002385A4 /* ArticleCell.m */; };
+		820A6EE71B93FDAA002385A4 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820A6EE51B93FDAA002385A4 /* ArticleCell.xib */; };
+		820A6EEC1B94052E002385A4 /* MySharingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6EEA1B94052E002385A4 /* MySharingCell.m */; };
+		820A6EED1B94052E002385A4 /* MySharingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820A6EEB1B94052E002385A4 /* MySharingCell.xib */; };
 		820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */; };
 		820C0B1F1B8EF1D6005E85D4 /* MasterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */; };
 		820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09481B86CBD10054DB66 /* UserConfigManager.m */; };
@@ -67,6 +71,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		820A6EE31B93FDAA002385A4 /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
+		820A6EE41B93FDAA002385A4 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
+		820A6EE51B93FDAA002385A4 /* ArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
+		820A6EE91B94052E002385A4 /* MySharingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySharingCell.h; sourceTree = "<group>"; };
+		820A6EEA1B94052E002385A4 /* MySharingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySharingCell.m; sourceTree = "<group>"; };
+		820A6EEB1B94052E002385A4 /* MySharingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MySharingCell.xib; sourceTree = "<group>"; };
 		820C0B1B1B8EF1D6005E85D4 /* MasterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterCell.h; sourceTree = "<group>"; };
 		820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterCell.m; sourceTree = "<group>"; };
 		820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterCell.xib; sourceTree = "<group>"; };
@@ -180,6 +190,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		820A6EE21B93FD7E002385A4 /* ArticleCell */ = {
+			isa = PBXGroup;
+			children = (
+				820A6EE31B93FDAA002385A4 /* ArticleCell.h */,
+				820A6EE41B93FDAA002385A4 /* ArticleCell.m */,
+				820A6EE51B93FDAA002385A4 /* ArticleCell.xib */,
+			);
+			name = ArticleCell;
+			sourceTree = "<group>";
+		};
 		820C0B1A1B8EF197005E85D4 /* MasterCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +251,9 @@
 			children = (
 				8213C8D41B9061A40048B27C /* MySharingViewController.h */,
 				8213C8D51B9061A40048B27C /* MySharingViewController.m */,
+				820A6EE91B94052E002385A4 /* MySharingCell.h */,
+				820A6EEA1B94052E002385A4 /* MySharingCell.m */,
+				820A6EEB1B94052E002385A4 /* MySharingCell.xib */,
 			);
 			name = 4.1.2MySharingViewController;
 			sourceTree = "<group>";
@@ -513,6 +536,7 @@
 		829D316E1B8486A5001EB9DA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				820A6EE21B93FD7E002385A4 /* ArticleCell */,
 				820C0B1A1B8EF197005E85D4 /* MasterCell */,
 				821688CA1B8AD96C000A1B2D /* NaviTopViewController */,
 				820D094D1B86D6ED0054DB66 /* HintView */,
@@ -607,9 +631,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				820A6EED1B94052E002385A4 /* MySharingCell.xib in Resources */,
 				824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */,
 				824CDDB61B7B25B000206E0C /* LaunchScreen.xib in Resources */,
 				824CDDB31B7B25B000206E0C /* Images.xcassets in Resources */,
+				820A6EE71B93FDAA002385A4 /* ArticleCell.xib in Resources */,
 				820C0B1F1B8EF1D6005E85D4 /* MasterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,6 +676,7 @@
 				820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */,
 				820D09531B8718D10054DB66 /* MeNaviController.m in Sources */,
 				820D094C1B86CE050054DB66 /* CustomTools.m in Sources */,
+				820A6EE61B93FDAA002385A4 /* ArticleCell.m in Sources */,
 				829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */,
 				829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */,
 				821688F01B8B0D00000A1B2D /* SettingViewController.m in Sources */,
@@ -667,6 +694,7 @@
 				824CDDA51B7B25B000206E0C /* main.m in Sources */,
 				8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */,
 				821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */,
+				820A6EEC1B94052E002385A4 /* MySharingCell.m in Sources */,
 				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,

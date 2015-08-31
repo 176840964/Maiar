@@ -9,7 +9,7 @@
 #import "AbstractViewController.h"
 
 @interface AbstractViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
 
 @implementation AbstractViewController
