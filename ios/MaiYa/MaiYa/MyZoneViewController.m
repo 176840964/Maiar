@@ -27,7 +27,6 @@
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
-    NSLog(@"%f", self.view.width);
     CGFloat height = 631 + 20 + 107.0 / 320 * self.view.width;
     self.mainViewHeight.constant = height;
 }

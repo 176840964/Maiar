@@ -1,25 +1,30 @@
 //
-//  MyWalletViewController.m
+//  WithdrawalViewController.m
 //  MaiYa
 //
-//  Created by zxl on 15/8/24.
+//  Created by zxl on 15/8/31.
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
-#import "MyWalletViewController.h"
-#import "CouponCell.h"
+#import "WithdrawalViewController.h"
 
-@interface MyWalletViewController () <UITableViewDataSource, UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@interface WithdrawalViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *markView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIImageView *noneCouponImageView;
-
-
 @end
 
-@implementation MyWalletViewController
+@implementation WithdrawalViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
@@ -27,26 +32,25 @@
 }
 
 #pragma mark - IBAction
-- (IBAction)onTapInfoBtn:(id)sender {
+- (IBAction)onTapZhifubaoBtn:(id)sender {
     self.markView.transform = CGAffineTransformIdentity;
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
-- (IBAction)onTapCouponBtn:(id)sender {
+- (IBAction)onTapBankCardBtn:(id)sender {
     self.markView.transform = CGAffineTransformMakeTranslation(self.view.width / 2.0, 0);
     [self.scrollView setContentOffset:CGPointMake(self.view.width, 0) animated:YES];
 }
 
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
-}
+/*
+#pragma mark - Navigation
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CouponCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CouponCell"];
-    
-    return cell;
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
+*/
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

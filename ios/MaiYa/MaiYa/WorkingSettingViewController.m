@@ -7,9 +7,12 @@
 //
 
 #import "WorkingSettingViewController.h"
+#import "WorkingDateView.h"
+#import "WorkingTimeCell.h"
 
-@interface WorkingSettingViewController ()
-
+@interface WorkingSettingViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet WorkingDateView *dateView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation WorkingSettingViewController
@@ -17,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UINib *cellNib = [UINib nibWithNibName:@"WorkingTimeCell" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"WorkingTimeCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +39,45 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return 3;
+        case 1:
+            return 5;
+        default:
+            return 4;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    WorkingTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WorkingTimeCell"];
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return @"上午";
+            
+        case 1:
+            return @"下午";
+            
+        default:
+            return @"晚上";
+    }
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
 
 @end
