@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0C6CF82A-2450-4093-9533-D4D70F2908D9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MaiYa</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C1565BD9B15CAE6A16CDBEF9CFFCC8ABD7A6548A</key>
+		<string>https://github.com/176840964/Maiar.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios/MaiYa/MaiYa.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C1565BD9B15CAE6A16CDBEF9CFFCC8ABD7A6548A</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/176840964/Maiar.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C1565BD9B15CAE6A16CDBEF9CFFCC8ABD7A6548A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C1565BD9B15CAE6A16CDBEF9CFFCC8ABD7A6548A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Maira</string>
+		</dict>
+	</array>
+</dict>
+</plist>

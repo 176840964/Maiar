@@ -45,12 +45,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSString* userTelStr = [UserConfigManager shareManager].userTelNumStr;
-    if ([userTelStr isKindOfClass:[NSString class]] && 0 != userTelStr.length) {
-        self.selectedIndex = 1;
-    } else {
-        [self performSegueWithIdentifier:@"PresentLoginNaviController" sender:self];
-    }
+//    NSString* userTelStr = [UserConfigManager shareManager].userTelNumStr;
+//    if ([userTelStr isKindOfClass:[NSString class]] && 0 != userTelStr.length) {
+//        self.selectedIndex = 1;
+//    } else {
+//        [self performSegueWithIdentifier:@"PresentLoginNaviController" sender:self];
+//    }
 }
 
 /*

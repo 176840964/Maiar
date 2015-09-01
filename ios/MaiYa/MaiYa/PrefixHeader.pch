@@ -16,6 +16,7 @@
 #import "UserConfigManager.h"
 #import "HintView.h"
 #import "CustomTools.h"
+#import "../Pods/PureLayout/PureLayout/PureLayout/PureLayout.h"
 
 #import "UIColor+Custom.h"
 #import "UIView+frameAdjust.h"

@@ -24,6 +24,10 @@
 		820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F141B94775F002385A4 /* BankCityViewController.m */; };
 		820A6F181B947A1A002385A4 /* BankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F171B947A1A002385A4 /* BankCell.m */; };
 		820A6F1D1B9482FE002385A4 /* RealInfoComfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F1C1B9482FE002385A4 /* RealInfoComfirmViewController.m */; };
+		820A6F201B953BB2002385A4 /* PlazaNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F1F1B953BB2002385A4 /* PlazaNaviController.m */; };
+		820A6F231B953C01002385A4 /* PlazaRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F221B953C01002385A4 /* PlazaRootViewController.m */; };
+		820A6F291B955213002385A4 /* PlazaWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F281B955213002385A4 /* PlazaWordCell.m */; };
+		820A6F2C1B95B565002385A4 /* PlazaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F2B1B95B565002385A4 /* PlazaCell.m */; };
 		820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */; };
 		820C0B1F1B8EF1D6005E85D4 /* MasterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */; };
 		820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09481B86CBD10054DB66 /* UserConfigManager.m */; };
@@ -71,6 +75,7 @@
 		829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31791B858AC7001EB9DA /* ForgotViewController.m */; };
 		829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317C1B858BDC001EB9DA /* BaseNavigationController.m */; };
 		829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */; };
+		C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4EE198D74EE15090FBD86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5FE7F37D8B9CF9D5B38F7E3F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		820A6EE31B93FDAA002385A4 /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
 		820A6EE41B93FDAA002385A4 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
 		820A6EE51B93FDAA002385A4 /* ArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
@@ -115,6 +121,14 @@
 		820A6F171B947A1A002385A4 /* BankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCell.m; sourceTree = "<group>"; };
 		820A6F1B1B9482FE002385A4 /* RealInfoComfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealInfoComfirmViewController.h; sourceTree = "<group>"; };
 		820A6F1C1B9482FE002385A4 /* RealInfoComfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealInfoComfirmViewController.m; sourceTree = "<group>"; };
+		820A6F1E1B953BB2002385A4 /* PlazaNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlazaNaviController.h; sourceTree = "<group>"; };
+		820A6F1F1B953BB2002385A4 /* PlazaNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlazaNaviController.m; sourceTree = "<group>"; };
+		820A6F211B953C01002385A4 /* PlazaRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlazaRootViewController.h; sourceTree = "<group>"; };
+		820A6F221B953C01002385A4 /* PlazaRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlazaRootViewController.m; sourceTree = "<group>"; };
+		820A6F271B955213002385A4 /* PlazaWordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlazaWordCell.h; sourceTree = "<group>"; };
+		820A6F281B955213002385A4 /* PlazaWordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlazaWordCell.m; sourceTree = "<group>"; };
+		820A6F2A1B95B565002385A4 /* PlazaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlazaCell.h; sourceTree = "<group>"; };
+		820A6F2B1B95B565002385A4 /* PlazaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlazaCell.m; sourceTree = "<group>"; };
 		820C0B1B1B8EF1D6005E85D4 /* MasterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterCell.h; sourceTree = "<group>"; };
 		820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterCell.m; sourceTree = "<group>"; };
 		820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterCell.xib; sourceTree = "<group>"; };
@@ -208,6 +222,8 @@
 		829D317C1B858BDC001EB9DA /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		829D317E1B858E9D001EB9DA /* UITextField+PlaceholderText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+PlaceholderText.h"; sourceTree = "<group>"; };
 		829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+PlaceholderText.m"; sourceTree = "<group>"; };
+		C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DEA4EE198D74EE15090FBD86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +245,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19E5A3D369F9BD6463BBA751 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEA4EE198D74EE15090FBD86 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		733D7CA149F60DFC429E3546 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */,
+				5FE7F37D8B9CF9D5B38F7E3F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		820A6EE21B93FD7E002385A4 /* ArticleCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +560,8 @@
 				824CDDA11B7B25B000206E0C /* MaiYa */,
 				824CDDBE1B7B25B100206E0C /* MaiYaTests */,
 				824CDDA01B7B25B000206E0C /* Products */,
+				733D7CA149F60DFC429E3546 /* Pods */,
+				19E5A3D369F9BD6463BBA751 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -620,6 +656,14 @@
 		824CDDDB1B7B3D2600206E0C /* 1.Plaza */ = {
 			isa = PBXGroup;
 			children = (
+				820A6F1E1B953BB2002385A4 /* PlazaNaviController.h */,
+				820A6F1F1B953BB2002385A4 /* PlazaNaviController.m */,
+				820A6F211B953C01002385A4 /* PlazaRootViewController.h */,
+				820A6F221B953C01002385A4 /* PlazaRootViewController.m */,
+				820A6F271B955213002385A4 /* PlazaWordCell.h */,
+				820A6F281B955213002385A4 /* PlazaWordCell.m */,
+				820A6F2A1B95B565002385A4 /* PlazaCell.h */,
+				820A6F2B1B95B565002385A4 /* PlazaCell.m */,
 			);
 			name = 1.Plaza;
 			sourceTree = "<group>";
@@ -677,9 +721,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 824CDDC51B7B25B100206E0C /* Build configuration list for PBXNativeTarget "MaiYa" */;
 			buildPhases = (
+				8E77E76E4B228BA771909E35 /* Check Pods Manifest.lock */,
 				824CDD9B1B7B25B000206E0C /* Sources */,
 				824CDD9C1B7B25B000206E0C /* Frameworks */,
 				824CDD9D1B7B25B000206E0C /* Resources */,
+				DF7933B5F6C83576559A9EFF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -769,6 +815,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8E77E76E4B228BA771909E35 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DF7933B5F6C83576559A9EFF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		824CDD9B1B7B25B000206E0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -780,6 +859,7 @@
 				8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
 				821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */,
+				820A6F291B955213002385A4 /* PlazaWordCell.m in Sources */,
 				829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */,
 				821688DB1B8AED83000A1B2D /* MyZoneViewController.m in Sources */,
 				821688C91B8ACE65000A1B2D /* MeHeaderView.m in Sources */,
@@ -826,8 +906,11 @@
 				821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */,
 				820A6EEC1B94052E002385A4 /* MySharingCell.m in Sources */,
 				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
+				820A6F201B953BB2002385A4 /* PlazaNaviController.m in Sources */,
+				820A6F2C1B95B565002385A4 /* PlazaCell.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,
+				820A6F231B953C01002385A4 /* PlazaRootViewController.m in Sources */,
 				820A6F1D1B9482FE002385A4 /* RealInfoComfirmViewController.m in Sources */,
 				820A6F0D1B9468D8002385A4 /* WithdrawalViewController.m in Sources */,
 			);
@@ -959,6 +1042,7 @@
 		};
 		824CDDC61B7B25B100206E0C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: ma di (RMP54BDL58)";
@@ -973,6 +1057,7 @@
 		};
 		824CDDC71B7B25B100206E0C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FE7F37D8B9CF9D5B38F7E3F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: ma di (RMP54BDL58)";
