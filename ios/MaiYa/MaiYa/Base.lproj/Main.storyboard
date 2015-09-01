@@ -40,6 +40,11 @@
                                                             <state key="normal" image="xingzuoIcon">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="SNR-ca-L0K"/>
@@ -52,6 +57,9 @@
                                                                     <include reference="aCM-1t-DwK"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="aI3-FV-vcS" eventType="touchUpInside" id="4lg-zx-6o6"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星座" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsA-5R-MQs">
                                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -81,6 +89,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="aI3-FV-vcS" eventType="touchUpInside" id="dzU-BQ-K4v"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcu-Uc-3rT" userLabel="Button2">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -88,6 +104,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="aI3-FV-vcS" eventType="touchUpInside" id="YxJ-gh-JQe"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Id0-Vz-gHu" userLabel="Button3">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -95,6 +119,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="aI3-FV-vcS" eventType="touchUpInside" id="GOg-R4-N2e"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,6 +266,11 @@
                                                             <state key="normal" image="taluoIcon">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="Zf9-wa-tpC"/>
@@ -246,6 +283,9 @@
                                                                     <include reference="cUI-N9-xIP"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="0h0-NM-mMQ" eventType="touchUpInside" id="zOn-Nz-cdn"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="塔罗牌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no0-hK-yFo">
                                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -275,6 +315,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="0h0-NM-mMQ" eventType="touchUpInside" id="gTE-gK-9If"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAZ-YT-1Gg" userLabel="Button2">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -282,6 +330,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="0h0-NM-mMQ" eventType="touchUpInside" id="EaA-2r-4Lc"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydI-wv-OPC" userLabel="Button3">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -289,6 +345,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="0h0-NM-mMQ" eventType="touchUpInside" id="yR5-h5-8VZ"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -428,6 +492,11 @@
                                                             <state key="normal" image="zhouyiIcon">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="NjH-fu-qZM"/>
@@ -440,6 +509,9 @@
                                                                     <include reference="DAf-qx-KcH"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="2w7-LM-rac" eventType="touchUpInside" id="quU-iY-DxH"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周易" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZw-Fg-eE1">
                                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -469,6 +541,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="2w7-LM-rac" eventType="touchUpInside" id="Dfa-4C-eQf"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvZ-Sy-7fA" userLabel="Button2">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -476,6 +556,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="2w7-LM-rac" eventType="touchUpInside" id="MBU-J7-znL"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o13-Ia-Yt2" userLabel="Button3">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -483,6 +571,14 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                                                    <integer key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="onTapBtn:" destination="2w7-LM-rac" eventType="touchUpInside" id="b3P-Hq-xZg"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -652,11 +748,164 @@
                     <navigationItem key="navigationItem" title="广场" id="GXP-67-erU"/>
                     <connections>
                         <outlet property="tableView" destination="EDG-yN-OaH" id="BWg-5j-y3V"/>
+                        <segue destination="CFL-ka-590" kind="show" identifier="ShowPlazaCategory" id="XKx-Gv-hCr"/>
+                        <segue destination="7tY-KK-gDJ" kind="show" identifier="ShowPlazaDetail" id="JDl-KK-l6G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="-742.5"/>
+            <point key="canvasLocation" x="2251.5" y="-783"/>
+        </scene>
+        <!--迈雅-->
+        <scene sceneID="jbN-wl-aFV">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="CFL-ka-590" customClass="PlazaCategoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9FR-vY-xbA"/>
+                        <viewControllerLayoutGuide type="bottom" id="6QZ-DX-dVd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T1Z-3Q-YFf">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXM-hE-gba">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9bt-SH-wq6"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9bt-SH-wq6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="9bt-SH-wq6"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="CFL-ka-590" id="OOe-je-S2Z"/>
+                                </connections>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03d-oM-CKO">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="CFL-ka-590" id="dKz-bF-VhS"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.94901960784313721" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="03d-oM-CKO" secondAttribute="trailing" id="7JF-mI-JSN"/>
+                            <constraint firstItem="fXM-hE-gba" firstAttribute="leading" secondItem="T1Z-3Q-YFf" secondAttribute="leading" id="Fah-Th-SxL"/>
+                            <constraint firstItem="03d-oM-CKO" firstAttribute="leading" secondItem="T1Z-3Q-YFf" secondAttribute="leading" id="H54-u8-uXU"/>
+                            <constraint firstAttribute="trailing" secondItem="fXM-hE-gba" secondAttribute="trailing" id="ceg-hD-Ejf"/>
+                            <constraint firstItem="03d-oM-CKO" firstAttribute="top" secondItem="fXM-hE-gba" secondAttribute="bottom" id="lVE-VI-kyr"/>
+                            <constraint firstItem="fXM-hE-gba" firstAttribute="top" secondItem="9FR-vY-xbA" secondAttribute="bottom" id="xkx-oH-mPQ"/>
+                            <constraint firstAttribute="bottom" secondItem="03d-oM-CKO" secondAttribute="bottom" id="yek-OV-2hT"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="fXM-hE-gba"/>
+                                <exclude reference="03d-oM-CKO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Fah-Th-SxL"/>
+                                <exclude reference="ceg-hD-Ejf"/>
+                                <exclude reference="xkx-oH-mPQ"/>
+                                <exclude reference="7JF-mI-JSN"/>
+                                <exclude reference="H54-u8-uXU"/>
+                                <exclude reference="lVE-VI-kyr"/>
+                                <exclude reference="yek-OV-2hT"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="fXM-hE-gba"/>
+                                <include reference="03d-oM-CKO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Fah-Th-SxL"/>
+                                <include reference="ceg-hD-Ejf"/>
+                                <include reference="xkx-oH-mPQ"/>
+                                <include reference="7JF-mI-JSN"/>
+                                <include reference="H54-u8-uXU"/>
+                                <include reference="lVE-VI-kyr"/>
+                                <include reference="yek-OV-2hT"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="迈雅" id="etw-AR-Mf6"/>
+                    <connections>
+                        <outlet property="catScrollView" destination="fXM-hE-gba" id="cfH-fm-Urh"/>
+                        <outlet property="contentScrollView" destination="03d-oM-CKO" id="aqy-Ct-7aj"/>
+                        <segue destination="7tY-KK-gDJ" kind="show" identifier="ShowPlazaDetail" id="kOk-pc-gYy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t7F-ti-jgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3091.5" y="-660"/>
+        </scene>
+        <!--详情-->
+        <scene sceneID="5pF-Lg-L0d">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="7tY-KK-gDJ" customClass="PlazaDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YGW-VT-cX2"/>
+                        <viewControllerLayoutGuide type="bottom" id="4wY-c7-S3d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eBH-B4-D6K">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8pW-nT-r8E">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.94901960784313721" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="8pW-nT-r8E" secondAttribute="bottom" id="SRW-hj-4Sm"/>
+                            <constraint firstAttribute="trailing" secondItem="8pW-nT-r8E" secondAttribute="trailing" id="ZQd-68-Kn6"/>
+                            <constraint firstItem="8pW-nT-r8E" firstAttribute="top" secondItem="YGW-VT-cX2" secondAttribute="bottom" id="alF-jo-cvn"/>
+                            <constraint firstItem="8pW-nT-r8E" firstAttribute="top" secondItem="eBH-B4-D6K" secondAttribute="top" id="krH-da-e5Y"/>
+                            <constraint firstItem="8pW-nT-r8E" firstAttribute="leading" secondItem="eBH-B4-D6K" secondAttribute="leading" id="xUs-LM-QCa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8pW-nT-r8E"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="SRW-hj-4Sm"/>
+                                <exclude reference="ZQd-68-Kn6"/>
+                                <exclude reference="alF-jo-cvn"/>
+                                <exclude reference="krH-da-e5Y"/>
+                                <exclude reference="xUs-LM-QCa"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="8pW-nT-r8E"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="SRW-hj-4Sm"/>
+                                <include reference="ZQd-68-Kn6"/>
+                                <exclude reference="alF-jo-cvn"/>
+                                <include reference="krH-da-e5Y"/>
+                                <include reference="xUs-LM-QCa"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="详情" id="UNl-Hr-g7n">
+                        <barButtonItem key="rightBarButtonItem" image="topShareIcon" id="jC5-Ke-rff"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="8pW-nT-r8E" id="eVx-DX-2JK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYI-Qn-qGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3844.5" y="-660"/>
         </scene>
         <!--消息-->
         <scene sceneID="eTi-Ap-Jfa">
@@ -751,7 +1000,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376" y="-6"/>
+            <point key="canvasLocation" x="1968" y="37.5"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -13497,6 +13746,7 @@
         <image name="taluoIcon" width="71" height="70"/>
         <image name="testBankIcon" width="15" height="15"/>
         <image name="testZoneTopImage" width="320" height="107"/>
+        <image name="topShareIcon" width="25" height="25"/>
         <image name="userInfoArr" width="7" height="13"/>
         <image name="userInfoIcon1" width="22" height="22"/>
         <image name="userInfoIcon2" width="22" height="22"/>
@@ -13515,11 +13765,12 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="kOk-pc-gYy"/>
         <segue reference="Nrt-vZ-Ua2"/>
         <segue reference="aCv-kO-hrx"/>
         <segue reference="eZO-bS-HnC"/>
         <segue reference="GW4-mu-fkM"/>
-        <segue reference="qG6-gi-rKo"/>
         <segue reference="HjU-k3-kdz"/>
+        <segue reference="TIn-bO-DGx"/>
     </inferredMetricsTieBreakers>
 </document>

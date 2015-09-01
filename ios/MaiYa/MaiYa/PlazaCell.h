@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^TapBtnHandle)(NSNumber *);
+
 @interface PlazaCell : UITableViewCell
+
+@property (copy, nonatomic) TapBtnHandle tapBtnHandler;
+
+- (void)layoutPlazaCellSubviewsByArr:(NSArray *)arr;
 
 @end
