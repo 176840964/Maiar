@@ -34,6 +34,8 @@
 		820A6F3C1B95C647002385A4 /* PlazaDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F3B1B95C647002385A4 /* PlazaDetailViewController.m */; };
 		820A6F3F1B969FC9002385A4 /* AdvisoryNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */; };
 		820A6F421B969FE6002385A4 /* AdvisoryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F411B969FE6002385A4 /* AdvisoryRootViewController.m */; };
+		820A6F461B96EC8C002385A4 /* AdvisoryCatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F451B96EC8C002385A4 /* AdvisoryCatView.m */; };
+		820A6F4B1B970158002385A4 /* MyAdvisoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F4A1B970158002385A4 /* MyAdvisoryViewController.m */; };
 		820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */; };
 		820C0B1F1B8EF1D6005E85D4 /* MasterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */; };
 		820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09481B86CBD10054DB66 /* UserConfigManager.m */; };
@@ -147,6 +149,10 @@
 		820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryNaviController.m; sourceTree = "<group>"; };
 		820A6F401B969FE6002385A4 /* AdvisoryRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryRootViewController.h; sourceTree = "<group>"; };
 		820A6F411B969FE6002385A4 /* AdvisoryRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryRootViewController.m; sourceTree = "<group>"; };
+		820A6F441B96EC8C002385A4 /* AdvisoryCatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryCatView.h; sourceTree = "<group>"; };
+		820A6F451B96EC8C002385A4 /* AdvisoryCatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryCatView.m; sourceTree = "<group>"; };
+		820A6F491B970158002385A4 /* MyAdvisoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAdvisoryViewController.h; sourceTree = "<group>"; };
+		820A6F4A1B970158002385A4 /* MyAdvisoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAdvisoryViewController.m; sourceTree = "<group>"; };
 		820C0B1B1B8EF1D6005E85D4 /* MasterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterCell.h; sourceTree = "<group>"; };
 		820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterCell.m; sourceTree = "<group>"; };
 		820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterCell.xib; sourceTree = "<group>"; };
@@ -403,6 +409,24 @@
 				820A6F331B95BF18002385A4 /* CarouselCell.m */,
 			);
 			name = "Carousel Cell";
+			sourceTree = "<group>";
+		};
+		820A6F471B96EC93002385A4 /* 2.1Advisory Cat */ = {
+			isa = PBXGroup;
+			children = (
+				820A6F441B96EC8C002385A4 /* AdvisoryCatView.h */,
+				820A6F451B96EC8C002385A4 /* AdvisoryCatView.m */,
+			);
+			name = "2.1Advisory Cat";
+			sourceTree = "<group>";
+		};
+		820A6F481B970120002385A4 /* 2.2MyAdvisory */ = {
+			isa = PBXGroup;
+			children = (
+				820A6F491B970158002385A4 /* MyAdvisoryViewController.h */,
+				820A6F4A1B970158002385A4 /* MyAdvisoryViewController.m */,
+			);
+			name = 2.2MyAdvisory;
 			sourceTree = "<group>";
 		};
 		820C0B1A1B8EF197005E85D4 /* MasterCell */ = {
@@ -714,6 +738,8 @@
 		824CDDDA1B7B3D2400206E0C /* 2.Advisory */ = {
 			isa = PBXGroup;
 			children = (
+				820A6F471B96EC93002385A4 /* 2.1Advisory Cat */,
+				820A6F481B970120002385A4 /* 2.2MyAdvisory */,
 				820A6F3D1B969FC9002385A4 /* AdvisoryNaviController.h */,
 				820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */,
 				820A6F401B969FE6002385A4 /* AdvisoryRootViewController.h */,
@@ -923,6 +949,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				820A6F461B96EC8C002385A4 /* AdvisoryCatView.m in Sources */,
 				820A6F3C1B95C647002385A4 /* PlazaDetailViewController.m in Sources */,
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
 				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
@@ -961,6 +988,7 @@
 				821688C31B8AC9D8000A1B2D /* MeTableViewController.m in Sources */,
 				821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */,
 				820A6F181B947A1A002385A4 /* BankCell.m in Sources */,
+				820A6F4B1B970158002385A4 /* MyAdvisoryViewController.m in Sources */,
 				8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */,
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
 				820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */,

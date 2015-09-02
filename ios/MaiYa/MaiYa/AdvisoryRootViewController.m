@@ -8,10 +8,12 @@
 
 #import "AdvisoryRootViewController.h"
 #import "CarouselCell.h"
+#import "AdvisoryCatView.h"
 
 @interface AdvisoryRootViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *headerScrollView;
+@property (strong, nonatomic) AdvisoryCatView *catView;
 @end
 
 @implementation AdvisoryRootViewController
@@ -40,6 +42,21 @@
     [super updateViewConstraints];
     
     self.contentHeightConstraint.constant = 687;
+}
+
+#pragma mark - IBAction
+- (IBAction)onTapTypeBtn:(id)sender {
+    if (nil == _catView) {
+        _catView = [[AdvisoryCatView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _catView.hidden = YES;
+        [_catView makeKeyAndVisible];
+    }
+    
+    [_catView show];
+}
+
+- (IBAction)onTapMyAdvisory:(id)sender {
+    [self performSegueWithIdentifier:@"ShowMyAdvisory" sender:self];
 }
 
 /*
