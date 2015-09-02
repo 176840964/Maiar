@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HeaderCell : UIControl
+@interface CarouselCell : UIControl
 
 @property (strong, nonatomic) UIImageView *imageView;
 

@@ -7,7 +7,7 @@
 //
 
 #import "PlazaHeaderView.h"
-#import "HeaderCell.h"
+#import "CarouselCell.h"
 
 @implementation PlazaHeaderView
 
@@ -17,7 +17,7 @@
     if (self) {
         self.backgroundColor = [UIColor redColor];
         
-        HeaderCell *cell = [[HeaderCell alloc] init];
+        CarouselCell *cell = [[CarouselCell alloc] init];
         cell.frame = self.bounds;
         [self addSubview:cell];
         

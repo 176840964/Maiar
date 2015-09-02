@@ -75,11 +75,25 @@
 
 #pragma mark - 
 - (void)onTapCatBtn:(UIButton *)btn {
+    [self showInfoByIndex:btn.tag isAnimateScrollContentView:YES];
+}
+
+- (void)showInfoByIndex:(NSInteger)index isAnimateScrollContentView:(BOOL)isAnimate {
     [UIView animateWithDuration:0.25 animations:^{
-        self.markView.transform = CGAffineTransformMakeTranslation(btn.tag * btn.width, 0);
+        self.markView.transform = CGAffineTransformMakeTranslation(index * self.markView.width, 0);
     } completion:^(BOOL finished) {
-        
+        if (isAnimate) {
+            [self.contentScrollView setContentOffset:CGPointMake(index * self.contentScrollView.width, 0) animated:YES];
+        }
     }];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if ([scrollView isEqual:self.contentScrollView]) {
+        NSInteger index = scrollView.contentOffset.x / scrollView.width;
+        [self showInfoByIndex:index isAnimateScrollContentView:NO];
+    }
 }
 
 /*

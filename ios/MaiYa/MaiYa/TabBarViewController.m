@@ -26,10 +26,10 @@
     UITabBarItem *item1 = [self.tabBar.items objectAtIndex:1];
     item1.selectedImage = [UIImage imageNamed:@"zixun_h"];
     
-    UITabBarItem *item2 = [self.tabBar.items objectAtIndex:2];
-    item2.selectedImage = [UIImage imageNamed:@"xiaoxi_h"];
+//    UITabBarItem *item2 = [self.tabBar.items objectAtIndex:2];
+//    item2.selectedImage = [UIImage imageNamed:@"xiaoxi_h"];
     
-    UITabBarItem *item3 = [self.tabBar.items objectAtIndex:3];
+    UITabBarItem *item3 = [self.tabBar.items objectAtIndex:2];
     item3.selectedImage = [UIImage imageNamed:@"wo_h"];
 }
 

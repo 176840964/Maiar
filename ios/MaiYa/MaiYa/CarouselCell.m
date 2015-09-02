@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
-#import "HeaderCell.h"
+#import "CarouselCell.h"
 
-@implementation HeaderCell
+@implementation CarouselCell
 
 - (instancetype)init
 {

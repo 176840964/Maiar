@@ -29,9 +29,11 @@
 		820A6F291B955213002385A4 /* PlazaWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F281B955213002385A4 /* PlazaWordCell.m */; };
 		820A6F2C1B95B565002385A4 /* PlazaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F2B1B95B565002385A4 /* PlazaCell.m */; };
 		820A6F2F1B95BD15002385A4 /* PlazaHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F2E1B95BD15002385A4 /* PlazaHeaderView.m */; };
-		820A6F341B95BF18002385A4 /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F331B95BF18002385A4 /* HeaderCell.m */; };
+		820A6F341B95BF18002385A4 /* CarouselCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F331B95BF18002385A4 /* CarouselCell.m */; };
 		820A6F391B95C62D002385A4 /* PlazaCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F381B95C62D002385A4 /* PlazaCategoryViewController.m */; };
 		820A6F3C1B95C647002385A4 /* PlazaDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F3B1B95C647002385A4 /* PlazaDetailViewController.m */; };
+		820A6F3F1B969FC9002385A4 /* AdvisoryNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */; };
+		820A6F421B969FE6002385A4 /* AdvisoryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820A6F411B969FE6002385A4 /* AdvisoryRootViewController.m */; };
 		820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */; };
 		820C0B1F1B8EF1D6005E85D4 /* MasterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */; };
 		820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09481B86CBD10054DB66 /* UserConfigManager.m */; };
@@ -135,12 +137,16 @@
 		820A6F2B1B95B565002385A4 /* PlazaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlazaCell.m; sourceTree = "<group>"; };
 		820A6F2D1B95BD15002385A4 /* PlazaHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlazaHeaderView.h; sourceTree = "<group>"; };
 		820A6F2E1B95BD15002385A4 /* PlazaHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlazaHeaderView.m; sourceTree = "<group>"; };
-		820A6F321B95BF18002385A4 /* HeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCell.h; sourceTree = "<group>"; };
-		820A6F331B95BF18002385A4 /* HeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCell.m; sourceTree = "<group>"; };
+		820A6F321B95BF18002385A4 /* CarouselCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselCell.h; sourceTree = "<group>"; };
+		820A6F331B95BF18002385A4 /* CarouselCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselCell.m; sourceTree = "<group>"; };
 		820A6F371B95C62D002385A4 /* PlazaCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlazaCategoryViewController.h; sourceTree = "<group>"; };
 		820A6F381B95C62D002385A4 /* PlazaCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlazaCategoryViewController.m; sourceTree = "<group>"; };
 		820A6F3A1B95C647002385A4 /* PlazaDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlazaDetailViewController.h; sourceTree = "<group>"; };
 		820A6F3B1B95C647002385A4 /* PlazaDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlazaDetailViewController.m; sourceTree = "<group>"; };
+		820A6F3D1B969FC9002385A4 /* AdvisoryNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryNaviController.h; sourceTree = "<group>"; };
+		820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryNaviController.m; sourceTree = "<group>"; };
+		820A6F401B969FE6002385A4 /* AdvisoryRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryRootViewController.h; sourceTree = "<group>"; };
+		820A6F411B969FE6002385A4 /* AdvisoryRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryRootViewController.m; sourceTree = "<group>"; };
 		820C0B1B1B8EF1D6005E85D4 /* MasterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterCell.h; sourceTree = "<group>"; };
 		820C0B1C1B8EF1D6005E85D4 /* MasterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterCell.m; sourceTree = "<group>"; };
 		820C0B1D1B8EF1D6005E85D4 /* MasterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterCell.xib; sourceTree = "<group>"; };
@@ -357,8 +363,6 @@
 			children = (
 				820A6F2D1B95BD15002385A4 /* PlazaHeaderView.h */,
 				820A6F2E1B95BD15002385A4 /* PlazaHeaderView.m */,
-				820A6F321B95BF18002385A4 /* HeaderCell.h */,
-				820A6F331B95BF18002385A4 /* HeaderCell.m */,
 			);
 			name = HeaderView;
 			sourceTree = "<group>";
@@ -390,6 +394,15 @@
 				820A6F3B1B95C647002385A4 /* PlazaDetailViewController.m */,
 			);
 			name = "1.2Plaza Detail";
+			sourceTree = "<group>";
+		};
+		820A6F431B96A22D002385A4 /* Carousel Cell */ = {
+			isa = PBXGroup;
+			children = (
+				820A6F321B95BF18002385A4 /* CarouselCell.h */,
+				820A6F331B95BF18002385A4 /* CarouselCell.m */,
+			);
+			name = "Carousel Cell";
 			sourceTree = "<group>";
 		};
 		820C0B1A1B8EF197005E85D4 /* MasterCell */ = {
@@ -701,6 +714,10 @@
 		824CDDDA1B7B3D2400206E0C /* 2.Advisory */ = {
 			isa = PBXGroup;
 			children = (
+				820A6F3D1B969FC9002385A4 /* AdvisoryNaviController.h */,
+				820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */,
+				820A6F401B969FE6002385A4 /* AdvisoryRootViewController.h */,
+				820A6F411B969FE6002385A4 /* AdvisoryRootViewController.m */,
 			);
 			name = 2.Advisory;
 			sourceTree = "<group>";
@@ -751,6 +768,7 @@
 		829D316E1B8486A5001EB9DA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				820A6F431B96A22D002385A4 /* Carousel Cell */,
 				820A6EE21B93FD7E002385A4 /* ArticleCell */,
 				820C0B1A1B8EF197005E85D4 /* MasterCell */,
 				821688CA1B8AD96C000A1B2D /* NaviTopViewController */,
@@ -908,7 +926,7 @@
 				820A6F3C1B95C647002385A4 /* PlazaDetailViewController.m in Sources */,
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
 				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
-				820A6F341B95BF18002385A4 /* HeaderCell.m in Sources */,
+				820A6F341B95BF18002385A4 /* CarouselCell.m in Sources */,
 				820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */,
 				8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
@@ -954,6 +972,7 @@
 				820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
+				820A6F421B969FE6002385A4 /* AdvisoryRootViewController.m in Sources */,
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,
 				82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */,
 				820A6F2F1B95BD15002385A4 /* PlazaHeaderView.m in Sources */,
@@ -962,6 +981,7 @@
 				821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */,
 				820A6EEC1B94052E002385A4 /* MySharingCell.m in Sources */,
 				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
+				820A6F3F1B969FC9002385A4 /* AdvisoryNaviController.m in Sources */,
 				820A6F201B953BB2002385A4 /* PlazaNaviController.m in Sources */,
 				820A6F2C1B95B565002385A4 /* PlazaCell.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
