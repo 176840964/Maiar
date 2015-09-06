@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TE1-Ps-ojh">
-                        <rect key="frame" x="4" y="5" width="479" height="72"/>
+                        <rect key="frame" x="4" y="0.0" width="479" height="72"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fEp-TW-U9t">
                                 <rect key="frame" x="4" y="4" width="65" height="65"/>
@@ -179,8 +179,8 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="TE1-Ps-ojh" secondAttribute="trailing" constant="4" id="62M-0R-3Mv"/>
-                    <constraint firstAttribute="bottom" secondItem="TE1-Ps-ojh" secondAttribute="bottom" id="bU3-wZ-Qdq"/>
-                    <constraint firstItem="TE1-Ps-ojh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kWS-bi-q8U"/>
+                    <constraint firstAttribute="bottom" secondItem="TE1-Ps-ojh" secondAttribute="bottom" constant="5" id="bU3-wZ-Qdq"/>
+                    <constraint firstItem="TE1-Ps-ojh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kWS-bi-q8U"/>
                     <constraint firstItem="TE1-Ps-ojh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="thK-eX-GEy"/>
                 </constraints>
             </tableViewCellContentView>

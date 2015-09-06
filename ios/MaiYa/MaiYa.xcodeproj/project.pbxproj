@@ -51,6 +51,8 @@
 		8213C8D91B9061E40048B27C /* WorkingSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8D81B9061E40048B27C /* WorkingSettingViewController.m */; };
 		8213C8DC1B9061FC0048B27C /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8DB1B9061FC0048B27C /* CommentViewController.m */; };
 		82150F111B9BEADB00CFDE80 /* MastersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F101B9BEADB00CFDE80 /* MastersListViewController.m */; };
+		82150F151B9C25D300CFDE80 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F141B9C25D300CFDE80 /* SearchViewController.m */; };
+		82150F181B9C516300CFDE80 /* FillterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F171B9C516300CFDE80 /* FillterView.m */; };
 		82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E191B82DBA200193FC3 /* LoginNaviController.m */; };
 		82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1C1B82DBDB00193FC3 /* LoginViewController.m */; };
 		82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */; };
@@ -183,6 +185,10 @@
 		8213C8DB1B9061FC0048B27C /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		82150F0F1B9BEADB00CFDE80 /* MastersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastersListViewController.h; sourceTree = "<group>"; };
 		82150F101B9BEADB00CFDE80 /* MastersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MastersListViewController.m; sourceTree = "<group>"; };
+		82150F131B9C25D300CFDE80 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		82150F141B9C25D300CFDE80 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		82150F161B9C516300CFDE80 /* FillterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillterView.h; sourceTree = "<group>"; };
+		82150F171B9C516300CFDE80 /* FillterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillterView.m; sourceTree = "<group>"; };
 		82158E181B82DBA200193FC3 /* LoginNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNaviController.h; sourceTree = "<group>"; };
 		82158E191B82DBA200193FC3 /* LoginNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNaviController.m; sourceTree = "<group>"; };
 		82158E1B1B82DBDB00193FC3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -509,10 +515,29 @@
 		82150F0E1B9BEA9F00CFDE80 /* 2.2Master List */ = {
 			isa = PBXGroup;
 			children = (
+				82150F1A1B9C517E00CFDE80 /* 2.2.1Fillter View */,
 				82150F0F1B9BEADB00CFDE80 /* MastersListViewController.h */,
 				82150F101B9BEADB00CFDE80 /* MastersListViewController.m */,
 			);
 			name = "2.2Master List";
+			sourceTree = "<group>";
+		};
+		82150F121B9C25AB00CFDE80 /* 2.4Search */ = {
+			isa = PBXGroup;
+			children = (
+				82150F131B9C25D300CFDE80 /* SearchViewController.h */,
+				82150F141B9C25D300CFDE80 /* SearchViewController.m */,
+			);
+			name = 2.4Search;
+			sourceTree = "<group>";
+		};
+		82150F1A1B9C517E00CFDE80 /* 2.2.1Fillter View */ = {
+			isa = PBXGroup;
+			children = (
+				82150F161B9C516300CFDE80 /* FillterView.h */,
+				82150F171B9C516300CFDE80 /* FillterView.m */,
+			);
+			name = "2.2.1Fillter View";
 			sourceTree = "<group>";
 		};
 		82158E171B82DA4700193FC3 /* 5.Login */ = {
@@ -753,6 +778,7 @@
 				820A6F471B96EC93002385A4 /* 2.1Advisory Cat */,
 				82150F0E1B9BEA9F00CFDE80 /* 2.2Master List */,
 				820A6F481B970120002385A4 /* 2.3MyAdvisory */,
+				82150F121B9C25AB00CFDE80 /* 2.4Search */,
 				820A6F3D1B969FC9002385A4 /* AdvisoryNaviController.h */,
 				820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */,
 				820A6F401B969FE6002385A4 /* AdvisoryRootViewController.h */,
@@ -1005,6 +1031,7 @@
 				820A6F4B1B970158002385A4 /* MyAdvisoryViewController.m in Sources */,
 				8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */,
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
+				82150F181B9C516300CFDE80 /* FillterView.m in Sources */,
 				820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */,
 				8213C8DC1B9061FC0048B27C /* CommentViewController.m in Sources */,
 				820A6EFA1B94400D002385A4 /* WorkingTimeCell.m in Sources */,
@@ -1024,6 +1051,7 @@
 				820A6EEC1B94052E002385A4 /* MySharingCell.m in Sources */,
 				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
 				820A6F3F1B969FC9002385A4 /* AdvisoryNaviController.m in Sources */,
+				82150F151B9C25D300CFDE80 /* SearchViewController.m in Sources */,
 				820A6F201B953BB2002385A4 /* PlazaNaviController.m in Sources */,
 				820A6F2C1B95B565002385A4 /* PlazaCell.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
