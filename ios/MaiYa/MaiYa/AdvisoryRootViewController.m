@@ -8,12 +8,13 @@
 
 #import "AdvisoryRootViewController.h"
 #import "CarouselCell.h"
-#import "AdvisoryCatView.h"
+#import "MastersListViewController.h"
 
 @interface AdvisoryRootViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *headerScrollView;
 @property (strong, nonatomic) AdvisoryCatView *catView;
+@property (assign, nonatomic) AdvisoryCatModel selectedCatModel;
 @end
 
 @implementation AdvisoryRootViewController
@@ -50,6 +51,12 @@
         _catView = [[AdvisoryCatView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _catView.hidden = YES;
         [_catView makeKeyAndVisible];
+        
+        __weak typeof(self) weakSelf = self;
+        _catView.selectedAdvisoryCatHandler = ^(NSNumber *selectedCatModel) {
+            weakSelf.selectedCatModel = selectedCatModel.integerValue;
+            [weakSelf performSegueWithIdentifier:@"ShowMastersListViewController" sender:weakSelf];
+        };
     }
     
     [_catView show];
@@ -59,14 +66,16 @@
     [self performSegueWithIdentifier:@"ShowMyAdvisory" sender:self];
 }
 
-/*
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"ShowMastersListViewController"]) {
+        MastersListViewController *controller = segue.destinationViewController;
+        controller.selectedCatModel = self.selectedCatModel;
+    }
 }
-*/
 
 @end

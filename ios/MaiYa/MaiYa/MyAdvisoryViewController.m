@@ -8,8 +8,12 @@
 
 #import "MyAdvisoryViewController.h"
 
-@interface MyAdvisoryViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface MyAdvisoryViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *markView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentWidth;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITableView *inTableView;
+@property (weak, nonatomic) IBOutlet UITableView *finishTableView;
 @end
 
 @implementation MyAdvisoryViewController
@@ -24,6 +28,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    self.contentWidth.constant = CGRectGetWidth([UIScreen mainScreen].bounds) * 2;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -34,19 +43,51 @@
 }
 */
 
+#pragma mark - IBAction
+- (IBAction)onTapInBtn:(id)sender {
+    self.markView.transform = CGAffineTransformIdentity;
+    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+- (IBAction)onTapFinishBtn:(id)sender {
+    self.markView.transform = CGAffineTransformMakeTranslation(self.markView.width, 0);
+    [self.scrollView setContentOffset:CGPointMake(self.scrollView.width, 0) animated:YES];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    if ([tableView isEqual:self.inTableView]) {
+        return 20;
+    } else {
+        return 20;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryCell"];
-    return  cell;
+    if ([tableView isEqual:self.inTableView]) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryInCell"];
+        return  cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryFinishCell"];
+        return  cell;
+    }
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if ([self.scrollView isEqual:scrollView]) {
+        NSInteger index = scrollView.contentOffset.x / scrollView.width;
+        if (0 == index) {
+            self.markView.transform = CGAffineTransformIdentity;
+        } else {
+            self.markView.transform = CGAffineTransformMakeTranslation(self.markView.width, 0);
+        }
+    }
 }
 
 @end

@@ -82,6 +82,8 @@
         [btn2 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:btn1 withOffset:21];
         
         self.contentView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        
+        self.catModel = AdvisoryCatModelNone;
     }
     
     return self;
@@ -97,19 +99,26 @@
 
 #pragma mark -
 - (void)onTapBgMarkCtrl:(UIControl *)ctrl {
-    [self close];
+    self.catModel = 3;
+    [self closeOfIsSelectedCat:NO];
 }
 
 - (void)onTapCatBtn:(UIButton *)btn {
-    [self close];
+    self.catModel = btn.tag;
+    
+    [self closeOfIsSelectedCat:YES];
 }
 
-- (void)close {
+- (void)closeOfIsSelectedCat:(BOOL)isSelected {
     [UIView animateWithDuration:0.25 animations:^{
         self.contentView.transform = CGAffineTransformMakeScale(0.1, 0.1);
     } completion:^(BOOL finished) {
         self.bgMarkImageView.alpha = 0;
         self.hidden = YES;
+        
+        if (isSelected && self.selectedAdvisoryCatHandler) {
+            self.selectedAdvisoryCatHandler([NSNumber numberWithInteger:self.catModel]);
+        }
     }];
 }
 
