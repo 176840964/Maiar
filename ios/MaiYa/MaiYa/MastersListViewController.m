@@ -85,7 +85,6 @@
         }
     }
     
-    
     if (3 == button.tag) {
         if (!self.fillterView.hidden) {
             [self closeFillterView];
@@ -125,6 +124,7 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"ShowMasterZone" sender:self];
 }
 
 @end

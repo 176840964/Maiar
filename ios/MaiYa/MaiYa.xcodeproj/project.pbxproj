@@ -53,6 +53,10 @@
 		82150F111B9BEADB00CFDE80 /* MastersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F101B9BEADB00CFDE80 /* MastersListViewController.m */; };
 		82150F151B9C25D300CFDE80 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F141B9C25D300CFDE80 /* SearchViewController.m */; };
 		82150F181B9C516300CFDE80 /* FillterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F171B9C516300CFDE80 /* FillterView.m */; };
+		82150F1E1B9D9A3100CFDE80 /* AdvisoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F1D1B9D9A3100CFDE80 /* AdvisoryDetailViewController.m */; };
+		82150F211B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F201B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m */; };
+		82150F241B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F231B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m */; };
+		82150F271B9DBF6500CFDE80 /* TimeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F261B9DBF6500CFDE80 /* TimeCollectionViewCell.m */; };
 		82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E191B82DBA200193FC3 /* LoginNaviController.m */; };
 		82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1C1B82DBDB00193FC3 /* LoginViewController.m */; };
 		82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */; };
@@ -189,6 +193,14 @@
 		82150F141B9C25D300CFDE80 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		82150F161B9C516300CFDE80 /* FillterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillterView.h; sourceTree = "<group>"; };
 		82150F171B9C516300CFDE80 /* FillterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillterView.m; sourceTree = "<group>"; };
+		82150F1C1B9D9A3100CFDE80 /* AdvisoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailViewController.h; sourceTree = "<group>"; };
+		82150F1D1B9D9A3100CFDE80 /* AdvisoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailViewController.m; sourceTree = "<group>"; };
+		82150F1F1B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailTimeCell.h; sourceTree = "<group>"; };
+		82150F201B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailTimeCell.m; sourceTree = "<group>"; };
+		82150F221B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailDateCell.h; sourceTree = "<group>"; };
+		82150F231B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailDateCell.m; sourceTree = "<group>"; };
+		82150F251B9DBF6500CFDE80 /* TimeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeCollectionViewCell.h; sourceTree = "<group>"; };
+		82150F261B9DBF6500CFDE80 /* TimeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeCollectionViewCell.m; sourceTree = "<group>"; };
 		82158E181B82DBA200193FC3 /* LoginNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNaviController.h; sourceTree = "<group>"; };
 		82158E191B82DBA200193FC3 /* LoginNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNaviController.m; sourceTree = "<group>"; };
 		82158E1B1B82DBDB00193FC3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -432,6 +444,7 @@
 		820A6F481B970120002385A4 /* 2.3MyAdvisory */ = {
 			isa = PBXGroup;
 			children = (
+				82150F1B1B9D98CE00CFDE80 /* AdvisoryDetailViewController */,
 				820A6F491B970158002385A4 /* MyAdvisoryViewController.h */,
 				820A6F4A1B970158002385A4 /* MyAdvisoryViewController.m */,
 			);
@@ -538,6 +551,21 @@
 				82150F171B9C516300CFDE80 /* FillterView.m */,
 			);
 			name = "2.2.1Fillter View";
+			sourceTree = "<group>";
+		};
+		82150F1B1B9D98CE00CFDE80 /* AdvisoryDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				82150F1C1B9D9A3100CFDE80 /* AdvisoryDetailViewController.h */,
+				82150F1D1B9D9A3100CFDE80 /* AdvisoryDetailViewController.m */,
+				82150F1F1B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.h */,
+				82150F201B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m */,
+				82150F221B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.h */,
+				82150F231B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m */,
+				82150F251B9DBF6500CFDE80 /* TimeCollectionViewCell.h */,
+				82150F261B9DBF6500CFDE80 /* TimeCollectionViewCell.m */,
+			);
+			name = AdvisoryDetailViewController;
 			sourceTree = "<group>";
 		};
 		82158E171B82DA4700193FC3 /* 5.Login */ = {
@@ -1024,8 +1052,10 @@
 				829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */,
 				820A6F121B94774B002385A4 /* BankViewController.m in Sources */,
 				820A6EFE1B9455C7002385A4 /* CouponCell.m in Sources */,
+				82150F1E1B9D9A3100CFDE80 /* AdvisoryDetailViewController.m in Sources */,
 				821688F01B8B0D00000A1B2D /* SettingViewController.m in Sources */,
 				821688C31B8AC9D8000A1B2D /* MeTableViewController.m in Sources */,
+				82150F271B9DBF6500CFDE80 /* TimeCollectionViewCell.m in Sources */,
 				821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */,
 				820A6F181B947A1A002385A4 /* BankCell.m in Sources */,
 				820A6F4B1B970158002385A4 /* MyAdvisoryViewController.m in Sources */,
@@ -1033,10 +1063,12 @@
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
 				82150F181B9C516300CFDE80 /* FillterView.m in Sources */,
 				820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */,
+				82150F211B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m in Sources */,
 				8213C8DC1B9061FC0048B27C /* CommentViewController.m in Sources */,
 				820A6EFA1B94400D002385A4 /* WorkingTimeCell.m in Sources */,
 				821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */,
 				820A6F071B946339002385A4 /* WithdrawalRulesViewController.m in Sources */,
+				82150F241B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m in Sources */,
 				829D31741B84874C001EB9DA /* RegistViewController.m in Sources */,
 				820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,

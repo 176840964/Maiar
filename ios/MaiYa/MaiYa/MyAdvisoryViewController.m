@@ -76,6 +76,8 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self performSegueWithIdentifier:@"ShowAdvisoryDetailViewController" sender:self];
 }
 
 #pragma mark - UIScrollViewDelegate
