@@ -76,6 +76,7 @@
 		821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219379F1B8C2D0C0061C002 /* NoticeSetViewController.m */; };
 		821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A21B8C2D1D0061C002 /* AboutViewController.m */; };
 		821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A51B8C7E4D0061C002 /* NoticeCell.m */; };
+		822A4A221B9EE2CC0096CA5F /* MyCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */; };
 		824CDDA51B7B25B000206E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA41B7B25B000206E0C /* main.m */; };
 		824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA71B7B25B000206E0C /* AppDelegate.m */; };
 		824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824CDDAF1B7B25B000206E0C /* Main.storyboard */; };
@@ -239,6 +240,8 @@
 		821937A21B8C2D1D0061C002 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		821937A41B8C7E4D0061C002 /* NoticeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeCell.h; sourceTree = "<group>"; };
 		821937A51B8C7E4D0061C002 /* NoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeCell.m; sourceTree = "<group>"; };
+		822A4A201B9EE2CC0096CA5F /* MyCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouponViewController.h; sourceTree = "<group>"; };
+		822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouponViewController.m; sourceTree = "<group>"; };
 		824CDD9F1B7B25B000206E0C /* MaiYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaiYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824CDDA31B7B25B000206E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824CDDA41B7B25B000206E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -444,7 +447,7 @@
 		820A6F481B970120002385A4 /* 2.3MyAdvisory */ = {
 			isa = PBXGroup;
 			children = (
-				82150F1B1B9D98CE00CFDE80 /* AdvisoryDetailViewController */,
+				82150F1B1B9D98CE00CFDE80 /* 2.3.1AdvisoryDetailViewController */,
 				820A6F491B970158002385A4 /* MyAdvisoryViewController.h */,
 				820A6F4A1B970158002385A4 /* MyAdvisoryViewController.m */,
 			);
@@ -553,19 +556,15 @@
 			name = "2.2.1Fillter View";
 			sourceTree = "<group>";
 		};
-		82150F1B1B9D98CE00CFDE80 /* AdvisoryDetailViewController */ = {
+		82150F1B1B9D98CE00CFDE80 /* 2.3.1AdvisoryDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				822A4A1E1B9EDAB60096CA5F /* Cells */,
+				822A4A231B9EE2D50096CA5F /* My Coupon */,
 				82150F1C1B9D9A3100CFDE80 /* AdvisoryDetailViewController.h */,
 				82150F1D1B9D9A3100CFDE80 /* AdvisoryDetailViewController.m */,
-				82150F1F1B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.h */,
-				82150F201B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m */,
-				82150F221B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.h */,
-				82150F231B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m */,
-				82150F251B9DBF6500CFDE80 /* TimeCollectionViewCell.h */,
-				82150F261B9DBF6500CFDE80 /* TimeCollectionViewCell.m */,
 			);
-			name = AdvisoryDetailViewController;
+			name = 2.3.1AdvisoryDetailViewController;
 			sourceTree = "<group>";
 		};
 		82158E171B82DA4700193FC3 /* 5.Login */ = {
@@ -706,6 +705,36 @@
 				821937A21B8C2D1D0061C002 /* AboutViewController.m */,
 			);
 			name = 4.5.2About;
+			sourceTree = "<group>";
+		};
+		822A4A1E1B9EDAB60096CA5F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A1F1B9EDABF0096CA5F /* Time Cell */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		822A4A1F1B9EDABF0096CA5F /* Time Cell */ = {
+			isa = PBXGroup;
+			children = (
+				82150F1F1B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.h */,
+				82150F201B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m */,
+				82150F221B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.h */,
+				82150F231B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m */,
+				82150F251B9DBF6500CFDE80 /* TimeCollectionViewCell.h */,
+				82150F261B9DBF6500CFDE80 /* TimeCollectionViewCell.m */,
+			);
+			name = "Time Cell";
+			sourceTree = "<group>";
+		};
+		822A4A231B9EE2D50096CA5F /* My Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A201B9EE2CC0096CA5F /* MyCouponViewController.h */,
+				822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */,
+			);
+			name = "My Coupon";
 			sourceTree = "<group>";
 		};
 		824CDD961B7B25B000206E0C = {
@@ -1028,6 +1057,7 @@
 				820A6F291B955213002385A4 /* PlazaWordCell.m in Sources */,
 				829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */,
 				821688DB1B8AED83000A1B2D /* MyZoneViewController.m in Sources */,
+				822A4A221B9EE2CC0096CA5F /* MyCouponViewController.m in Sources */,
 				821688C91B8ACE65000A1B2D /* MeHeaderView.m in Sources */,
 				824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */,
 				820D09501B86D71A0054DB66 /* HintView.m in Sources */,
