@@ -10,4 +10,6 @@
 
 @interface AdvisoryDetailTimeCell : UITableViewCell
 
+- (void)layoutAdvisoryDetailTimeCellSubviews;
+
 @end

@@ -8,7 +8,7 @@
 
 #import "AdvisoryDetailDateCell.h"
 
-@interface AdvisoryDetailDateCell () <UICollectionViewDataSource>
+@interface AdvisoryDetailDateCell () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
 
@@ -24,15 +24,24 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutAdvisoryDetailDateCellSubviews {
+    [self.collectionView reloadData];
+}
+
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return 14;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TimeCollectionViewCell" forIndexPath:indexPath];
     
     return cell;
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(73, 28);
 }
 
 @end

@@ -61,6 +61,7 @@
             
         case 4:{
             AdvisoryDetailTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailTimeCell"];
+            [cell layoutAdvisoryDetailTimeCellSubviews];
             return cell;
         }
             
@@ -102,6 +103,7 @@
             
         case 4:
             height = 125;
+            height = 33 + 70 * 7;
             break;
             
         case 5:

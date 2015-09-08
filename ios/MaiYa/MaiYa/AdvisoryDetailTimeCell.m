@@ -25,13 +25,18 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutAdvisoryDetailTimeCellSubviews {
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AdvisoryDetailDateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailDateCell"];
+    [cell layoutAdvisoryDetailDateCellSubviews];
     return cell;
 }
 
