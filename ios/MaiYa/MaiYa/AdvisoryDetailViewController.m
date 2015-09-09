@@ -37,7 +37,7 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 9;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,7 +78,11 @@
             break;
             
         case 8:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailPayCell"];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailPayCell0"];
+            break;
+            
+        case 9:
+            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailPayCell1"];
             break;
     }
     
@@ -123,6 +127,10 @@
             
         case 8:
             height = 132;
+            break;
+            
+        case 9:
+            height = 315;
             break;
     }
     

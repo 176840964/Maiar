@@ -9,10 +9,11 @@
 #import "MyZoneViewController.h"
 #import "WorkingTimeViewController.h"
 
-@interface MyZoneViewController ()
+@interface MyZoneViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *workingTimeCellView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @property (strong, nonatomic) NSMutableArray *testArr;
 
@@ -23,11 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.workingTimeCellView = [self.workingTimeCellView sortByUIViewOriginX];
+    
+    self.bottomView.hidden = (ZoneViewControllerTypeOfMine == self.type);
 }
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
-    CGFloat height = 631 + 20 + 107.0 / 320 * self.view.width;
+    CGFloat height = 631 + 20 + 107.0 / 320 * self.view.width + ((ZoneViewControllerTypeOfOther == self.type) ? 58 : 0);
     self.mainViewHeight.constant = height;
 }
 
@@ -57,6 +60,23 @@
     }
     
     return _testArr;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (!self.bottomView.hidden) {
+        [UIView animateWithDuration:.5 animations:^{
+            self.bottomView.transform = CGAffineTransformMakeTranslation(0, self.bottomView.height);
+        }];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (!self.bottomView.hidden) {
+        [UIView animateWithDuration:.5 animations:^{
+            self.bottomView.transform = CGAffineTransformIdentity;
+        }];
+    }
 }
 
 @end

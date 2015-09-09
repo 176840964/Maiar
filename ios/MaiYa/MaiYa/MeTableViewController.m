@@ -8,6 +8,7 @@
 
 #import "MeTableViewController.h"
 #import "MeHeaderView.h"
+#import "MyZoneViewController.h"
 
 @implementation MeTableViewController
 
@@ -22,9 +23,19 @@
     self.tableView.tableHeaderView = headerView;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowMyZoneViewController"]) {
+        MyZoneViewController *controller = segue.destinationViewController;
+        controller.type = ZoneViewControllerTypeOfMine;
+    }
+}
+
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (0 == indexPath.row) {
+        [self performSegueWithIdentifier:@"ShowMyZoneViewController" sender:self];
+    }
 }
 
 @end

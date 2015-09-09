@@ -9,6 +9,7 @@
 #import "MastersListViewController.h"
 #import "MasterCell.h"
 #import "FillterView.h"
+#import "MyZoneViewController.h"
 
 @interface MastersListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btnsArr;
@@ -101,15 +102,16 @@
     [self closeFillterView];
 }
 
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"ShowMasterZone"]) {
+        MyZoneViewController *contrller = segue.destinationViewController;
+        contrller.type = ZoneViewControllerTypeOfOther;
+    }
 }
-*/
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

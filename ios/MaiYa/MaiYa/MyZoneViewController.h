@@ -8,6 +8,13 @@
 
 #import "BaseViewController.h"
 
+typedef NS_ENUM(NSInteger, ZoneViewControllerType) {
+    ZoneViewControllerTypeOfMine,
+    ZoneViewControllerTypeOfOther,
+};
+
 @interface MyZoneViewController : BaseViewController
+
+@property (assign, nonatomic) ZoneViewControllerType type;
 
 @end

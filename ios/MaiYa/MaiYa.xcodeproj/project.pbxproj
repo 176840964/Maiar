@@ -77,6 +77,9 @@
 		821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A21B8C2D1D0061C002 /* AboutViewController.m */; };
 		821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A51B8C7E4D0061C002 /* NoticeCell.m */; };
 		822A4A221B9EE2CC0096CA5F /* MyCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */; };
+		822A4A271B9FDD7F0096CA5F /* SelectingServiceDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A261B9FDD7F0096CA5F /* SelectingServiceDateViewController.m */; };
+		822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A291B9FE3FD0096CA5F /* SelectingServiceTimeCell.m */; };
+		822A4A2F1B9FE6480096CA5F /* SelectingServiceDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A2E1B9FE6480096CA5F /* SelectingServiceDateCell.m */; };
 		824CDDA51B7B25B000206E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA41B7B25B000206E0C /* main.m */; };
 		824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA71B7B25B000206E0C /* AppDelegate.m */; };
 		824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824CDDAF1B7B25B000206E0C /* Main.storyboard */; };
@@ -242,6 +245,12 @@
 		821937A51B8C7E4D0061C002 /* NoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeCell.m; sourceTree = "<group>"; };
 		822A4A201B9EE2CC0096CA5F /* MyCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouponViewController.h; sourceTree = "<group>"; };
 		822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouponViewController.m; sourceTree = "<group>"; };
+		822A4A251B9FDD7F0096CA5F /* SelectingServiceDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingServiceDateViewController.h; sourceTree = "<group>"; };
+		822A4A261B9FDD7F0096CA5F /* SelectingServiceDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingServiceDateViewController.m; sourceTree = "<group>"; };
+		822A4A281B9FE3FD0096CA5F /* SelectingServiceTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingServiceTimeCell.h; sourceTree = "<group>"; };
+		822A4A291B9FE3FD0096CA5F /* SelectingServiceTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingServiceTimeCell.m; sourceTree = "<group>"; };
+		822A4A2D1B9FE6480096CA5F /* SelectingServiceDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingServiceDateCell.h; sourceTree = "<group>"; };
+		822A4A2E1B9FE6480096CA5F /* SelectingServiceDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingServiceDateCell.m; sourceTree = "<group>"; };
 		824CDD9F1B7B25B000206E0C /* MaiYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaiYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824CDDA31B7B25B000206E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824CDDA41B7B25B000206E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -737,6 +746,35 @@
 			name = "My Coupon";
 			sourceTree = "<group>";
 		};
+		822A4A241B9FDD470096CA5F /* 2.5Selecting Service Date */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A2C1B9FE6140096CA5F /* Date Cell */,
+				822A4A2B1B9FE4DA0096CA5F /* Time Cell */,
+				822A4A251B9FDD7F0096CA5F /* SelectingServiceDateViewController.h */,
+				822A4A261B9FDD7F0096CA5F /* SelectingServiceDateViewController.m */,
+			);
+			name = "2.5Selecting Service Date";
+			sourceTree = "<group>";
+		};
+		822A4A2B1B9FE4DA0096CA5F /* Time Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A281B9FE3FD0096CA5F /* SelectingServiceTimeCell.h */,
+				822A4A291B9FE3FD0096CA5F /* SelectingServiceTimeCell.m */,
+			);
+			name = "Time Cell";
+			sourceTree = "<group>";
+		};
+		822A4A2C1B9FE6140096CA5F /* Date Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A2D1B9FE6480096CA5F /* SelectingServiceDateCell.h */,
+				822A4A2E1B9FE6480096CA5F /* SelectingServiceDateCell.m */,
+			);
+			name = "Date Cell";
+			sourceTree = "<group>";
+		};
 		824CDD961B7B25B000206E0C = {
 			isa = PBXGroup;
 			children = (
@@ -836,6 +874,7 @@
 				82150F0E1B9BEA9F00CFDE80 /* 2.2Master List */,
 				820A6F481B970120002385A4 /* 2.3MyAdvisory */,
 				82150F121B9C25AB00CFDE80 /* 2.4Search */,
+				822A4A241B9FDD470096CA5F /* 2.5Selecting Service Date */,
 				820A6F3D1B969FC9002385A4 /* AdvisoryNaviController.h */,
 				820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */,
 				820A6F401B969FE6002385A4 /* AdvisoryRootViewController.h */,
@@ -1092,6 +1131,7 @@
 				8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */,
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
 				82150F181B9C516300CFDE80 /* FillterView.m in Sources */,
+				822A4A271B9FDD7F0096CA5F /* SelectingServiceDateViewController.m in Sources */,
 				820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */,
 				82150F211B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m in Sources */,
 				8213C8DC1B9061FC0048B27C /* CommentViewController.m in Sources */,
@@ -1101,11 +1141,13 @@
 				82150F241B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m in Sources */,
 				829D31741B84874C001EB9DA /* RegistViewController.m in Sources */,
 				820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */,
+				822A4A2F1B9FE6480096CA5F /* SelectingServiceDateCell.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
 				820A6F421B969FE6002385A4 /* AdvisoryRootViewController.m in Sources */,
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,
 				82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */,
+				822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */,
 				820A6F2F1B95BD15002385A4 /* PlazaHeaderView.m in Sources */,
 				824CDDA51B7B25B000206E0C /* main.m in Sources */,
 				8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */,
