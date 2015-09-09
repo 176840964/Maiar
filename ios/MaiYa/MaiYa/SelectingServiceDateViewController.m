@@ -24,6 +24,9 @@
     // Do any additional setup after loading the view.
     
     self.dayCell = [self.dayCell sortByUIViewOriginX];
+    for (SelectingServiceDateCell *dayView in self.dayCell) {
+        [dayView addTarget:self action:@selector(onTapDayView:) forControlEvents:UIControlEventTouchUpInside];
+    }
     
     self.dataArr = [NSMutableArray new];
     
@@ -43,6 +46,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 
+- (void)onTapDayView:(SelectingServiceDateCell *)dayCell {
+    for (SelectingServiceDateCell *dayView in self.dayCell) {
+        if ([dayView isEqual:dayCell]) {
+            dayView.backgroundColor = [UIColor colorWithR:243 g:62 b:118];
+        } else {
+            dayView.backgroundColor = [UIColor colorWithR:95 g:80 b:154];
+        }
+    }
 }
 
 /*

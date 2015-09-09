@@ -1,5 +1,5 @@
 //
-//  SelectingServiceDateCell.h
+//  AdvisoryDetailNumCell.h
 //  MaiYa
 //
 //  Created by zxl on 15/9/9.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectingServiceDateCell : UIControl
-
-- (void)layoutSelectingServiceDateCellSubviews;
+@interface AdvisoryDetailNumCell : UITableViewCell
 
 @end

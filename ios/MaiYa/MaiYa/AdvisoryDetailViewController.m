@@ -7,10 +7,21 @@
 //
 
 #import "AdvisoryDetailViewController.h"
+#import "AdvisoryDetailNumCell.h"
 #import "AdvisoryDetailTimeCell.h"
+#import "AdvisoryDetailTypeCell.h"
+#import "AdvisoryDetailMasterCell.h"
+#import "AdvisoryDetailServiceCell.h"
+#import "AdvisoryDetailCommentCell.h"
+#import "AdvisoryDetailEndCell.h"
+#import "AdvisoryDetailDateCell.h"
+#import "AdvisoryDetailPayCell0.h"
+#import "AdvisoryDetailPayCell1.h"
 
 @interface AdvisoryDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *identifiersArr;
+@property (assign, nonatomic) BOOL isMaster;
 @end
 
 @implementation AdvisoryDetailViewController
@@ -18,11 +29,88 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.identifiersArr = [NSMutableArray new];
+    self.isMaster = YES;
+    
+    self.type = AdvisoryDetailTypeOfAll;
+    [self setupIdentifiersArr];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 
+- (void)setupIdentifiersArr {
+    switch (self.type) {
+        case AdvisoryDetailTypeOfNonPayment:
+        {
+            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailMasterCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailPayCell1"];
+        }
+            break;
+            
+        case AdvisoryDetailTypeOfGoingOn:
+        {
+            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
+            [self.identifiersArr addObject:self.isMaster? @"AdvisoryDetailMasterCell" : @"AdvisoryDetailUserCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
+        }
+            break;
+            
+        case AdvisoryDetailTypeOfNoComment:
+        {
+            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
+            [self.identifiersArr addObject:self.isMaster? @"AdvisoryDetailMasterCell" : @"AdvisoryDetailUserCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailCommentCell"];
+        }
+            break;
+            
+        case AdvisoryDetailTypeOfFinish:
+        {
+            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
+            [self.identifiersArr addObject:self.isMaster? @"AdvisoryDetailMasterCell" : @"AdvisoryDetailUserCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailEndCell"];
+        }
+            break;
+            
+        case AdvisoryDetailTypeOfOrdering:
+        {
+            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailMasterCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailPayCell0"];
+        }
+            break;
+            
+        default:{
+            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailMasterCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailUserCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailCommentCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailEndCell"];
+            [self.identifiersArr addObject:@"AdvisoryDetailPayCell0"];
+            [self.identifiersArr addObject:@"AdvisoryDetailPayCell1"];
+        }
+    }
 }
 
 /*
@@ -37,101 +125,75 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.identifiersArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = nil;
-    switch (indexPath.row) {
-        case 0:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailNumCell"];
-            break;
-            
-        case 1:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailTypeCell"];
-            break;
-            
-        case 2:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailMasterCell"];
-            break;
-            
-        case 3:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailUserCell"];
-            break;
-            
-        case 4:{
-            AdvisoryDetailTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailTimeCell"];
-            [cell layoutAdvisoryDetailTimeCellSubviews];
-            return cell;
-        }
-            
-        case 5:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailServiceCell"];
-            break;
-            
-        case 6:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailCommentCell"];
-            break;
-            
-        case 7:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailEndCell"];
-            break;
-            
-        case 8:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailPayCell0"];
-            break;
-            
-        case 9:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailPayCell1"];
-            break;
-    }
+    NSString *indentifier = [self.identifiersArr objectAtIndex:indexPath.row];
     
-    return cell;
+    if ([indentifier isEqualToString:@"AdvisoryDetailNumCell"]) {
+        AdvisoryDetailNumCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailTypeCell"]) {
+        AdvisoryDetailTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailMasterCell"]) {
+        AdvisoryDetailMasterCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailUserCell"]) {
+        AdvisoryDetailUserCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailTimeCell"]) {
+        AdvisoryDetailTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        [cell layoutAdvisoryDetailTimeCellSubviews];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailServiceCell"]) {
+        AdvisoryDetailServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailCommentCell"]) {
+        AdvisoryDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailEndCell"]) {
+        AdvisoryDetailEndCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell0"]) {
+        AdvisoryDetailPayCell0 *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell1"]) {
+        AdvisoryDetailPayCell1 *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        return cell;
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 0;
-    switch (indexPath.row) {
-        case 0:
-            height = 58;
-            break;
-            
-        case 1:
-            height = 41 ;
-            break;
-            
-        case 2:
-            height = 104;
-            break;
-            
-        case 3:
-            height = 104;
-            break;
-            
-        case 4:
-            height = 33 + 70 * 7;
-            break;
-            
-        case 5:
-            height = 80;
-            break;
-            
-        case 6:
-            height = 340;
-            break;
-            
-        case 7:
-            height = 172;
-            break;
-            
-        case 8:
-            height = 132;
-            break;
-            
-        case 9:
-            height = 315;
-            break;
+    NSString *indentifier = [self.identifiersArr objectAtIndex:indexPath.row];
+    
+    if ([indentifier isEqualToString:@"AdvisoryDetailNumCell"]) {
+        height = 58;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailTypeCell"]) {
+        height = 41;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailMasterCell"]) {
+        height = 104;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailUserCell"]) {
+        height = 104;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailTimeCell"]) {
+        height = 33 + 70 * 7;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailServiceCell"]) {
+        height = 80;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailCommentCell"]) {
+        height = 340;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailEndCell"]) {
+        height = 172;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell0"]) {
+        height = 132;
+    } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell1"]) {
+        height = 315;
+    } else {
+        height = 0;
     }
     
     return height;

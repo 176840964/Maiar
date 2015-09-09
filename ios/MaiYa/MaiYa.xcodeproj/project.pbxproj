@@ -80,6 +80,15 @@
 		822A4A271B9FDD7F0096CA5F /* SelectingServiceDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A261B9FDD7F0096CA5F /* SelectingServiceDateViewController.m */; };
 		822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A291B9FE3FD0096CA5F /* SelectingServiceTimeCell.m */; };
 		822A4A2F1B9FE6480096CA5F /* SelectingServiceDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A2E1B9FE6480096CA5F /* SelectingServiceDateCell.m */; };
+		822A4A331BA03D300096CA5F /* AdvisoryDetailNumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A321BA03D300096CA5F /* AdvisoryDetailNumCell.m */; };
+		822A4A361BA03D490096CA5F /* AdvisoryDetailTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A351BA03D490096CA5F /* AdvisoryDetailTypeCell.m */; };
+		822A4A391BA03D6C0096CA5F /* AdvisoryDetailUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A381BA03D6C0096CA5F /* AdvisoryDetailUserCell.m */; };
+		822A4A3C1BA03DC70096CA5F /* AdvisoryDetailMasterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A3B1BA03DC70096CA5F /* AdvisoryDetailMasterCell.m */; };
+		822A4A3F1BA03DF60096CA5F /* AdvisoryDetailServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A3E1BA03DF60096CA5F /* AdvisoryDetailServiceCell.m */; };
+		822A4A421BA03E120096CA5F /* AdvisoryDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A411BA03E120096CA5F /* AdvisoryDetailCommentCell.m */; };
+		822A4A451BA03E230096CA5F /* AdvisoryDetailEndCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A441BA03E230096CA5F /* AdvisoryDetailEndCell.m */; };
+		822A4A481BA03E390096CA5F /* AdvisoryDetailPayCell0.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A471BA03E390096CA5F /* AdvisoryDetailPayCell0.m */; };
+		822A4A4B1BA03E4A0096CA5F /* AdvisoryDetailPayCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A4A1BA03E4A0096CA5F /* AdvisoryDetailPayCell1.m */; };
 		824CDDA51B7B25B000206E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA41B7B25B000206E0C /* main.m */; };
 		824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA71B7B25B000206E0C /* AppDelegate.m */; };
 		824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824CDDAF1B7B25B000206E0C /* Main.storyboard */; };
@@ -251,6 +260,24 @@
 		822A4A291B9FE3FD0096CA5F /* SelectingServiceTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingServiceTimeCell.m; sourceTree = "<group>"; };
 		822A4A2D1B9FE6480096CA5F /* SelectingServiceDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingServiceDateCell.h; sourceTree = "<group>"; };
 		822A4A2E1B9FE6480096CA5F /* SelectingServiceDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingServiceDateCell.m; sourceTree = "<group>"; };
+		822A4A311BA03D300096CA5F /* AdvisoryDetailNumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailNumCell.h; sourceTree = "<group>"; };
+		822A4A321BA03D300096CA5F /* AdvisoryDetailNumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailNumCell.m; sourceTree = "<group>"; };
+		822A4A341BA03D490096CA5F /* AdvisoryDetailTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailTypeCell.h; sourceTree = "<group>"; };
+		822A4A351BA03D490096CA5F /* AdvisoryDetailTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailTypeCell.m; sourceTree = "<group>"; };
+		822A4A371BA03D6C0096CA5F /* AdvisoryDetailUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailUserCell.h; sourceTree = "<group>"; };
+		822A4A381BA03D6C0096CA5F /* AdvisoryDetailUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailUserCell.m; sourceTree = "<group>"; };
+		822A4A3A1BA03DC70096CA5F /* AdvisoryDetailMasterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailMasterCell.h; sourceTree = "<group>"; };
+		822A4A3B1BA03DC70096CA5F /* AdvisoryDetailMasterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailMasterCell.m; sourceTree = "<group>"; };
+		822A4A3D1BA03DF60096CA5F /* AdvisoryDetailServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailServiceCell.h; sourceTree = "<group>"; };
+		822A4A3E1BA03DF60096CA5F /* AdvisoryDetailServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailServiceCell.m; sourceTree = "<group>"; };
+		822A4A401BA03E120096CA5F /* AdvisoryDetailCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailCommentCell.h; sourceTree = "<group>"; };
+		822A4A411BA03E120096CA5F /* AdvisoryDetailCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailCommentCell.m; sourceTree = "<group>"; };
+		822A4A431BA03E230096CA5F /* AdvisoryDetailEndCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailEndCell.h; sourceTree = "<group>"; };
+		822A4A441BA03E230096CA5F /* AdvisoryDetailEndCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailEndCell.m; sourceTree = "<group>"; };
+		822A4A461BA03E390096CA5F /* AdvisoryDetailPayCell0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailPayCell0.h; sourceTree = "<group>"; };
+		822A4A471BA03E390096CA5F /* AdvisoryDetailPayCell0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailPayCell0.m; sourceTree = "<group>"; };
+		822A4A491BA03E4A0096CA5F /* AdvisoryDetailPayCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailPayCell1.h; sourceTree = "<group>"; };
+		822A4A4A1BA03E4A0096CA5F /* AdvisoryDetailPayCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailPayCell1.m; sourceTree = "<group>"; };
 		824CDD9F1B7B25B000206E0C /* MaiYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaiYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824CDDA31B7B25B000206E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824CDDA41B7B25B000206E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -719,7 +746,14 @@
 		822A4A1E1B9EDAB60096CA5F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				822A4A301BA03CED0096CA5F /* Num Cell */,
 				822A4A1F1B9EDABF0096CA5F /* Time Cell */,
+				822A4A4C1BA03E520096CA5F /* Type Cell */,
+				822A4A4D1BA03E5C0096CA5F /* User Cell */,
+				822A4A4E1BA03E680096CA5F /* Service Cell */,
+				822A4A4F1BA03E830096CA5F /* Comment Cell */,
+				822A4A501BA03E8F0096CA5F /* End Cell */,
+				822A4A511BA03E9A0096CA5F /* Pay Cell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -773,6 +807,73 @@
 				822A4A2E1B9FE6480096CA5F /* SelectingServiceDateCell.m */,
 			);
 			name = "Date Cell";
+			sourceTree = "<group>";
+		};
+		822A4A301BA03CED0096CA5F /* Num Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A311BA03D300096CA5F /* AdvisoryDetailNumCell.h */,
+				822A4A321BA03D300096CA5F /* AdvisoryDetailNumCell.m */,
+			);
+			name = "Num Cell";
+			sourceTree = "<group>";
+		};
+		822A4A4C1BA03E520096CA5F /* Type Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A341BA03D490096CA5F /* AdvisoryDetailTypeCell.h */,
+				822A4A351BA03D490096CA5F /* AdvisoryDetailTypeCell.m */,
+			);
+			name = "Type Cell";
+			sourceTree = "<group>";
+		};
+		822A4A4D1BA03E5C0096CA5F /* User Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A371BA03D6C0096CA5F /* AdvisoryDetailUserCell.h */,
+				822A4A381BA03D6C0096CA5F /* AdvisoryDetailUserCell.m */,
+				822A4A3A1BA03DC70096CA5F /* AdvisoryDetailMasterCell.h */,
+				822A4A3B1BA03DC70096CA5F /* AdvisoryDetailMasterCell.m */,
+			);
+			name = "User Cell";
+			sourceTree = "<group>";
+		};
+		822A4A4E1BA03E680096CA5F /* Service Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A3D1BA03DF60096CA5F /* AdvisoryDetailServiceCell.h */,
+				822A4A3E1BA03DF60096CA5F /* AdvisoryDetailServiceCell.m */,
+			);
+			name = "Service Cell";
+			sourceTree = "<group>";
+		};
+		822A4A4F1BA03E830096CA5F /* Comment Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A401BA03E120096CA5F /* AdvisoryDetailCommentCell.h */,
+				822A4A411BA03E120096CA5F /* AdvisoryDetailCommentCell.m */,
+			);
+			name = "Comment Cell";
+			sourceTree = "<group>";
+		};
+		822A4A501BA03E8F0096CA5F /* End Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A431BA03E230096CA5F /* AdvisoryDetailEndCell.h */,
+				822A4A441BA03E230096CA5F /* AdvisoryDetailEndCell.m */,
+			);
+			name = "End Cell";
+			sourceTree = "<group>";
+		};
+		822A4A511BA03E9A0096CA5F /* Pay Cell */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A461BA03E390096CA5F /* AdvisoryDetailPayCell0.h */,
+				822A4A471BA03E390096CA5F /* AdvisoryDetailPayCell0.m */,
+				822A4A491BA03E4A0096CA5F /* AdvisoryDetailPayCell1.h */,
+				822A4A4A1BA03E4A0096CA5F /* AdvisoryDetailPayCell1.m */,
+			);
+			name = "Pay Cell";
 			sourceTree = "<group>";
 		};
 		824CDD961B7B25B000206E0C = {
@@ -1107,6 +1208,7 @@
 				8213C8D31B9061340048B27C /* AbstractViewController.m in Sources */,
 				821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */,
 				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
+				822A4A451BA03E230096CA5F /* AdvisoryDetailEndCell.m in Sources */,
 				821688E41B8B0C39000A1B2D /* MyWalletViewController.m in Sources */,
 				821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */,
 				820A6F0A1B9466AC002385A4 /* DetailCell.m in Sources */,
@@ -1114,15 +1216,19 @@
 				820A6EF01B943956002385A4 /* WorkingDateView.m in Sources */,
 				820D09531B8718D10054DB66 /* MeNaviController.m in Sources */,
 				820A6F391B95C62D002385A4 /* PlazaCategoryViewController.m in Sources */,
+				822A4A391BA03D6C0096CA5F /* AdvisoryDetailUserCell.m in Sources */,
 				820D094C1B86CE050054DB66 /* CustomTools.m in Sources */,
 				82150F111B9BEADB00CFDE80 /* MastersListViewController.m in Sources */,
 				820A6EE61B93FDAA002385A4 /* ArticleCell.m in Sources */,
 				829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */,
+				822A4A3C1BA03DC70096CA5F /* AdvisoryDetailMasterCell.m in Sources */,
 				829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */,
 				820A6F121B94774B002385A4 /* BankViewController.m in Sources */,
 				820A6EFE1B9455C7002385A4 /* CouponCell.m in Sources */,
 				82150F1E1B9D9A3100CFDE80 /* AdvisoryDetailViewController.m in Sources */,
 				821688F01B8B0D00000A1B2D /* SettingViewController.m in Sources */,
+				822A4A4B1BA03E4A0096CA5F /* AdvisoryDetailPayCell1.m in Sources */,
+				822A4A481BA03E390096CA5F /* AdvisoryDetailPayCell0.m in Sources */,
 				821688C31B8AC9D8000A1B2D /* MeTableViewController.m in Sources */,
 				82150F271B9DBF6500CFDE80 /* TimeCollectionViewCell.m in Sources */,
 				821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */,
@@ -1138,12 +1244,14 @@
 				820A6EFA1B94400D002385A4 /* WorkingTimeCell.m in Sources */,
 				821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */,
 				820A6F071B946339002385A4 /* WithdrawalRulesViewController.m in Sources */,
+				822A4A331BA03D300096CA5F /* AdvisoryDetailNumCell.m in Sources */,
 				82150F241B9DBEDB00CFDE80 /* AdvisoryDetailDateCell.m in Sources */,
 				829D31741B84874C001EB9DA /* RegistViewController.m in Sources */,
 				820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */,
 				822A4A2F1B9FE6480096CA5F /* SelectingServiceDateCell.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
+				822A4A421BA03E120096CA5F /* AdvisoryDetailCommentCell.m in Sources */,
 				820A6F421B969FE6002385A4 /* AdvisoryRootViewController.m in Sources */,
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,
 				82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */,
@@ -1156,9 +1264,11 @@
 				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
 				820A6F3F1B969FC9002385A4 /* AdvisoryNaviController.m in Sources */,
 				82150F151B9C25D300CFDE80 /* SearchViewController.m in Sources */,
+				822A4A361BA03D490096CA5F /* AdvisoryDetailTypeCell.m in Sources */,
 				820A6F201B953BB2002385A4 /* PlazaNaviController.m in Sources */,
 				820A6F2C1B95B565002385A4 /* PlazaCell.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
+				822A4A3F1BA03DF60096CA5F /* AdvisoryDetailServiceCell.m in Sources */,
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,
 				820A6F231B953C01002385A4 /* PlazaRootViewController.m in Sources */,
 				820A6F1D1B9482FE002385A4 /* RealInfoComfirmViewController.m in Sources */,
