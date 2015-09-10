@@ -7,9 +7,10 @@
 //
 
 #import "MyCouponViewController.h"
+#import "CouponCell.h"
 
-@interface MyCouponViewController ()
-
+@interface MyCouponViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation MyCouponViewController
@@ -33,5 +34,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CouponCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CouponCell"];
+    [cell layoutCouponCellSubviews];
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 @end

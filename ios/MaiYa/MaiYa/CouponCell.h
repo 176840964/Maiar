@@ -10,4 +10,6 @@
 
 @interface CouponCell : UITableViewCell
 
+- (void)layoutCouponCellSubviews;
+
 @end
