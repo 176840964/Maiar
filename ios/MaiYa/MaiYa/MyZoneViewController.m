@@ -30,7 +30,7 @@
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
-    CGFloat height = 631 + 20 + 107.0 / 320 * self.view.width + ((ZoneViewControllerTypeOfOther == self.type) ? 58 : 0);
+    CGFloat height = 671 + 20 + 107.0 / 320 * self.view.width + ((ZoneViewControllerTypeOfOther == self.type) ? 58 : 0);
     self.mainViewHeight.constant = height;
 }
 
@@ -60,6 +60,15 @@
     }
     
     return _testArr;
+}
+
+#pragma mark - IBAction
+- (IBAction)onTapSharingSettingBtn:(id)sender {
+    [self performSegueWithIdentifier:@"ShowMySharingViewController" sender:self];
+}
+
+- (IBAction)onTapSharingMoreBtn:(id)sender {
+    [self performSegueWithIdentifier:@"ShowMySharingViewController" sender:self];
 }
 
 #pragma mark - UIScrollViewDelegate

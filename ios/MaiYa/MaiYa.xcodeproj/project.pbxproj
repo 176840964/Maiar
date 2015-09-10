@@ -89,6 +89,9 @@
 		822A4A451BA03E230096CA5F /* AdvisoryDetailEndCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A441BA03E230096CA5F /* AdvisoryDetailEndCell.m */; };
 		822A4A481BA03E390096CA5F /* AdvisoryDetailPayCell0.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A471BA03E390096CA5F /* AdvisoryDetailPayCell0.m */; };
 		822A4A4B1BA03E4A0096CA5F /* AdvisoryDetailPayCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A4A1BA03E4A0096CA5F /* AdvisoryDetailPayCell1.m */; };
+		822A4A591BA1645D0096CA5F /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A581BA1645D0096CA5F /* PayViewController.m */; };
+		822A4A5C1BA17F0D0096CA5F /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A5B1BA17F0D0096CA5F /* CommentCell.m */; };
+		822A4A5F1BA17F6F0096CA5F /* CommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A5E1BA17F6F0096CA5F /* CommentHeaderView.m */; };
 		824CDDA51B7B25B000206E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA41B7B25B000206E0C /* main.m */; };
 		824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA71B7B25B000206E0C /* AppDelegate.m */; };
 		824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824CDDAF1B7B25B000206E0C /* Main.storyboard */; };
@@ -278,6 +281,12 @@
 		822A4A471BA03E390096CA5F /* AdvisoryDetailPayCell0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailPayCell0.m; sourceTree = "<group>"; };
 		822A4A491BA03E4A0096CA5F /* AdvisoryDetailPayCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvisoryDetailPayCell1.h; sourceTree = "<group>"; };
 		822A4A4A1BA03E4A0096CA5F /* AdvisoryDetailPayCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvisoryDetailPayCell1.m; sourceTree = "<group>"; };
+		822A4A571BA1645D0096CA5F /* PayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
+		822A4A581BA1645D0096CA5F /* PayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
+		822A4A5A1BA17F0D0096CA5F /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		822A4A5B1BA17F0D0096CA5F /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		822A4A5D1BA17F6F0096CA5F /* CommentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentHeaderView.h; sourceTree = "<group>"; };
+		822A4A5E1BA17F6F0096CA5F /* CommentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHeaderView.m; sourceTree = "<group>"; };
 		824CDD9F1B7B25B000206E0C /* MaiYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaiYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824CDDA31B7B25B000206E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824CDDA41B7B25B000206E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -560,6 +569,10 @@
 			children = (
 				8213C8DA1B9061FC0048B27C /* CommentViewController.h */,
 				8213C8DB1B9061FC0048B27C /* CommentViewController.m */,
+				822A4A5A1BA17F0D0096CA5F /* CommentCell.h */,
+				822A4A5B1BA17F0D0096CA5F /* CommentCell.m */,
+				822A4A5D1BA17F6F0096CA5F /* CommentHeaderView.h */,
+				822A4A5E1BA17F6F0096CA5F /* CommentHeaderView.m */,
 			);
 			name = 4.1.4CommentViewController;
 			sourceTree = "<group>";
@@ -876,6 +889,15 @@
 			name = "Pay Cell";
 			sourceTree = "<group>";
 		};
+		822A4A561BA164480096CA5F /* 2.6Pay  */ = {
+			isa = PBXGroup;
+			children = (
+				822A4A571BA1645D0096CA5F /* PayViewController.h */,
+				822A4A581BA1645D0096CA5F /* PayViewController.m */,
+			);
+			name = "2.6Pay ";
+			sourceTree = "<group>";
+		};
 		824CDD961B7B25B000206E0C = {
 			isa = PBXGroup;
 			children = (
@@ -976,6 +998,7 @@
 				820A6F481B970120002385A4 /* 2.3MyAdvisory */,
 				82150F121B9C25AB00CFDE80 /* 2.4Search */,
 				822A4A241B9FDD470096CA5F /* 2.5Selecting Service Date */,
+				822A4A561BA164480096CA5F /* 2.6Pay  */,
 				820A6F3D1B969FC9002385A4 /* AdvisoryNaviController.h */,
 				820A6F3E1B969FC9002385A4 /* AdvisoryNaviController.m */,
 				820A6F401B969FE6002385A4 /* AdvisoryRootViewController.h */,
@@ -1191,6 +1214,7 @@
 				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
 				820A6F341B95BF18002385A4 /* CarouselCell.m in Sources */,
 				820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */,
+				822A4A5F1BA17F6F0096CA5F /* CommentHeaderView.m in Sources */,
 				8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
 				821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */,
@@ -1198,6 +1222,7 @@
 				829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */,
 				821688DB1B8AED83000A1B2D /* MyZoneViewController.m in Sources */,
 				822A4A221B9EE2CC0096CA5F /* MyCouponViewController.m in Sources */,
+				822A4A591BA1645D0096CA5F /* PayViewController.m in Sources */,
 				821688C91B8ACE65000A1B2D /* MeHeaderView.m in Sources */,
 				824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */,
 				820D09501B86D71A0054DB66 /* HintView.m in Sources */,
@@ -1257,6 +1282,7 @@
 				82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */,
 				822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */,
 				820A6F2F1B95BD15002385A4 /* PlazaHeaderView.m in Sources */,
+				822A4A5C1BA17F0D0096CA5F /* CommentCell.m in Sources */,
 				824CDDA51B7B25B000206E0C /* main.m in Sources */,
 				8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */,
 				821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */,

@@ -41,8 +41,11 @@
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
-    
-    self.contentHeightConstraint.constant = 687;
+    CGFloat width = CGRectGetWidth([UIScreen mainScreen].bounds);
+    CGFloat btnWidth = (width - 5 * 2 - 6 * 3) / 4;
+    CGFloat btnHeight = 26 / 17.0 * btnWidth;
+    CGFloat height = 107 / 320.0 * width + 10 + 8 + 10 + btnHeight * 2 + 40 + 31 + 164;
+    self.contentHeightConstraint.constant = height + 6;
 }
 
 #pragma mark - IBAction

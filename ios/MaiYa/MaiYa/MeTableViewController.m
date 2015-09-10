@@ -33,7 +33,7 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (0 == indexPath.row) {
+    if (0 == indexPath.section && 0 == indexPath.row) {
         [self performSegueWithIdentifier:@"ShowMyZoneViewController" sender:self];
     }
 }

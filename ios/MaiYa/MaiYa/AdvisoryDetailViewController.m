@@ -113,6 +113,11 @@
     }
 }
 
+#pragma mark - IBAction
+- (IBAction)onTapPayBtn:(id)sender {
+    [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
+}
+
 /*
 #pragma mark - Navigation
 
