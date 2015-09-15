@@ -92,6 +92,10 @@
 		822A4A591BA1645D0096CA5F /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A581BA1645D0096CA5F /* PayViewController.m */; };
 		822A4A5C1BA17F0D0096CA5F /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A5B1BA17F0D0096CA5F /* CommentCell.m */; };
 		822A4A5F1BA17F6F0096CA5F /* CommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A5E1BA17F6F0096CA5F /* CommentHeaderView.m */; };
+		822F1D261BA81F3700E3D18A /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 822F1D1D1BA81F3700E3D18A /* ApiXml.mm */; };
+		822F1D271BA81F3700E3D18A /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 822F1D1F1BA81F3700E3D18A /* payRequsestHandler.mm */; };
+		822F1D281BA81F3700E3D18A /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 822F1D211BA81F3700E3D18A /* WXUtil.mm */; };
+		822F1D291BA81F3700E3D18A /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 822F1D231BA81F3700E3D18A /* libWeChatSDK.a */; };
 		824CDDA51B7B25B000206E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA41B7B25B000206E0C /* main.m */; };
 		824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDA71B7B25B000206E0C /* AppDelegate.m */; };
 		824CDDB11B7B25B000206E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824CDDAF1B7B25B000206E0C /* Main.storyboard */; };
@@ -287,6 +291,15 @@
 		822A4A5B1BA17F0D0096CA5F /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		822A4A5D1BA17F6F0096CA5F /* CommentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentHeaderView.h; sourceTree = "<group>"; };
 		822A4A5E1BA17F6F0096CA5F /* CommentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHeaderView.m; sourceTree = "<group>"; };
+		822F1D1C1BA81F3700E3D18A /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
+		822F1D1D1BA81F3700E3D18A /* ApiXml.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiXml.mm; sourceTree = "<group>"; };
+		822F1D1E1BA81F3700E3D18A /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
+		822F1D1F1BA81F3700E3D18A /* payRequsestHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = payRequsestHandler.mm; sourceTree = "<group>"; };
+		822F1D201BA81F3700E3D18A /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
+		822F1D211BA81F3700E3D18A /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
+		822F1D231BA81F3700E3D18A /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		822F1D241BA81F3700E3D18A /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		822F1D251BA81F3700E3D18A /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		824CDD9F1B7B25B000206E0C /* MaiYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaiYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824CDDA31B7B25B000206E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824CDDA41B7B25B000206E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -324,6 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				822F1D291BA81F3700E3D18A /* libWeChatSDK.a in Frameworks */,
 				C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -898,9 +912,50 @@
 			name = "2.6Pay ";
 			sourceTree = "<group>";
 		};
+		822F1D191BA81F3700E3D18A /* ThirdPart */ = {
+			isa = PBXGroup;
+			children = (
+				822F1D1A1BA81F3700E3D18A /* Wechat */,
+			);
+			path = ThirdPart;
+			sourceTree = "<group>";
+		};
+		822F1D1A1BA81F3700E3D18A /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				822F1D1B1BA81F3700E3D18A /* lib */,
+				822F1D221BA81F3700E3D18A /* SDKExport */,
+			);
+			path = Wechat;
+			sourceTree = "<group>";
+		};
+		822F1D1B1BA81F3700E3D18A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				822F1D1C1BA81F3700E3D18A /* ApiXml.h */,
+				822F1D1D1BA81F3700E3D18A /* ApiXml.mm */,
+				822F1D1E1BA81F3700E3D18A /* payRequsestHandler.h */,
+				822F1D1F1BA81F3700E3D18A /* payRequsestHandler.mm */,
+				822F1D201BA81F3700E3D18A /* WXUtil.h */,
+				822F1D211BA81F3700E3D18A /* WXUtil.mm */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		822F1D221BA81F3700E3D18A /* SDKExport */ = {
+			isa = PBXGroup;
+			children = (
+				822F1D231BA81F3700E3D18A /* libWeChatSDK.a */,
+				822F1D241BA81F3700E3D18A /* WXApi.h */,
+				822F1D251BA81F3700E3D18A /* WXApiObject.h */,
+			);
+			path = SDKExport;
+			sourceTree = "<group>";
+		};
 		824CDD961B7B25B000206E0C = {
 			isa = PBXGroup;
 			children = (
+				822F1D191BA81F3700E3D18A /* ThirdPart */,
 				824CDDA11B7B25B000206E0C /* MaiYa */,
 				824CDDBE1B7B25B100206E0C /* MaiYaTests */,
 				824CDDA01B7B25B000206E0C /* Products */,
@@ -1235,11 +1290,13 @@
 				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
 				822A4A451BA03E230096CA5F /* AdvisoryDetailEndCell.m in Sources */,
 				821688E41B8B0C39000A1B2D /* MyWalletViewController.m in Sources */,
+				822F1D271BA81F3700E3D18A /* payRequsestHandler.mm in Sources */,
 				821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */,
 				820A6F0A1B9466AC002385A4 /* DetailCell.m in Sources */,
 				820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */,
 				820A6EF01B943956002385A4 /* WorkingDateView.m in Sources */,
 				820D09531B8718D10054DB66 /* MeNaviController.m in Sources */,
+				822F1D261BA81F3700E3D18A /* ApiXml.mm in Sources */,
 				820A6F391B95C62D002385A4 /* PlazaCategoryViewController.m in Sources */,
 				822A4A391BA03D6C0096CA5F /* AdvisoryDetailUserCell.m in Sources */,
 				820D094C1B86CE050054DB66 /* CustomTools.m in Sources */,
@@ -1292,6 +1349,7 @@
 				82150F151B9C25D300CFDE80 /* SearchViewController.m in Sources */,
 				822A4A361BA03D490096CA5F /* AdvisoryDetailTypeCell.m in Sources */,
 				820A6F201B953BB2002385A4 /* PlazaNaviController.m in Sources */,
+				822F1D281BA81F3700E3D18A /* WXUtil.mm in Sources */,
 				820A6F2C1B95B565002385A4 /* PlazaCell.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
 				822A4A3F1BA03DF60096CA5F /* AdvisoryDetailServiceCell.m in Sources */,
@@ -1436,6 +1494,10 @@
 				INFOPLIST_FILE = MaiYa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ThirdPart/Wechat/SDKExport",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6573349d-81ac-4e6d-ba1a-de8d2d78d6c6";
 			};
@@ -1451,6 +1513,10 @@
 				INFOPLIST_FILE = MaiYa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ThirdPart/Wechat/SDKExport",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6573349d-81ac-4e6d-ba1a-de8d2d78d6c6";
 			};
