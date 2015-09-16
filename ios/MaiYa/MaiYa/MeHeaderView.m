@@ -60,6 +60,28 @@
     return self;
 }
 
+- (void)setType:(MeHeaderType)type {
+    _type = type;
+    switch (type) {
+        case MeHeaderTypeOfLogin:
+            self.userHeadPortrait.image = [UIImage imageNamed:@"login_bg"];
+            self.userNameLab.text = @"废腿小能手";
+            self.editInfoIcon.hidden = NO;
+            self.userSexIcon.hidden = NO;
+            break;
+            
+        case MeHeaderTypeOfLogout:
+            self.userHeadPortrait.image = [UIImage imageNamed:@"defulteHead"];
+            self.userNameLab.text = @"登录";
+            self.editInfoIcon.hidden = YES;
+            self.userSexIcon.hidden = YES;
+            break;
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - 
 - (void)onTapUserHeadPortrait:(UIGestureRecognizer *)gestureRegognizer {
     if (self.tapUserHeadPortraitHandler) {

@@ -42,7 +42,6 @@
 		820D094C1B86CE050054DB66 /* CustomTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D094B1B86CE050054DB66 /* CustomTools.m */; };
 		820D09501B86D71A0054DB66 /* HintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D094F1B86D71A0054DB66 /* HintView.m */; };
 		820D09531B8718D10054DB66 /* MeNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09521B8718D10054DB66 /* MeNaviController.m */; };
-		820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09581B872C6C0054DB66 /* LoginWithTelNumViewController.m */; };
 		8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */; };
 		8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */; };
 		8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8CB1B9011A50048B27C /* NSArray+sortBy.m */; };
@@ -59,7 +58,6 @@
 		82150F271B9DBF6500CFDE80 /* TimeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82150F261B9DBF6500CFDE80 /* TimeCollectionViewCell.m */; };
 		82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E191B82DBA200193FC3 /* LoginNaviController.m */; };
 		82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1C1B82DBDB00193FC3 /* LoginViewController.m */; };
-		82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */; };
 		821688C31B8AC9D8000A1B2D /* MeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688C21B8AC9D8000A1B2D /* MeTableViewController.m */; };
 		821688C91B8ACE65000A1B2D /* MeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688C81B8ACE65000A1B2D /* MeHeaderView.m */; };
 		821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821688D51B8ADB63000A1B2D /* NaviTopViewController.m */; };
@@ -203,8 +201,6 @@
 		820D094F1B86D71A0054DB66 /* HintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HintView.m; sourceTree = "<group>"; };
 		820D09511B8718D10054DB66 /* MeNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeNaviController.h; sourceTree = "<group>"; };
 		820D09521B8718D10054DB66 /* MeNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeNaviController.m; sourceTree = "<group>"; };
-		820D09571B872C6C0054DB66 /* LoginWithTelNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWithTelNumViewController.h; sourceTree = "<group>"; };
-		820D09581B872C6C0054DB66 /* LoginWithTelNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWithTelNumViewController.m; sourceTree = "<group>"; };
 		8213C8C41B9008260048B27C /* UILabel+VerticalAlign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+VerticalAlign.h"; sourceTree = "<group>"; };
 		8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+VerticalAlign.m"; sourceTree = "<group>"; };
 		8213C8C71B900DB10048B27C /* WorkingTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingTimeViewController.h; sourceTree = "<group>"; };
@@ -237,8 +233,6 @@
 		82158E191B82DBA200193FC3 /* LoginNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNaviController.m; sourceTree = "<group>"; };
 		82158E1B1B82DBDB00193FC3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		82158E1C1B82DBDB00193FC3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		82158E1E1B82E12200193FC3 /* LoginFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFirstViewController.h; sourceTree = "<group>"; };
-		82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFirstViewController.m; sourceTree = "<group>"; };
 		821688C11B8AC9D8000A1B2D /* MeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeTableViewController.h; sourceTree = "<group>"; };
 		821688C21B8AC9D8000A1B2D /* MeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeTableViewController.m; sourceTree = "<group>"; };
 		821688C71B8ACE65000A1B2D /* MeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeHeaderView.h; sourceTree = "<group>"; };
@@ -679,16 +673,12 @@
 			children = (
 				82158E181B82DBA200193FC3 /* LoginNaviController.h */,
 				82158E191B82DBA200193FC3 /* LoginNaviController.m */,
-				82158E1E1B82E12200193FC3 /* LoginFirstViewController.h */,
-				82158E1F1B82E12200193FC3 /* LoginFirstViewController.m */,
 				82158E1B1B82DBDB00193FC3 /* LoginViewController.h */,
 				82158E1C1B82DBDB00193FC3 /* LoginViewController.m */,
 				829D31721B84874C001EB9DA /* RegistViewController.h */,
 				829D31731B84874C001EB9DA /* RegistViewController.m */,
 				829D31781B858AC7001EB9DA /* ForgotViewController.h */,
 				829D31791B858AC7001EB9DA /* ForgotViewController.m */,
-				820D09571B872C6C0054DB66 /* LoginWithTelNumViewController.h */,
-				820D09581B872C6C0054DB66 /* LoginWithTelNumViewController.m */,
 			);
 			name = 5.Login;
 			sourceTree = "<group>";
@@ -1333,7 +1323,6 @@
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
 				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
 				820A6F341B95BF18002385A4 /* CarouselCell.m in Sources */,
-				820D09591B872C6C0054DB66 /* LoginWithTelNumViewController.m in Sources */,
 				822A4A5F1BA17F6F0096CA5F /* CommentHeaderView.m in Sources */,
 				8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
@@ -1402,7 +1391,6 @@
 				822A4A421BA03E120096CA5F /* AdvisoryDetailCommentCell.m in Sources */,
 				820A6F421B969FE6002385A4 /* AdvisoryRootViewController.m in Sources */,
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,
-				82158E201B82E12200193FC3 /* LoginFirstViewController.m in Sources */,
 				822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */,
 				820A6F2F1B95BD15002385A4 /* PlazaHeaderView.m in Sources */,
 				822A4A5C1BA17F0D0096CA5F /* CommentCell.m in Sources */,

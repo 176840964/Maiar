@@ -31,6 +31,8 @@
     
     UITabBarItem *item3 = [self.tabBar.items objectAtIndex:2];
     item3.selectedImage = [UIImage imageNamed:@"wo_h"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showingLogin) name:@"NotificationOfShowingLogin" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,11 +47,15 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+}
+
+#pragma mark - 
+- (void)showingLogin {
 //    NSString* userTelStr = [UserConfigManager shareManager].userTelNumStr;
 //    if ([userTelStr isKindOfClass:[NSString class]] && 0 != userTelStr.length) {
 //        self.selectedIndex = 1;
 //    } else {
-//        [self performSegueWithIdentifier:@"PresentLoginNaviController" sender:self];
+        [self performSegueWithIdentifier:@"PresentLoginNaviController" sender:self];
 //    }
 }
 

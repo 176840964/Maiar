@@ -16,8 +16,13 @@
     [super viewDidLoad];
     
     MeHeaderView* headerView = [[MeHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 219)];
+    headerView.type = MeHeaderTypeOfLogout;
     headerView.tapUserHeadPortraitHandler = ^() {
-        [self performSegueWithIdentifier:@"ShowUserInfoViewController" sender:self];
+        if (MeHeaderTypeOfLogout == headerView.type) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:nil];
+        } else {
+            [self performSegueWithIdentifier:@"ShowUserInfoViewController" sender:self];
+        }
     };
     
     self.tableView.tableHeaderView = headerView;

@@ -15,4 +15,10 @@
     [[HintView getInstance] presentMessage:@"注册成功" isAutoDismiss:YES dismissBlock:nil];
 }
 
+- (IBAction)onTapBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 @end
