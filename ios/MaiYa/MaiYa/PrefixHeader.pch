@@ -26,4 +26,16 @@
 
 typedef void(^TapViewHandler)(void);
 
+#pragma mark - WeChat
+#define WeChat_APP_ID          @"wx04538c6301dbdba6"               //APPID
+#define WeChat_APP_SECRET      @"5cb62d1dbd4bb64f238e748b6dd06b71" //appsecret
+//商户号，填写商户对应参数
+#define WeChat_MCH_ID          @"1265277001"
+//商户API密钥，填写相应参数
+#define WeChat_PARTNER_ID      @"s6aITei3J3d4UYcCn3k0Mq0000000001"
+//支付结果回调页面
+#define WeChat_NOTIFY_URL      @"http://wxpay.weixin.qq.com/pub_v2/pay/notify.v2.php"
+//获取服务器端支付数据地址（商户自定义）
+#define WeChat_SP_URL          @"http://wxpay.weixin.qq.com/pub_v2/app/app_pay.php"
+
 #endif
