@@ -26,6 +26,9 @@
 
 typedef void(^TapViewHandler)(void);
 
+#pragma mark - Networking
+#define BaseURLString @"http://123.56.107.102:33333/"
+
 #pragma mark - WeChat
 #define WeChat_APP_ID          @"wx04538c6301dbdba6"               //APPID
 #define WeChat_APP_SECRET      @"5cb62d1dbd4bb64f238e748b6dd06b71" //appsecret

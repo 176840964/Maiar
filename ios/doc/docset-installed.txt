@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/zhangxiaolong/Library/Developer/Shared/Documentation/DocSets/com.longtu.maiya.MaiYa.docset
+Time: 2015-09-16 07:04:43 +0000
