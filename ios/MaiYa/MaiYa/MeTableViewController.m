@@ -10,22 +10,39 @@
 #import "MeHeaderView.h"
 #import "MyZoneViewController.h"
 
+@interface MeTableViewController ()
+@property (strong, nonatomic) MeHeaderView *headerView;
+@end
+
 @implementation MeTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MeHeaderView* headerView = [[MeHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 219)];
-    headerView.type = MeHeaderTypeOfLogout;
-    headerView.tapUserHeadPortraitHandler = ^() {
-        if (MeHeaderTypeOfLogout == headerView.type) {
+    __weak typeof(self) weakSelf = self;
+    
+    self.headerView = [[MeHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 219)];
+    self.headerView.type = MeHeaderTypeOfLogout;
+    self.headerView.tapUserHeadPortraitHandler = ^() {
+        if (MeHeaderTypeOfLogout == self.headerView.type) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:nil];
         } else {
-            [self performSegueWithIdentifier:@"ShowUserInfoViewController" sender:self];
+            [weakSelf performSegueWithIdentifier:@"ShowUserInfoViewController" sender:weakSelf];
         }
     };
     
-    self.tableView.tableHeaderView = headerView;
+    self.tableView.tableHeaderView = self.headerView;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+    if ([uid isKindOfClass:[NSString class]] && 0 != uid.length) {
+        self.headerView.type = MeHeaderTypeOfLogin;
+    } else {
+        self.headerView.type = MeHeaderTypeOfLogout;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

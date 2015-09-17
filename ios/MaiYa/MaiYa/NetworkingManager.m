@@ -30,6 +30,13 @@
     return [self postWithURLPath:path postParams:parames success:success failure:failure];
 }
 
+- (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
+                                               params:(NSDictionary *)parames
+                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                                              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    return [self GET:@"?" parameters:[self setupParamsByParamesDic:parames andPath:path] success:success failure:failure];
+}
+
 #pragma mark - 
 - (NSDictionary *)setupParamsByParamesDic:(NSDictionary *)paramesDic andPath:(NSString *)path{
     NSMutableDictionary *dic = [NSMutableDictionary new];
@@ -41,6 +48,7 @@
         [dic setObject:@"User" forKey:@"c"];
     }
     
+    [dic setObject:path forKey:@"a"];
     [dic setValuesForKeysWithDictionary:paramesDic];
     
     return dic;
@@ -52,7 +60,7 @@
                                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     self.requestSerializer = [AFJSONRequestSerializer serializer];
-    return [self POST:@"" parameters:[self setupParamsByParamesDic:postParams andPath:path] success:success failure:failure];
+    return [self POST:@"?m=home" parameters:[self setupParamsByParamesDic:postParams andPath:path] success:success failure:failure];
 }
 
 @end

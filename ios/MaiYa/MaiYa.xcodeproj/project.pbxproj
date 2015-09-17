@@ -121,6 +121,8 @@
 		829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31791B858AC7001EB9DA /* ForgotViewController.m */; };
 		829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317C1B858BDC001EB9DA /* BaseNavigationController.m */; };
 		829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */; };
+		82D71B081BAAAD5C006CFE0D /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */; };
+		82D71B0F1BAACD3B006CFE0D /* NSString+SetupValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D71B0E1BAACD3B006CFE0D /* NSString+SetupValue.m */; };
 		C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4EE198D74EE15090FBD86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -350,6 +352,10 @@
 		829D317C1B858BDC001EB9DA /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		829D317E1B858E9D001EB9DA /* UITextField+PlaceholderText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+PlaceholderText.h"; sourceTree = "<group>"; };
 		829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+PlaceholderText.m"; sourceTree = "<group>"; };
+		82D71B061BAAAD5C006CFE0D /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
+		82D71B0D1BAACD3B006CFE0D /* NSString+SetupValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SetupValue.h"; sourceTree = "<group>"; };
+		82D71B0E1BAACD3B006CFE0D /* NSString+SetupValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SetupValue.m"; sourceTree = "<group>"; };
 		C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA4EE198D74EE15090FBD86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1091,6 +1097,8 @@
 				829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */,
 				8213C8C41B9008260048B27C /* UILabel+VerticalAlign.h */,
 				8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */,
+				82D71B0D1BAACD3B006CFE0D /* NSString+SetupValue.h */,
+				82D71B0E1BAACD3B006CFE0D /* NSString+SetupValue.m */,
 			);
 			path = Category;
 			sourceTree = SOURCE_ROOT;
@@ -1167,6 +1175,7 @@
 			children = (
 				828C1D8F1BAA64A100D6FD23 /* BaseModel.h */,
 				828C1D901BAA64A100D6FD23 /* BaseModel.m */,
+				82D71B091BAACA75006CFE0D /* UserInfo */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1189,6 +1198,15 @@
 				829D317C1B858BDC001EB9DA /* BaseNavigationController.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		82D71B091BAACA75006CFE0D /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				82D71B061BAAAD5C006CFE0D /* UserInfoModel.h */,
+				82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */,
+			);
+			name = UserInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1332,6 +1350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				820A6F461B96EC8C002385A4 /* AdvisoryCatView.m in Sources */,
+				82D71B0F1BAACD3B006CFE0D /* NSString+SetupValue.m in Sources */,
 				820A6F3C1B95C647002385A4 /* PlazaDetailViewController.m in Sources */,
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
 				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
@@ -1342,6 +1361,7 @@
 				821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */,
 				820A6F291B955213002385A4 /* PlazaWordCell.m in Sources */,
 				829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */,
+				82D71B081BAAAD5C006CFE0D /* UserInfoModel.m in Sources */,
 				821688DB1B8AED83000A1B2D /* MyZoneViewController.m in Sources */,
 				822A4A221B9EE2CC0096CA5F /* MyCouponViewController.m in Sources */,
 				822A4A591BA1645D0096CA5F /* PayViewController.m in Sources */,

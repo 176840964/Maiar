@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "UserInfoModel.h"
 
 @interface LoginViewController ()
 @property (nonatomic, weak) IBOutlet UITextField *telNumTextFiled;
@@ -32,13 +33,29 @@
 
 #pragma mark - IBAction
 - (IBAction)onTapLoginBtn:(id)sender {
-    [UserConfigManager shareManager].userTelNumStr = @"1";
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-//    __weak typeof(self) weakSelf = self;
-//    [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
-//        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-//    }];
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"login" params:@{@"username": self.telNumTextFiled.text, @"password": self.passwordTextFiled.text, @"area_code": @"+86"} success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSDictionary *dic = responseObject;
+        NSNumber *status = [dic objectForKey:@"status"];
+        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
+            [[HintView getInstance] presentMessage:@"登录失败" isAutoDismiss:NO dismissBlock:nil];
+        } else {
+            NSDictionary *res = [dic objectForKey:@"res"];
+            UserInfoModel *model = [[UserInfoModel alloc] initWithDic:res];
+            UserInfoViewModel *viewModel = [[UserInfoViewModel alloc] initWithModel:model];
+            [UserConfigManager shareManager].userInfo = viewModel;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            });
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@", error);
+        [[HintView getInstance] presentMessage:@"登录失败" isAutoDismiss:NO dismissBlock:nil];
+    }];
 }
 
 @end
