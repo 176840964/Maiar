@@ -10,7 +10,7 @@
 
 @interface NetworkingManager : AFHTTPSessionManager
 
-+ (NetworkingManager *)getInstance;
++ (NetworkingManager *)shareManager;
 
 /** 
  网络请求接口 

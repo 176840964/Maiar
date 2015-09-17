@@ -10,7 +10,7 @@
 
 @implementation NetworkingManager
 
-+ (NetworkingManager *)getInstance {
++ (NetworkingManager *)shareManager {
     static NetworkingManager *s_instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

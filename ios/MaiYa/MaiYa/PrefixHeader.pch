@@ -14,6 +14,7 @@
 
 
 #import "UserConfigManager.h"
+#import "NetworkingManager.h"
 #import "HintView.h"
 #import "CustomTools.h"
 #import "../Pods/PureLayout/PureLayout/PureLayout/PureLayout.h"
