@@ -20,7 +20,7 @@
         self.uidStr = [model.uid stringValue];
         self.nickStr = [model.nick stringValue];
         
-        self.headImage = [UIImage imageNamed:[model.head isEqual:[NSNull null]]? @"defulteHead" : model.head];
+        self.headImage = [UIImage imageNamed:[model.head stringValueIsNullReplaceString:@"defultHead"]];
         self.tokenStr = [model.token stringValue];
         
         NSString *sexStr = [model.gender stringValue];

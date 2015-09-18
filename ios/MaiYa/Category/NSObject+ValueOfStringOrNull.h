@@ -1,14 +1,14 @@
 //
-//  NSString+SetupValue.h
+//  NSObject+ValueOfStringOrNull.h
 //  MaiYa
 //
-//  Created by zxl on 15/9/17.
+//  Created by zxl on 15/9/18.
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (SetupValue)
+@interface NSObject (ValueOfStringOrNull)
 
 - (NSString *)stringValue;
 - (NSString*)stringValueIsNullReplaceString:(NSString *)replaceStr;

@@ -24,7 +24,7 @@
 #import "UITextField+PlaceholderText.h"
 #import "NSArray+sortBy.h"
 #import "UILabel+VerticalAlign.h"
-#import "NSString+SetupValue.h"
+#import "NSObject+ValueOfStringOrNull.h"
 
 typedef void(^TapViewHandler)(void);
 
