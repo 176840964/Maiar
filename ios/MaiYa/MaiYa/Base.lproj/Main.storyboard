@@ -5811,6 +5811,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="登录" id="Lql-0v-NAk"/>
                     <connections>
+                        <outlet property="loginBtn" destination="nVo-Wc-LNW" id="ROc-X8-6xy"/>
                         <outlet property="passwordTextFiled" destination="CRE-AJ-4ed" id="7a1-P7-9Hl"/>
                         <outlet property="telNumTextFiled" destination="fUW-9b-Z7E" id="3gF-6e-sVi"/>
                     </connections>

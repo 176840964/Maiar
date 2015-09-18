@@ -12,12 +12,31 @@
 @interface LoginViewController ()
 @property (nonatomic, weak) IBOutlet UITextField *telNumTextFiled;
 @property (nonatomic, weak) IBOutlet UITextField *passwordTextFiled;
+@property (nonatomic, weak) IBOutlet UIButton *loginBtn;
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    RACSignal *validTelFiled = [self.telNumTextFiled.rac_textSignal map:^id(NSString *text) {
+        return @([CustomTools is11DigitNumber:text]);
+    }];
+    
+    RACSignal *validPWFiled = [self.passwordTextFiled.rac_textSignal map:^id(NSString *text) {
+        return @([CustomTools isValidPassword:text]);
+    }];
+    
+    RAC(self.loginBtn, enabled) = [RACSignal combineLatest:@[validTelFiled, validPWFiled] reduce:^id(NSNumber *telValid, NSNumber *pwValid){
+        if (telValid.boolValue && pwValid.boolValue) {
+            self.loginBtn.backgroundColor = [UIColor colorWithHexString:@"#bb57f4"];
+        } else {
+            self.loginBtn.backgroundColor = [UIColor lightGrayColor];
+        }
+        
+        return @(telValid.boolValue && pwValid.boolValue);
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -38,7 +57,8 @@
         NSDictionary *dic = responseObject;
         NSNumber *status = [dic objectForKey:@"status"];
         if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            [[HintView getInstance] presentMessage:@"登录失败" isAutoDismiss:NO dismissBlock:nil];
+            NSString *str = [dic objectForKey:@"error"];
+            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
         } else {
             NSDictionary *res = [dic objectForKey:@"res"];
             UserInfoModel *model = [[UserInfoModel alloc] initWithDic:res];

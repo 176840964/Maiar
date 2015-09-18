@@ -11,11 +11,9 @@
 @interface CustomTools : NSObject
 
 + (NSString *)md5:(NSString *)str;
-+ (BOOL)isEmailAddress:(NSString*)email;
-+ (BOOL)isMobileNumber:(NSString *)mobileNum;
++ (BOOL)is11DigitNumber:(NSString *)mobileNum;
 + (BOOL)isValidPassword:(NSString*)password;
 + (BOOL)isValidMessageCode:(NSString*)code;
-+ (BOOL)isValidInvitationCode:(NSString*)code;
 + (void)simpleAlertShow:(NSString*)title content:(NSString*)content container:(id<UIAlertViewDelegate>)container;
 + (void)alertShow:(NSString*)title content:(NSString*)content cancelBtnTitle:(NSString*)cancelTitle okBtnTitle:(NSString*)okTitle container:(id<UIAlertViewDelegate>)container;
 

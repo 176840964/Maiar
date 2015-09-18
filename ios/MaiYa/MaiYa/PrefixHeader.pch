@@ -17,7 +17,8 @@
 #import "NetworkingManager.h"
 #import "HintView.h"
 #import "CustomTools.h"
-#import "../Pods/PureLayout/PureLayout/PureLayout/PureLayout.h"
+#import "PureLayout.h"
+#import "ReactiveCocoa.h"
 
 #import "UIColor+Custom.h"
 #import "UIView+frameAdjust.h"

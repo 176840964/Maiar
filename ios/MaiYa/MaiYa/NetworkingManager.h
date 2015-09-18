@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
-#import "../Pods/AFNetworking/AFNetworking/AFNetworking.h"
+#import "AFNetworking.h"
 
 @interface NetworkingManager : AFHTTPSessionManager
 

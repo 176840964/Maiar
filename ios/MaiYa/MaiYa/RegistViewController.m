@@ -12,6 +12,8 @@
 
 #pragma mark - IBAction
 - (IBAction)onTapRegistBtn:(id)sender {
+    
+    
     [[HintView getInstance] presentMessage:@"注册成功" isAutoDismiss:YES dismissBlock:nil];
 }
 
