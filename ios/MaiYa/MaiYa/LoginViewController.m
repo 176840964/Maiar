@@ -73,8 +73,7 @@
         }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@", error);
-        [[HintView getInstance] presentMessage:@"登录失败" isAutoDismiss:NO dismissBlock:nil];
+        [[HintView getInstance] presentMessage:@"登录失败" isAutoDismiss:YES dismissBlock:nil];
     }];
 }
 

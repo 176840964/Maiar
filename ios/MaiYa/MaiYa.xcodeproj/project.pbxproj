@@ -1255,7 +1255,7 @@
 		824CDD971B7B25B000206E0C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = zhongqinglongtu;
 				TargetAttributes = {
 					824CDD9E1B7B25B000206E0C = {
@@ -1508,6 +1508,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1592,6 +1593,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/Wechat/SDKExport",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = debi.maiar.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6573349d-81ac-4e6d-ba1a-de8d2d78d6c6";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
@@ -1616,6 +1618,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/Wechat/SDKExport",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = debi.maiar.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6573349d-81ac-4e6d-ba1a-de8d2d78d6c6";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
@@ -1636,6 +1639,7 @@
 				);
 				INFOPLIST_FILE = MaiYaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "longtu.test.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MaiYa.app/MaiYa";
 			};
@@ -1651,6 +1655,7 @@
 				);
 				INFOPLIST_FILE = MaiYaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "longtu.test.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MaiYa.app/MaiYa";
 			};
