@@ -46,9 +46,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-    if ([uid isKindOfClass:[NSString class]] && 0 != uid.length) {
+    if ([UserConfigManager shareManager].isLogin) {
         self.selectedIndex = 1;
     }
 }

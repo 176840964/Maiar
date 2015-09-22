@@ -74,6 +74,7 @@
 		821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219379F1B8C2D0C0061C002 /* NoticeSetViewController.m */; };
 		821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A21B8C2D1D0061C002 /* AboutViewController.m */; };
 		821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A51B8C7E4D0061C002 /* NoticeCell.m */; };
+		821A951F1BB156F000F44790 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821A951E1BB156F000F44790 /* ArticleModel.m */; settings = {ASSET_TAGS = (); }; };
 		822A4A221B9EE2CC0096CA5F /* MyCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */; };
 		822A4A271B9FDD7F0096CA5F /* SelectingServiceDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A261B9FDD7F0096CA5F /* SelectingServiceDateViewController.m */; };
 		822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A291B9FE3FD0096CA5F /* SelectingServiceTimeCell.m */; };
@@ -268,6 +269,8 @@
 		821937A21B8C2D1D0061C002 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		821937A41B8C7E4D0061C002 /* NoticeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeCell.h; sourceTree = "<group>"; };
 		821937A51B8C7E4D0061C002 /* NoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeCell.m; sourceTree = "<group>"; };
+		821A951D1BB156F000F44790 /* ArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleModel.h; sourceTree = "<group>"; };
+		821A951E1BB156F000F44790 /* ArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleModel.m; sourceTree = "<group>"; };
 		822A4A201B9EE2CC0096CA5F /* MyCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouponViewController.h; sourceTree = "<group>"; };
 		822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouponViewController.m; sourceTree = "<group>"; };
 		822A4A251B9FDD7F0096CA5F /* SelectingServiceDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingServiceDateViewController.h; sourceTree = "<group>"; };
@@ -813,6 +816,15 @@
 			name = 4.5.2About;
 			sourceTree = "<group>";
 		};
+		821A951C1BB156D100F44790 /* ArticleModel */ = {
+			isa = PBXGroup;
+			children = (
+				821A951D1BB156F000F44790 /* ArticleModel.h */,
+				821A951E1BB156F000F44790 /* ArticleModel.m */,
+			);
+			name = ArticleModel;
+			sourceTree = "<group>";
+		};
 		822A4A1E1B9EDAB60096CA5F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1173,9 +1185,10 @@
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82D71B091BAACA75006CFE0D /* UserInfo */,
+				821A951C1BB156D100F44790 /* ArticleModel */,
 				828C1D8F1BAA64A100D6FD23 /* BaseModel.h */,
 				828C1D901BAA64A100D6FD23 /* BaseModel.m */,
-				82D71B091BAACA75006CFE0D /* UserInfo */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1419,6 +1432,7 @@
 				829D31741B84874C001EB9DA /* RegistViewController.m in Sources */,
 				820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */,
 				822A4A2F1B9FE6480096CA5F /* SelectingServiceDateCell.m in Sources */,
+				821A951F1BB156F000F44790 /* ArticleModel.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
 				822A4A421BA03E120096CA5F /* AdvisoryDetailCommentCell.m in Sources */,
@@ -1507,6 +1521,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ma di (RMP54BDL58)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1555,6 +1570,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ma di (RMP54BDL58)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

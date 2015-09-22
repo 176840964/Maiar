@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "UserInfoModel.h"
 
-@interface UserConfigManager : NSObject
+@interface UserConfigManager : NSObject <NSCoding>
 
-@property (nonatomic, copy) NSString* userTelNumStr;
 @property (strong, nonatomic) UserInfoViewModel *userInfo;
+@property (assign, nonatomic) BOOL isLogin;
 
 + (instancetype)shareManager;
+
+- (void)synchronize;
+- (void)updatingLocation;//更新定位经纬度
 
 @end

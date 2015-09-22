@@ -19,7 +19,7 @@
 
 @end
 
-@interface UserInfoViewModel : NSObject
+@interface UserInfoViewModel : NSObject <NSCoding>
 
 @property (copy, nonatomic) NSString *uidStr;
 @property (copy, nonatomic) NSString *nickStr;

@@ -24,7 +24,8 @@
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != alertView.cancelButtonIndex) {
-        [self performSegueWithIdentifier:@"PresentLoginWithTelNum" sender:self];
+        [UserConfigManager shareManager].isLogin = NO;
+        
         [self.navigationController popToRootViewControllerAnimated:NO];
     }
 }

@@ -11,7 +11,7 @@
         <!--广场-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="PlazaRootViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9pv-A4-QxB" customClass="PlazaRootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -715,7 +715,9 @@
                         <color key="backgroundColor" red="0.93333333333333335" green="0.94901960784313721" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="EDG-yN-OaH" secondAttribute="bottom" id="EmD-tq-oj0"/>
+                            <constraint firstItem="EDG-yN-OaH" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="PXB-pQ-qhy"/>
                             <constraint firstItem="EDG-yN-OaH" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="TDK-V2-RKA"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="EDG-yN-OaH" secondAttribute="bottom" id="Tcv-rZ-oEk"/>
                             <constraint firstItem="EDG-yN-OaH" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Xnk-mB-yQZ"/>
                             <constraint firstItem="EDG-yN-OaH" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="a1I-au-T89"/>
                             <constraint firstAttribute="trailing" secondItem="EDG-yN-OaH" secondAttribute="trailing" id="dmL-gs-gFf"/>
@@ -728,12 +730,14 @@
                                 <exclude reference="EDG-yN-OaH"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="EmD-tq-oj0"/>
+                                <exclude reference="PXB-pQ-qhy"/>
                                 <exclude reference="TDK-V2-RKA"/>
                                 <exclude reference="Xnk-mB-yQZ"/>
                                 <exclude reference="a1I-au-T89"/>
                                 <exclude reference="dmL-gs-gFf"/>
                                 <exclude reference="onE-Ll-NQO"/>
+                                <exclude reference="EmD-tq-oj0"/>
+                                <exclude reference="Tcv-rZ-oEk"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -741,12 +745,14 @@
                                 <include reference="EDG-yN-OaH"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="EmD-tq-oj0"/>
+                                <include reference="PXB-pQ-qhy"/>
                                 <exclude reference="TDK-V2-RKA"/>
-                                <include reference="Xnk-mB-yQZ"/>
+                                <exclude reference="Xnk-mB-yQZ"/>
                                 <include reference="a1I-au-T89"/>
                                 <include reference="dmL-gs-gFf"/>
-                                <include reference="onE-Ll-NQO"/>
+                                <exclude reference="onE-Ll-NQO"/>
+                                <exclude reference="EmD-tq-oj0"/>
+                                <include reference="Tcv-rZ-oEk"/>
                             </mask>
                         </variation>
                     </view>
@@ -21718,40 +21724,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBE-sm-acr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBc-Mw-6UM" userLabel="Line View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="i2S-bM-2OQ"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="i2S-bM-2OQ"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="i2S-bM-2OQ"/>
-                        </mask>
-                    </variation>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbW-84-Dyc" userLabel="Line View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="ZHV-L2-Mua"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="ZHV-L2-Mua"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="ZHV-L2-Mua"/>
-                        </mask>
-                    </variation>
-                </view>
             </objects>
             <point key="canvasLocation" x="4126.5" y="1495.5"/>
         </scene>

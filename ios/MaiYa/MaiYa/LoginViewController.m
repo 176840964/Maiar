@@ -52,7 +52,9 @@
 
 #pragma mark - IBAction
 - (IBAction)onTapLoginBtn:(id)sender {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"login" params:@{@"username": self.telNumTextFiled.text, @"password": self.passwordTextFiled.text, @"area_code": @"+86"} success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSLog(@"pw:%@", [CustomTools md5:self.passwordTextFiled.text]);
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"login" params:@{@"username": self.telNumTextFiled.text, @"password": [CustomTools md5:self.passwordTextFiled.text], @"area_code": @"+86"} success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSDictionary *dic = responseObject;
         NSNumber *status = [dic objectForKey:@"status"];
@@ -64,6 +66,7 @@
             UserInfoModel *model = [[UserInfoModel alloc] initWithDic:res];
             UserInfoViewModel *viewModel = [[UserInfoViewModel alloc] initWithModel:model];
             [UserConfigManager shareManager].userInfo = viewModel;
+            [UserConfigManager shareManager].isLogin = YES;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
