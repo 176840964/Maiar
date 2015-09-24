@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArticleDirectoryModel.h"
 
-typedef void(^TapBtnHandle)(NSNumber *);
+typedef void(^TapBtnHandle)(NSNumber *, NSString *);
+typedef void(^TapCategoryBtnHandle)(NSNumber *);
 
 @interface PlazaCell : UITableViewCell
 
 @property (copy, nonatomic) TapBtnHandle tapBtnHandler;
+@property (copy, nonatomic) TapCategoryBtnHandle tapCategoryBtnHandle;
 
-- (void)layoutPlazaCellSubviewsByArr:(NSArray *)arr;
+- (void)layoutPlazaCellSubviewsByAritcleDirectoryViewModel:(ArticleDirectoryViewModel *)viewModel;
 
 @end

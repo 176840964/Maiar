@@ -7,11 +7,14 @@
 //
 
 #import "PlazaCell.h"
+#import "ArticleIndexModel.h"
 
 @interface PlazaCell ()
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UIButton *btn2;
 @property (weak, nonatomic) IBOutlet UIButton *btn3;
+
+@property (strong, nonatomic) ArticleDirectoryViewModel *viewModel;
 @end
 
 @implementation PlazaCell
@@ -26,19 +29,44 @@
     // Configure the view for the selected state
 }
 
-- (void)layoutPlazaCellSubviewsByArr:(NSArray *)arr {
-    [self.btn1 setTitle:[arr objectAtIndex:0] forState:UIControlStateNormal];
-    [self.btn2 setTitle:[arr objectAtIndex:1] forState:UIControlStateNormal];
-    [self.btn3 setTitle:[arr objectAtIndex:2] forState:UIControlStateNormal];
+- (void)layoutPlazaCellSubviewsByAritcleDirectoryViewModel:(ArticleDirectoryViewModel *)viewModel {
+    NSArray *dataArr = viewModel.dataArr;
+    if (0 == dataArr.count) {
+        self.btn1.hidden = YES;
+        self.btn2.hidden = YES;
+        self.btn3.hidden = YES;
+    }
+    
+    for (NSInteger index = 0; index < dataArr.count; ++ index) {
+        ArticleIndexViewModel *indexViewModel = [dataArr objectAtIndex:index];
+        if (0 == index) {
+            self.btn1.hidden = NO;
+            [self.btn1 setTitle:indexViewModel.titleStr forState:UIControlStateNormal];
+        } else if (1 == index) {
+            self.btn2.hidden = NO;
+            [self.btn2 setTitle:indexViewModel.titleStr forState:UIControlStateNormal];
+        } else {
+            self.btn3.hidden = NO;
+            [self.btn3 setTitle:indexViewModel.titleStr forState:UIControlStateNormal];
+        }
+    }
 }
 
 #pragma mark - IBAction
 - (IBAction)onTapBtn:(id)sender {
     if (self.tapBtnHandler) {
         UIButton *btn = (UIButton *)sender;
-        self.tapBtnHandler([NSNumber numberWithInteger:btn.tag]);
+        
+        ArticleIndexViewModel* indexViewModel = [self.viewModel.dataArr objectAtIndex:btn.tag];
+        
+        self.tapBtnHandler(self.viewModel.typeNum, indexViewModel.aidStr);
     }
-    
+}
+
+- (IBAction)onTapCategoreBtn:(id)sender {
+    if (self.tapCategoryBtnHandle) {
+        self.tapCategoryBtnHandle(self.viewModel.typeNum);
+    }
 }
 
 @end

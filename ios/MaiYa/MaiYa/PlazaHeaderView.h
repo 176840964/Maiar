@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlazaHeaderView : UIScrollView
+typedef void(^TapHeaderViewHandle)(NSNumber *);
 
+@interface PlazaHeaderView : UIScrollView
+@property (copy, nonatomic) TapHeaderViewHandle tapHeaderViewHandle;
+
+- (void)layoutPlazeHeaderViewSubviewsByArr:(NSArray *)arr;
 @end

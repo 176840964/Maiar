@@ -10,14 +10,18 @@
 #import "PlazaWordCell.h"
 #import "PlazaCell.h"
 #import "PlazaHeaderView.h"
+#import "SquareModel.h"
+#import "PlazaCategoryViewController.h"
+#import "PlazaDetailViewController.h"
 
 @interface PlazaRootViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) PlazaWordCell *commonCell;
-@property (copy, nonatomic) NSString *titleStr;
-@property (copy, nonatomic) NSString *contentStr;
 @property (strong, nonatomic) PlazaHeaderView *headerView;
-@property (strong, nonatomic) NSMutableArray *dataArr;
+@property (strong, nonatomic) SquareViewModel *squareViewModel;
+
+@property (strong, nonatomic) NSNumber *selectedCatNum;
+@property (copy, nonatomic) NSString *selectedIdStr;
 @end
 
 @implementation PlazaRootViewController
@@ -26,24 +30,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.titleStr = @"test";
-    self.contentStr = @"迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅迈雅";
-    
     self.headerView = [[PlazaHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetWidth([UIScreen mainScreen].bounds) * 250.0 / 750)];
     self.tableView.tableHeaderView = self.headerView;
     
+    __weak typeof(self) weakSelf = self;
+    self.headerView.tapHeaderViewHandle = ^(NSNumber *index) {
+        [weakSelf performSegueWithIdentifier:@"ShowPlazaDetail" sender:weakSelf];
+    };
+    
     [self.tableView registerClass:[PlazaWordCell class] forCellReuseIdentifier:@"PlazaWordCell"];
     self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
-    
     self.commonCell = [self.tableView dequeueReusableCellWithIdentifier:@"PlazaWordCell"];
     
-    self.dataArr = [[NSMutableArray alloc] init];
-    
-    NSArray *arr1 = @[@"星座：十二星座的感情自闭症", @"星座：异性面前爱装的星座女", @"星座：星座们如何对抗节后综合征"];
-    NSArray *arr2 = @[@"塔罗：十二星座的感情自闭症", @"塔罗：异性面前爱装的星座女", @"塔罗：星座们如何对抗节后综合征"];
-    NSArray *arr3 = @[@"周易：十二星座的感情自闭症", @"周易：异性面前爱装的星座女", @"周易：星座们如何对抗节后综合征"];
-    
-    [self.dataArr addObjectsFromArray:@[arr1, arr2, arr3]];
+    [self getSquareData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,15 +50,45 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark -
+- (void)getSquareData {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"square" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic = responseObject;
+        NSNumber *status = [dic objectForKey:@"status"];
+        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
+            NSString *str = [dic objectForKey:@"error"];
+            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
+        } else {
+            NSDictionary *resDic = [dic objectForKey:@"res"];
+            SquareModel *model = [[SquareModel alloc] initWithDic:resDic];
+            self.squareViewModel = [[SquareViewModel alloc] initWithSquareModel:model];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self layoutSubviews];
+            });
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];
+    }];
 }
-*/
+
+- (void)layoutSubviews {
+    [self.tableView reloadData];
+    [self.headerView layoutPlazeHeaderViewSubviewsByArr:self.squareViewModel.focusArr];
+}
+
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
+        PlazaDetailViewController *viewController = segue.destinationViewController;
+        viewController.catIndexNum = self.selectedCatNum;
+        viewController.articleStr = self.selectedIdStr;
+    } else if ([segue.identifier isEqualToString:@"ShowPlazaCategory"]) {
+        PlazaCategoryViewController *viewController = segue.destinationViewController;
+        viewController.catIndexNum = self.selectedCatNum;
+    }
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -70,26 +99,40 @@
     if (0 == indexPath.row) {
         PlazaWordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlazaWordCell"];
         
-        cell.textLab.text = self.contentStr;
+        cell.textLab.text = self.squareViewModel.sentenceViewModel.contentStr;
         
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];
         
         return cell;
     } else {
+        ArticleDirectoryViewModel *viewModel = nil;
+        switch (indexPath.row) {
+            case 1:
+                viewModel = self.squareViewModel.astrologyViewModel;
+                break;
+            case 2:
+                viewModel = self.squareViewModel.tarlowViewModel;
+                break;
+                
+            default:
+                viewModel = self.squareViewModel.zhouyiViewModel;
+                break;
+        }
+        
         PlazaCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"PlazaCell%zd", indexPath.row]];
-        cell.tapBtnHandler = ^(NSNumber *tagNum) {
-            NSString *str = @"";
-            if (0 == tagNum.integerValue) {
-                str = @"ShowPlazaCategory";
-            } else {
-                str = @"ShowPlazaDetail";
-            }
-            [self performSegueWithIdentifier:str sender:self];
+        cell.tapBtnHandler = ^(NSNumber *catNum, NSString *idStr) {
+            self.selectedCatNum = catNum;
+            self.selectedIdStr = idStr;
+            [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
         };
         
-        NSArray *arr = [self.dataArr objectAtIndex:indexPath.row - 1];
-        [cell layoutPlazaCellSubviewsByArr:arr];
+        cell.tapCategoryBtnHandle = ^(NSNumber *num) {
+            self.selectedCatNum = num;
+            [self performSegueWithIdentifier:@"ShowPlazaCategory" sender:self];
+        };
+        
+        [cell layoutPlazaCellSubviewsByAritcleDirectoryViewModel:viewModel];
         
         return cell;
     }
@@ -99,6 +142,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (0 == indexPath) {
+        self.selectedCatNum = [NSNumber numberWithInteger:30];
         [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
     }
 }
@@ -106,7 +150,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (0 == indexPath.row) {
         PlazaWordCell *cell = self.commonCell;
-        cell.textLab.text = self.contentStr;
+        cell.textLab.text = self.squareViewModel.sentenceViewModel.contentStr;
         
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];

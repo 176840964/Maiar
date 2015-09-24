@@ -19,6 +19,25 @@
 @property (copy, nonatomic) NSString *ctime;
 @property (copy, nonatomic) NSString *nick;
 @property (copy, nonatomic) NSString *head;
-@property (strong, nonatomic) NSNumber *uid;
-@property (strong, nonatomic) NSNumber *type;
+@property (copy, nonatomic) NSString *uid;
+@property (copy, nonatomic) NSString *type;
+@end
+
+
+@interface ArticleViewModel : NSObject
+@property (copy, nonatomic) NSString *aidStr;
+@property (copy, nonatomic) NSString *titleStr;
+@property (copy, nonatomic) NSString *abstractStr;
+@property (strong, nonatomic) NSURL *imgUrl;
+@property (strong, nonatomic) NSURL *url;
+@property (copy, nonatomic) NSString *readStr;
+@property (copy, nonatomic) NSString *praiseStr;
+@property (copy, nonatomic) NSString *ctimeStr;
+@property (copy, nonatomic) NSString *nickStr;
+@property (strong, nonatomic) NSURL *headUrl;
+@property (copy, nonatomic) NSString *uidStr;
+@property (copy, nonatomic) NSString *typeStr;
+
+- (instancetype)initWithArticleModel:(ArticleModel *)model;
+
 @end

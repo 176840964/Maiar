@@ -43,11 +43,6 @@
                                                             <state key="normal" image="xingzuoIcon">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="0"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="SNR-ca-L0K"/>
@@ -61,7 +56,7 @@
                                                                 </mask>
                                                             </variation>
                                                             <connections>
-                                                                <action selector="onTapBtn:" destination="aI3-FV-vcS" eventType="touchUpInside" id="4lg-zx-6o6"/>
+                                                                <action selector="onTapCategoreBtn:" destination="aI3-FV-vcS" eventType="touchUpInside" id="MVt-b1-hHf"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星座" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsA-5R-MQs">
@@ -94,7 +89,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="1"/>
+                                                                    <integer key="value" value="0"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -109,7 +104,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="2"/>
+                                                                    <integer key="value" value="1"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -124,7 +119,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="3"/>
+                                                                    <integer key="value" value="2"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -270,11 +265,6 @@
                                                             <state key="normal" image="taluoIcon">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="0"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="Zf9-wa-tpC"/>
@@ -288,7 +278,7 @@
                                                                 </mask>
                                                             </variation>
                                                             <connections>
-                                                                <action selector="onTapBtn:" destination="0h0-NM-mMQ" eventType="touchUpInside" id="zOn-Nz-cdn"/>
+                                                                <action selector="onTapCategoreBtn:" destination="0h0-NM-mMQ" eventType="touchUpInside" id="eIr-pG-6po"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="塔罗牌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no0-hK-yFo">
@@ -321,7 +311,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="1"/>
+                                                                    <integer key="value" value="0"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -336,7 +326,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="2"/>
+                                                                    <integer key="value" value="1"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -351,7 +341,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="3"/>
+                                                                    <integer key="value" value="2"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -497,11 +487,6 @@
                                                             <state key="normal" image="zhouyiIcon">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="0"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="DAf-qx-KcH"/>
@@ -515,7 +500,7 @@
                                                                 </mask>
                                                             </variation>
                                                             <connections>
-                                                                <action selector="onTapBtn:" destination="2w7-LM-rac" eventType="touchUpInside" id="quU-iY-DxH"/>
+                                                                <action selector="onTapCategoreBtn:" destination="2w7-LM-rac" eventType="touchUpInside" id="uqs-iy-uMM"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周易" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZw-Fg-eE1">
@@ -548,7 +533,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="1"/>
+                                                                    <integer key="value" value="0"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -563,7 +548,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="2"/>
+                                                                    <integer key="value" value="1"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -578,7 +563,7 @@
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                    <integer key="value" value="3"/>
+                                                                    <integer key="value" value="2"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -730,14 +715,14 @@
                                 <exclude reference="EDG-yN-OaH"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="EmD-tq-oj0"/>
+                                <exclude reference="Tcv-rZ-oEk"/>
                                 <exclude reference="PXB-pQ-qhy"/>
                                 <exclude reference="TDK-V2-RKA"/>
                                 <exclude reference="Xnk-mB-yQZ"/>
                                 <exclude reference="a1I-au-T89"/>
                                 <exclude reference="dmL-gs-gFf"/>
                                 <exclude reference="onE-Ll-NQO"/>
-                                <exclude reference="EmD-tq-oj0"/>
-                                <exclude reference="Tcv-rZ-oEk"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -745,14 +730,14 @@
                                 <include reference="EDG-yN-OaH"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="EmD-tq-oj0"/>
+                                <include reference="Tcv-rZ-oEk"/>
                                 <include reference="PXB-pQ-qhy"/>
                                 <exclude reference="TDK-V2-RKA"/>
                                 <exclude reference="Xnk-mB-yQZ"/>
                                 <include reference="a1I-au-T89"/>
                                 <include reference="dmL-gs-gFf"/>
                                 <exclude reference="onE-Ll-NQO"/>
-                                <exclude reference="EmD-tq-oj0"/>
-                                <include reference="Tcv-rZ-oEk"/>
                             </mask>
                         </variation>
                     </view>
@@ -7058,7 +7043,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nTw-Mt-QkU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mRP-Gs-EB3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="104" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GGV-UG-Wb0">
@@ -21011,17 +20996,17 @@
             <objects>
                 <tableViewController id="G6v-00-HEM" customClass="PayViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fzn-t1-3pv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94509803921568625" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="XRT-ll-gAJ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="6za-aY-PyB">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6za-aY-PyB" id="3w7-RT-UjM">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择支付方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dK-Fk-0lD">
@@ -21121,10 +21106,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="egw-nr-QtQ">
-                                        <rect key="frame" x="0.0" y="108" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="44" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="egw-nr-QtQ" id="E9m-up-maX">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLS-sb-jsS" userLabel="Line View">
@@ -21258,10 +21243,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RuE-i9-XcH">
-                                        <rect key="frame" x="0.0" y="152" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="88" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RuE-i9-XcH" id="5pd-Oe-Nfl">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XwX-An-YAB" userLabel="Line View">
@@ -21801,9 +21786,9 @@
         <segue reference="wOU-v5-FQV"/>
         <segue reference="JDl-KK-l6G"/>
         <segue reference="bJp-eb-u4M"/>
-        <segue reference="aCv-kO-hrx"/>
         <segue reference="eZO-bS-HnC"/>
         <segue reference="JEI-Hl-r2e"/>
-        <segue reference="Tua-5Y-gFO"/>
+        <segue reference="aCv-kO-hrx"/>
+        <segue reference="mxu-Ep-7Vo"/>
     </inferredMetricsTieBreakers>
 </document>

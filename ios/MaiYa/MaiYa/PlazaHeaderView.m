@@ -8,6 +8,7 @@
 
 #import "PlazaHeaderView.h"
 #import "CarouselCell.h"
+#import "ArticleModel.h"
 
 @implementation PlazaHeaderView
 
@@ -15,16 +16,38 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
-        
-        CarouselCell *cell = [[CarouselCell alloc] init];
-        cell.frame = self.bounds;
-        [self addSubview:cell];
-        
-        self.contentSize = CGSizeMake(self.width, self.height);
+        self.backgroundColor = [UIColor clearColor];
     }
     
     return self;
+}
+
+- (void)layoutPlazeHeaderViewSubviewsByArr:(NSArray *)arr {
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:[CarouselCell class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    
+    for (NSInteger index = 0; index < arr.count; ++index) {
+        ArticleViewModel *viewModel = [arr objectAtIndex:index];
+        
+        CarouselCell *cell = [[CarouselCell alloc] init];
+        cell.tag = index;
+        cell.frame = CGRectMake(index * self.width, 0, self.width, self.height);
+        [cell.imageView setImageWithURL:viewModel.imgUrl placeholderImage:[UIImage imageNamed:@"testHeader"]];
+        [cell addTarget:self action:@selector(onTapCell:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:cell];
+    }
+    
+    self.contentSize = CGSizeMake(self.width * arr.count, self.height);
+}
+
+#pragma mark - 
+- (void)onTapCell:(CarouselCell *)cell {
+    if (self.tapHeaderViewHandle) {
+        self.tapHeaderViewHandle([NSNumber numberWithInteger:cell.tag]);
+    }
 }
 
 /*
