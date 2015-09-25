@@ -16,7 +16,7 @@
 @end
 
 @interface ArticleDirectoryViewModel : NSObject
-@property (strong, nonatomic) NSNumber *typeNum;
+@property (strong, nonatomic) NSString *typeStr;
 @property (strong, nonatomic) NSArray *dataArr;
 
 - (instancetype)initWithArticleDirectoryModel:(ArticleDirectoryModel *)model;

@@ -37,9 +37,13 @@
  @return
  NSURLSessionDataTask
  */
+//- (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
+//                                               params:(NSDictionary *)parames
+//                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+//                                              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
 - (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
                                                params:(NSDictionary *)parames
-                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                                              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success;
 
 @end

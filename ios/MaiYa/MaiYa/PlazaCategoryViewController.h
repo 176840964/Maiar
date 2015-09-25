@@ -10,6 +10,6 @@
 #import "PlazaDetailViewController.h"
 
 @interface PlazaCategoryViewController : BaseViewController
-@property (strong, nonatomic) NSNumber *catIndexNum;
+@property (copy, nonatomic) NSString *catIndexStr;
 
 @end

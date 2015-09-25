@@ -17,7 +17,7 @@
 
 - (instancetype)initWithArticleDirectoryModel:(ArticleDirectoryModel *)model {
     if (self = [super init]) {
-        self.typeNum = model.type;
+        self.typeStr = model.type.stringValue;
         
         NSMutableArray *arr = [NSMutableArray new];
         for (NSDictionary *dic in model.data) {

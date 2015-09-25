@@ -105,8 +105,6 @@
                 [self oneMinuteCountdown];
             });
         }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [[HintView getInstance] presentMessage:@"获取验证码失败" isAutoDismiss:YES dismissBlock:nil];
     }];
 }
 
@@ -128,8 +126,6 @@
                 }];
             });
         }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [[HintView getInstance] presentMessage:@"注册失败" isAutoDismiss:YES dismissBlock:nil];
     }];
 }
 

@@ -10,7 +10,7 @@
 
 @implementation ArticleModel
 - (instancetype)initWithDic:(NSDictionary *)dic {
-    self = [super init];
+    self = [super initWithDic:dic];
     if (self) {
         self.aid = [dic objectForKey:@"id"];
     }
@@ -23,18 +23,18 @@
 
 - (instancetype)initWithArticleModel:(ArticleModel *)model {
     if (self = [super init]) {
-        self.aidStr = model.aid;
-        self.titleStr = model.title;
-        self.abstractStr = model.abstract;
-        self.imgUrl = [NSURL URLWithString:model.img];
-        self.url = [NSURL URLWithString:model.url];
-        self.readStr = model.read;
-        self.praiseStr = model.praise;
-        self.ctimeStr = model.ctime;
-        self.nickStr = model.nick;
-        self.headUrl = [NSURL URLWithString:model.url];
-        self.uidStr = model.uid;
-        self.typeStr = model.type;
+        self.aidStr = [model.aid stringValue];
+        self.titleStr = [model.title stringValue];
+        self.digestStr = [model.digest stringValue];
+        self.imgUrl = [NSURL URLWithString:[model.img stringValue]];
+        self.url = [NSURL URLWithString:[model.url stringValue]];
+        self.readStr = [model.read stringValue];
+        self.praiseStr = [model.praise stringValue];
+        self.ctimeStr = [model.ctime stringValue];
+        self.nickStr = [model.nick stringValue];
+        self.headUrl = [NSURL URLWithString:[model.url stringValue]];
+        self.uidStr = [model.uid stringValue];
+        self.typeStr = [model.type stringValue];
     }
     
     return self;

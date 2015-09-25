@@ -30,11 +30,20 @@
     return [self postWithURLPath:path postParams:parames success:success failure:failure];
 }
 
+//- (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
+//                                               params:(NSDictionary *)parames
+//                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+//                                              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+//    return [self GET:@"?" parameters:[self setupParamsByParamesDic:parames andPath:path] success:success failure:failure];
+//}
 - (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
                                                params:(NSDictionary *)parames
-                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                                              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    return [self GET:@"?" parameters:[self setupParamsByParamesDic:parames andPath:path] success:success failure:failure];
+                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success {
+    return [self GET:@"?" parameters:[self setupParamsByParamesDic:parames andPath:path] success:success failure:^(NSURLSessionDataTask *task, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];
+        });
+    }];
 }
 
 #pragma mark - 

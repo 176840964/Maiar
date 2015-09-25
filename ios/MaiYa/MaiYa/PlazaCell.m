@@ -30,12 +30,11 @@
 }
 
 - (void)layoutPlazaCellSubviewsByAritcleDirectoryViewModel:(ArticleDirectoryViewModel *)viewModel {
+    self.viewModel = viewModel;
     NSArray *dataArr = viewModel.dataArr;
-    if (0 == dataArr.count) {
-        self.btn1.hidden = YES;
-        self.btn2.hidden = YES;
-        self.btn3.hidden = YES;
-    }
+    self.btn1.hidden = YES;
+    self.btn2.hidden = YES;
+    self.btn3.hidden = YES;
     
     for (NSInteger index = 0; index < dataArr.count; ++ index) {
         ArticleIndexViewModel *indexViewModel = [dataArr objectAtIndex:index];
@@ -59,13 +58,13 @@
         
         ArticleIndexViewModel* indexViewModel = [self.viewModel.dataArr objectAtIndex:btn.tag];
         
-        self.tapBtnHandler(self.viewModel.typeNum, indexViewModel.aidStr);
+        self.tapBtnHandler(self.viewModel.typeStr, indexViewModel.aidStr);
     }
 }
 
 - (IBAction)onTapCategoreBtn:(id)sender {
     if (self.tapCategoryBtnHandle) {
-        self.tapCategoryBtnHandle(self.viewModel.typeNum);
+        self.tapCategoryBtnHandle(self.viewModel.typeStr);
     }
 }
 

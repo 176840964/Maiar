@@ -11,7 +11,7 @@
 @interface ArticleModel : BaseModel
 @property (copy, nonatomic) NSString *aid;
 @property (copy, nonatomic) NSString *title;
-@property (copy, nonatomic) NSString *abstract;
+@property (copy, nonatomic) NSString *digest;
 @property (copy, nonatomic) NSString *img;
 @property (copy, nonatomic) NSString *url;
 @property (copy, nonatomic) NSString *read;
@@ -27,7 +27,7 @@
 @interface ArticleViewModel : NSObject
 @property (copy, nonatomic) NSString *aidStr;
 @property (copy, nonatomic) NSString *titleStr;
-@property (copy, nonatomic) NSString *abstractStr;
+@property (copy, nonatomic) NSString *digestStr;
 @property (strong, nonatomic) NSURL *imgUrl;
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic) NSString *readStr;

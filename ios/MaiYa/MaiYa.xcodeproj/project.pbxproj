@@ -127,6 +127,7 @@
 		82CACB571BB3A196001422B8 /* ArticleIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB561BB3A196001422B8 /* ArticleIndexModel.m */; settings = {ASSET_TAGS = (); }; };
 		82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5A1BB3A910001422B8 /* ArticleDirectoryModel.m */; settings = {ASSET_TAGS = (); }; };
 		82CACB5F1BB3AACB001422B8 /* SentenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5E1BB3AACB001422B8 /* SentenceModel.m */; settings = {ASSET_TAGS = (); }; };
+		82CACB631BB4EB0A001422B8 /* ArticleCatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */; settings = {ASSET_TAGS = (); }; };
 		82D71B081BAAAD5C006CFE0D /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */; };
 		C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4EE198D74EE15090FBD86 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -369,6 +370,8 @@
 		82CACB5A1BB3A910001422B8 /* ArticleDirectoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDirectoryModel.m; sourceTree = "<group>"; };
 		82CACB5D1BB3AACB001422B8 /* SentenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentenceModel.h; sourceTree = "<group>"; };
 		82CACB5E1BB3AACB001422B8 /* SentenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentenceModel.m; sourceTree = "<group>"; };
+		82CACB611BB4EB0A001422B8 /* ArticleCatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCatModel.h; sourceTree = "<group>"; };
+		82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCatModel.m; sourceTree = "<group>"; };
 		82D71B061BAAAD5C006CFE0D /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1197,6 +1200,7 @@
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82CACB601BB4EAF8001422B8 /* ArticleCatModel */,
 				82CACB5C1BB3AAB6001422B8 /* SentenceModel */,
 				82CACB581BB3A8DF001422B8 /* ArticleDirectoryModel */,
 				82CACB541BB3A16F001422B8 /* ArticleIndexModel */,
@@ -1263,6 +1267,15 @@
 				82CACB5E1BB3AACB001422B8 /* SentenceModel.m */,
 			);
 			name = SentenceModel;
+			sourceTree = "<group>";
+		};
+		82CACB601BB4EAF8001422B8 /* ArticleCatModel */ = {
+			isa = PBXGroup;
+			children = (
+				82CACB611BB4EB0A001422B8 /* ArticleCatModel.h */,
+				82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */,
+			);
+			name = ArticleCatModel;
 			sourceTree = "<group>";
 		};
 		82D71B091BAACA75006CFE0D /* UserInfoModel */ = {
@@ -1457,6 +1470,7 @@
 				82150F111B9BEADB00CFDE80 /* MastersListViewController.m in Sources */,
 				820A6EE61B93FDAA002385A4 /* ArticleCell.m in Sources */,
 				829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */,
+				82CACB631BB4EB0A001422B8 /* ArticleCatModel.m in Sources */,
 				822A4A3C1BA03DC70096CA5F /* AdvisoryDetailMasterCell.m in Sources */,
 				829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */,
 				820A6F121B94774B002385A4 /* BankViewController.m in Sources */,

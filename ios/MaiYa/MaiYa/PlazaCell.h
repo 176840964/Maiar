@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ArticleDirectoryModel.h"
 
-typedef void(^TapBtnHandle)(NSNumber *, NSString *);
-typedef void(^TapCategoryBtnHandle)(NSNumber *);
+typedef void(^TapBtnHandle)(NSString *, NSString *);
+typedef void(^TapCategoryBtnHandle)(NSString *);
 
 @interface PlazaCell : UITableViewCell
 

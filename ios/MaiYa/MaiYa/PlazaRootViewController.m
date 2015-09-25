@@ -20,7 +20,7 @@
 @property (strong, nonatomic) PlazaHeaderView *headerView;
 @property (strong, nonatomic) SquareViewModel *squareViewModel;
 
-@property (strong, nonatomic) NSNumber *selectedCatNum;
+@property (copy, nonatomic) NSString *selectedCatStr;
 @property (copy, nonatomic) NSString *selectedIdStr;
 @end
 
@@ -67,8 +67,6 @@
                 [self layoutSubviews];
             });
         }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];
     }];
 }
 
@@ -82,11 +80,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
         PlazaDetailViewController *viewController = segue.destinationViewController;
-        viewController.catIndexNum = self.selectedCatNum;
+        viewController.catIndexStr = self.selectedCatStr;
         viewController.articleStr = self.selectedIdStr;
     } else if ([segue.identifier isEqualToString:@"ShowPlazaCategory"]) {
         PlazaCategoryViewController *viewController = segue.destinationViewController;
-        viewController.catIndexNum = self.selectedCatNum;
+        viewController.catIndexStr = self.selectedCatStr;
     }
 }
 
@@ -121,14 +119,14 @@
         }
         
         PlazaCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"PlazaCell%zd", indexPath.row]];
-        cell.tapBtnHandler = ^(NSNumber *catNum, NSString *idStr) {
-            self.selectedCatNum = catNum;
+        cell.tapBtnHandler = ^(NSString *catStr, NSString *idStr) {
+            self.selectedCatStr = catStr;
             self.selectedIdStr = idStr;
             [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
         };
         
-        cell.tapCategoryBtnHandle = ^(NSNumber *num) {
-            self.selectedCatNum = num;
+        cell.tapCategoryBtnHandle = ^(NSString *str) {
+            self.selectedCatStr = str;
             [self performSegueWithIdentifier:@"ShowPlazaCategory" sender:self];
         };
         
@@ -142,7 +140,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (0 == indexPath) {
-        self.selectedCatNum = [NSNumber numberWithInteger:30];
+        self.selectedCatStr = @"30";
         [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
     }
 }

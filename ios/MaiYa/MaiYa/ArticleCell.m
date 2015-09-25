@@ -8,6 +8,16 @@
 
 #import "ArticleCell.h"
 
+@interface ArticleCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *iconImgView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UILabel *digestLab;
+@property (weak, nonatomic) IBOutlet UILabel *nickLab;
+@property (weak, nonatomic) IBOutlet UILabel *timeLab;
+@property (weak, nonatomic) IBOutlet UILabel *readLab;
+@property (weak, nonatomic) IBOutlet UILabel *praiseLab;
+@end
+
 @implementation ArticleCell
 
 - (void)awakeFromNib {
@@ -18,6 +28,16 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)layoutArticleCellSubviewsByArticleViewModel:(ArticleViewModel *)viewModel {
+    [self.iconImgView setImageWithURL:viewModel.url placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    self.titleLab.text = viewModel.titleStr;
+    self.digestLab.text = viewModel.digestStr;
+    self.nickLab.text = viewModel.nickStr;
+    self.titleLab.text = viewModel.ctimeStr;
+    self.readLab.text = viewModel.readStr;
+    self.praiseLab.text = viewModel.praiseStr;
 }
 
 @end

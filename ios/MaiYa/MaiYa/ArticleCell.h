@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArticleModel.h"
 
 @interface ArticleCell : UITableViewCell
-
+- (void)layoutArticleCellSubviewsByArticleViewModel:(ArticleViewModel *)viewModel;
 @end
