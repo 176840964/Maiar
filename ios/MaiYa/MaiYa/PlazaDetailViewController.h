@@ -10,5 +10,5 @@
 
 @interface PlazaDetailViewController : BaseViewController
 @property (copy, nonatomic) NSString *catIndexStr;
-@property (copy , nonatomic) NSString *articleStr;
+@property (copy ,nonatomic) NSString *articleStr;
 @end

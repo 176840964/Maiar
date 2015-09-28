@@ -25,7 +25,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         self.bgImageView = [UIImageView newAutoLayoutView];
-        self.bgImageView.image = [[UIImage imageNamed:@"plazaBg1"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20) resizingMode:UIImageResizingModeStretch];
+        self.bgImageView.image = [[UIImage imageNamed:@"plazaBg1"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15) resizingMode:UIImageResizingModeStretch];
         [self.contentView addSubview:self.bgImageView];
         
         self.textLab = [UILabel newAutoLayoutView];
@@ -35,6 +35,11 @@
         [self.textLab setTextColor:[UIColor colorWithHexString:@"#667785"]];
         self.textLab.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.textLab];
+        
+        self.bottomLineView = [UIView new];
+        self.bottomLineView.backgroundColor = [UIColor colorWithR:247 g:247 b:247];
+        self.bottomLineView.hidden = YES;
+        [self.contentView addSubview:self.bottomLineView];
     }
     
     return self;
@@ -48,10 +53,10 @@
             [self.bgImageView autoSetContentCompressionResistancePriorityForAxis:ALAxisVertical];
         }];
         
-        [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:12];
+        [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5];
         [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:5];
         [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:5];
-        [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
+        [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
         
 //        [self.textLab autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.titleLab withOffset:kLabelVerticalInsets relation:NSLayoutRelationGreaterThanOrEqual];
         [self.textLab autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:12 relation:NSLayoutRelationGreaterThanOrEqual];
@@ -61,7 +66,12 @@
         }];
         [self.textLab autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:23];
         [self.textLab autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:23];
-        [self.textLab autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10];
+        [self.textLab autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:14];
+        
+        [self.bottomLineView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+        [self.bottomLineView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+        [self.bottomLineView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
+        [self.bottomLineView autoSetDimension:ALDimensionHeight toSize:1];
         
         self.didSetupConstraints = YES;
     }

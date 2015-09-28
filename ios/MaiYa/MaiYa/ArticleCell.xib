@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3X-qt-s2b">
-                        <rect key="frame" x="5" y="5" width="398" height="84"/>
+                        <rect key="frame" x="5" y="0.0" width="398" height="84"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXj-lJ-UoI">
                                 <rect key="frame" x="4" y="4" width="52" height="52"/>
@@ -143,9 +143,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Q3X-qt-s2b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ACQ-Ti-U68"/>
-                    <constraint firstItem="Q3X-qt-s2b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Fa4-iX-j5A"/>
+                    <constraint firstItem="Q3X-qt-s2b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Fa4-iX-j5A"/>
                     <constraint firstAttribute="trailing" secondItem="Q3X-qt-s2b" secondAttribute="trailing" constant="5" id="NBx-eq-NhH"/>
-                    <constraint firstAttribute="bottom" secondItem="Q3X-qt-s2b" secondAttribute="bottom" id="cKE-q2-58t"/>
+                    <constraint firstAttribute="bottom" secondItem="Q3X-qt-s2b" secondAttribute="bottom" constant="5" id="cKE-q2-58t"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

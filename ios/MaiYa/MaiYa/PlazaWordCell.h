@@ -11,5 +11,6 @@
 @interface PlazaWordCell : UITableViewCell
 @property (strong, nonatomic) UILabel *textLab;
 @property (strong, nonatomic) UIImageView *bgImageView;
+@property (strong, nonatomic) UIView *bottomLineView;
 
 @end

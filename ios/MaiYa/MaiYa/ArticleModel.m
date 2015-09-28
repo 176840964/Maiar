@@ -30,11 +30,12 @@
         self.url = [NSURL URLWithString:[model.url stringValue]];
         self.readStr = [model.read stringValue];
         self.praiseStr = [model.praise stringValue];
-        self.ctimeStr = [model.ctime stringValue];
         self.nickStr = [model.nick stringValue];
         self.headUrl = [NSURL URLWithString:[model.url stringValue]];
         self.uidStr = [model.uid stringValue];
         self.typeStr = [model.type stringValue];
+        
+        self.ctimeStr = [CustomTools dateStringFromUnixTimestamp:[model.ctime stringValue].integerValue];
     }
     
     return self;

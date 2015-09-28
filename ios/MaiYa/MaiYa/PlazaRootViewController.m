@@ -139,9 +139,9 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (0 == indexPath) {
+    if (0 == indexPath.row) {
         self.selectedCatStr = @"30";
-        [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
+        [self performSegueWithIdentifier:@"ShowPlazaCategory" sender:self];
     }
 }
 
@@ -159,7 +159,7 @@
         
         CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         
-        return height + 10;
+        return height;
     } else {
         return 112;
     }

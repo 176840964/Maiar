@@ -64,4 +64,11 @@
     [alert show];
 }
 
++ (NSString *)dateStringFromUnixTimestamp:(NSInteger)timestamp {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"EEa HH:mm"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
+    return [formatter stringFromDate:date];
+}
+
 @end

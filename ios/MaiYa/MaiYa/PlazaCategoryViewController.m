@@ -10,6 +10,8 @@
 #import "ArticleCatModel.h"
 #import "ArticleModel.h"
 #import "ArticleCell.h"
+#import "PlazaWordCell.h"
+#import "PlazaDetailViewController.h"
 
 typedef NS_ENUM(NSInteger, ContentTableViewType){
     ContentTableViewTypeOfDeselected = 0,
@@ -25,6 +27,8 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) UITableView *curTableView;
 @property (strong, nonatomic) NSMutableArray *curDataArr;
+@property (assign, nonatomic) NSInteger selectedIndex;
+@property (strong, nonatomic) PlazaWordCell *wordCell;
 @end
 
 @implementation PlazaCategoryViewController
@@ -77,6 +81,7 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
         [self.catScrollView addSubview:btn];
         
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(5 + self.contentScrollView.width * index, 5, self.contentScrollView.width - 10, self.contentScrollView.height - 5) style:UITableViewStylePlain];
+        tableView.backgroundColor = [UIColor clearColor];
         tableView.dataSource = self;
         tableView.delegate = self;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -85,8 +90,9 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
         [tableViewsArr addObject:tableView];
         
         if (0 == tableView.tag) {
-            UINib *cellNib = [UINib nibWithNibName:@"ArticleCell" bundle:nil];
-            [tableView registerNib:cellNib forCellReuseIdentifier:@"ArticleCell"];
+            [tableView registerClass:[PlazaWordCell class] forCellReuseIdentifier:@"WordCell"];
+            tableView.estimatedRowHeight = UITableViewAutomaticDimension;
+            self.wordCell = [tableView dequeueReusableCellWithIdentifier:@"WordCell"];
         } else {
             UINib *cellNib = [UINib nibWithNibName:@"ArticleCell" bundle:nil];
             [tableView registerNib:cellNib forCellReuseIdentifier:@"ArticleCell"];
@@ -120,6 +126,13 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
     [UIView animateWithDuration:0.25 animations:^{
         self.markView.x = index * self.markView.width;
     } completion:^(BOOL finished) {
+        ArticleCatViewModel *viewModel = [self.catsArr objectAtIndex:index];
+        self.curTableView = [self.contentsArr objectAtIndex:index];
+        self.curDataArr = [self.dataDic objectForKey:viewModel.aidStr];
+        self.catIndexStr = viewModel.aidStr;
+        
+        [self getArticleTypeListByType:viewModel.aidStr];
+        
         if (isAnimate) {
             [self.contentScrollView setContentOffset:CGPointMake(index * self.contentScrollView.width, 0) animated:YES];
         }
@@ -190,25 +203,68 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ArticleViewModel *viewModel = [self.curDataArr objectAtIndex:indexPath.row];
     
-    ArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArticleCell"];
-    [cell layoutArticleCellSubviewsByArticleViewModel:viewModel];
-    
-    return cell;
+    if (1 == tableView.tag) {
+        ArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArticleCell"];
+        [cell layoutArticleCellSubviewsByArticleViewModel:viewModel];
+        
+        return cell;
+        
+    } else {
+        PlazaWordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WordCell"];
+        
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.textLab.text = viewModel.titleStr;
+        cell.bgImageView.hidden = YES;
+        cell.bottomLineView.hidden = NO;
+        
+        [cell setNeedsUpdateConstraints];
+        [cell updateConstraintsIfNeeded];
+        
+        return cell;
+    }
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (1 == tableView.tag) {
+        self.selectedIndex = indexPath.row;
+        [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
+    }
 }
 
-/*
-#pragma mark - Navigation
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (0 == tableView.tag) {
+        PlazaWordCell *cell = self.wordCell;
+        ArticleViewModel *viewModel = [self.curDataArr objectAtIndex:indexPath.row];
+        cell.textLab.text = viewModel.titleStr;
+        
+        [cell setNeedsUpdateConstraints];
+        [cell updateConstraintsIfNeeded];
+        cell.bounds = CGRectMake(0, 0, tableView.width, cell.height);
+        
+        [cell setNeedsLayout];
+        [cell layoutIfNeeded];
+        
+        CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        
+        return height;
+    } else {
+        return 90;
+    }
+}
 
+#pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
+        ArticleViewModel *viewModel = [self.curDataArr objectAtIndex:self.selectedIndex];
+        
+        PlazaDetailViewController *controller = segue.destinationViewController;
+        controller.catIndexStr = viewModel.typeStr;
+        controller.articleStr = viewModel.aidStr;
+        controller.title = viewModel.titleStr;
+    }
 }
-*/
 
 @end
