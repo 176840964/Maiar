@@ -75,6 +75,9 @@
 		821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A21B8C2D1D0061C002 /* AboutViewController.m */; };
 		821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A51B8C7E4D0061C002 /* NoticeCell.m */; };
 		821A951F1BB156F000F44790 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821A951E1BB156F000F44790 /* ArticleModel.m */; settings = {ASSET_TAGS = (); }; };
+		8228E8291BBA29C600F5BBB7 /* ArticleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E8281BBA29C600F5BBB7 /* ArticleDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		8228E82C1BBA808400F5BBB7 /* UserZoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E82B1BBA808400F5BBB7 /* UserZoneModel.m */; settings = {ASSET_TAGS = (); }; };
+		8228E8301BBA828F00F5BBB7 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E82F1BBA828F00F5BBB7 /* CommentModel.m */; settings = {ASSET_TAGS = (); }; };
 		822A4A221B9EE2CC0096CA5F /* MyCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */; };
 		822A4A271B9FDD7F0096CA5F /* SelectingServiceDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A261B9FDD7F0096CA5F /* SelectingServiceDateViewController.m */; };
 		822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A291B9FE3FD0096CA5F /* SelectingServiceTimeCell.m */; };
@@ -276,6 +279,12 @@
 		821937A51B8C7E4D0061C002 /* NoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeCell.m; sourceTree = "<group>"; };
 		821A951D1BB156F000F44790 /* ArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleModel.h; sourceTree = "<group>"; };
 		821A951E1BB156F000F44790 /* ArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleModel.m; sourceTree = "<group>"; };
+		8228E8271BBA29C600F5BBB7 /* ArticleDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailModel.h; sourceTree = "<group>"; };
+		8228E8281BBA29C600F5BBB7 /* ArticleDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailModel.m; sourceTree = "<group>"; };
+		8228E82A1BBA808400F5BBB7 /* UserZoneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserZoneModel.h; sourceTree = "<group>"; };
+		8228E82B1BBA808400F5BBB7 /* UserZoneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserZoneModel.m; sourceTree = "<group>"; };
+		8228E82E1BBA828F00F5BBB7 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		8228E82F1BBA828F00F5BBB7 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
 		822A4A201B9EE2CC0096CA5F /* MyCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouponViewController.h; sourceTree = "<group>"; };
 		822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouponViewController.m; sourceTree = "<group>"; };
 		822A4A251B9FDD7F0096CA5F /* SelectingServiceDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingServiceDateViewController.h; sourceTree = "<group>"; };
@@ -840,6 +849,36 @@
 			name = ArticleModel;
 			sourceTree = "<group>";
 		};
+		8228E8251BBA293A00F5BBB7 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				8228E8261BBA296A00F5BBB7 /* ArticleDetailModel */,
+				821A951C1BB156D100F44790 /* ArticleModel */,
+				82CACB601BB4EAF8001422B8 /* ArticleCatModel */,
+				82CACB581BB3A8DF001422B8 /* ArticleDirectoryModel */,
+				82CACB541BB3A16F001422B8 /* ArticleIndexModel */,
+			);
+			name = Article;
+			sourceTree = "<group>";
+		};
+		8228E8261BBA296A00F5BBB7 /* ArticleDetailModel */ = {
+			isa = PBXGroup;
+			children = (
+				8228E8271BBA29C600F5BBB7 /* ArticleDetailModel.h */,
+				8228E8281BBA29C600F5BBB7 /* ArticleDetailModel.m */,
+			);
+			name = ArticleDetailModel;
+			sourceTree = "<group>";
+		};
+		8228E82D1BBA826400F5BBB7 /* CommentModel */ = {
+			isa = PBXGroup;
+			children = (
+				8228E82E1BBA828F00F5BBB7 /* CommentModel.h */,
+				8228E82F1BBA828F00F5BBB7 /* CommentModel.m */,
+			);
+			name = CommentModel;
+			sourceTree = "<group>";
+		};
 		822A4A1E1B9EDAB60096CA5F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1200,13 +1239,11 @@
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				82CACB601BB4EAF8001422B8 /* ArticleCatModel */,
+				8228E82D1BBA826400F5BBB7 /* CommentModel */,
+				8228E8251BBA293A00F5BBB7 /* Article */,
 				82CACB5C1BB3AAB6001422B8 /* SentenceModel */,
-				82CACB581BB3A8DF001422B8 /* ArticleDirectoryModel */,
-				82CACB541BB3A16F001422B8 /* ArticleIndexModel */,
 				82CACB501BB39933001422B8 /* SquareModel */,
 				82D71B091BAACA75006CFE0D /* UserInfoModel */,
-				821A951C1BB156D100F44790 /* ArticleModel */,
 				828C1D8F1BAA64A100D6FD23 /* BaseModel.h */,
 				828C1D901BAA64A100D6FD23 /* BaseModel.m */,
 			);
@@ -1283,6 +1320,8 @@
 			children = (
 				82D71B061BAAAD5C006CFE0D /* UserInfoModel.h */,
 				82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */,
+				8228E82A1BBA808400F5BBB7 /* UserZoneModel.h */,
+				8228E82B1BBA808400F5BBB7 /* UserZoneModel.m */,
 			);
 			name = UserInfoModel;
 			sourceTree = "<group>";
@@ -1433,6 +1472,7 @@
 				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
 				82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */,
 				820A6F341B95BF18002385A4 /* CarouselCell.m in Sources */,
+				8228E8301BBA828F00F5BBB7 /* CommentModel.m in Sources */,
 				822A4A5F1BA17F6F0096CA5F /* CommentHeaderView.m in Sources */,
 				8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
@@ -1503,6 +1543,7 @@
 				822A4A2F1B9FE6480096CA5F /* SelectingServiceDateCell.m in Sources */,
 				821A951F1BB156F000F44790 /* ArticleModel.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,
+				8228E8291BBA29C600F5BBB7 /* ArticleDetailModel.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
 				822A4A421BA03E120096CA5F /* AdvisoryDetailCommentCell.m in Sources */,
 				820A6F421B969FE6002385A4 /* AdvisoryRootViewController.m in Sources */,
@@ -1524,6 +1565,7 @@
 				822F1D381BA9206700E3D18A /* WXUtil.mm in Sources */,
 				820A6F2C1B95B565002385A4 /* PlazaCell.m in Sources */,
 				829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */,
+				8228E82C1BBA808400F5BBB7 /* UserZoneModel.m in Sources */,
 				822A4A3F1BA03DF60096CA5F /* AdvisoryDetailServiceCell.m in Sources */,
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,
 				820A6F231B953C01002385A4 /* PlazaRootViewController.m in Sources */,

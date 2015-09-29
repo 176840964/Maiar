@@ -17,13 +17,15 @@
 @property (copy, nonatomic) NSString *gender;
 @property (copy, nonatomic) NSString *token;
 
+- (instancetype)initWithModel:(UserInfoModel *)model;
+
 @end
 
 @interface UserInfoViewModel : NSObject <NSCoding>
 
 @property (copy, nonatomic) NSString *uidStr;
 @property (copy, nonatomic) NSString *nickStr;
-@property (strong, nonatomic) UIImage *headImage;
+@property (strong, nonatomic) NSURL *headUrl;
 @property (strong, nonatomic) UIImage *sexImage;
 @property (copy, nonatomic) NSString *tokenStr;
 

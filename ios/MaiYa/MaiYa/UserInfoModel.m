@@ -20,7 +20,7 @@
         self.uidStr = [model.uid stringValue];
         self.nickStr = [model.nick stringValue];
         
-        self.headImage = [UIImage imageNamed:[model.head stringValueIsNullReplaceString:@"defultHead"]];
+        self.headUrl = [NSURL URLWithString:[model.head stringValue]];
         self.tokenStr = [model.token stringValue];
         
         NSString *sexStr = [model.gender stringValue];
@@ -39,7 +39,7 @@
     [aCoder encodeObject:self.uidStr forKey:@"uid"];
     [aCoder encodeObject:self.tokenStr forKey:@"token"];
     [aCoder encodeObject:self.nickStr forKey:@"nick"];
-    [aCoder encodeObject:self.headImage forKey:@"head_image"];
+    [aCoder encodeObject:self.headUrl forKey:@"head_url"];
     [aCoder encodeObject:self.sexImage forKey:@"sex_image"];
 }
 
@@ -48,7 +48,7 @@
         self.uidStr = [aDecoder decodeObjectForKey:@"uid"];
         self.tokenStr = [aDecoder decodeObjectForKey:@"token"];
         self.nickStr = [aDecoder decodeObjectForKey:@"nick"];
-        self.headImage = [aDecoder decodeObjectForKey:@"head_image"];
+        self.headUrl = [aDecoder decodeObjectForKey:@"head_url"];
         self.sexImage = [aDecoder decodeObjectForKey:@"sex_image"];
     }
     
