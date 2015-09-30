@@ -30,7 +30,7 @@
 @property (copy, nonatomic) NSString *distance;
 @property (copy, nonatomic) NSString *soon_money;
 @property (strong, nonatomic) NSDictionary *article;
-@property (strong, nonatomic) NSNumber *today;
+@property (copy, nonatomic) NSString *today;
 @property (copy, nonatomic) NSString *time;
 @property (copy, nonatomic) NSDictionary *comment;
 @property (strong, nonatomic) NSNumber *collect;
@@ -39,28 +39,27 @@
 
 @interface UserZoneViewModel : UserInfoViewModel
 
-@property (copy, nonatomic) NSString *introduceStr;
-@property (strong, nonatomic) NSURL *backgroundUrl;
-@property (copy, nonatomic) NSString *ageStr;
-@property (copy, nonatomic) NSString *shareStr;
-@property (copy, nonatomic) NSString *commentnumStr;
-@property (copy, nonatomic) NSString *commentallStr;
-@property (copy, nonatomic) NSString *typeStr;
-@property (copy, nonatomic) NSString *hourMoneyStr;
-@property (strong, nonatomic) NSNumber *longitudeNum;
-@property (strong, nonatomic) NSString *latitudeNum;
-@property (copy, nonatomic) NSString *immediateStr;
-@property (copy, nonatomic) NSString *balanceStr;
-@property (copy, nonatomic) NSString *incomeStr;
-@property (copy, nonatomic) NSString *withdrawalsStr;
-@property (copy, nonatomic) NSString *idnameStr;
-@property (assign, nonatomic) BOOL *isIdentification;//是否实名认证
-@property (copy, nonatomic) NSString *soonMoneyStr;
-@property (copy, nonatomic) NSString *todayStr;
-@property (copy, nonatomic) NSString *timeStr;
-@property (copy, nonatomic) NSString *isCollected;//是否收藏
-@property (strong, nonatomic) ArticleViewModel *articleViewModel;
-@property (strong, nonatomic) CommentViewModel *commentViewModel;
+@property (copy, nonatomic) NSString *introduceStr;//自我介绍
+@property (strong, nonatomic) NSURL *backgroundUrl;//背景图地址
+@property (copy, nonatomic) NSString *workAgeStr;//工作年限
+@property (copy, nonatomic) NSString *sharedArticleCountStr;//分享文章数量
+@property (copy, nonatomic) NSString *commentCountStr;//评论数量
+@property (copy, nonatomic) NSString *commentAllStr;//总评论
+@property (strong, nonatomic) NSArray *workTypesArr;//类型
+@property (copy, nonatomic) NSString *moneyPerHourStr;//每小时收费金额
+@property (copy, nonatomic) NSString *lonStr;//经度
+@property (copy, nonatomic) NSString *latStr;//纬度
+@property (assign, nonatomic) BOOL isOpenImmediate;//即时咨询：1 关闭 2开启
+@property (copy, nonatomic) NSString *balanceStr;//账户余额
+@property (copy, nonatomic) NSString *incomeStr;//累计收入
+@property (copy, nonatomic) NSString *withdrawalsStr;//累计提现
+@property (copy, nonatomic) NSString *realNameStr;//身份证姓名
+@property (assign, nonatomic) BOOL isIdentification;//是否实名认证
+@property (copy, nonatomic) NSString *soonMoneyStr;//即将到账金额
+@property (strong, nonatomic) NSArray *workTimeStatusArr;//咨询师7天的预约状态
+@property (assign, nonatomic) BOOL isCollected;//是否收藏
+@property (strong, nonatomic) ArticleViewModel *articleViewModel;//分享文章
+@property (strong, nonatomic) CommentViewModel *commentViewModel;//最新评论
 
 - (instancetype)initWithUserZoneModel:(UserZoneModel *)model;
 

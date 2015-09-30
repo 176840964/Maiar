@@ -17,7 +17,7 @@
 @property (copy, nonatomic) NSString *gender;
 @property (copy, nonatomic) NSString *token;
 
-- (instancetype)initWithModel:(UserInfoModel *)model;
+- (instancetype)initWithDic:(NSDictionary *)dic;
 
 @end
 

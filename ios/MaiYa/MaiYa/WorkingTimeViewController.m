@@ -21,20 +21,42 @@
     
     self.labsArr = [self.labsArr sortByUIViewOriginY];
     
-    for (NSInteger index = 0; index < self.labsArr.count; ++index) {
-        NSString *str = [self.testArr objectAtIndex:index];
-        UILabel *lab = [self.labsArr objectAtIndex:index];
-        lab.text = str;
-        
-        if (2 <= index) {
-            [lab alignTop];
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)layoutSubviews {
+    for (NSInteger index = 0; index < self.labsArr.count; ++index) {
+        UILabel *lab = [self.labsArr objectAtIndex:index];
+        
+        switch (index) {
+            case 0:
+                lab.text = [self.dataDic objectForKey:@"week"];
+                break;
+            case 1:
+                lab.text = [self.dataDic objectForKey:@"date"];
+                break;
+            case 2:
+                lab.text = [[self.dataDic objectForKey:@"am"] objectForKey:@"title"];
+                lab.backgroundColor = [[self.dataDic objectForKey:@"am"] objectForKey:@"bgColor"];
+                break;
+            case 3:
+                lab.text = [[self.dataDic objectForKey:@"pm"] objectForKey:@"title"];
+                lab.backgroundColor = [[self.dataDic objectForKey:@"pm"] objectForKey:@"bgColor"];
+                break;
+            default:
+                lab.text = [[self.dataDic objectForKey:@"night"] objectForKey:@"title"];
+                lab.backgroundColor = [[self.dataDic objectForKey:@"night"] objectForKey:@"bgColor"];
+                break;
+        }
+        
+        if (2 <= index) {
+            [lab alignTop];
+        }
+    }
 }
 
 /*

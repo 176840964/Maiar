@@ -141,48 +141,36 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
 
 #pragma mark - Networking
 - (void)getArticleType {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleType" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = responseObject;
-        NSNumber *status = [dic objectForKey:@"status"];
-        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            NSString *str = [dic objectForKey:@"error"];
-            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
-        } else {
-            NSMutableArray *catsArr = [NSMutableArray new];
-            NSArray *resArr = [dic objectForKey:@"res"];
-            for (NSDictionary *catDic in resArr) {
-                ArticleCatModel *model = [[ArticleCatModel alloc] initWithDic:catDic];
-                ArticleCatViewModel *viewModel = [[ArticleCatViewModel alloc] initWithArticleCatModel:model];
-                [catsArr addObject:viewModel];
-            }
-            self.catsArr = [NSArray arrayWithArray:catsArr];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self layoutSubviews];
-            });
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleType" params:nil success:^(id responseObject) {
+        
+        NSMutableArray *catsArr = [NSMutableArray new];
+        NSArray *resArr = [responseObject objectForKey:@"res"];
+        for (NSDictionary *catDic in resArr) {
+            ArticleCatModel *model = [[ArticleCatModel alloc] initWithDic:catDic];
+            ArticleCatViewModel *viewModel = [[ArticleCatViewModel alloc] initWithArticleCatModel:model];
+            [catsArr addObject:viewModel];
         }
+        self.catsArr = [NSArray arrayWithArray:catsArr];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self layoutSubviews];
+        });
     }];
 }
 
 - (void)getArticleTypeListByType:(NSString *)typeStr {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeList" params:@{@"type": typeStr} success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = responseObject;
-        NSNumber *status = [dic objectForKey:@"status"];
-        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            NSString *str = [dic objectForKey:@"error"];
-            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
-        } else {
-            NSMutableArray *resArr = [dic objectForKey:@"res"];
-            for (NSDictionary *dic in resArr) {
-                ArticleModel *model = [[ArticleModel alloc] initWithDic:dic];
-                ArticleViewModel *viewModel = [[ArticleViewModel alloc] initWithArticleModel:model];
-                [self.curDataArr addObject:viewModel];
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.curTableView reloadData];
-            });
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeList" params:@{@"type": typeStr} success:^(id responseObject) {
+        
+        NSMutableArray *resArr = [responseObject objectForKey:@"res"];
+        for (NSDictionary *dic in resArr) {
+            ArticleModel *model = [[ArticleModel alloc] initWithDic:dic];
+            ArticleViewModel *viewModel = [[ArticleViewModel alloc] initWithArticleModel:model];
+            [self.curDataArr addObject:viewModel];
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.curTableView reloadData];
+        });
     }];
 }
 

@@ -91,20 +91,14 @@
 #pragma mark - IBAction
 - (IBAction)onTapMsgBtn:(id)sender {
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getCode" params:@{@"username": self.telNumTextFiled.text, @"type": @"2", @"area_code": @"+86"} success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = responseObject;
-        NSNumber *status = [dic objectForKey:@"status"];
-        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            NSString *str = [dic objectForKey:@"error"];
-            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
-        } else {
-            [self.msgTextFiled becomeFirstResponder];
-            self.msgBtn.backgroundColor = [UIColor lightGrayColor];
-            self.countIndex = 60;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self oneMinuteCountdown];
-            });
-        }
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getCode" params:@{@"username": self.telNumTextFiled.text, @"type": @"2", @"area_code": @"+86"} success:^(id responseObject) {
+        
+        [self.msgTextFiled becomeFirstResponder];
+        self.msgBtn.backgroundColor = [UIColor lightGrayColor];
+        self.countIndex = 60;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self oneMinuteCountdown];
+        });
     }];
 }
 
@@ -113,19 +107,13 @@
     [self.msgTextFiled resignFirstResponder];
     [self.pwTextFiled resignFirstResponder];
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"regist" params:@{@"username": self.telNumTextFiled.text, @"password": [CustomTools md5:self.pwTextFiled.text], @"yzm": self.msgTextFiled.text, @"area_code": @"+86"} success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = responseObject;
-        NSNumber *status = [dic objectForKey:@"status"];
-        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            NSString *str = [dic objectForKey:@"error"];
-            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[HintView getInstance] presentMessage:@"密码修改成功" isAutoDismiss:YES dismissBlock:^{
-                    [self.navigationController popViewControllerAnimated:YES];
-                }];
-            });
-        }
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"regist" params:@{@"username": self.telNumTextFiled.text, @"password": [CustomTools md5:self.pwTextFiled.text], @"yzm": self.msgTextFiled.text, @"area_code": @"+86"} success:^(id responseObject) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[HintView getInstance] presentMessage:@"密码修改成功" isAutoDismiss:YES dismissBlock:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        });
     }];
 }
 

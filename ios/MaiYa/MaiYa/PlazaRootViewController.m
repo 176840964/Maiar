@@ -52,21 +52,15 @@
 
 #pragma mark -
 - (void)getSquareData {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"square" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = responseObject;
-        NSNumber *status = [dic objectForKey:@"status"];
-        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            NSString *str = [dic objectForKey:@"error"];
-            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
-        } else {
-            NSDictionary *resDic = [dic objectForKey:@"res"];
-            SquareModel *model = [[SquareModel alloc] initWithDic:resDic];
-            self.squareViewModel = [[SquareViewModel alloc] initWithSquareModel:model];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self layoutSubviews];
-            });
-        }
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"square" params:nil success:^(id responseObject) {
+        
+        NSDictionary *resDic = [responseObject objectForKey:@"res"];
+        SquareModel *model = [[SquareModel alloc] initWithDic:resDic];
+        self.squareViewModel = [[SquareViewModel alloc] initWithSquareModel:model];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self layoutSubviews];
+        });
     }];
 }
 

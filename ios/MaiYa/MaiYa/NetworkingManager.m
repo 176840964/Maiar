@@ -38,8 +38,20 @@
 //}
 - (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
                                                params:(NSDictionary *)parames
-                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success {
-    return [self GET:@"?" parameters:[self setupParamsByParamesDic:parames andPath:path] success:success failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                              success:(void (^)(id responseObject))success {
+    
+    return [self GET:@"?" parameters:[self setupParamsByParamesDic:parames andPath:path] success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic = responseObject;
+        NSNumber *status = [dic objectForKey:@"status"];
+        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
+            NSString *str = [dic objectForKey:@"error"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
+            });
+        } else {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];
         });

@@ -31,17 +31,11 @@
 
 #pragma mark - NetWorking
 - (void)getArticleTypeInfo {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeInfo" params:@{@"type": self.catIndexStr, @"id": self.articleStr} success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = responseObject;
-        NSNumber *status = [dic objectForKey:@"status"];
-        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            NSString *str = [dic objectForKey:@"error"];
-            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
-        } else {
-            NSDictionary *resDic = [dic objectForKey:@"res"];
-            ArticleDetailModel *model = [[ArticleDetailModel alloc] initWithDic:resDic];
-            self.articleDetailInfo = [[ArticleDetailViewModel alloc] initWithArticleDetailModel:model];
-        }
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeInfo" params:@{@"type": self.catIndexStr, @"id": self.articleStr} success:^(id responseObject) {
+        
+        NSDictionary *resDic = [responseObject objectForKey:@"res"];
+        ArticleDetailModel *model = [[ArticleDetailModel alloc] initWithDic:resDic];
+        self.articleDetailInfo = [[ArticleDetailViewModel alloc] initWithArticleDetailModel:model];
     }];
 }
 

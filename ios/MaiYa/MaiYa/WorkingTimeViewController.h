@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WorkingTimeViewController : UIViewController
-@property (strong, nonatomic) NSArray* testArr;
+@property (strong, nonatomic) NSDictionary* dataDic;
+
+- (void)layoutSubviews;
 @end

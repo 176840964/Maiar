@@ -8,6 +8,7 @@
 
 #import "MyZoneViewController.h"
 #import "WorkingTimeViewController.h"
+#import "UserZoneModel.h"
 
 @interface MyZoneViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
@@ -15,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
-@property (strong, nonatomic) NSMutableArray *testArr;
+@property (strong, nonatomic) UserZoneViewModel *userZoneViewModel;
 
 @end
 
@@ -26,6 +27,8 @@
     self.workingTimeCellView = [self.workingTimeCellView sortByUIViewOriginX];
     
     self.bottomView.hidden = (ZoneViewControllerTypeOfMine == self.type);
+    
+    [self getUserInfo];
 }
 
 - (void)updateViewConstraints {
@@ -36,30 +39,33 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier containsString:@"ShowWorkTime"]) {
+    if ([segue.identifier containsString:@"ShowWorkTime"] && self.userZoneViewModel) {
         NSArray *arr = [segue.identifier componentsSeparatedByString:@"_"];
         NSInteger index = ((NSString*)[arr lastObject]).integerValue;
         
         WorkingTimeViewController *controller = segue.destinationViewController;
-        controller.testArr = [NSArray arrayWithArray:[self.testArr objectAtIndex:index]];
+        controller.dataDic = [NSDictionary dictionaryWithDictionary:[self.userZoneViewModel.workTimeStatusArr objectAtIndex:index]];
     }
 }
 
-- (NSMutableArray *)testArr {
-    if (nil == _testArr) {
-        _testArr = [NSMutableArray new];
+#pragma mark - 
+- (void)layoutWorkingTime {
+//    for (NSInteger index = 0; index < self.workingTimeCellView.count; ++index) {
+//        [self performSegueWithIdentifier:[NSString stringWithFormat:@"ShowWorkTime_%zd", index] sender:self];
+//    }
+}
+
+#pragma mark - Networking
+- (void)getUserInfo {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": @"1"} success:^(id responseObject) {
+        NSDictionary *resDic = [responseObject objectForKey:@"res"];
+        UserZoneModel *model = [[UserZoneModel alloc] initWithDic:resDic];
+        self.userZoneViewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];
         
-        NSArray* arr0 = @[@"一", @"8.20", @"上", @"下", @"晚"];
-        NSArray* arr1 = @[@"二", @"8.21", @"上", @"下", @"晚"];
-        NSArray* arr2 = @[@"三", @"8.22", @"上", @"下", @"晚"];
-        NSArray* arr3 = @[@"四", @"8.23", @"上", @"下", @"晚"];
-        NSArray* arr4 = @[@"五", @"8.24", @"上", @"下", @"晚"];
-        NSArray* arr5 = @[@"六", @"8.25", @"上", @"下", @"晚"];
-        NSArray* arr6 = @[@"日", @"8.26", @"上", @"下", @"晚"];
-        [_testArr addObjectsFromArray:@[arr0, arr1, arr2, arr3, arr4, arr5, arr6]];
-    }
-    
-    return _testArr;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self layoutWorkingTime];
+        });
+    }];
 }
 
 #pragma mark - IBAction

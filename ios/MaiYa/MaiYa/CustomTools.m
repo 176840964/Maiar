@@ -71,4 +71,33 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSString *)weekStringFormIndex:(NSInteger)index {
+    NSString *str = @"";
+    switch (index) {
+        case 1:
+            str = @"日";
+            break;
+        case 2:
+            str = @"一";
+            break;
+        case 3:
+            str = @"二";
+            break;
+        case 4:
+            str = @"三";
+            break;
+        case 5:
+            str = @"四";
+            break;
+        case 6:
+            str = @"五";
+            break;
+        default:
+            str = @"六";
+            break;
+    }
+    
+    return str;
+}
+
 @end

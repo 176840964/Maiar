@@ -54,27 +54,19 @@
 - (IBAction)onTapLoginBtn:(id)sender {
     NSLog(@"pw:%@", [CustomTools md5:self.passwordTextFiled.text]);
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"login" params:@{@"username": self.telNumTextFiled.text, @"password": [CustomTools md5:self.passwordTextFiled.text], @"area_code": @"+86"} success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"login" params:@{@"username": self.telNumTextFiled.text, @"password": [CustomTools md5:self.passwordTextFiled.text], @"area_code": @"+86"} success:^(id responseObject) {
         
-        NSDictionary *dic = responseObject;
-        NSNumber *status = [dic objectForKey:@"status"];
-        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            NSString *str = [dic objectForKey:@"error"];
-            [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
-        } else {
-            NSDictionary *res = [dic objectForKey:@"res"];
-            UserInfoModel *model = [[UserInfoModel alloc] initWithDic:res];
-            UserInfoViewModel *viewModel = [[UserInfoViewModel alloc] initWithModel:model];
-            [UserConfigManager shareManager].userInfo = viewModel;
-            [UserConfigManager shareManager].isLogin = YES;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }];
-            });
-        }
+        NSDictionary *dic = [responseObject objectForKey:@"res"];
+        UserInfoModel *model = [[UserInfoModel alloc] initWithDic:dic];
+        UserInfoViewModel *viewModel = [[UserInfoViewModel alloc] initWithModel:model];
+        [UserConfigManager shareManager].userInfo = viewModel;
+        [UserConfigManager shareManager].isLogin = YES;
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+        });
     }];
 }
 

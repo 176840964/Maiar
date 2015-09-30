@@ -44,6 +44,6 @@
 
 - (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
                                                params:(NSDictionary *)parames
-                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success;
+                                              success:(void (^)(id responseObject))success;
 
 @end

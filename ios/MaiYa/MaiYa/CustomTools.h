@@ -17,5 +17,6 @@
 + (void)simpleAlertShow:(NSString*)title content:(NSString*)content container:(id<UIAlertViewDelegate>)container;
 + (void)alertShow:(NSString*)title content:(NSString*)content cancelBtnTitle:(NSString*)cancelTitle okBtnTitle:(NSString*)okTitle container:(id<UIAlertViewDelegate>)container;
 + (NSString *)dateStringFromUnixTimestamp:(NSInteger)timestamp withFormatString:(NSString *)formatStr;
++ (NSString *)weekStringFormIndex:(NSInteger)index;
 
 @end

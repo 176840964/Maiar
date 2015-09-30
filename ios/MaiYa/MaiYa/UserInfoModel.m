@@ -9,6 +9,13 @@
 #import "UserInfoModel.h"
 
 @implementation UserInfoModel
+- (instancetype)initWithDic:(NSDictionary *)dic {
+    if (self = [super initWithDic:dic]) {
+        
+    }
+    
+    return self;
+}
 
 @end
 
