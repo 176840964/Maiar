@@ -7,12 +7,12 @@
 //
 
 #import "MyZoneViewController.h"
-#import "WorkingTimeViewController.h"
 #import "UserZoneModel.h"
+#import "ZoneWorkingTimeView.h"
 
 @interface MyZoneViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
-@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *workingTimeCellView;
+@property (weak, nonatomic) IBOutlet ZoneWorkingTimeView *zoneWorkingTimeView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
@@ -24,7 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.workingTimeCellView = [self.workingTimeCellView sortByUIViewOriginX];
     
     self.bottomView.hidden = (ZoneViewControllerTypeOfMine == self.type);
     
@@ -39,20 +38,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier containsString:@"ShowWorkTime"] && self.userZoneViewModel) {
-        NSArray *arr = [segue.identifier componentsSeparatedByString:@"_"];
-        NSInteger index = ((NSString*)[arr lastObject]).integerValue;
-        
-        WorkingTimeViewController *controller = segue.destinationViewController;
-        controller.dataDic = [NSDictionary dictionaryWithDictionary:[self.userZoneViewModel.workTimeStatusArr objectAtIndex:index]];
-    }
 }
 
 #pragma mark - 
 - (void)layoutWorkingTime {
-//    for (NSInteger index = 0; index < self.workingTimeCellView.count; ++index) {
-//        [self performSegueWithIdentifier:[NSString stringWithFormat:@"ShowWorkTime_%zd", index] sender:self];
-//    }
+    [self.zoneWorkingTimeView layoutZoneWorkingTimeViewSubviewsByWorkTimeStatusArr:self.userZoneViewModel.workTimeStatusArr];
 }
 
 #pragma mark - Networking

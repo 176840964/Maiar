@@ -43,7 +43,6 @@
 		820D09501B86D71A0054DB66 /* HintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D094F1B86D71A0054DB66 /* HintView.m */; };
 		820D09531B8718D10054DB66 /* MeNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820D09521B8718D10054DB66 /* MeNaviController.m */; };
 		8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */; };
-		8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */; };
 		8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8CB1B9011A50048B27C /* NSArray+sortBy.m */; };
 		8213C8D31B9061340048B27C /* AbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8D21B9061340048B27C /* AbstractViewController.m */; };
 		8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8213C8D51B9061A40048B27C /* MySharingViewController.m */; };
@@ -132,6 +131,8 @@
 		82CACB5F1BB3AACB001422B8 /* SentenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5E1BB3AACB001422B8 /* SentenceModel.m */; settings = {ASSET_TAGS = (); }; };
 		82CACB631BB4EB0A001422B8 /* ArticleCatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */; settings = {ASSET_TAGS = (); }; };
 		82D71B081BAAAD5C006CFE0D /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */; };
+		82E1B9CF1BC60DF7001F9035 /* ZoneWorkingTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9CE1BC60DF7001F9035 /* ZoneWorkingTimeCell.m */; settings = {ASSET_TAGS = (); }; };
+		82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D11BC60E0C001F9035 /* ZoneWorkingTimeView.m */; settings = {ASSET_TAGS = (); }; };
 		C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4EE198D74EE15090FBD86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -215,8 +216,6 @@
 		820D09521B8718D10054DB66 /* MeNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeNaviController.m; sourceTree = "<group>"; };
 		8213C8C41B9008260048B27C /* UILabel+VerticalAlign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+VerticalAlign.h"; sourceTree = "<group>"; };
 		8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+VerticalAlign.m"; sourceTree = "<group>"; };
-		8213C8C71B900DB10048B27C /* WorkingTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingTimeViewController.h; sourceTree = "<group>"; };
-		8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingTimeViewController.m; sourceTree = "<group>"; };
 		8213C8CA1B9011A50048B27C /* NSArray+sortBy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+sortBy.h"; sourceTree = "<group>"; };
 		8213C8CB1B9011A50048B27C /* NSArray+sortBy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+sortBy.m"; sourceTree = "<group>"; };
 		8213C8D11B9061340048B27C /* AbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractViewController.h; sourceTree = "<group>"; };
@@ -383,6 +382,10 @@
 		82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCatModel.m; sourceTree = "<group>"; };
 		82D71B061BAAAD5C006CFE0D /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
+		82E1B9CD1BC60DF7001F9035 /* ZoneWorkingTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneWorkingTimeCell.h; sourceTree = "<group>"; };
+		82E1B9CE1BC60DF7001F9035 /* ZoneWorkingTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneWorkingTimeCell.m; sourceTree = "<group>"; };
+		82E1B9D01BC60E0C001F9035 /* ZoneWorkingTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneWorkingTimeView.h; sourceTree = "<group>"; };
+		82E1B9D11BC60E0C001F9035 /* ZoneWorkingTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneWorkingTimeView.m; sourceTree = "<group>"; };
 		C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA4EE198D74EE15090FBD86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -735,10 +738,9 @@
 				8213C8CF1B905FA30048B27C /* 4.1.2MySharingViewController */,
 				8213C8CE1B905FA00048B27C /* 4.1.3WorkingSettingViewController */,
 				8213C8D01B905FEF0048B27C /* 4.1.4CommentViewController */,
+				82E1B9C91BC60D5F001F9035 /* 4.1.5WorkingTimeView */,
 				821688D91B8AED83000A1B2D /* MyZoneViewController.h */,
 				821688DA1B8AED83000A1B2D /* MyZoneViewController.m */,
-				8213C8C71B900DB10048B27C /* WorkingTimeViewController.h */,
-				8213C8C81B900DB10048B27C /* WorkingTimeViewController.m */,
 			);
 			name = 4.1Zone;
 			sourceTree = "<group>";
@@ -1326,6 +1328,17 @@
 			name = UserInfoModel;
 			sourceTree = "<group>";
 		};
+		82E1B9C91BC60D5F001F9035 /* 4.1.5WorkingTimeView */ = {
+			isa = PBXGroup;
+			children = (
+				82E1B9D01BC60E0C001F9035 /* ZoneWorkingTimeView.h */,
+				82E1B9D11BC60E0C001F9035 /* ZoneWorkingTimeView.m */,
+				82E1B9CD1BC60DF7001F9035 /* ZoneWorkingTimeCell.h */,
+				82E1B9CE1BC60DF7001F9035 /* ZoneWorkingTimeCell.m */,
+			);
+			name = 4.1.5WorkingTimeView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1476,6 +1489,7 @@
 				822A4A5F1BA17F6F0096CA5F /* CommentHeaderView.m in Sources */,
 				8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
+				82E1B9CF1BC60DF7001F9035 /* ZoneWorkingTimeCell.m in Sources */,
 				821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */,
 				820A6F291B955213002385A4 /* PlazaWordCell.m in Sources */,
 				829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */,
@@ -1491,6 +1505,7 @@
 				824CDDA81B7B25B000206E0C /* AppDelegate.m in Sources */,
 				821688F71B8B26AC000A1B2D /* UserInfoCell.m in Sources */,
 				8213C8D31B9061340048B27C /* AbstractViewController.m in Sources */,
+				82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */,
 				821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */,
 				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
 				822A4A451BA03E230096CA5F /* AdvisoryDetailEndCell.m in Sources */,
@@ -1552,7 +1567,6 @@
 				820A6F2F1B95BD15002385A4 /* PlazaHeaderView.m in Sources */,
 				822A4A5C1BA17F0D0096CA5F /* CommentCell.m in Sources */,
 				824CDDA51B7B25B000206E0C /* main.m in Sources */,
-				8213C8C91B900DB10048B27C /* WorkingTimeViewController.m in Sources */,
 				821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */,
 				820A6EEC1B94052E002385A4 /* MySharingCell.m in Sources */,
 				82CACB571BB3A196001422B8 /* ArticleIndexModel.m in Sources */,

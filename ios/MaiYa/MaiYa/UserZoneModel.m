@@ -89,33 +89,37 @@
                 switch (j) {
                     case 0:
                         key = @"am";
-                        title = @"上";
+                        title = @" 上";
                         break;
                     case 1:
                         key = @"pm";
-                        title = @"下";
+                        title = @" 下";
                         break;
                     default:
                         key = @"night";
-                        title = @"晚";
+                        title = @" 晚";
                         break;
                 }
                 
                 UIColor *color = nil;
+                UIColor *titleColor = nil;
                 NSString *subStr = [string substringWithRange:NSMakeRange(j, 1)];
                 switch (subStr.integerValue) {
                     case 1:
                         color = [UIColor colorWithHexString:@"#7bd313"];
+                        titleColor = [UIColor whiteColor];
                         break;
                     case 2:
                         color = [UIColor colorWithHexString:@"#17b5ff"];
+                        titleColor = [UIColor whiteColor];
                         break;
                     default:
-                        color = [UIColor colorWithHexString:@"#8898a5"];
+                        color = [UIColor colorWithHexString:@"#e5edf4"];
+                        titleColor = [UIColor colorWithHexString:@"#a8aaac"];
                         break;
                 }
                 
-                NSDictionary *infoDic = @{@"title": title, @"bgColor": color};
+                NSDictionary *infoDic = @{@"title": title, @"bgColor": color, @"titleColor": titleColor};
                 [dic setValue:infoDic forKey:key];
             }
             
