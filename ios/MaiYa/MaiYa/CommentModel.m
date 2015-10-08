@@ -22,11 +22,11 @@
 
 - (instancetype)initWithCommentModel:(CommentModel *)model {
     if (self = [super init]) {
-        self.cidStr = model.cid;
-        self.uidStr = model.uid;
-        self.contentStr = model.content;
-        self.starNum = [NSNumber numberWithInteger:model.star.integerValue];
-        self.usernameStr = model.username;
+        self.cidStr = [model.cid stringValue];
+        self.uidStr = [model.uid stringValue];
+        self.contentStr = [model.content stringValue];
+        self.starCountStr = [model.star stringValue];
+        self.usernameStr = [NSString stringWithFormat:@"用户：%@", [model.username stringValue]];
         
         self.ctimeStr = [CustomTools dateStringFromUnixTimestamp:[model.ctime stringValue].integerValue withFormatString:@"yyyy年MM月dd日"];
     }

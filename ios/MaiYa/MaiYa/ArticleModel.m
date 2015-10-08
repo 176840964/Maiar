@@ -28,7 +28,7 @@
         self.digestStr = [model.digest stringValue];
         self.imgUrl = [NSURL URLWithString:[model.img stringValue]];
         self.url = [NSURL URLWithString:[model.url stringValue]];
-        self.readStr = [model.read stringValue];
+        self.readStr = [NSString stringWithFormat:@"阅读%@", [model.read stringValue]];
         self.praiseStr = [model.praise stringValue];
         self.nickStr = [model.nick stringValue];
         self.headUrl = [NSURL URLWithString:[model.url stringValue]];

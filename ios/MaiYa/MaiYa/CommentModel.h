@@ -22,7 +22,7 @@
 @property (copy, nonatomic) NSString *cidStr;
 @property (copy, nonatomic) NSString *uidStr;
 @property (copy, nonatomic) NSString *contentStr;
-@property (strong, nonatomic) NSNumber *starNum;
+@property (copy, nonatomic) NSString *starCountStr;
 @property (copy, nonatomic) NSString *ctimeStr;
 @property (copy, nonatomic) NSString *usernameStr;
 

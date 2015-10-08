@@ -18,19 +18,25 @@
 - (instancetype)initWithUserZoneModel:(UserZoneModel *)model {
     if (self = [super init]) {
         if ([model.gender isEqualToString:@"1"]) {
-            self.sexImage = [UIImage imageNamed:@"man2"];
+            self.sexImage = [UIImage imageNamed:@"man3"];
         } else {
-            self.sexImage = [UIImage imageNamed:@"woman2"];
+            self.sexImage = [UIImage imageNamed:@"woman3"];
         }
         
         self.nickStr = [model.nick stringValue];
         self.introduceStr = [model.introduce stringValue];
         self.headUrl = [NSURL URLWithString:[model.head stringValue]];
-        self.backgroundUrl = [NSURL URLWithString:[model.background stringValue]];
-        self.workAgeStr = [model.age stringValue];
-        self.sharedArticleCountStr = [model.share stringValue];
-        self.commentCountStr = [model.commentnum stringValue];
-        self.commentAllStr = [model.commentall stringValue];
+        self.topImageUrl = [NSURL URLWithString:[model.background stringValue]];
+        self.nickAndWorkAgeStr = [NSString stringWithFormat:@"%@ | %@", [model.nick stringValue], [model.age stringValue]];
+        self.sharedArticleCountStr = [NSString stringWithFormat:@"(%@)", [model.share stringValue]];
+        
+        NSString *commentStr = [NSString stringWithFormat:@"总评价%@(%@次)", [model.commentall stringValue], [model.commentnum stringValue]];
+        NSRange range = [commentStr rangeOfString:@"("];
+        self.commentStr = [[NSMutableAttributedString alloc] initWithString:commentStr];
+        [self.commentStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.5]} range:NSMakeRange(0, range.location)];
+        [self.commentStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10], NSForegroundColorAttributeName: [UIColor colorWithHexString:@"#8898a5"]} range:NSMakeRange(range.location, commentStr.length - range.location)];
+        
+        self.commentCountStr = [NSString stringWithFormat:@"(%@)", [model.commentnum stringValue]];
         
         NSMutableArray *workTypesArr = [NSMutableArray new];
         NSArray *typesArr = [model.type componentsSeparatedByString:@"/"];
@@ -51,18 +57,20 @@
         }
         self.workTypesArr = [NSArray arrayWithArray:workTypesArr];
         
-        self.moneyPerHourStr = model.hour_money;
-        self.lonStr = model.longitude;
-        self.latStr = model.latitude;
+        self.moneyPerHourStr = [NSString stringWithFormat:@"%@/小时", [model.hour_money stringValue]];
+        self.lonStr = [model.longitude stringValue];
+        self.latStr = [model.latitude stringValue];
+        self.distanceStr = [model.distance stringValue];
         self.isOpenImmediate = [model.immediate isEqualToString:@"2"];
         
-        self.balanceStr = model.balance;
-        self.incomeStr = model.income;
-        self.withdrawalsStr = model.withdrawals;
-        self.realNameStr = model.idname;
+        self.balanceStr = [model.balance stringValue];
+        self.incomeStr = [model.income stringValue];
+        self.withdrawalsStr = [model.withdrawals stringValue];
+        self.realNameStr = [model.idname stringValue];
         self.isIdentification = [model.id_status isEqualToString:@"1"];
         self.soonMoneyStr = [model.soon_money stringValue];
-        self.isCollected = [model.collect isEqualToNumber:[NSNumber numberWithInteger:1]];
+        self.isCollected = [model.collect_is isEqualToNumber:[NSNumber numberWithInteger:1]];
+        self.beCollectedCountStr = [model.collect stringValue];
         
         ArticleModel *article = [[ArticleModel alloc] initWithDic:model.article];
         self.articleViewModel = [[ArticleViewModel alloc] initWithArticleModel:article];

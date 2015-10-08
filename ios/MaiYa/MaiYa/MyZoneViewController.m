@@ -12,9 +12,44 @@
 
 @interface MyZoneViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
-@property (weak, nonatomic) IBOutlet ZoneWorkingTimeView *zoneWorkingTimeView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *topImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
+@property (weak, nonatomic) IBOutlet UILabel *locationLab;
+
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *sexImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLab;
+@property (weak, nonatomic) IBOutlet UIImageView *redHeartView;
+@property (weak, nonatomic) IBOutlet UILabel *colletedCountLab;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *workTypeLabsArr;
+@property (weak, nonatomic) IBOutlet UILabel *commentLab;
+@property (weak, nonatomic) IBOutlet UILabel *pricePerHourLab;
+
+@property (weak, nonatomic) IBOutlet UIButton *introduceSettingBtn;
+@property (weak, nonatomic) IBOutlet UITextView *introduceTxtView;
+
+@property (weak, nonatomic) IBOutlet UIButton *myShareSettingBtn;
+@property (weak, nonatomic) IBOutlet UILabel *shareArticlesCountLab;
+@property (weak, nonatomic) IBOutlet UIImageView *articleImageView;
+@property (weak, nonatomic) IBOutlet UILabel *articleTitleLab;
+@property (weak, nonatomic) IBOutlet UILabel *articleDigestLab;
+@property (weak, nonatomic) IBOutlet UILabel *articleDateLab;
+@property (weak, nonatomic) IBOutlet UILabel *articleReadCountLab;
+@property (weak, nonatomic) IBOutlet UILabel *articleGoodCountLab;
+
+@property (weak, nonatomic) IBOutlet UIButton *workingTimeSettingBtn;
+@property (weak, nonatomic) IBOutlet ZoneWorkingTimeView *workingTimeView;
+
+@property (weak, nonatomic) IBOutlet UILabel *commentCountLab;
+@property (weak, nonatomic) IBOutlet UILabel *commentDateLab;
+@property (weak, nonatomic) IBOutlet UILabel *commentUserLab;
+@property (weak, nonatomic) IBOutlet UILabel *commentContentLab;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *commentStarArr;
+
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+
 
 @property (strong, nonatomic) UserZoneViewModel *userZoneViewModel;
 
@@ -26,6 +61,12 @@
     [super viewDidLoad];
     
     self.bottomView.hidden = (ZoneViewControllerTypeOfMine == self.type);
+    self.introduceSettingBtn.hidden = self.bottomView.hidden;
+    self.myShareSettingBtn.hidden = self.bottomView.hidden;
+    self.workingTimeSettingBtn.hidden = self.bottomView.hidden;
+    
+    self.workTypeLabsArr = [self.workTypeLabsArr sortByUIViewOriginX];
+    self.commentStarArr = [self.commentStarArr sortByUIViewOriginX];
     
     [self getUserInfo];
 }
@@ -42,7 +83,67 @@
 
 #pragma mark - 
 - (void)layoutWorkingTime {
-    [self.zoneWorkingTimeView layoutZoneWorkingTimeViewSubviewsByWorkTimeStatusArr:self.userZoneViewModel.workTimeStatusArr];
+    [self.topImageView setImageWithURL:self.userZoneViewModel.topImageUrl placeholderImage:[UIImage imageNamed:@"testZoneTopImage"]];
+    self.locationLab.text = self.userZoneViewModel.distanceStr;
+    
+    CGRect rect = [self.locationLab textRectForBounds:self.locationLab.frame limitedToNumberOfLines:1];
+    self.locationLab.width = CGRectGetWidth(rect);
+    self.locationLab.x = self.view.width - self.locationLab.width - 8;
+    self.locationImageView.x = self.locationLab.x - self.locationImageView.width;
+    
+    [self.headImageView setImageWithURL:self.userZoneViewModel.headUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    self.sexImageView.image = self.userZoneViewModel.sexImage;
+    self.nameLab.text = self.userZoneViewModel.nickAndWorkAgeStr;
+    
+    self.colletedCountLab.text = self.userZoneViewModel.beCollectedCountStr;
+    rect = [self.colletedCountLab textRectForBounds:self.colletedCountLab.frame limitedToNumberOfLines:1];
+    self.colletedCountLab.width = CGRectGetWidth(rect);
+    self.colletedCountLab.x = self.view.width - self.colletedCountLab.width - 12;
+    self.redHeartView.x = self.colletedCountLab.x - self.redHeartView.width - 2;
+    
+    for (NSInteger index = 0; index < self.workTypeLabsArr.count; ++index) {
+        UILabel *lab = [self.workTypeLabsArr objectAtIndex:index];
+        NSDictionary *dic = [self.userZoneViewModel.workTypesArr objectAtIndex:index];
+        if (!dic) {
+            lab.hidden = YES;
+        } else {
+            lab.hidden = NO;
+            lab.text = [dic objectForKey:@"text"];
+            lab.backgroundColor = [dic objectForKey:@"bgColor"];
+            lab.font = [dic objectForKey:@"font"];
+        }
+    }
+    self.commentLab.attributedText = self.userZoneViewModel.commentStr;
+    self.pricePerHourLab.text = self.userZoneViewModel.moneyPerHourStr;
+    
+    self.introduceTxtView.text = self.userZoneViewModel.introduceStr;
+    
+    self.shareArticlesCountLab.text = self.userZoneViewModel.sharedArticleCountStr;
+    [self.articleImageView setImageWithURL:self.userZoneViewModel.articleViewModel.imgUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    self.articleTitleLab.text = self.userZoneViewModel.articleViewModel.titleStr;
+    self.articleDigestLab.text = self.userZoneViewModel.articleViewModel.digestStr;
+    self.articleDateLab.text = self.userZoneViewModel.articleViewModel.ctimeStr;
+    self.articleReadCountLab.text = self.userZoneViewModel.articleViewModel.readStr;
+    self.articleGoodCountLab.text = self.userZoneViewModel.articleViewModel.praiseStr;
+    
+    [self.workingTimeView layoutZoneWorkingTimeViewSubviewsByWorkTimeStatusArr:self.userZoneViewModel.workTimeStatusArr];
+    
+    self.commentCountLab.text = self.userZoneViewModel.commentCountStr;
+    self.commentDateLab.text = self.userZoneViewModel.commentViewModel.ctimeStr;
+    self.commentUserLab.text = self.userZoneViewModel.commentViewModel.usernameStr;
+    self.commentContentLab.text = self.userZoneViewModel.commentViewModel.contentStr;
+    [self layoutCommentStarByStarCountStr:self.userZoneViewModel.commentViewModel.starCountStr];
+}
+
+- (void)layoutCommentStarByStarCountStr:(NSString *)starCountStr {
+    for (NSInteger index = 0; index < self.commentStarArr.count; ++index) {
+        UIImageView* imgView = [self.commentStarArr objectAtIndex:index];
+        if (index < starCountStr.integerValue) {
+            imgView.image = [UIImage imageNamed:@"smallStar1"];
+        } else {
+            imgView.image = [UIImage imageNamed:@"smallStar0"];
+        }
+    }
 }
 
 #pragma mark - Networking
