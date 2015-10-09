@@ -13,9 +13,11 @@
 - (instancetype)initWithTimestampStr:(NSString *)timestamp andCustomString:(NSString *)customStr {
     if (self = [super init]) {
         self.timestampStr = timestamp;
-        NSString *dateStr = [CustomTools dateStringFromUnixTimestamp:self.timestampStr.integerValue withFormatString:@"yyyy年MM月dd日"];
-        NSString *weekStr = [CustomTools dateStringFromUnixTimestamp:self.timestampStr.integerValue withFormatString:@"e"];
-        self.theFullTimeStr = [NSString stringWithFormat:@"%@周%@", dateStr, weekStr];
+        NSString *fullDateStr = [CustomTools dateStringFromUnixTimestamp:self.timestampStr.integerValue withFormatString:@"yyyy年MM月dd日"];
+        self.weekStr = [CustomTools dateStringFromUnixTimestamp:self.timestampStr.integerValue withFormatString:@"e"];
+        self.weekStr = [CustomTools weekStringFormIndex:self.weekStr.integerValue];
+        self.dateStr = [CustomTools dateStringFromUnixTimestamp:self.timestampStr.integerValue withFormatString:@"MM.dd"];
+        self.theFullTimeStr = [NSString stringWithFormat:@"%@周%@", fullDateStr, self.weekStr];
         
         NSMutableArray *arr = [NSMutableArray new];
         for (NSInteger index = 0; index < customStr.length; ++index) {
@@ -23,7 +25,7 @@
             [arr addObject:subStr];
         }
         
-        self.horlyStateArr = [NSArray arrayWithArray:arr];
+        self.horlyStateArr = [NSMutableArray arrayWithArray:arr];
     }
     
     return self;

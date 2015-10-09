@@ -10,9 +10,11 @@
 
 @interface ConsultantDailyViewModel : NSObject
 
-@property (copy, nonatomic) NSString *theFullTimeStr;
 @property (copy, nonatomic) NSString *timestampStr;
-@property (strong, nonatomic) NSArray *horlyStateArr;
+@property (copy, nonatomic) NSString *theFullTimeStr;
+@property (copy, nonatomic) NSString *weekStr;
+@property (copy, nonatomic) NSString *dateStr;
+@property (strong, nonatomic) NSMutableArray *horlyStateArr;
 
 - (instancetype)initWithTimestampStr:(NSString *)timestamp andCustomString:(NSString *)customStr;
 @end

@@ -20,7 +20,17 @@
         self.todayTimestampStr = model.today.stringValue;
         
         NSMutableArray *arr = [NSMutableArray new];
-        for (NSString *keyStr in model.time.allKeys) {
+        NSArray *allKeys = [model.time.allKeys sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            if ([obj1 integerValue] > [obj2 integerValue]) {
+                return NSOrderedDescending;
+            } else if ([obj1 integerValue] > [obj2 integerValue]) {
+                return NSOrderedAscending;
+            } else {
+                return NSOrderedSame;
+            }
+        }];
+        
+        for (NSString *keyStr in allKeys) {
             NSString *valueStr = [model.time objectForKey:keyStr];
             ConsultantDailyViewModel *daily = [[ConsultantDailyViewModel alloc] initWithTimestampStr:keyStr andCustomString:valueStr];
             [arr addObject:daily];

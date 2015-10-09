@@ -10,4 +10,7 @@
 
 @interface WorkingTimeCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UIImageView *markImageView;
+
 @end

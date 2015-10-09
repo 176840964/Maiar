@@ -20801,15 +20801,15 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBG-TO-Bea" customClass="WorkingDateCell">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSE-76-yxG">
-                                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYP-pL-uuq">
                                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSE-76-yxG">
+                                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -20828,8 +20828,8 @@
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="subviews">
-                                                        <exclude reference="cSE-76-yxG"/>
                                                         <exclude reference="dYP-pL-uuq"/>
+                                                        <exclude reference="cSE-76-yxG"/>
                                                     </mask>
                                                     <mask key="constraints">
                                                         <exclude reference="H9F-0e-MSP"/>
@@ -20845,8 +20845,8 @@
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="subviews">
-                                                        <include reference="cSE-76-yxG"/>
                                                         <include reference="dYP-pL-uuq"/>
+                                                        <include reference="cSE-76-yxG"/>
                                                     </mask>
                                                     <mask key="constraints">
                                                         <include reference="H9F-0e-MSP"/>
@@ -22644,7 +22644,7 @@
         <segue reference="JDl-KK-l6G"/>
         <segue reference="bJp-eb-u4M"/>
         <segue reference="aCv-kO-hrx"/>
-        <segue reference="XEl-TR-64l"/>
+        <segue reference="JEI-Hl-r2e"/>
         <segue reference="wOU-v5-FQV"/>
         <segue reference="mxu-Ep-7Vo"/>
     </inferredMetricsTieBreakers>

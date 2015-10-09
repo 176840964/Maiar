@@ -15,6 +15,12 @@
 
 @implementation WorkingDateCell
 
+- (void)layoutWorkingDateCellSubviewsByDailyViewModel:(ConsultantDailyViewModel *)dailyViewModel {
+    self.dailyViewModel = dailyViewModel;
+    self.weekLab.text = dailyViewModel.weekStr;
+    self.dateLab.text = dailyViewModel.dateStr;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

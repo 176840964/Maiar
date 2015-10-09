@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ConsultantDailyViewModel.h"
 
 @interface WorkingDateCell : UIControl
+@property (strong, nonatomic) ConsultantDailyViewModel *dailyViewModel;
+
+- (void)layoutWorkingDateCellSubviewsByDailyViewModel:(ConsultantDailyViewModel *)dailyViewModel;
 
 @end

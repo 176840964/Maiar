@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^TapSelectedDateHandle)(NSNumber *indexNum);
+
 @interface WorkingDateView : UIView
 
-- (void)layoutWorkingDateViewSubviews;
+@property (copy, nonatomic) TapSelectedDateHandle selectedDateHandle;
+
+- (void)layoutWorkingDateViewSubviewsByDateArr:(NSArray *)arr;
 
 @end
