@@ -61,9 +61,9 @@
     [super viewDidLoad];
     
     self.bottomView.hidden = (ZoneViewControllerTypeOfMine == self.type);
-    self.introduceSettingBtn.hidden = self.bottomView.hidden;
-    self.myShareSettingBtn.hidden = self.bottomView.hidden;
-    self.workingTimeSettingBtn.hidden = self.bottomView.hidden;
+    self.introduceSettingBtn.hidden = !self.bottomView.hidden;
+    self.myShareSettingBtn.hidden = !self.bottomView.hidden;
+    self.workingTimeSettingBtn.hidden = !self.bottomView.hidden;
     
     self.workTypeLabsArr = [self.workTypeLabsArr sortByUIViewOriginX];
     self.commentStarArr = [self.commentStarArr sortByUIViewOriginX];

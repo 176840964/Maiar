@@ -133,6 +133,8 @@
 		82D71B081BAAAD5C006CFE0D /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */; };
 		82E1B9CF1BC60DF7001F9035 /* ZoneWorkingTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9CE1BC60DF7001F9035 /* ZoneWorkingTimeCell.m */; settings = {ASSET_TAGS = (); }; };
 		82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D11BC60E0C001F9035 /* ZoneWorkingTimeView.m */; settings = {ASSET_TAGS = (); }; };
+		82E1B9D61BC77324001F9035 /* ConsultantTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D51BC77324001F9035 /* ConsultantTimeModel.m */; settings = {ASSET_TAGS = (); }; };
+		82E1B9D91BC77B91001F9035 /* ConsultantDailyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D81BC77B91001F9035 /* ConsultantDailyViewModel.m */; settings = {ASSET_TAGS = (); }; };
 		C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4EE198D74EE15090FBD86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -386,6 +388,10 @@
 		82E1B9CE1BC60DF7001F9035 /* ZoneWorkingTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneWorkingTimeCell.m; sourceTree = "<group>"; };
 		82E1B9D01BC60E0C001F9035 /* ZoneWorkingTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneWorkingTimeView.h; sourceTree = "<group>"; };
 		82E1B9D11BC60E0C001F9035 /* ZoneWorkingTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneWorkingTimeView.m; sourceTree = "<group>"; };
+		82E1B9D41BC77324001F9035 /* ConsultantTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultantTimeModel.h; sourceTree = "<group>"; };
+		82E1B9D51BC77324001F9035 /* ConsultantTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultantTimeModel.m; sourceTree = "<group>"; };
+		82E1B9D71BC77B91001F9035 /* ConsultantDailyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultantDailyViewModel.h; sourceTree = "<group>"; };
+		82E1B9D81BC77B91001F9035 /* ConsultantDailyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultantDailyViewModel.m; sourceTree = "<group>"; };
 		C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA4EE198D74EE15090FBD86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1241,6 +1247,7 @@
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82E1B9D31BC772EC001F9035 /* ConsultantTimeModel */,
 				8228E82D1BBA826400F5BBB7 /* CommentModel */,
 				8228E8251BBA293A00F5BBB7 /* Article */,
 				82CACB5C1BB3AAB6001422B8 /* SentenceModel */,
@@ -1337,6 +1344,17 @@
 				82E1B9CE1BC60DF7001F9035 /* ZoneWorkingTimeCell.m */,
 			);
 			name = 4.1.5WorkingTimeView;
+			sourceTree = "<group>";
+		};
+		82E1B9D31BC772EC001F9035 /* ConsultantTimeModel */ = {
+			isa = PBXGroup;
+			children = (
+				82E1B9D41BC77324001F9035 /* ConsultantTimeModel.h */,
+				82E1B9D51BC77324001F9035 /* ConsultantTimeModel.m */,
+				82E1B9D71BC77B91001F9035 /* ConsultantDailyViewModel.h */,
+				82E1B9D81BC77B91001F9035 /* ConsultantDailyViewModel.m */,
+			);
+			name = ConsultantTimeModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1544,11 +1562,13 @@
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
 				82150F181B9C516300CFDE80 /* FillterView.m in Sources */,
 				822A4A271B9FDD7F0096CA5F /* SelectingServiceDateViewController.m in Sources */,
+				82E1B9D61BC77324001F9035 /* ConsultantTimeModel.m in Sources */,
 				820C0B1E1B8EF1D6005E85D4 /* MasterCell.m in Sources */,
 				82CACB531BB3995D001422B8 /* SquareModel.m in Sources */,
 				82150F211B9DBDEC00CFDE80 /* AdvisoryDetailTimeCell.m in Sources */,
 				8213C8DC1B9061FC0048B27C /* CommentViewController.m in Sources */,
 				820A6EFA1B94400D002385A4 /* WorkingTimeCell.m in Sources */,
+				82E1B9D91BC77B91001F9035 /* ConsultantDailyViewModel.m in Sources */,
 				821688FD1B8B2B22000A1B2D /* UserNameViewController.m in Sources */,
 				820A6F071B946339002385A4 /* WithdrawalRulesViewController.m in Sources */,
 				822A4A331BA03D300096CA5F /* AdvisoryDetailNumCell.m in Sources */,
