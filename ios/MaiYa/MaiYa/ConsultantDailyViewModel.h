@@ -15,6 +15,9 @@
 @property (copy, nonatomic) NSString *weekStr;
 @property (copy, nonatomic) NSString *dateStr;
 @property (strong, nonatomic) NSMutableArray *horlyStateArr;
+@property (copy, nonatomic) NSString *originalHorlyStateStr;
+@property (copy, nonatomic) NSString *updateHorlyStateStr;
+@property (assign, nonatomic) BOOL isNeedToUpdate;
 
 - (instancetype)initWithTimestampStr:(NSString *)timestamp andCustomString:(NSString *)customStr;
 @end

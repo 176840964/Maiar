@@ -30,6 +30,7 @@
     [self getWorkingTime];
     
     self.dateView.selectedDateHandle = ^(NSNumber *indexNum) {
+        [self saveWorkingTimeBySelectedDaily:self.selectedDailyViewModel];//切换时更新
         self.selectedDailyViewModel = [self.timeViewModel.dailyArr objectAtIndex:indexNum.integerValue];
         [self.tableView reloadData];
     };
@@ -51,6 +52,14 @@
             [self.dateView layoutWorkingDateViewSubviewsByDateArr:self.timeViewModel.dailyArr];
         });
     }];
+}
+
+- (void)saveWorkingTimeBySelectedDaily:(ConsultantDailyViewModel *)selectedDaily {
+    if (selectedDaily && selectedDaily.isNeedToUpdate) {
+        [[NetworkingManager shareManager] networkingWithGetMethodPath:@"editUserTime" params:@{@"uid": @"1", @"time": selectedDaily.timestampStr, @"time_slot": selectedDaily.updateHorlyStateStr} success:^(id responseObject) {
+            
+        }];
+    }
 }
 
 /*

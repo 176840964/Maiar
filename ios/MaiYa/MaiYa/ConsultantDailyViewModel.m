@@ -13,6 +13,7 @@
 - (instancetype)initWithTimestampStr:(NSString *)timestamp andCustomString:(NSString *)customStr {
     if (self = [super init]) {
         self.timestampStr = timestamp;
+        self.originalHorlyStateStr = customStr;
         NSString *fullDateStr = [CustomTools dateStringFromUnixTimestamp:self.timestampStr.integerValue withFormatString:@"yyyy年MM月dd日"];
         self.weekStr = [CustomTools dateStringFromUnixTimestamp:self.timestampStr.integerValue withFormatString:@"e"];
         self.weekStr = [CustomTools weekStringFormIndex:self.weekStr.integerValue];
@@ -29,6 +30,15 @@
     }
     
     return self;
+}
+
+- (BOOL)isNeedToUpdate {
+    self.updateHorlyStateStr = @"";
+    for (NSString *str in self.horlyStateArr) {
+        self.updateHorlyStateStr = [NSString stringWithFormat:@"%@%@", self.updateHorlyStateStr, str];
+    }
+    
+    return ![self.updateHorlyStateStr isEqualToString:self.originalHorlyStateStr];
 }
 
 @end
