@@ -11,6 +11,7 @@
 
 @interface MySharingViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak ,nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *articleArr;
 @end
 
 @implementation MySharingViewController
@@ -21,11 +22,33 @@
     
     UINib *cellNib = [UINib nibWithNibName:@"MySharingCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"MySharingCell"];
+    
+    [self getMyArticlesList];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 
+- (void)getMyArticlesList {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeList" params:@{@"uid": uid} success:^(id responseObject) {
+        NSArray *resArr = [responseObject objectForKey:@"res"];
+        self.articleArr = [NSMutableArray new];
+        for (NSDictionary *dic in resArr) {
+            ArticleModel *model = [[ArticleModel alloc] initWithDic:dic];
+            ArticleViewModel *viewModel = [[ArticleViewModel alloc] initWithArticleModel:model];
+            [self.articleArr addObject:viewModel];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 /*
@@ -40,11 +63,14 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.articleArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MySharingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MySharingCell"];
+    
+    ArticleViewModel* viewModel = [self.articleArr objectAtIndex:indexPath.row];
+    [cell layoutMySharingCellSubviewsByArticleViewModel:viewModel];
     
     return cell;
 }

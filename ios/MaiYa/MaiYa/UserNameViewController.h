@@ -10,4 +10,6 @@
 
 @interface UserNameViewController : BaseViewController
 
+@property (copy, nonatomic) NSString *nickStr;
+
 @end

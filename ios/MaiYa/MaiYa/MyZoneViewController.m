@@ -9,6 +9,7 @@
 #import "MyZoneViewController.h"
 #import "UserZoneModel.h"
 #import "ZoneWorkingTimeView.h"
+#import "AbstractViewController.h"
 
 @interface MyZoneViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
@@ -67,7 +68,10 @@
     
     self.workTypeLabsArr = [self.workTypeLabsArr sortByUIViewOriginX];
     self.commentStarArr = [self.commentStarArr sortByUIViewOriginX];
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self getUserInfo];
 }
 
@@ -79,6 +83,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
+    if ([segue.identifier isEqualToString:@"ShowAbstractViewController"]) {
+        AbstractViewController *controller = segue.destinationViewController;
+        controller.abstractStr = self.introduceTxtView.text;
+    }
 }
 
 #pragma mark - 
@@ -122,7 +130,7 @@
     [self.articleImageView setImageWithURL:self.userZoneViewModel.articleViewModel.imgUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
     self.articleTitleLab.text = self.userZoneViewModel.articleViewModel.titleStr;
     self.articleDigestLab.text = self.userZoneViewModel.articleViewModel.digestStr;
-    self.articleDateLab.text = self.userZoneViewModel.articleViewModel.ctimeStr;
+    self.articleDateLab.text = [CustomTools dateStringFromTodayUnixTimestamp:self.userZoneViewModel.todayTimestampStr.integerValue andOtherTimestamp:self.userZoneViewModel.articleViewModel.timestampStr.integerValue];
     self.articleReadCountLab.text = self.userZoneViewModel.articleViewModel.readStr;
     self.articleGoodCountLab.text = self.userZoneViewModel.articleViewModel.praiseStr;
     
@@ -148,6 +156,7 @@
 
 #pragma mark - Networking
 - (void)getUserInfo {
+#warning test cid
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": @"1"} success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         UserZoneModel *model = [[UserZoneModel alloc] initWithDic:resDic];

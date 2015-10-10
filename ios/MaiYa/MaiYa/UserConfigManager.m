@@ -109,7 +109,12 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     [manager stopUpdatingLocation];
     CLLocation *location = locations.firstObject;
-    NSLog(@"经度:%f, 纬度:%f", location.coordinate.latitude, location.coordinate.longitude);
+    NSString *lon = [NSString stringWithFormat:@"%f" ,location.coordinate.longitude];
+    NSString *lat = [NSString stringWithFormat:@"%f" ,location.coordinate.latitude];
+    NSLog(@"经度:%@, 纬度:%@", lat, lon);
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"coordinate" params:@{@"uid": self.userInfo.uidStr, @"longitude": lon, @"latitude": lat} success:^(id responseObject) {
+    }];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

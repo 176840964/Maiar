@@ -100,4 +100,15 @@
     return str;
 }
 
++ (NSString *)dateStringFromTodayUnixTimestamp:(NSInteger)todayTime andOtherTimestamp:(NSInteger)otherTime {
+    if (todayTime - otherTime < 0) {
+        return [self dateStringFromUnixTimestamp:otherTime withFormatString:@"HH:mm"];
+    } else if (todayTime - otherTime <= 3600 * 24) {
+        NSString *string = [self dateStringFromUnixTimestamp:otherTime withFormatString:@"HH:mm"];
+        return [NSString stringWithFormat:@"昨天 %@", string];
+    } else {
+        return [self dateStringFromUnixTimestamp:otherTime withFormatString:@"MM月dd日 HH:mm"];
+    }
+}
+
 @end

@@ -35,7 +35,7 @@
     self.titleLab.text = viewModel.titleStr;
     self.digestLab.text = viewModel.digestStr;
     self.nickLab.text = viewModel.nickStr;
-    self.timeLab.text = viewModel.ctimeStr;
+    self.timeLab.text = viewModel.timestampStr;
     self.readLab.text = viewModel.readStr;
     self.praiseLab.text = viewModel.praiseStr;
 }

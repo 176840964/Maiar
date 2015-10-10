@@ -64,10 +64,11 @@
     _type = type;
     switch (type) {
         case MeHeaderTypeOfLogin:
-            self.userHeadPortrait.image = [UIImage imageNamed:@"login_bg"];
-            self.userNameLab.text = @"废腿小能手";
+            [self.userHeadPortrait setImageWithURL:[UserConfigManager shareManager].userInfo.headUrl placeholderImage:[UIImage imageNamed:@"defulteHead"]];
+            self.userNameLab.text = [UserConfigManager shareManager].userInfo.nickStr;
             self.editInfoIcon.hidden = NO;
             self.userSexIcon.hidden = NO;
+            self.userSexIcon.image = [UserConfigManager shareManager].userInfo.sexImage;
             break;
             
         case MeHeaderTypeOfLogout:

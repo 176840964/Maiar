@@ -18,7 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.index = 0;
+    self.index = [self.sexStr isEqualToString:@"男"] ? 0 : 1;
+}
+
+#pragma mark - 
+- (void)editSex {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"editUserInfo" params:@{@"uid": uid, @"gender": @(self.index + 1)} success:^(id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -41,7 +51,7 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.index = indexPath.row;
-    [tableView reloadData];
+    [self editSex];
 }
 
 @end

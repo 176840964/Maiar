@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSString *nickStr;
 @property (strong, nonatomic) NSURL *headUrl;
 @property (strong, nonatomic) UIImage *sexImage;
+@property (copy, nonatomic) NSString *sexStr;
 @property (copy, nonatomic) NSString *tokenStr;
 
 - (instancetype)initWithModel:(UserInfoModel *)model;

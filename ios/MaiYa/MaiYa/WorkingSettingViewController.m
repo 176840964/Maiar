@@ -29,11 +29,13 @@
     
     [self getWorkingTime];
     
+    __weak typeof(self) weakSelf = self;
     self.dateView.selectedDateHandle = ^(NSNumber *indexNum) {
-        [self saveWorkingTimeBySelectedDaily:self.selectedDailyViewModel];//切换时更新
-        self.selectedDailyViewModel = [self.timeViewModel.dailyArr objectAtIndex:indexNum.integerValue];
-        [self.tableView reloadData];
+        [weakSelf saveWorkingTimeBySelectedDaily:weakSelf.selectedDailyViewModel];//切换时更新
+        weakSelf.selectedDailyViewModel = [weakSelf.timeViewModel.dailyArr objectAtIndex:indexNum.integerValue];
+        [weakSelf.tableView reloadData];
     };
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,15 +64,18 @@
     }
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    __weak typeof(self) weakSelf = self;
+    self.tapNaviRightBtnHandler = ^() {
+        [weakSelf saveWorkingTimeBySelectedDaily:weakSelf.selectedDailyViewModel];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    };
+    
+    [super prepareForSegue:segue sender:sender];
 }
-*/
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

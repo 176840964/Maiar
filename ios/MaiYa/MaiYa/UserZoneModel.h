@@ -11,6 +11,7 @@
 #import "ArticleModel.h"
 
 @interface UserZoneModel : UserInfoModel
+@property (copy, nonatomic) NSString *username;
 @property (copy, nonatomic) NSString *introduce;
 @property (copy, nonatomic) NSString *background;
 @property (copy, nonatomic) NSString *age;
@@ -40,6 +41,7 @@
 
 @interface UserZoneViewModel : UserInfoViewModel
 
+@property (copy, nonatomic) NSString *usernameStr;//手机号
 @property (copy, nonatomic) NSString *introduceStr;//自我介绍
 @property (strong, nonatomic) NSURL *topImageUrl;//背景图地址
 @property (copy, nonatomic) NSString *nickAndWorkAgeStr;//时间和工作年限
@@ -58,6 +60,7 @@
 @property (copy, nonatomic) NSString *realNameStr;//身份证姓名
 @property (assign, nonatomic) BOOL isIdentification;//是否实名认证
 @property (copy, nonatomic) NSString *soonMoneyStr;//即将到账金额
+@property (copy, nonatomic) NSString *todayTimestampStr;//今天0点时间挫
 @property (strong, nonatomic) NSArray *workTimeStatusArr;//咨询师7天的预约状态
 @property (assign, nonatomic) BOOL isCollected;//是否收藏
 @property (copy, nonatomic) NSString *beCollectedCountStr;

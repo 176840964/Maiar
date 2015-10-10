@@ -10,4 +10,6 @@
 
 @interface AbstractViewController : BaseViewController
 
+@property (copy, nonatomic) NSString *abstractStr;
+
 @end

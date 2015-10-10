@@ -10,4 +10,6 @@
 
 @interface UserSexViewController : BaseViewController
 
+@property (copy, nonatomic) NSString *sexStr;
+
 @end

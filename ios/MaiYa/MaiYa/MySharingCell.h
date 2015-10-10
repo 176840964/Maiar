@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArticleModel.h"
 
 @interface MySharingCell : UITableViewCell
+
+- (void)layoutMySharingCellSubviewsByArticleViewModel:(ArticleViewModel *)articleViewModel;
 
 @end

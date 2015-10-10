@@ -17,9 +17,13 @@
 
 - (instancetype)initWithUserZoneModel:(UserZoneModel *)model {
     if (self = [super init]) {
+        self.usernameStr = model.username;
+        
         if ([model.gender isEqualToString:@"1"]) {
+            self.sexStr = @"男";
             self.sexImage = [UIImage imageNamed:@"man3"];
         } else {
+            self.sexStr = @"女";
             self.sexImage = [UIImage imageNamed:@"woman3"];
         }
         
@@ -135,6 +139,8 @@
         }
         
         self.workTimeStatusArr = [NSArray arrayWithArray:workTimeStatusArr];
+        
+        self.todayTimestampStr = model.today;
     }
     
     return self;

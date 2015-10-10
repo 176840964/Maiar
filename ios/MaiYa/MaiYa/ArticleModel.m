@@ -35,7 +35,7 @@
         self.uidStr = [model.uid stringValue];
         self.typeStr = [model.type stringValue];
         
-        self.ctimeStr = [CustomTools dateStringFromUnixTimestamp:[model.ctime stringValue].integerValue withFormatString:@"EEa HH:mm"];
+        self.timestampStr = [model.ctime stringValue];
     }
     
     return self;

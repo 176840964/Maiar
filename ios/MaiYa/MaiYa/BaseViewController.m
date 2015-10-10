@@ -31,8 +31,8 @@
         controller.tapBackBtnHandler = ^() {
             [weakSelf.navigationController popViewControllerAnimated:YES];
         };
-        controller.tapRightBtnHandler = self.TapNaviRightBtnHandler;
-        controller.tapRightSecondBtnHandler = self.TapNaviRightSecondBtnHandler;
+        controller.tapRightBtnHandler = self.tapNaviRightBtnHandler;
+        controller.tapRightSecondBtnHandler = self.tapNaviRightSecondBtnHandler;
     }
 }
 

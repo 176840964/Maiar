@@ -22,7 +22,7 @@
     __weak typeof(self) weakSelf = self;
     
     self.headerView = [[MeHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 219)];
-    self.headerView.type = MeHeaderTypeOfLogout;
+    self.headerView.type = [UserConfigManager shareManager].isLogin ? MeHeaderTypeOfLogin : MeHeaderTypeOfLogout;
     self.headerView.tapUserHeadPortraitHandler = ^() {
         if (MeHeaderTypeOfLogout == self.headerView.type) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:nil];

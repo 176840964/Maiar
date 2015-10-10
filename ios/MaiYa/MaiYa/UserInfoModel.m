@@ -32,13 +32,22 @@
         
         NSString *sexStr = [model.gender stringValue];
         if ([sexStr isEqualToString:@"1"]) {
-            self.sexImage = [UIImage imageNamed:@"man1"];
+            self.sexStr = @"男";
         } else {
-            self.sexImage = [UIImage imageNamed:@"woman1"];
+            self.sexStr = @"女";
         }
     }
     
     return self;
+}
+
+- (void)setSexStr:(NSString *)sexStr {
+    _sexStr = sexStr;
+    if ([_sexStr isEqualToString:@"男"]) {
+        self.sexImage = [UIImage imageNamed:@"man1"];
+    } else {
+        self.sexImage = [UIImage imageNamed:@"woman1"];
+    }
 }
 
 #pragma mark - NSCoding
@@ -48,6 +57,7 @@
     [aCoder encodeObject:self.nickStr forKey:@"nick"];
     [aCoder encodeObject:self.headUrl forKey:@"head_url"];
     [aCoder encodeObject:self.sexImage forKey:@"sex_image"];
+    [aCoder encodeObject:self.sexStr forKey:@"sex"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -57,6 +67,7 @@
         self.nickStr = [aDecoder decodeObjectForKey:@"nick"];
         self.headUrl = [aDecoder decodeObjectForKey:@"head_url"];
         self.sexImage = [aDecoder decodeObjectForKey:@"sex_image"];
+        self.sexStr = [aDecoder decodeObjectForKey:@"sex"];
     }
     
     return self;

@@ -32,7 +32,7 @@
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic) NSString *readStr;
 @property (copy, nonatomic) NSString *praiseStr;
-@property (copy, nonatomic) NSString *ctimeStr;
+@property (copy, nonatomic) NSString *timestampStr;
 @property (copy, nonatomic) NSString *nickStr;
 @property (strong, nonatomic) NSURL *headUrl;
 @property (copy, nonatomic) NSString *uidStr;
