@@ -10,6 +10,6 @@
 
 @interface CommentHeaderView : UIView
 
-- (void)layoutCommentHeaderViewSubviews;
+- (void)layoutCommentHeaderViewSubviewsCountString:(NSString *)countStr andAllValueString:(NSString *)allValueStr;
 
 @end

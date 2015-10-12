@@ -10,6 +10,7 @@
 #import "UserZoneModel.h"
 #import "ZoneWorkingTimeView.h"
 #import "AbstractViewController.h"
+#import "CommentViewController.h"
 
 @interface MyZoneViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
@@ -86,6 +87,10 @@
     if ([segue.identifier isEqualToString:@"ShowAbstractViewController"]) {
         AbstractViewController *controller = segue.destinationViewController;
         controller.abstractStr = self.introduceTxtView.text;
+    } else if ([segue.identifier isEqualToString:@"ShowCommentViewController"]) {
+        CommentViewController *controller = segue.destinationViewController;
+        controller.countStr = self.userZoneViewModel.commentNumStr;
+        controller.allValueStr = self.userZoneViewModel.commentAllOnlyNumStr;
     }
 }
 

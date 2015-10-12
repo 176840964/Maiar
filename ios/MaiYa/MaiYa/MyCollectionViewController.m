@@ -23,16 +23,39 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"MasterCell"];
     
     self.dataArr = [NSMutableArray new];
+    
+    [self getCollectList];
+}
+
+#pragma mark - 
+- (void)getCollectList {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"collectList" params:@{@"uid": uid} success:^(id responseObject) {
+        NSArray *resDic = [responseObject objectForKey:@"res"];
+        for (NSDictionary *dic in resDic) {
+            UserZoneModel *model = [[UserZoneModel alloc] initWithDic:dic];
+            UserZoneViewModel *viewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];
+            [self.dataArr addObject:viewModel];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MasterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MasterCell"];
-    
+    UserZoneViewModel *viewModel = [self.dataArr objectAtIndex:indexPath.row];
+    [cell layoutMasterCellSubviewsByUserZoneViewModel:viewModel];
     return cell;
 }
 

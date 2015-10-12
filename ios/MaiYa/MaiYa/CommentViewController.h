@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface CommentViewController : BaseViewController
+@property (copy, nonatomic) NSString *countStr;
+@property (copy, nonatomic) NSString *allValueStr;
 
 @end

@@ -34,6 +34,7 @@
         NSMutableArray *arr = [NSMutableArray new];
         for (NSInteger index = 0; index < 5; ++index) {
             UIImageView *star = [UIImageView newAutoLayoutView];
+            star.image = [UIImage imageNamed:@"smallStar0"];
             [self addSubview:star];
             [arr addObject:star];
         }
@@ -45,15 +46,15 @@
     return self;
 }
 
-- (void)layoutCommentHeaderViewSubviews {
-    for (NSInteger index = 0; index < 5; ++index) {
+- (void)layoutCommentHeaderViewSubviewsCountString:(NSString *)countStr andAllValueString:(NSString *)allValueStr {
+    self.scroeLab.text = allValueStr;
+    
+    for (NSInteger index = 0; index < allValueStr.integerValue; ++index) {
         UIImageView* star = [self.starArr objectAtIndex:index];
         star.image = [UIImage imageNamed:@"smallStar1"];
     }
     
-    self.scroeLab.text = @"5.0";
-    
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"总评价（105次）"];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"总评价%@", countStr]];
     [str addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.5], NSForegroundColorAttributeName: [UIColor blackColor]} range:NSMakeRange(0, 3)];
     [str addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10], NSForegroundColorAttributeName: [UIColor colorWithHexString:@"#8898a5"]} range:NSMakeRange(3, str.length - 3)];
     self.countLab.attributedText = str;

@@ -12,10 +12,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *headImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *sexImageView;
 @property (nonatomic, weak) IBOutlet UILabel *nameLab;
-@property (nonatomic, weak) IBOutlet UILabel *workAgeLab;
-@property (nonatomic, weak) IBOutlet UILabel *markLab1;
-@property (nonatomic, weak) IBOutlet UILabel *markLab2;
-@property (nonatomic, weak) IBOutlet UILabel *markLab3;
+@property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *workTypeLabsArr;
 @property (nonatomic, weak) IBOutlet UILabel *evaluationLab;
 @property (nonatomic, weak) IBOutlet UILabel *evaluationCountLab;
 @property (nonatomic, weak) IBOutlet UILabel *locationLab;
@@ -33,6 +30,31 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)layoutMasterCellSubviewsByUserZoneViewModel:(UserZoneViewModel *)userViewModel {
+    [self.headImageView setImageWithURL:userViewModel.headUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    self.sexImageView.image = userViewModel.sexImage;
+    self.nameLab.attributedText = userViewModel.nickAndWorkAgeAttributedStr;
+    self.evaluationLab.text = userViewModel.commentAllStr;
+    self.evaluationCountLab.text = userViewModel.commentNumStr;
+    
+    self.workTypeLabsArr = [self.workTypeLabsArr sortByUIViewOriginX];
+    for (NSInteger index = 0; index < self.workTypeLabsArr.count; ++index) {
+        UILabel *lab = [self.workTypeLabsArr objectAtIndex:index];
+        NSDictionary *dic = [userViewModel.workTypesArr objectAtIndex:index];
+        if (!dic) {
+            lab.hidden = YES;
+        } else {
+            lab.hidden = NO;
+            lab.text = [dic objectForKey:@"text"];
+            lab.backgroundColor = [dic objectForKey:@"bgColor"];
+            lab.font = [dic objectForKey:@"font"];
+        }
+    }
+    
+    self.locationLab.text = userViewModel.distanceStr;
+    self.priceLab.text = userViewModel.moneyPerHourStr;
 }
 
 @end

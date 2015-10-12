@@ -31,11 +31,22 @@
         self.introduceStr = [model.introduce stringValue];
         self.headUrl = [NSURL URLWithString:[model.head stringValue]];
         self.topImageUrl = [NSURL URLWithString:[model.background stringValue]];
-        self.nickAndWorkAgeStr = [NSString stringWithFormat:@"%@ | %@", [model.nick stringValue], [model.age stringValue]];
         self.sharedArticleCountStr = [NSString stringWithFormat:@"(%@)", [model.share stringValue]];
         
+        self.nickAndWorkAgeStr = [NSString stringWithFormat:@"%@ | %@", [model.nick stringValue], [model.age stringValue]];
+        
+        NSString *nickAndAgeStr = [NSString stringWithFormat:@"%@(%@)", [model.nick stringValue], [model.age stringValue]];
+        self.nickAndWorkAgeAttributedStr = [[NSMutableAttributedString alloc] initWithString:nickAndAgeStr];
+        NSRange range = [nickAndAgeStr rangeOfString:@"("];
+        [self.nickAndWorkAgeAttributedStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} range:NSMakeRange(0, range.location)];
+        [self.nickAndWorkAgeAttributedStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.5], NSForegroundColorAttributeName: [UIColor colorWithHexString:@"#8898a5"]} range:NSMakeRange(range.location, nickAndAgeStr.length - range.location)];
+        
+        self.commentAllOnlyNumStr = [model.commentall stringValue];
+        self.commentAllStr = [NSString stringWithFormat:@"总评价%@", [model.commentall stringValue]];
+        self.commentNumStr = [NSString stringWithFormat:@"(%@次)", [model.commentnum stringValue]];
+        
         NSString *commentStr = [NSString stringWithFormat:@"总评价%@(%@次)", [model.commentall stringValue], [model.commentnum stringValue]];
-        NSRange range = [commentStr rangeOfString:@"("];
+        range = [commentStr rangeOfString:@"("];
         self.commentStr = [[NSMutableAttributedString alloc] initWithString:commentStr];
         [self.commentStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.5]} range:NSMakeRange(0, range.location)];
         [self.commentStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10], NSForegroundColorAttributeName: [UIColor colorWithHexString:@"#8898a5"]} range:NSMakeRange(range.location, commentStr.length - range.location)];

@@ -12,6 +12,7 @@
 
 @interface CommentViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *dateArr;
 @end
 
 @implementation CommentViewController
@@ -20,14 +21,35 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.dateArr = [NSMutableArray new];
+    
     CommentHeaderView *headerView = [[CommentHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), 45)];
-    [headerView layoutCommentHeaderViewSubviews];
+    [headerView layoutCommentHeaderViewSubviewsCountString:self.countStr andAllValueString:self.allValueStr];
     self.tableView.tableHeaderView = headerView;
+    
+    [self getCommentList];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+- (void)getCommentList {
+#warning test uid
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"commentList" params:@{@"uid": @"1"} success:^(id responseObject) {
+        NSArray *listArr = [[responseObject objectForKey:@"res"] objectForKey:@"list"];
+        for (NSDictionary *dic in listArr) {
+            CommentModel *model = [[CommentModel alloc] initWithDic:dic];
+            CommentViewModel *viewModel = [[CommentViewModel alloc] initWithCommentModel:model];
+            [self.dateArr addObject:viewModel];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 /*
@@ -42,11 +64,14 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dateArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+    
+    CommentViewModel *viewModel = [self.dateArr objectAtIndex:indexPath.row];
+    [cell layoutCommentCellSubviewsByCommentViewModel:viewModel];
     
     return cell;
 }
