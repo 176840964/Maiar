@@ -19,6 +19,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.starArr = [self.starArr sortByUIViewOriginX];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,7 +33,6 @@
     self.userLab.text = viewModel.usernameStr;
     self.contentLab.text = viewModel.contentStr;
     
-    self.starArr = [self.starArr sortByUIViewOriginX];
     for (NSInteger index = 0; index < self.starArr.count; ++index) {
         UIImageView *imageView = [self.starArr objectAtIndex:index];
         if (viewModel.starCountStr.integerValue > index) {
