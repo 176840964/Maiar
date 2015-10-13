@@ -14,7 +14,6 @@
 
 @interface UserInfoViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) UIImage *selectedImage;
 @property (strong, nonatomic) UserZoneViewModel *userInfoViewModel;
 @end
 
@@ -83,6 +82,13 @@
     }];
 }
 
+- (void)editUserHeadWithImage:(UIImage *)selectedImage {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+    [[NetworkingManager shareManager] uploadImageForEditUserInfoWithUid:uid userInfoKey:@"head" image:selectedImage success:^(id responseObject) {
+        NSLog(@"responseObject=======:%@", responseObject);
+    }];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 4;
@@ -130,9 +136,10 @@
 
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    self.selectedImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    UIImage *selectedImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
     [picker dismissViewControllerAnimated:YES completion:^{
+        [self editUserHeadWithImage:selectedImage];
     }];
 }
 

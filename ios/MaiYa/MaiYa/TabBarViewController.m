@@ -46,8 +46,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if ([UserConfigManager shareManager].isLogin) {
+    if ([UserConfigManager shareManager].isLogin && [UserConfigManager shareManager].isLaunching) {
         self.selectedIndex = 1;
+        [UserConfigManager shareManager].isLaunching = NO;
     }
 }
 

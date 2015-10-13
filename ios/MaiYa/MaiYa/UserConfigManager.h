@@ -12,7 +12,8 @@
 @interface UserConfigManager : NSObject <NSCoding>
 
 @property (strong, nonatomic) UserInfoViewModel *userInfo;
-@property (assign, nonatomic) BOOL isLogin;
+@property (assign, nonatomic) BOOL isLogin;//是否登录
+@property (assign, nonatomic) BOOL isLaunching;//是否刚刚启动应用
 
 + (instancetype)shareManager;
 

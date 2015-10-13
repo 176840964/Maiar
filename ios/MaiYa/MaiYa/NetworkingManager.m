@@ -53,12 +53,39 @@
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"error:%@", error);
             [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];
         });
     }];
 }
 
-#pragma mark - 
+//修改用户信息相关的上传图片
+- (NSURLSessionDataTask*)uploadImageForEditUserInfoWithUid:(NSString*)uid
+                                                   userInfoKey:(NSString *)editKey
+                                                         image:(UIImage *)image
+                                                       success:(void (^)(id responseObject))success {
+    
+    self.requestSerializer = [AFJSONRequestSerializer serializer];//申明请求的数据是json类型
+    
+    NSData *data = UIImageJPEGRepresentation(image, 1);
+    
+    return [self POST:@"?m=home&c=User&a=editUserInfo"
+           parameters:@{@"uid": uid}
+constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFormData:data name:editKey];
+    }
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                  success(responseObject);
+              }
+              failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      NSLog(@"error:%@", error);
+                      [[HintView getInstance] presentMessage:@"图片上传失败" isAutoDismiss:YES dismissBlock:nil];
+                  });
+    }];
+}
+
+#pragma mark -
 - (NSDictionary *)setupParamsByParamesDic:(NSDictionary *)paramesDic andPath:(NSString *)path{
     NSMutableDictionary *dic = [NSMutableDictionary new];
     [dic setObject:@"home" forKey:@"m"];
