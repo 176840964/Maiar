@@ -78,12 +78,12 @@
         self.distanceStr = [model.distance stringValue];
         self.isOpenImmediate = [model.immediate isEqualToString:@"2"];
         
-        self.balanceStr = [model.balance stringValue];
-        self.incomeStr = [model.income stringValue];
-        self.withdrawalsStr = [model.withdrawals stringValue];
+        self.balanceStr = [NSString stringWithFormat:@"%@.00", [model.balance stringValue]];
+        self.incomeStr = [NSString stringWithFormat:@"%@.00", [model.income stringValue]];
+        self.withdrawalsStr = [NSString stringWithFormat:@"%@.00", [model.withdrawals stringValue]];
         self.realNameStr = [model.idname stringValue];
         self.isIdentification = [model.id_status isEqualToString:@"1"];
-        self.soonMoneyStr = [model.soon_money stringValue];
+        self.soonMoneyStr = [NSString stringWithFormat:@"即将到账%@.00元", [model.soon_money stringValue]];
         self.isCollected = [model.collect_is isEqualToNumber:[NSNumber numberWithInteger:1]];
         self.beCollectedCountStr = [model.collect stringValue];
         

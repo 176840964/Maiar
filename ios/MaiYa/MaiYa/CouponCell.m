@@ -10,6 +10,7 @@
 
 @interface CouponCell ()
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 @property (weak, nonatomic) IBOutlet UIImageView *selectedIcon;
 @end
@@ -26,11 +27,10 @@
     // Configure the view for the selected state
 }
 
-- (void)layoutCouponCellSubviews {
-    NSMutableAttributedString *priceAttributedText = [[NSMutableAttributedString alloc] initWithString:@"￥10"];
-    [priceAttributedText setAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:26]} range:NSMakeRange(0, 1)];
-    [priceAttributedText setAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:50]} range:NSMakeRange(1, priceAttributedText.length - 1)];
-    self.priceLab.attributedText = priceAttributedText;
+- (void)layoutCouponCellSubviewsByCouponsViewModel:(CouponsViewModel *)viewModel {
+    self.priceLab.attributedText = viewModel.moneyAttrStr;
+    self.titleLab.text = viewModel.titleStr;
+    self.dateLab.text = viewModel.validTimeStr;
 }
 
 @end

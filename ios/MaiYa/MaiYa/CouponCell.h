@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CouponsModel.h"
 
 @interface CouponCell : UITableViewCell
 
-- (void)layoutCouponCellSubviews;
+- (void)layoutCouponCellSubviewsByCouponsViewModel:(CouponsViewModel *)viewModel;
 
 @end
