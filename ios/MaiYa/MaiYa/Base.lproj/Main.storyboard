@@ -15535,7 +15535,9 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝账号:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EW-CT-jBf">
                                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="100" id="tMq-rR-als"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="tMq-rR-als">
+                                                                        <variation key="heightClass=regular-widthClass=compact" constant="110"/>
+                                                                    </constraint>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.44705882352941179" green="0.50196078431372548" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
@@ -15607,7 +15609,9 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收款人姓名:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5z-1H-R4Y">
                                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="100" id="Ze2-Rn-5oN"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="Ze2-Rn-5oN">
+                                                                        <variation key="heightClass=regular-widthClass=compact" constant="110"/>
+                                                                    </constraint>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.44705882349999998" green="0.50196078430000002" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -15679,7 +15683,9 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提现金额(元):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ij8-qu-4y9">
                                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="100" id="kmK-vv-zIi"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="kmK-vv-zIi">
+                                                                        <variation key="heightClass=regular-widthClass=compact" constant="110"/>
+                                                                    </constraint>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.44705882349999998" green="0.50196078430000002" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -15773,7 +15779,7 @@
                                                             </mask>
                                                         </variation>
                                                         <connections>
-                                                            <segue destination="mfA-NE-adm" kind="show" id="Umu-nR-YNQ"/>
+                                                            <action selector="onTapZhifubaoCommitBtn:" destination="RLy-MU-hCY" eventType="touchUpInside" id="8bD-nt-Qm5"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -16295,7 +16301,7 @@
                                                             </mask>
                                                         </variation>
                                                         <connections>
-                                                            <segue destination="mfA-NE-adm" kind="show" id="aCv-kO-hrx"/>
+                                                            <action selector="onTapBankCommitBtn:" destination="RLy-MU-hCY" eventType="touchUpInside" id="pB5-Dy-opc"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -16520,9 +16526,18 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="backBtnTitle" value="我的钱包"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="aliAccoutTextField" destination="0Dt-rk-cm6" id="0Fv-pa-lRr"/>
+                        <outlet property="aliMoneyTextField" destination="XKa-Xc-v9Q" id="Wdt-pj-X3T"/>
+                        <outlet property="aliNameTextField" destination="17V-PG-bIF" id="fqg-Gh-iXp"/>
+                        <outlet property="bankAddrLab" destination="ltf-E3-Rys" id="TtW-Gn-pO1"/>
+                        <outlet property="bankCardTextField" destination="LxL-I6-MrO" id="Fpm-u8-cW1"/>
+                        <outlet property="bankMoneyTextField" destination="e6r-Bf-SOx" id="Tn6-W6-dmb"/>
+                        <outlet property="bankNameLab" destination="kil-ZK-tTe" id="VVd-1J-5U3"/>
+                        <outlet property="bankUserNameField" destination="kZO-gh-F4s" id="Zqz-6J-LCJ"/>
                         <outlet property="markView" destination="e47-yj-1oq" id="5U9-Bc-cwi"/>
                         <outlet property="scrollView" destination="YiQ-GP-kOJ" id="xyx-Z4-2l1"/>
                         <outlet property="widthConstraint" destination="hej-Ls-4Rc" id="isS-iT-1a8"/>
+                        <segue destination="mfA-NE-adm" kind="show" identifier="ShowCommitSuccessViewController" id="raK-BO-Qkz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWI-P8-qvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22667,8 +22682,7 @@
         <segue reference="wOU-v5-FQV"/>
         <segue reference="mxu-Ep-7Vo"/>
         <segue reference="bJp-eb-u4M"/>
-        <segue reference="jTG-GI-y3F"/>
-        <segue reference="aCv-kO-hrx"/>
+        <segue reference="fCL-OT-Bdl"/>
         <segue reference="JDl-KK-l6G"/>
     </inferredMetricsTieBreakers>
 </document>

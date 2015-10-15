@@ -87,15 +87,6 @@
     }];
 }
 
-- (void)getApplyMoney {
-    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getAppleyMoney" params:@{@"uid": uid} success:^(id responseObject) {
-        
-    }];
-}
-
 #pragma mark - IBAction
 - (IBAction)onTapInfoBtn:(id)sender {
     self.markView.transform = CGAffineTransformIdentity;
@@ -108,7 +99,11 @@
 }
 
 - (IBAction)onTapWithdrawalsBtn:(id)sender {
-    
+    if (self.userZoneViewModel.isIdentification) {
+        [self performSegueWithIdentifier:@"ShowWithdrawalViewController" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"ShowRealInfoComfirmViewController" sender:self];
+    }
 }
 
 #pragma mark - UITableViewDataSource

@@ -7,11 +7,27 @@
 //
 
 #import "WithdrawalViewController.h"
+#import "ApplyMoneyModel.h"
 
 @interface WithdrawalViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *markView;
+
+//zhifubao
+@property (weak, nonatomic) IBOutlet UITextField *aliAccoutTextField;
+@property (weak, nonatomic) IBOutlet UITextField *aliNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *aliMoneyTextField;
+
+//bank
+@property (weak, nonatomic) IBOutlet UILabel *bankNameLab;
+@property (weak, nonatomic) IBOutlet UILabel *bankAddrLab;
+@property (weak, nonatomic) IBOutlet UITextField *bankCardTextField;
+@property (weak, nonatomic) IBOutlet UITextField *bankUserNameField;
+@property (weak, nonatomic) IBOutlet UITextField *bankMoneyTextField;
+
+@property (strong, nonatomic) ApplyMoneyViewModel *applyMoneyViewModel;
+
 @end
 
 @implementation WithdrawalViewController
@@ -19,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self getApplyMoney];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,6 +49,34 @@
     self.widthConstraint.constant = self.view.width * 2;
 }
 
+#pragma mark - 
+- (void)layoutSubviews {
+    if (self.applyMoneyViewModel.isBankPay) {
+        [self onTapBankCardBtn:nil];
+    } else {
+        [self onTapZhifubaoBtn:nil];
+    }
+    
+    self.aliMoneyTextField.placeholder = self.applyMoneyViewModel.balanceStr;
+    self.bankMoneyTextField.placeholder = self.applyMoneyViewModel.balanceStr;
+}
+
+#pragma mark - NetWorking
+- (void)getApplyMoney {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getApplyMoney" params:@{@"uid": uid} success:^(id responseObject) {
+        NSDictionary *resDic = [responseObject objectForKey:@"res"];
+        ApplyMoneyModel *model = [[ApplyMoneyModel alloc] initWithDic:resDic];
+        self.applyMoneyViewModel = [[ApplyMoneyViewModel alloc] initWithApplyMoneyModel:model];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self layoutSubviews];
+        });
+    }];
+}
+
 #pragma mark - IBAction
 - (IBAction)onTapZhifubaoBtn:(id)sender {
     self.markView.transform = CGAffineTransformIdentity;
@@ -40,6 +86,14 @@
 - (IBAction)onTapBankCardBtn:(id)sender {
     self.markView.transform = CGAffineTransformMakeTranslation(self.view.width / 2.0, 0);
     [self.scrollView setContentOffset:CGPointMake(self.view.width, 0) animated:YES];
+}
+
+- (IBAction)onTapZhifubaoCommitBtn:(id)sender {
+    [self performSegueWithIdentifier:@"ShowCommitSuccessViewController" sender:self];
+}
+
+- (IBAction)onTapBankCommitBtn:(id)sender {
+    [self performSegueWithIdentifier:@"ShowCommitSuccessViewController" sender:self];
 }
 
 /*
