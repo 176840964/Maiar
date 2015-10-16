@@ -128,6 +128,8 @@
 		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; settings = {ASSET_TAGS = (); }; };
 		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; settings = {ASSET_TAGS = (); }; };
 		82C166311BCE5EC800F79D38 /* ApplyMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166301BCE5EC800F79D38 /* ApplyMoneyModel.m */; settings = {ASSET_TAGS = (); }; };
+		82C166351BCFBECE00F79D38 /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166341BCFBECE00F79D38 /* BankModel.m */; settings = {ASSET_TAGS = (); }; };
+		82C166381BCFBEE400F79D38 /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166371BCFBEE400F79D38 /* AreaModel.m */; settings = {ASSET_TAGS = (); }; };
 		82CACB531BB3995D001422B8 /* SquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB521BB3995D001422B8 /* SquareModel.m */; settings = {ASSET_TAGS = (); }; };
 		82CACB571BB3A196001422B8 /* ArticleIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB561BB3A196001422B8 /* ArticleIndexModel.m */; settings = {ASSET_TAGS = (); }; };
 		82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5A1BB3A910001422B8 /* ArticleDirectoryModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -381,6 +383,10 @@
 		82C1662C1BCE500300F79D38 /* CouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsModel.m; sourceTree = "<group>"; };
 		82C1662F1BCE5EC800F79D38 /* ApplyMoneyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyMoneyModel.h; sourceTree = "<group>"; };
 		82C166301BCE5EC800F79D38 /* ApplyMoneyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyMoneyModel.m; sourceTree = "<group>"; };
+		82C166331BCFBECE00F79D38 /* BankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankModel.h; sourceTree = "<group>"; };
+		82C166341BCFBECE00F79D38 /* BankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankModel.m; sourceTree = "<group>"; };
+		82C166361BCFBEE400F79D38 /* AreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaModel.h; sourceTree = "<group>"; };
+		82C166371BCFBEE400F79D38 /* AreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaModel.m; sourceTree = "<group>"; };
 		82CACB511BB3995D001422B8 /* SquareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareModel.h; sourceTree = "<group>"; };
 		82CACB521BB3995D001422B8 /* SquareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareModel.m; sourceTree = "<group>"; };
 		82CACB551BB3A196001422B8 /* ArticleIndexModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleIndexModel.h; sourceTree = "<group>"; };
@@ -1258,6 +1264,7 @@
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82C166321BCFBEBC00F79D38 /* Bank */,
 				82C1662E1BCE5EB200F79D38 /* ApplyMoneyModel */,
 				82C1662A1BCE4FDF00F79D38 /* CouponsModel */,
 				82E1B9D31BC772EC001F9035 /* ConsultantTimeModel */,
@@ -1308,6 +1315,17 @@
 				82C166301BCE5EC800F79D38 /* ApplyMoneyModel.m */,
 			);
 			name = ApplyMoneyModel;
+			sourceTree = "<group>";
+		};
+		82C166321BCFBEBC00F79D38 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				82C166331BCFBECE00F79D38 /* BankModel.h */,
+				82C166341BCFBECE00F79D38 /* BankModel.m */,
+				82C166361BCFBEE400F79D38 /* AreaModel.h */,
+				82C166371BCFBEE400F79D38 /* AreaModel.m */,
+			);
+			name = Bank;
 			sourceTree = "<group>";
 		};
 		82CACB501BB39933001422B8 /* SquareModel */ = {
@@ -1550,6 +1568,7 @@
 				822A4A591BA1645D0096CA5F /* PayViewController.m in Sources */,
 				821688C91B8ACE65000A1B2D /* MeHeaderView.m in Sources */,
 				824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */,
+				82C166381BCFBEE400F79D38 /* AreaModel.m in Sources */,
 				820D09501B86D71A0054DB66 /* HintView.m in Sources */,
 				820A6EF31B9439BE002385A4 /* WorkingDateCell.m in Sources */,
 				8213C8D91B9061E40048B27C /* WorkingSettingViewController.m in Sources */,
@@ -1611,6 +1630,7 @@
 				820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */,
 				822A4A2F1B9FE6480096CA5F /* SelectingServiceDateCell.m in Sources */,
 				821A951F1BB156F000F44790 /* ArticleModel.m in Sources */,
+				82C166351BCFBECE00F79D38 /* BankModel.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,
 				8228E8291BBA29C600F5BBB7 /* ArticleDetailModel.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,

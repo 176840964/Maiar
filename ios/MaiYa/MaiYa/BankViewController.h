@@ -7,7 +7,13 @@
 //
 
 #import "BaseViewController.h"
+#import "BankCell.h"
+
+typedef void(^DidSelectedBandHandle)(BankViewModel *);
 
 @interface BankViewController : BaseViewController
+
+@property (copy, nonatomic) DidSelectedBandHandle didSelectedHandle;
+@property (copy, nonatomic) NSString *selectedBackIdStr;
 
 @end

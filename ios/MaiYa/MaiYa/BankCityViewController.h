@@ -7,7 +7,13 @@
 //
 
 #import "BaseViewController.h"
+#import "BankCell.h"
+
+typedef void(^DidSelectedAreaHandle)(AreaViewModel *);
 
 @interface BankCityViewController : BaseViewController
+
+@property (copy, nonatomic) DidSelectedAreaHandle didSelectedHandle;
+@property (copy, nonatomic) NSString *selectedAreaIdStr;
 
 @end

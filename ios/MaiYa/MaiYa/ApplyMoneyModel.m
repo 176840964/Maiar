@@ -22,11 +22,23 @@
         self.isBankPay = (model.type.integerValue != 1);
         self.bankTypeStr = [model.banktype stringValue];
         self.areaIdStr = [model.areaid stringValue];
-        self.backNameStr = [model.backname stringValue];
+        self.bankNameStr = [model.bankname stringValue];
         self.areaStr = [model.area stringValue];
+        self.bankImgUrl = [NSURL URLWithString:model.bankimg];
     }
     
     return self;
+}
+
+- (void)setValuesByBankViewModel:(BankViewModel *)bankViewModel {
+    self.bankTypeStr = bankViewModel.bankIdStr;
+    self.bankNameStr = bankViewModel.bankNameStr;
+    self.bankImgUrl = bankViewModel.url;
+}
+
+- (void)setvaluesByBankAreaViewModel:(AreaViewModel *)areaViewModel {
+    self.areaIdStr = areaViewModel.areaIdStr;
+    self.areaStr = areaViewModel.areaNameStr;
 }
 
 @end

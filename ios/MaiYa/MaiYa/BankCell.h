@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BankModel.h"
+#import "AreaModel.h"
 
 @interface BankCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *selectedImageView;
+
+- (void)layoutBankCellSubviewsByBankViewModel:(BankViewModel *)viewModel;
+- (void)layoutBankCellSubviewsByAreaViewModel:(AreaViewModel *)viewModel;
 
 @end

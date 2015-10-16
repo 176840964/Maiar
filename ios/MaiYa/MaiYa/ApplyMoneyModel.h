@@ -7,6 +7,8 @@
 //
 
 #import "BaseModel.h"
+#import "BankModel.h"
+#import "AreaModel.h"
 
 @interface ApplyMoneyModel : BaseModel
 @property (copy, nonatomic) NSString *idname;
@@ -15,8 +17,9 @@
 @property (strong, nonatomic) NSNumber *type;
 @property (copy, nonatomic) NSString *banktype;
 @property (copy, nonatomic) NSString *areaid;
-@property (copy, nonatomic) NSString *backname;
+@property (copy, nonatomic) NSString *bankname;
 @property (copy, nonatomic) NSString *area;
+@property (copy, nonatomic) NSString *bankimg;
 
 @end
 
@@ -27,9 +30,12 @@
 @property (assign, nonatomic) BOOL isBankPay;
 @property (copy, nonatomic) NSString *bankTypeStr;
 @property (copy, nonatomic) NSString *areaIdStr;
-@property (copy, nonatomic) NSString *backNameStr;
+@property (copy, nonatomic) NSString *bankNameStr;
 @property (copy, nonatomic) NSString *areaStr;
+@property (strong, nonatomic) NSURL *bankImgUrl;
 
 - (instancetype)initWithApplyMoneyModel:(ApplyMoneyModel *)model;
 
+- (void)setValuesByBankViewModel:(BankViewModel *)bankViewModel;
+- (void)setvaluesByBankAreaViewModel:(AreaViewModel *)areaViewModel;
 @end
