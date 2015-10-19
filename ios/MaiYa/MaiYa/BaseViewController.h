@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseViewController : UIViewController
+@property (nonatomic, assign) BOOL isBackToRootViewController;
+
 @property (nonatomic, copy) NSString *backBtnTitle;
 @property (nonatomic, copy) NSString *titleLabStr;
 @property (nonatomic, copy) NSString *rightBtnImgStr;

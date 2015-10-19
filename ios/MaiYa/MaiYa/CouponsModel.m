@@ -28,7 +28,7 @@
         self.cidStr = [model.cid stringValue];
         self.titleStr = [model.title stringValue];
         
-        NSString *moneyStr = [NSString stringWithFormat:@"￥%@", [model.money stringValue]];
+        NSString *moneyStr = [NSString stringWithFormat:@"￥%.0f", [model.money stringValue].doubleValue / 100];
         self.moneyAttrStr = [[NSMutableAttributedString alloc] initWithString:moneyStr];
         [self.moneyAttrStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:30]} range:NSMakeRange(0, 1)];
         [self.moneyAttrStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:60]} range:NSMakeRange(1, moneyStr.length - 1)];

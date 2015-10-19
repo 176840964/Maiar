@@ -29,7 +29,11 @@
         
         __weak typeof(self) weakSelf = self;
         controller.tapBackBtnHandler = ^() {
-            [weakSelf.navigationController popViewControllerAnimated:YES];
+            if (weakSelf.isBackToRootViewController) {
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            } else {
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
         };
         controller.tapRightBtnHandler = self.tapNaviRightBtnHandler;
         controller.tapRightSecondBtnHandler = self.tapNaviRightSecondBtnHandler;

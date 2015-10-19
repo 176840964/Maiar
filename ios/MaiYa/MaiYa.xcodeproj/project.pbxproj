@@ -118,6 +118,8 @@
 		824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDCC1B7B2A3300206E0C /* TabBarViewController.m */; };
 		824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD31B7B2C7F00206E0C /* UIView+frameAdjust.m */; };
 		824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD71B7B311900206E0C /* UIColor+Custom.m */; };
+		826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */; settings = {ASSET_TAGS = (); }; };
+		826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */; settings = {ASSET_TAGS = (); }; };
 		828C1D911BAA64A100D6FD23 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 828C1D901BAA64A100D6FD23 /* BaseModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31701B8486CB001EB9DA /* BaseViewController.m */; };
 		829D31741B84874C001EB9DA /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31731B84874C001EB9DA /* RegistViewController.m */; };
@@ -363,6 +365,10 @@
 		824CDDD51B7B2CB900206E0C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		824CDDD61B7B311900206E0C /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
 		824CDDD71B7B311900206E0C /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
+		826A609E1BD4E0D200C035DC /* CompletWithdrawals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletWithdrawals.h; sourceTree = "<group>"; };
+		826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletWithdrawals.m; sourceTree = "<group>"; };
+		826A60A21BD4EFB900C035DC /* AccountDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountDetailsModel.h; sourceTree = "<group>"; };
+		826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountDetailsModel.m; sourceTree = "<group>"; };
 		828C1D8F1BAA64A100D6FD23 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		828C1D901BAA64A100D6FD23 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		829D316F1B8486CB001EB9DA /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -782,6 +788,7 @@
 				820A6F001B9461E4002385A4 /* 4.3.2Withdrawal rules */,
 				820A6F011B9461F0002385A4 /* 4.3.3Withdrawal */,
 				820A6F1A1B948291002385A4 /* 4.3.4RealInfo comfirm */,
+				826A609D1BD4E05700C035DC /* 4.3.5CompletWithdrawals */,
 				821688E21B8B0C39000A1B2D /* MyWalletViewController.h */,
 				821688E31B8B0C39000A1B2D /* MyWalletViewController.m */,
 				820A6EFC1B9455C7002385A4 /* CouponCell.h */,
@@ -1261,9 +1268,26 @@
 			name = 4.Me;
 			sourceTree = "<group>";
 		};
+		826A609D1BD4E05700C035DC /* 4.3.5CompletWithdrawals */ = {
+			isa = PBXGroup;
+			children = (
+				826A609E1BD4E0D200C035DC /* CompletWithdrawals.h */,
+				826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */,
+			);
+			name = 4.3.5CompletWithdrawals;
+			sourceTree = "<group>";
+		};
+		826A60A11BD4EF4D00C035DC /* MessageModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MessageModel;
+			sourceTree = "<group>";
+		};
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				826A60A11BD4EF4D00C035DC /* MessageModel */,
 				82C166321BCFBEBC00F79D38 /* Bank */,
 				82C1662E1BCE5EB200F79D38 /* ApplyMoneyModel */,
 				82C1662A1BCE4FDF00F79D38 /* CouponsModel */,
@@ -1313,6 +1337,8 @@
 			children = (
 				82C1662F1BCE5EC800F79D38 /* ApplyMoneyModel.h */,
 				82C166301BCE5EC800F79D38 /* ApplyMoneyModel.m */,
+				826A60A21BD4EFB900C035DC /* AccountDetailsModel.h */,
+				826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */,
 			);
 			name = ApplyMoneyModel;
 			sourceTree = "<group>";
@@ -1551,6 +1577,7 @@
 				820A6F3C1B95C647002385A4 /* PlazaDetailViewController.m in Sources */,
 				824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */,
 				821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */,
+				826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */,
 				82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */,
 				820A6F341B95BF18002385A4 /* CarouselCell.m in Sources */,
 				8228E8301BBA828F00F5BBB7 /* CommentModel.m in Sources */,
@@ -1576,6 +1603,7 @@
 				821688F71B8B26AC000A1B2D /* UserInfoCell.m in Sources */,
 				8213C8D31B9061340048B27C /* AbstractViewController.m in Sources */,
 				82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */,
+				826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */,
 				821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */,
 				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
 				822A4A451BA03E230096CA5F /* AdvisoryDetailEndCell.m in Sources */,

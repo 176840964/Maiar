@@ -72,15 +72,15 @@
         }
         self.workTypesArr = [NSArray arrayWithArray:workTypesArr];
         
-        self.moneyPerHourStr = [NSString stringWithFormat:@"%@/小时", [model.hour_money stringValue]];
+        self.moneyPerHourStr = [NSString stringWithFormat:@"%.0f/小时", [model.hour_money stringValue].doubleValue / 100];
         self.lonStr = [model.longitude stringValue];
         self.latStr = [model.latitude stringValue];
         self.distanceStr = [model.distance stringValue];
         self.isOpenImmediate = [model.immediate isEqualToString:@"2"];
         
-        self.balanceStr = [NSString stringWithFormat:@"%@.00", [model.balance stringValue]];
-        self.incomeStr = [NSString stringWithFormat:@"%@.00", [model.income stringValue]];
-        self.withdrawalsStr = [NSString stringWithFormat:@"%@.00", [model.withdrawals stringValue]];
+        self.balanceStr = [NSString stringWithFormat:@"%.2f", [model.balance stringValue].doubleValue / 100.0];
+        self.incomeStr = [NSString stringWithFormat:@"%.2f", [model.income stringValue].doubleValue / 100];
+        self.withdrawalsStr = [NSString stringWithFormat:@"%.2f", [model.withdrawals stringValue].doubleValue / 100];
         self.realNameStr = [model.idname stringValue];
         self.isIdentification = [model.id_status isEqualToString:@"1"];
         self.soonMoneyStr = [NSString stringWithFormat:@"即将到账%@.00元", [model.soon_money stringValue]];

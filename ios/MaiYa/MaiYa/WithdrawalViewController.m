@@ -18,7 +18,7 @@
 
 //zhifubao
 @property (weak, nonatomic) IBOutlet UITextField *aliAccoutTextField;
-@property (weak, nonatomic) IBOutlet UITextField *aliNameTextField;
+@property (weak, nonatomic) IBOutlet UILabel *aliNameLab;
 @property (weak, nonatomic) IBOutlet UITextField *aliMoneyTextField;
 @property (weak, nonatomic) IBOutlet UIButton *aliCommitBtn;
 
@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bankIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *bankAddrLab;
 @property (weak, nonatomic) IBOutlet UITextField *bankCardTextField;
-@property (weak, nonatomic) IBOutlet UITextField *bankUserNameField;
+@property (weak, nonatomic) IBOutlet UILabel *bankUserNameLab;
 @property (weak, nonatomic) IBOutlet UITextField *bankMoneyTextField;
 @property (weak, nonatomic) IBOutlet UIButton *bankCommitBtn;
 
@@ -76,7 +76,10 @@
         [self onTapZhifubaoBtn:nil];
     }
     
+    self.aliNameLab.text = self.applyMoneyViewModel.idNameStr;
     self.aliMoneyTextField.placeholder = self.applyMoneyViewModel.balanceStr;
+    
+    self.bankUserNameLab.text = self.applyMoneyViewModel.idNameStr;
     self.bankMoneyTextField.placeholder = self.applyMoneyViewModel.balanceStr;
 }
 
@@ -85,38 +88,32 @@
         RACSignal *validAliAccoutField = [self.aliAccoutTextField.rac_textSignal map:^id(NSString *text) {
             return @([text isKindOfClass:[NSString class]] && 0 < text.length);
         }];
-        RACSignal *validAliNameField = [self.aliNameTextField.rac_textSignal map:^id(NSString *text) {
-            return @([text isKindOfClass:[NSString class]] && 0 < text.length);
-        }];
         RACSignal *validAliMoneyField = [self.aliMoneyTextField.rac_textSignal map:^id(NSString *text) {
             return @([text isKindOfClass:[NSString class]] && 0 < text.length);
         }];
         
-        RAC(self.aliCommitBtn, enabled) = [RACSignal combineLatest:@[validAliAccoutField, validAliNameField, validAliMoneyField] reduce:^id (NSNumber *accoutValid, NSNumber *nameValid, NSNumber *moneyValid){
-            if (accoutValid.boolValue && nameValid.boolValue && moneyValid.boolValue) {
+        RAC(self.aliCommitBtn, enabled) = [RACSignal combineLatest:@[validAliAccoutField, validAliMoneyField] reduce:^id (NSNumber *accoutValid, NSNumber *moneyValid){
+            if (accoutValid.boolValue && moneyValid.boolValue) {
                 self.aliCommitBtn.backgroundColor = [UIColor colorWithHexString:@"#bb57f4"];
             } else {
                 self.aliCommitBtn.backgroundColor = [UIColor lightGrayColor];
             }
             
-            return @(accoutValid.boolValue && nameValid.boolValue && moneyValid.boolValue);
+            return @(accoutValid.boolValue && moneyValid.boolValue);
         }];
     }
     {//bank
         RACSignal *validBankCardField = [self.bankCardTextField.rac_textSignal map:^id(NSString *text) {
             return @([text isKindOfClass:[NSString class]] && 0 < text.length);
         }];
-        RACSignal *validBankUserNameField = [self.bankUserNameField.rac_textSignal map:^id(NSString *text) {
-            return @([text isKindOfClass:[NSString class]] && 0 < text.length);
-        }];
         RACSignal *validBankMoneyField = [self.bankMoneyTextField.rac_textSignal map:^id(NSString *text) {
             return @([text isKindOfClass:[NSString class]] && 0 < text.length);
         }];
         
-        RAC(self.bankCommitBtn, enabled) = [RACSignal combineLatest:@[validBankCardField, validBankUserNameField, validBankMoneyField] reduce:^id(NSNumber *cardValid, NSNumber *userNameValid, NSNumber *moneyValid) {
+        RAC(self.bankCommitBtn, enabled) = [RACSignal combineLatest:@[validBankCardField, validBankMoneyField] reduce:^id(NSNumber *cardValid, NSNumber *moneyValid) {
             BOOL isValidBankId = ([self.applyMoneyViewModel.bankIdStr isKindOfClass:[NSString class]] && 0 < self.applyMoneyViewModel.bankIdStr.length);
             BOOL isValidBankAreaId = ([self.applyMoneyViewModel.areaIdStr isKindOfClass:[NSString class]] && 0 < self.applyMoneyViewModel.bankIdStr.length);
-            BOOL isValid = (isValidBankId && isValidBankAreaId && cardValid.boolValue && userNameValid.boolValue && moneyValid.boolValue);
+            BOOL isValid = (isValidBankId && isValidBankAreaId && cardValid.boolValue && moneyValid.boolValue);
             if (isValid) {
                 self.bankCommitBtn.backgroundColor = [UIColor colorWithHexString:@"#bb57f4"];
             } else {
@@ -144,6 +141,14 @@
     }];
 }
 
+- (void)setApplyMoneyByParamsDic:(NSDictionary *)paramsDic {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"setApplyMoney" params:paramsDic success:^(id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"ShowCommitSuccessViewController" sender:self];
+        });
+    }];
+}
+
 #pragma mark - IBAction
 - (IBAction)onTapZhifubaoBtn:(id)sender {
     self.markView.transform = CGAffineTransformIdentity;
@@ -156,11 +161,19 @@
 }
 
 - (IBAction)onTapZhifubaoCommitBtn:(id)sender {
-    [self performSegueWithIdentifier:@"ShowCommitSuccessViewController" sender:self];
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    
+    [self setApplyMoneyByParamsDic:@{@"uid": uid, @"type": @"1", @"bankid": self.aliAccoutTextField.text, @"money": self.aliMoneyTextField.text}];
 }
 
 - (IBAction)onTapBankCommitBtn:(id)sender {
-    [self performSegueWithIdentifier:@"ShowCommitSuccessViewController" sender:self];
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    
+    [self setApplyMoneyByParamsDic:@{@"uid": uid, @"type": @"2", @"bankid": self.bankCardTextField.text, @"money": self.bankMoneyTextField.text, @"area": self.applyMoneyViewModel.areaIdStr, @"banktype": self.applyMoneyViewModel.bankTypeStr}];
 }
 
 #pragma mark - Navigation

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccountDetailsModel.h"
 
 @interface DetailCell : UITableViewCell
+
+- (void)layoutDetailCellSubviewsByAccountDetailsViewModel:(AccountDetailsViewModel *)viewModel;
 
 @end

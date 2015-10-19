@@ -42,10 +42,10 @@
     self.workTypeLabsArr = [self.workTypeLabsArr sortByUIViewOriginX];
     for (NSInteger index = 0; index < self.workTypeLabsArr.count; ++index) {
         UILabel *lab = [self.workTypeLabsArr objectAtIndex:index];
-        NSDictionary *dic = [userViewModel.workTypesArr objectAtIndex:index];
-        if (!dic) {
+        if (index >= userViewModel.workTypesArr.count) {
             lab.hidden = YES;
         } else {
+            NSDictionary *dic = [userViewModel.workTypesArr objectAtIndex:index];
             lab.hidden = NO;
             lab.text = [dic objectForKey:@"text"];
             lab.backgroundColor = [dic objectForKey:@"bgColor"];
