@@ -118,6 +118,7 @@
 		824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDCC1B7B2A3300206E0C /* TabBarViewController.m */; };
 		824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD31B7B2C7F00206E0C /* UIView+frameAdjust.m */; };
 		824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD71B7B311900206E0C /* UIColor+Custom.m */; };
+		82689C6E1BD6254B007A223B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82689C6D1BD6254B007A223B /* MessageModel.m */; settings = {ASSET_TAGS = (); }; };
 		826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */; settings = {ASSET_TAGS = (); }; };
 		826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */; settings = {ASSET_TAGS = (); }; };
 		828C1D911BAA64A100D6FD23 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 828C1D901BAA64A100D6FD23 /* BaseModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -365,6 +366,8 @@
 		824CDDD51B7B2CB900206E0C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		824CDDD61B7B311900206E0C /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
 		824CDDD71B7B311900206E0C /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
+		82689C6C1BD6254B007A223B /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		82689C6D1BD6254B007A223B /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		826A609E1BD4E0D200C035DC /* CompletWithdrawals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletWithdrawals.h; sourceTree = "<group>"; };
 		826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletWithdrawals.m; sourceTree = "<group>"; };
 		826A60A21BD4EFB900C035DC /* AccountDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountDetailsModel.h; sourceTree = "<group>"; };
@@ -1280,6 +1283,8 @@
 		826A60A11BD4EF4D00C035DC /* MessageModel */ = {
 			isa = PBXGroup;
 			children = (
+				82689C6C1BD6254B007A223B /* MessageModel.h */,
+				82689C6D1BD6254B007A223B /* MessageModel.m */,
 			);
 			name = MessageModel;
 			sourceTree = "<group>";
@@ -1663,6 +1668,7 @@
 				8228E8291BBA29C600F5BBB7 /* ArticleDetailModel.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
 				822A4A421BA03E120096CA5F /* AdvisoryDetailCommentCell.m in Sources */,
+				82689C6E1BD6254B007A223B /* MessageModel.m in Sources */,
 				820A6F421B969FE6002385A4 /* AdvisoryRootViewController.m in Sources */,
 				82158E1D1B82DBDB00193FC3 /* LoginViewController.m in Sources */,
 				822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */,

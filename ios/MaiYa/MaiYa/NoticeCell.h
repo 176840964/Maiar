@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MessageModel.h"
 
 @interface NoticeCell : UITableViewCell
-@property (nonatomic, weak) IBOutlet UIView *bgView;
-@property (nonatomic, weak) IBOutlet UITextView *contentTextView;
+@property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UILabel *titleLab;
+@property (nonatomic, strong) UILabel *dateLab;
+@property (nonatomic, strong) UILabel *contentLab;
 
-- (void)layoutNoticCellSubviewsByDic:(NSDictionary*)dic;
+- (void)layoutNoticCellSubviewsByMessageViewModel:(MessageViewModel *)viewModel;
 @end

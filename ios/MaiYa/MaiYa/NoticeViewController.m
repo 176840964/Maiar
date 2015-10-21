@@ -20,29 +20,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataArr = [NSMutableArray new];
-    
-#warning test
-    for (NSInteger index = 0; index < 20; ++ index) {
-        NSString *title = @"优惠劵派发通知";
-        NSString *date = @"2015-08-18  12:00:00";
-        NSString *content = @"优惠劵派发通知测试;";
-        NSInteger count = arc4random() % 99;
-//        count = 50;
-        for (NSInteger index1 = 0; index1 < count; ++ index1) {
-            content = [NSString stringWithFormat:@"%@优惠劵派发通知测试%zd;", content, index1];
-        }
-        
-        NSDictionary *dic = @{@"title": title, @"date": date, @"content": content};
-        [self.dataArr addObject:dic];
-    }
-    
+    [self.tableView registerClass:[NoticeCell class] forCellReuseIdentifier:@"NoticeCell"];
+    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     self.commonCell = [self.tableView dequeueReusableCellWithIdentifier:@"NoticeCell"];
+    
+    self.dataArr = [NSMutableArray new];
+    [self getMessageList];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+}
+
+#pragma mark - Networking
+- (void)getMessageList {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"message" params:@{@"uid": uid} success:^(id responseObject) {
+        NSArray *resArr = [responseObject objectForKey:@"res"];
+        for (NSDictionary *dic in resArr) {
+            MessageModel *model = [[MessageModel alloc] initWithDic:dic];
+            MessageViewModel *viewModel = [[MessageViewModel alloc] initWithMessageModel:model];
+            [self.dataArr addObject:viewModel];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -53,39 +59,33 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NoticeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoticeCell"];
     
-    NSDictionary *dic = [self.dataArr objectAtIndex:indexPath.row];
-    [cell layoutNoticCellSubviewsByDic:dic];
+    MessageViewModel *viewModel = [self.dataArr objectAtIndex:indexPath.row];
+    [cell layoutNoticCellSubviewsByMessageViewModel:viewModel];
+    
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *dic = [self.dataArr objectAtIndex:indexPath.row];
-    [self.commonCell layoutNoticCellSubviewsByDic:dic];
+    MessageViewModel *viewModel = [self.dataArr objectAtIndex:indexPath.row];
+    [self.commonCell layoutNoticCellSubviewsByMessageViewModel:viewModel];
     
-    CGSize contentViewSize = [self.commonCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-    CGSize textViewSize = [self.commonCell.contentTextView sizeThatFits:CGSizeMake(self.commonCell.contentTextView.width, FLT_MAX)];
-    CGFloat height = contentViewSize.height + textViewSize.height;
+    NoticeCell *cell = self.commonCell;
+    cell.contentLab.text = viewModel.contentStr;
+    
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    cell.bounds = CGRectMake(0, 0, self.tableView.width, cell.height);
+    
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+    
+    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
     return height;
-    
-//    CGFloat contentWidth = self.commonCell.width;
-//    UIFont *font = self.commonCell.contentLab.font;
-//    NSString *content = self.commonCell.contentLab.text;
-//    
-//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-//    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-//    NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle.copy};
-//    
-//    CGSize size = [content boundingRectWithSize:CGSizeMake(contentWidth, 1000) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attributes context:nil].size;
-//    NSLog(@"height: %f", size.height);
-//    return size.height + 1;
-    
-//    CGSize size = [self.commonCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-//    CGSize labSize = [self.commonCell.contentLab sizeThatFits:CGSizeMake(self.commonCell.contentLab.frame.size.width, FLT_MAX)];
-//    NSLog(@"h=%f, labSize.h=%f", size.height + 1, labSize.height);
-//    return 1  + size.height + labSize.height;
 }
 
 @end
