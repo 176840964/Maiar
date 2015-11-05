@@ -73,10 +73,10 @@
 		821937A01B8C2D0C0061C002 /* NoticeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219379F1B8C2D0C0061C002 /* NoticeSetViewController.m */; };
 		821937A31B8C2D1D0061C002 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A21B8C2D1D0061C002 /* AboutViewController.m */; };
 		821937A61B8C7E4D0061C002 /* NoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821937A51B8C7E4D0061C002 /* NoticeCell.m */; };
-		821A951F1BB156F000F44790 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821A951E1BB156F000F44790 /* ArticleModel.m */; settings = {ASSET_TAGS = (); }; };
-		8228E8291BBA29C600F5BBB7 /* ArticleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E8281BBA29C600F5BBB7 /* ArticleDetailModel.m */; settings = {ASSET_TAGS = (); }; };
-		8228E82C1BBA808400F5BBB7 /* UserZoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E82B1BBA808400F5BBB7 /* UserZoneModel.m */; settings = {ASSET_TAGS = (); }; };
-		8228E8301BBA828F00F5BBB7 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E82F1BBA828F00F5BBB7 /* CommentModel.m */; settings = {ASSET_TAGS = (); }; };
+		821A951F1BB156F000F44790 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821A951E1BB156F000F44790 /* ArticleModel.m */; };
+		8228E8291BBA29C600F5BBB7 /* ArticleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E8281BBA29C600F5BBB7 /* ArticleDetailModel.m */; };
+		8228E82C1BBA808400F5BBB7 /* UserZoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E82B1BBA808400F5BBB7 /* UserZoneModel.m */; };
+		8228E8301BBA828F00F5BBB7 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228E82F1BBA828F00F5BBB7 /* CommentModel.m */; };
 		822A4A221B9EE2CC0096CA5F /* MyCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A211B9EE2CC0096CA5F /* MyCouponViewController.m */; };
 		822A4A271B9FDD7F0096CA5F /* SelectingServiceDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A261B9FDD7F0096CA5F /* SelectingServiceDateViewController.m */; };
 		822A4A2A1B9FE3FD0096CA5F /* SelectingServiceTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A4A291B9FE3FD0096CA5F /* SelectingServiceTimeCell.m */; };
@@ -118,31 +118,32 @@
 		824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDCC1B7B2A3300206E0C /* TabBarViewController.m */; };
 		824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD31B7B2C7F00206E0C /* UIView+frameAdjust.m */; };
 		824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD71B7B311900206E0C /* UIColor+Custom.m */; };
-		82689C6E1BD6254B007A223B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82689C6D1BD6254B007A223B /* MessageModel.m */; settings = {ASSET_TAGS = (); }; };
-		826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */; settings = {ASSET_TAGS = (); }; };
-		826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */; settings = {ASSET_TAGS = (); }; };
+		82689C6E1BD6254B007A223B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82689C6D1BD6254B007A223B /* MessageModel.m */; };
+		826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */; };
+		826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */; };
 		828C1D911BAA64A100D6FD23 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 828C1D901BAA64A100D6FD23 /* BaseModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		829D31711B8486CB001EB9DA /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31701B8486CB001EB9DA /* BaseViewController.m */; };
 		829D31741B84874C001EB9DA /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31731B84874C001EB9DA /* RegistViewController.m */; };
 		829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D31791B858AC7001EB9DA /* ForgotViewController.m */; };
 		829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317C1B858BDC001EB9DA /* BaseNavigationController.m */; };
 		829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */; };
+		82A49AA71BEAFCB200E6106A /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AA61BEAFCB200E6106A /* OrderModel.m */; };
 		82A95D501BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */; };
-		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; settings = {ASSET_TAGS = (); }; };
-		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; settings = {ASSET_TAGS = (); }; };
-		82C166311BCE5EC800F79D38 /* ApplyMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166301BCE5EC800F79D38 /* ApplyMoneyModel.m */; settings = {ASSET_TAGS = (); }; };
-		82C166351BCFBECE00F79D38 /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166341BCFBECE00F79D38 /* BankModel.m */; settings = {ASSET_TAGS = (); }; };
-		82C166381BCFBEE400F79D38 /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166371BCFBEE400F79D38 /* AreaModel.m */; settings = {ASSET_TAGS = (); }; };
-		82CACB531BB3995D001422B8 /* SquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB521BB3995D001422B8 /* SquareModel.m */; settings = {ASSET_TAGS = (); }; };
-		82CACB571BB3A196001422B8 /* ArticleIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB561BB3A196001422B8 /* ArticleIndexModel.m */; settings = {ASSET_TAGS = (); }; };
-		82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5A1BB3A910001422B8 /* ArticleDirectoryModel.m */; settings = {ASSET_TAGS = (); }; };
-		82CACB5F1BB3AACB001422B8 /* SentenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5E1BB3AACB001422B8 /* SentenceModel.m */; settings = {ASSET_TAGS = (); }; };
-		82CACB631BB4EB0A001422B8 /* ArticleCatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */; settings = {ASSET_TAGS = (); }; };
+		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; };
+		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; };
+		82C166311BCE5EC800F79D38 /* ApplyMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166301BCE5EC800F79D38 /* ApplyMoneyModel.m */; };
+		82C166351BCFBECE00F79D38 /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166341BCFBECE00F79D38 /* BankModel.m */; };
+		82C166381BCFBEE400F79D38 /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166371BCFBEE400F79D38 /* AreaModel.m */; };
+		82CACB531BB3995D001422B8 /* SquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB521BB3995D001422B8 /* SquareModel.m */; };
+		82CACB571BB3A196001422B8 /* ArticleIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB561BB3A196001422B8 /* ArticleIndexModel.m */; };
+		82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5A1BB3A910001422B8 /* ArticleDirectoryModel.m */; };
+		82CACB5F1BB3AACB001422B8 /* SentenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5E1BB3AACB001422B8 /* SentenceModel.m */; };
+		82CACB631BB4EB0A001422B8 /* ArticleCatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */; };
 		82D71B081BAAAD5C006CFE0D /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D71B071BAAAD5C006CFE0D /* UserInfoModel.m */; };
-		82E1B9CF1BC60DF7001F9035 /* ZoneWorkingTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9CE1BC60DF7001F9035 /* ZoneWorkingTimeCell.m */; settings = {ASSET_TAGS = (); }; };
-		82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D11BC60E0C001F9035 /* ZoneWorkingTimeView.m */; settings = {ASSET_TAGS = (); }; };
-		82E1B9D61BC77324001F9035 /* ConsultantTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D51BC77324001F9035 /* ConsultantTimeModel.m */; settings = {ASSET_TAGS = (); }; };
-		82E1B9D91BC77B91001F9035 /* ConsultantDailyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D81BC77B91001F9035 /* ConsultantDailyViewModel.m */; settings = {ASSET_TAGS = (); }; };
+		82E1B9CF1BC60DF7001F9035 /* ZoneWorkingTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9CE1BC60DF7001F9035 /* ZoneWorkingTimeCell.m */; };
+		82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D11BC60E0C001F9035 /* ZoneWorkingTimeView.m */; };
+		82E1B9D61BC77324001F9035 /* ConsultantTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D51BC77324001F9035 /* ConsultantTimeModel.m */; };
+		82E1B9D91BC77B91001F9035 /* ConsultantDailyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D81BC77B91001F9035 /* ConsultantDailyViewModel.m */; };
 		C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4EE198D74EE15090FBD86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -384,6 +385,8 @@
 		829D317C1B858BDC001EB9DA /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		829D317E1B858E9D001EB9DA /* UITextField+PlaceholderText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+PlaceholderText.h"; sourceTree = "<group>"; };
 		829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+PlaceholderText.m"; sourceTree = "<group>"; };
+		82A49AA51BEAFCB200E6106A /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		82A49AA61BEAFCB200E6106A /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		82A95D4E1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ValueOfStringOrNull.h"; sourceTree = "<group>"; };
 		82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ValueOfStringOrNull.m"; sourceTree = "<group>"; };
 		82C166271BCE46F100F79D38 /* WalletInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletInfoView.h; sourceTree = "<group>"; };
@@ -1292,6 +1295,7 @@
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82A49AA41BEAFC9F00E6106A /* OrderModel */,
 				826A60A11BD4EF4D00C035DC /* MessageModel */,
 				82C166321BCFBEBC00F79D38 /* Bank */,
 				82C1662E1BCE5EB200F79D38 /* ApplyMoneyModel */,
@@ -1326,6 +1330,15 @@
 				829D317C1B858BDC001EB9DA /* BaseNavigationController.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		82A49AA41BEAFC9F00E6106A /* OrderModel */ = {
+			isa = PBXGroup;
+			children = (
+				82A49AA51BEAFCB200E6106A /* OrderModel.h */,
+				82A49AA61BEAFCB200E6106A /* OrderModel.m */,
+			);
+			name = OrderModel;
 			sourceTree = "<group>";
 		};
 		82C1662A1BCE4FDF00F79D38 /* CouponsModel */ = {
@@ -1609,6 +1622,7 @@
 				8213C8D31B9061340048B27C /* AbstractViewController.m in Sources */,
 				82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */,
 				826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */,
+				82A49AA71BEAFCB200E6106A /* OrderModel.m in Sources */,
 				821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */,
 				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
 				822A4A451BA03E230096CA5F /* AdvisoryDetailEndCell.m in Sources */,
