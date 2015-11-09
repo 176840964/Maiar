@@ -36,6 +36,7 @@
 @property (copy, nonatomic) NSString *timeStr;
 @property (copy, nonatomic) NSString *statusStr;
 @property (copy, nonatomic) NSString *starStr;
+@property (assign, nonatomic) BOOL isFinished;
 
 @property (assign, nonatomic) BOOL isConsultant;
 @property (copy, nonatomic) NSString *nameTitleStr;

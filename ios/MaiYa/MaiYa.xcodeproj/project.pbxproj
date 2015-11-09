@@ -128,6 +128,7 @@
 		829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317C1B858BDC001EB9DA /* BaseNavigationController.m */; };
 		829D31801B858E9D001EB9DA /* UITextField+PlaceholderText.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */; };
 		82A49AA71BEAFCB200E6106A /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AA61BEAFCB200E6106A /* OrderModel.m */; };
+		82A49AAA1BF0941400E6106A /* MyAdvisoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AA91BF0941400E6106A /* MyAdvisoryCell.m */; };
 		82A95D501BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */; };
 		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; };
 		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; };
@@ -387,6 +388,8 @@
 		829D317F1B858E9D001EB9DA /* UITextField+PlaceholderText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+PlaceholderText.m"; sourceTree = "<group>"; };
 		82A49AA51BEAFCB200E6106A /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		82A49AA61BEAFCB200E6106A /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		82A49AA81BF0941400E6106A /* MyAdvisoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAdvisoryCell.h; sourceTree = "<group>"; };
+		82A49AA91BF0941400E6106A /* MyAdvisoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAdvisoryCell.m; sourceTree = "<group>"; };
 		82A95D4E1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ValueOfStringOrNull.h"; sourceTree = "<group>"; };
 		82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ValueOfStringOrNull.m"; sourceTree = "<group>"; };
 		82C166271BCE46F100F79D38 /* WalletInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletInfoView.h; sourceTree = "<group>"; };
@@ -619,6 +622,8 @@
 				82150F1B1B9D98CE00CFDE80 /* 2.3.1AdvisoryDetailViewController */,
 				820A6F491B970158002385A4 /* MyAdvisoryViewController.h */,
 				820A6F4A1B970158002385A4 /* MyAdvisoryViewController.m */,
+				82A49AA81BF0941400E6106A /* MyAdvisoryCell.h */,
+				82A49AA91BF0941400E6106A /* MyAdvisoryCell.m */,
 			);
 			name = 2.3MyAdvisory;
 			sourceTree = "<group>";
@@ -1706,6 +1711,7 @@
 				82158E1A1B82DBA200193FC3 /* LoginNaviController.m in Sources */,
 				820A6F231B953C01002385A4 /* PlazaRootViewController.m in Sources */,
 				820A6F1D1B9482FE002385A4 /* RealInfoComfirmViewController.m in Sources */,
+				82A49AAA1BF0941400E6106A /* MyAdvisoryCell.m in Sources */,
 				820A6F0D1B9468D8002385A4 /* WithdrawalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

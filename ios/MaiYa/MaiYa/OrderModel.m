@@ -51,6 +51,7 @@
 - (void)getStatusStrByModelStatus:(NSString *)modelStatus {
     NSString *str = @"";
     if ([modelStatus isEqualToString:@"10"]) {
+        self.isFinished = NO;
         str = @"等待付款";
         if (self.isReservation) {
             self.isBtn1Hidden = YES;
@@ -64,6 +65,7 @@
             self.btn2BgColor = [UIColor colorWithHexString:@"a773af"];//紫色
         }
     } else if ([modelStatus isEqualToString:@"11"]) {
+        self.isFinished = NO;
         str = @"等待咨询";
         if (self.isReservation) {
             self.isBtn1Hidden = NO;
@@ -81,6 +83,7 @@
             self.btn2BgColor = [UIColor colorWithHexString:@"a773af"];
         }
     } else if ([modelStatus isEqualToString:@"12"]) {
+        self.isFinished = NO;
         str = @"咨询中";
         if (self.isReservation) {
             self.isBtn1Hidden = NO;
@@ -96,6 +99,7 @@
             self.btn2BgColor = [UIColor colorWithHexString:@"a773af"];
         }
     } else if ([modelStatus isEqualToString:@"13"]) {
+        self.isFinished = NO;
         str = @"等待评价";
         if (self.isReservation) {
             self.isBtn1Hidden = YES;
@@ -107,6 +111,7 @@
             self.btn2BgColor = [UIColor colorWithHexString:@"a773af"];
         }
     } else if ([modelStatus isEqualToString:@"14"]) {
+        self.isFinished = YES;
         str = @"已评价";
         if (self.isReservation) {
             self.isBtn1Hidden = YES;
