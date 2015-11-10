@@ -33,7 +33,7 @@
 }
 
 - (void)layoutMasterCellSubviewsByUserZoneViewModel:(UserZoneViewModel *)userViewModel {
-    [self.headImageView setImageWithURL:userViewModel.headUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    [self.headImageView setImageWithURL:userViewModel.headUrl placeholderImage:[UIImage imageNamed:DefaultUserHeaderImage]];
     self.sexImageView.image = userViewModel.sexImage;
     self.nameLab.attributedText = userViewModel.nickAndWorkAgeAttributedStr;
     self.evaluationLab.text = userViewModel.commentAllStr;

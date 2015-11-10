@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet FillterView *fillterView;
 @property (weak, nonatomic) IBOutlet UIView *markView;
+
+@property (strong, nonatomic) NSMutableArray *usersArr;
 @end
 
 @implementation MastersListViewController
@@ -24,6 +26,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.usersArr = [NSMutableArray new];
+    
     UINib *cellNib = [UINib nibWithNibName:@"MasterCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"MasterCell"];
     
@@ -31,6 +35,8 @@
     UIButton *btn = [self.btnsArr objectAtIndex:0];
     btn.selected = YES;
     btn.backgroundColor = [UIColor colorWithHexString:@"#7167aa"];
+    
+    [self getUserList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +73,26 @@
         self.fillterView.height = 0.0;
         self.markView.alpha = 0.0;
     }
+}
+
+#pragma mark - Networking
+- (void)getUserList {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userList" params:@{@"uid": uid} success:^(id responseObject) {
+        NSArray *resArr = [responseObject objectForKey:@"res"];
+        for (NSDictionary *dic in resArr) {
+            UserZoneModel *model = [[UserZoneModel alloc] initWithDic:dic];
+            UserZoneViewModel *viewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];
+            [self.usersArr addObject:viewModel];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 #pragma mark - IBAction
@@ -115,11 +141,15 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.usersArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MasterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MasterCell"];
+    
+    UserZoneViewModel *viewModel = [self.usersArr objectAtIndex:indexPath.row];
+    [cell layoutMasterCellSubviewsByUserZoneViewModel:viewModel];
+    
     return cell;
 }
 
