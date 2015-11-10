@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AdvisoryDetailNumCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *numLab;
 
 @end

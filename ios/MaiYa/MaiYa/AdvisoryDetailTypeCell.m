@@ -9,7 +9,6 @@
 #import "AdvisoryDetailTypeCell.h"
 
 @interface AdvisoryDetailTypeCell ()
-@property (weak, nonatomic) IBOutlet UILabel *typeLab;
 @end
 
 @implementation AdvisoryDetailTypeCell

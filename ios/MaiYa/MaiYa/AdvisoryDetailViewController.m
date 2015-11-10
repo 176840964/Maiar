@@ -17,11 +17,12 @@
 #import "AdvisoryDetailDateCell.h"
 #import "AdvisoryDetailPayCell0.h"
 #import "AdvisoryDetailPayCell1.h"
+#import "OrderDetailModel.h"
 
 @interface AdvisoryDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *identifiersArr;
-@property (assign, nonatomic) BOOL isMaster;
+
+@property (strong, nonatomic) OrderDetailViewModel *orderDetailViewModel;
 @end
 
 @implementation AdvisoryDetailViewController
@@ -30,11 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.identifiersArr = [NSMutableArray new];
-    self.isMaster = YES;
-    
-    self.type = AdvisoryDetailTypeOfAll;
-    [self setupIdentifiersArr];
+    [self getOrderDetailInfo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,75 +39,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 
-- (void)setupIdentifiersArr {
-    switch (self.type) {
-        case AdvisoryDetailTypeOfNonPayment:
-        {
-            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailMasterCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailPayCell1"];
-        }
-            break;
-            
-        case AdvisoryDetailTypeOfGoingOn:
-        {
-            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
-            [self.identifiersArr addObject:self.isMaster? @"AdvisoryDetailMasterCell" : @"AdvisoryDetailUserCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
-        }
-            break;
-            
-        case AdvisoryDetailTypeOfNoComment:
-        {
-            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
-            [self.identifiersArr addObject:self.isMaster? @"AdvisoryDetailMasterCell" : @"AdvisoryDetailUserCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailCommentCell"];
-        }
-            break;
-            
-        case AdvisoryDetailTypeOfFinish:
-        {
-            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
-            [self.identifiersArr addObject:self.isMaster? @"AdvisoryDetailMasterCell" : @"AdvisoryDetailUserCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailEndCell"];
-        }
-            break;
-            
-        case AdvisoryDetailTypeOfOrdering:
-        {
-            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailMasterCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailPayCell0"];
-        }
-            break;
-            
-        default:{
-            [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailMasterCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailUserCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailCommentCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailEndCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailPayCell0"];
-            [self.identifiersArr addObject:@"AdvisoryDetailPayCell1"];
-        }
-    }
+#pragma mark -
+
+#pragma mark - networking
+- (void)getOrderDetailInfo {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderInfo" params:@{@"uid": uid, @"orderid": self.orderIdStr} success:^(id responseObject) {
+        NSDictionary *resDic = [responseObject objectForKey:@"res"];
+        OrderDetailModel *model = [[OrderDetailModel alloc] initWithDic:resDic];
+        self.orderDetailViewModel = [[OrderDetailViewModel alloc] initWithOrderDetailModel:model];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+        
+    }];
+}
+
+- (void)commitCommentWithContent:(NSString *)content andStarValue:(NSString *)starValue {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning test uid
+    uid = @"1";
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"comment" params:@{@"uid": uid, @"orderid": self.orderDetailViewModel.orderIdStr, @"star": starValue, @"content": content} success:^(id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    }];
 }
 
 #pragma mark - IBAction
@@ -130,44 +87,106 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.identifiersArr.count;
+    return self.orderDetailViewModel.identifiersArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *indentifier = [self.identifiersArr objectAtIndex:indexPath.row];
+    NSString *indentifier = [self.orderDetailViewModel.identifiersArr objectAtIndex:indexPath.row];
     
     if ([indentifier isEqualToString:@"AdvisoryDetailNumCell"]) {
         AdvisoryDetailNumCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        cell.numLab.text = self.orderDetailViewModel.orderIdStr;
+        
         return cell;
+        
     } else if ([indentifier isEqualToString:@"AdvisoryDetailTypeCell"]) {
         AdvisoryDetailTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        cell.typeLab.text = self.orderDetailViewModel.problemStr;
+        
         return cell;
+        
     } else if ([indentifier isEqualToString:@"AdvisoryDetailMasterCell"]) {
         AdvisoryDetailMasterCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        [cell.headerImageView setImageWithURL:self.orderDetailViewModel.userInfoViewModel.headUrl placeholderImage:[UIImage imageNamed:DefaultUserHeaderImage]];
+        cell.sexImageView.image = self.orderDetailViewModel.userInfoViewModel.sexImage;
+        cell.nameLab.attributedText = self.orderDetailViewModel.userInfoViewModel.nickAndWorkAgeAttributedStr;
+        cell.scoreLab.text = self.orderDetailViewModel.userInfoViewModel.commentAllStr;
+        cell.countLab.text = self.orderDetailViewModel.userInfoViewModel.commentNumStr;
+        cell.priceLab.text = self.orderDetailViewModel.userInfoViewModel.moneyPerHourStr;
+        cell.locationLab.text = self.orderDetailViewModel.userInfoViewModel.distanceStr;
+        for (NSInteger index = 0; index < cell.catsArr.count; ++index) {
+            UILabel *lab = [cell.catsArr objectAtIndex:index];
+            if (index >= self.orderDetailViewModel.userInfoViewModel.workTypesArr.count) {
+                lab.hidden = YES;
+            } else {
+                NSDictionary *dic = [self.orderDetailViewModel.userInfoViewModel.workTypesArr objectAtIndex:index];
+                lab.hidden = NO;
+                lab.text = [dic objectForKey:@"text"];
+                lab.backgroundColor = [dic objectForKey:@"bgColor"];
+                lab.font = [dic objectForKey:@"font"];
+            }
+        }
+        
         return cell;
+        
     } else if ([indentifier isEqualToString:@"AdvisoryDetailUserCell"]) {
         AdvisoryDetailUserCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        
+        [cell.headerImageView setImageWithURL:self.orderDetailViewModel.userInfoViewModel.headUrl placeholderImage:[UIImage imageNamed:DefaultUserHeaderImage]];
+        cell.sexImageView.image = self.orderDetailViewModel.userInfoViewModel.sexImage;
+        cell.nameLab.text = self.orderDetailViewModel.userInfoViewModel.nickStr;
+        cell.locationLab.text = self.orderDetailViewModel.userInfoViewModel.distanceStr;
+        
         return cell;
+        
     } else if ([indentifier isEqualToString:@"AdvisoryDetailTimeCell"]) {
         AdvisoryDetailTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
         [cell layoutAdvisoryDetailTimeCellSubviews];
+        
         return cell;
+        
     } else if ([indentifier isEqualToString:@"AdvisoryDetailServiceCell"]) {
         AdvisoryDetailServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        cell.serviceTypeLab.text = self.orderDetailViewModel.serviceModeStr;
+        
         return cell;
+        
     } else if ([indentifier isEqualToString:@"AdvisoryDetailCommentCell"]) {
         AdvisoryDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        
+        __weak typeof(cell) weakCell = cell;
+        cell.tapCommitCommentHandler = ^() {
+            [self commitCommentWithContent:weakCell.textView.text andStarValue:weakCell.selectedStarCountStr];
+        };
+        
         return cell;
+        
     } else if ([indentifier isEqualToString:@"AdvisoryDetailEndCell"]) {
         AdvisoryDetailEndCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        cell.commentLab.text = self.orderDetailViewModel.commentViewModel.contentStr;
+        for (NSInteger index = 0; index < cell.straImagesArr.count; index ++) {
+            UIImageView *imageView = [cell.straImagesArr objectAtIndex:index];
+            if (index < self.orderDetailViewModel.commentViewModel.starCountStr.integerValue) {
+                imageView.image = [UIImage imageNamed:@"bigStar1"];
+            } else {
+                imageView.image = [UIImage imageNamed:@"bigStar0"];
+            }
+        }
+        
         return cell;
+                 
     } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell0"]) {
         AdvisoryDetailPayCell0 *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        
         return cell;
+        
     } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell1"]) {
         AdvisoryDetailPayCell1 *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        
         return cell;
+        
     } else {
+        
         return nil;
     }
 }
@@ -175,7 +194,7 @@
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 0;
-    NSString *indentifier = [self.identifiersArr objectAtIndex:indexPath.row];
+    NSString *indentifier = [self.orderDetailViewModel.identifiersArr objectAtIndex:indexPath.row];
     
     if ([indentifier isEqualToString:@"AdvisoryDetailNumCell"]) {
         height = 58;

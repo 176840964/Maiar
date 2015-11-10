@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AdvisoryDetailTypeCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *typeLab;
 
 @end

@@ -104,7 +104,7 @@
     self.locationLab.x = self.view.width - self.locationLab.width - 8;
     self.locationImageView.x = self.locationLab.x - self.locationImageView.width;
     
-    [self.headImageView setImageWithURL:self.userZoneViewModel.headUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    [self.headImageView setImageWithURL:self.userZoneViewModel.headUrl placeholderImage:[UIImage imageNamed:DefaultUserHeaderImage]];
     self.sexImageView.image = self.userZoneViewModel.sexImage;
     self.nameLab.text = self.userZoneViewModel.nickAndWorkAgeStr;
     

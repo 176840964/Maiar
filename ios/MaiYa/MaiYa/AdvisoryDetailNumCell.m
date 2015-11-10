@@ -9,7 +9,6 @@
 #import "AdvisoryDetailNumCell.h"
 
 @interface AdvisoryDetailNumCell ()
-@property (weak, nonatomic) IBOutlet UILabel *numLab;
 @end
 
 @implementation AdvisoryDetailNumCell

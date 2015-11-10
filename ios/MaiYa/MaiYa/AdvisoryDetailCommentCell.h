@@ -13,4 +13,8 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *starBtnsArr;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
+@property (copy, nonatomic) NSString *selectedStarCountStr;
+
+@property (copy, nonatomic) TapViewHandler tapCommitCommentHandler;
+
 @end

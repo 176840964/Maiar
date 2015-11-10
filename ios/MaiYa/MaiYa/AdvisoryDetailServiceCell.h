@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AdvisoryDetailServiceCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *serviceTypeLab;
 @end

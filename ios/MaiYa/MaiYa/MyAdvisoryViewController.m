@@ -8,6 +8,7 @@
 
 #import "MyAdvisoryViewController.h"
 #import "MyAdvisoryCell.h"
+#import "AdvisoryDetailViewController.h"
 
 @interface MyAdvisoryViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *markView;
@@ -18,6 +19,8 @@
 
 @property (strong, nonatomic) NSMutableArray *inOrdersArr;
 @property (strong, nonatomic) NSMutableArray *finishedOrderArr;
+
+@property (copy, nonatomic) NSString *selectedOrderId;
 @end
 
 @implementation MyAdvisoryViewController
@@ -72,15 +75,15 @@
     }];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    AdvisoryDetailViewController *controller = segue.destinationViewController;
+    controller.orderIdStr = self.selectedOrderId;
 }
-*/
 
 #pragma mark - IBAction
 - (IBAction)onTapInBtn:(id)sender {
@@ -123,6 +126,15 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    OrderViewModel *viewModel;
+    if ([tableView isEqual:self.inTableView]) {
+        viewModel = [self.inOrdersArr objectAtIndex:indexPath.row];
+    } else {
+        viewModel = [self.finishedOrderArr objectAtIndex:indexPath.row];
+    }
+    
+    self.selectedOrderId = viewModel.orderIdStr;
     
     [self performSegueWithIdentifier:@"ShowAdvisoryDetailViewController" sender:self];
 }

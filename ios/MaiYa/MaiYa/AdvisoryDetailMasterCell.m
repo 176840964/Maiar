@@ -10,6 +10,12 @@
 
 @implementation AdvisoryDetailMasterCell
 
+- (void)awakeFromNib {
+    // Initialization code
+    [super awakeFromNib];
+    
+    self.catsArr = [self.catsArr sortByUIViewOriginX];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
