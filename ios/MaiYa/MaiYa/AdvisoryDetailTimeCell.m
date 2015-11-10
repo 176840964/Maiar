@@ -11,6 +11,7 @@
 
 @interface AdvisoryDetailTimeCell () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *dateModelArr;
 @end
 
 @implementation AdvisoryDetailTimeCell
@@ -25,18 +26,21 @@
     // Configure the view for the selected state
 }
 
-- (void)layoutAdvisoryDetailTimeCellSubviews {
+- (void)layoutAdvisoryDetailTimeCellSubviewsByOrderDateModelArr:(NSArray *)dateModelArr; {
+    self.dateModelArr = dateModelArr;
     [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return self.dateModelArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AdvisoryDetailDateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryDetailDateCell"];
-    [cell layoutAdvisoryDetailDateCellSubviews];
+    
+    OrderDateModel *model = [self.dateModelArr objectAtIndex:indexPath.row];
+    [cell layoutAdvisoryDetailDateCellSubviewsByORderDateModel:model];
     return cell;
 }
 

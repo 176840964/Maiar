@@ -7,6 +7,7 @@
 //
 
 #import "OrderDetailModel.h"
+#import "OrderDateModel.h"
 
 @implementation OrderDetailModel
 
@@ -27,6 +28,14 @@
         self.timeStr = model.ctime;
         [self setupCellsCountByStatusString:model.status];
         self.isConsultant = [model.consultant isEqualToString:@"1"];
+        
+        NSMutableArray *consultingTimeArr = [NSMutableArray new];
+        NSArray *arr = [model.consulting_time componentsSeparatedByString:@"|"];
+        for (NSString *str in arr) {
+            OrderDateModel *dateModel = [[OrderDateModel alloc] initWithDateString:str];
+            [consultingTimeArr addObject:dateModel];
+        }
+        self.consultingTimeArr = [NSArray arrayWithArray:consultingTimeArr];
         
         if (model.comment && ![model.comment isEqual:[NSNull null]]) {
             CommentModel *commentModel = [[CommentModel alloc] initWithDic:model.comment];

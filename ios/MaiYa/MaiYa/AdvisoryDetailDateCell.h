@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderDateModel.h"
 
 @interface AdvisoryDetailDateCell : UITableViewCell
 
-- (void)layoutAdvisoryDetailDateCellSubviews;
+- (void)layoutAdvisoryDetailDateCellSubviewsByORderDateModel:(OrderDateModel *)orderDateModel;
 
 @end

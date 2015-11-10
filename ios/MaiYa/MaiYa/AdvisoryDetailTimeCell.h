@@ -10,6 +10,6 @@
 
 @interface AdvisoryDetailTimeCell : UITableViewCell
 
-- (void)layoutAdvisoryDetailTimeCellSubviews;
+- (void)layoutAdvisoryDetailTimeCellSubviewsByOrderDateModelArr:(NSArray *)dateModelArr;
 
 @end

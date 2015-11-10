@@ -8,6 +8,9 @@
 
 #import "TimeCollectionViewCell.h"
 
+@interface TimeCollectionViewCell ()
+@end
+
 @implementation TimeCollectionViewCell
 
 @end

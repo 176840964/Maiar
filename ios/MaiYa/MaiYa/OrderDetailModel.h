@@ -47,6 +47,8 @@ typedef NS_ENUM(NSInteger, OrderDetailType){
 @property (copy, nonatomic) NSString *moneyAllStr;
 @property (copy, nonatomic) NSString *timeStr;
 
+@property (strong, nonatomic) NSArray *consultingTimeArr;
+
 @property (assign, nonatomic) NSInteger cellCountByStatus;
 @property (assign, nonatomic) OrderDetailType orderDetailType;
 @property (strong, nonatomic) NSMutableArray *identifiersArr;

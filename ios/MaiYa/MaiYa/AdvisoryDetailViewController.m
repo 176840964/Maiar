@@ -141,7 +141,7 @@
         
     } else if ([indentifier isEqualToString:@"AdvisoryDetailTimeCell"]) {
         AdvisoryDetailTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
-        [cell layoutAdvisoryDetailTimeCellSubviews];
+        [cell layoutAdvisoryDetailTimeCellSubviewsByOrderDateModelArr:self.orderDetailViewModel.consultingTimeArr];
         
         return cell;
         
@@ -205,7 +205,7 @@
     } else if ([indentifier isEqualToString:@"AdvisoryDetailUserCell"]) {
         height = 104;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailTimeCell"]) {
-        height = 33 + 70 * 7;
+        height = 33 + 70 * self.orderDetailViewModel.consultingTimeArr.count;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailServiceCell"]) {
         height = 80;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailCommentCell"]) {

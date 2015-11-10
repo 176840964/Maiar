@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TimeCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *timeLab;
 
 @end

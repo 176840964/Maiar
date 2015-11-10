@@ -130,6 +130,7 @@
 		82A49AA71BEAFCB200E6106A /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AA61BEAFCB200E6106A /* OrderModel.m */; };
 		82A49AAA1BF0941400E6106A /* MyAdvisoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AA91BF0941400E6106A /* MyAdvisoryCell.m */; };
 		82A49AAD1BF0AB2800E6106A /* OrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AAC1BF0AB2800E6106A /* OrderDetailModel.m */; };
+		82A49AB81BF1D5D300E6106A /* OrderDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AB71BF1D5D300E6106A /* OrderDateModel.m */; };
 		82A95D501BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */; };
 		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; };
 		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; };
@@ -393,6 +394,8 @@
 		82A49AA91BF0941400E6106A /* MyAdvisoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAdvisoryCell.m; sourceTree = "<group>"; };
 		82A49AAB1BF0AB2800E6106A /* OrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailModel.h; sourceTree = "<group>"; };
 		82A49AAC1BF0AB2800E6106A /* OrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailModel.m; sourceTree = "<group>"; };
+		82A49AB61BF1D5D300E6106A /* OrderDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDateModel.h; sourceTree = "<group>"; };
+		82A49AB71BF1D5D300E6106A /* OrderDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDateModel.m; sourceTree = "<group>"; };
 		82A95D4E1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ValueOfStringOrNull.h"; sourceTree = "<group>"; };
 		82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ValueOfStringOrNull.m"; sourceTree = "<group>"; };
 		82C166271BCE46F100F79D38 /* WalletInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletInfoView.h; sourceTree = "<group>"; };
@@ -1343,12 +1346,22 @@
 		82A49AA41BEAFC9F00E6106A /* OrderModel */ = {
 			isa = PBXGroup;
 			children = (
+				82A49AB51BF1D5B600E6106A /* Date */,
 				82A49AA51BEAFCB200E6106A /* OrderModel.h */,
 				82A49AA61BEAFCB200E6106A /* OrderModel.m */,
 				82A49AAB1BF0AB2800E6106A /* OrderDetailModel.h */,
 				82A49AAC1BF0AB2800E6106A /* OrderDetailModel.m */,
 			);
 			name = OrderModel;
+			sourceTree = "<group>";
+		};
+		82A49AB51BF1D5B600E6106A /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				82A49AB61BF1D5D300E6106A /* OrderDateModel.h */,
+				82A49AB71BF1D5D300E6106A /* OrderDateModel.m */,
+			);
+			name = Date;
 			sourceTree = "<group>";
 		};
 		82C1662A1BCE4FDF00F79D38 /* CouponsModel */ = {
@@ -1718,6 +1731,7 @@
 				820A6F231B953C01002385A4 /* PlazaRootViewController.m in Sources */,
 				820A6F1D1B9482FE002385A4 /* RealInfoComfirmViewController.m in Sources */,
 				82A49AAA1BF0941400E6106A /* MyAdvisoryCell.m in Sources */,
+				82A49AB81BF1D5D300E6106A /* OrderDateModel.m in Sources */,
 				820A6F0D1B9468D8002385A4 /* WithdrawalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
