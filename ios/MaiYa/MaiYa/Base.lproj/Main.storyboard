@@ -21525,6 +21525,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94509803921568625" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="707"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="fzc-xM-fjm" id="sMe-KH-ebS"/>
                                     <outlet property="delegate" destination="fzc-xM-fjm" id="twX-Z3-5UX"/>
@@ -22280,6 +22283,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="146" width="400" height="625"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="eHF-QB-RE8" id="vbu-al-ukW"/>
                                     <outlet property="delegate" destination="eHF-QB-RE8" id="8qK-Xy-9MT"/>
@@ -23535,9 +23541,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JDl-KK-l6G"/>
-        <segue reference="bJp-eb-u4M"/>
-        <segue reference="JEI-Hl-r2e"/>
         <segue reference="mxu-Ep-7Vo"/>
         <segue reference="wOU-v5-FQV"/>
+        <segue reference="qFp-dN-tdp"/>
+        <segue reference="JEI-Hl-r2e"/>
     </inferredMetricsTieBreakers>
 </document>

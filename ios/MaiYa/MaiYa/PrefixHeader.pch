@@ -27,6 +27,7 @@
 #import "UILabel+VerticalAlign.h"
 #import "NSObject+ValueOfStringOrNull.h"
 #import "UIImageView+AFNetworking.h"
+#import "NSString+Valid.h"
 
 typedef void(^TapViewHandler)(void);
 

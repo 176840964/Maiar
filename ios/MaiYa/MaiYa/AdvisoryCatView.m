@@ -49,7 +49,7 @@
         [lab autoSetDimension:ALDimensionHeight toSize:20];
         
         UIButton *btn0 = [UIButton newAutoLayoutView];
-        btn0.tag = 0;
+        btn0.tag = 40;
         [btn0 setImage:[UIImage imageNamed:@"advisory_zhanxing"] forState:UIControlStateNormal];
         [btn0 addTarget:self action:@selector(onTapCatBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:btn0];
@@ -60,7 +60,7 @@
         [btn0 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:lab withOffset:25];
         
         UIButton *btn1 = [UIButton newAutoLayoutView];
-        btn1.tag = 1;
+        btn1.tag = 41;
         [btn1 setImage:[UIImage imageNamed:@"advisory_taluo"] forState:UIControlStateNormal];
         [btn1 addTarget:self action:@selector(onTapCatBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:btn1];
@@ -71,7 +71,7 @@
         [btn1 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:btn0 withOffset:21];
         
         UIButton *btn2 = [UIButton newAutoLayoutView];
-        btn2.tag = 2;
+        btn2.tag = 42;
         [btn2 setImage:[UIImage imageNamed:@"advisory_zhouyi"] forState:UIControlStateNormal];
         [btn2 addTarget:self action:@selector(onTapCatBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:btn2];

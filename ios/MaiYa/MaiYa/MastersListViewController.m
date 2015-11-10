@@ -10,6 +10,7 @@
 #import "MasterCell.h"
 #import "FillterView.h"
 #import "MyZoneViewController.h"
+#import "MasterListParaModel.h"
 
 @interface MastersListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btnsArr;
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet FillterView *fillterView;
 @property (weak, nonatomic) IBOutlet UIView *markView;
 
+@property (strong, nonatomic) MasterListParaModel *paraModel;
 @property (strong, nonatomic) NSMutableArray *usersArr;
 @end
 
@@ -27,6 +29,8 @@
     // Do any additional setup after loading the view.
     
     self.usersArr = [NSMutableArray new];
+    self.paraModel = [[MasterListParaModel alloc] initWithCatStr:[NSString stringWithFormat:@"%zd", self.selectedCatModel]];
+    [self.paraModel addObserver:self forKeyPath:@"isNeedReloadData" options:0 context:nil];
     
     UINib *cellNib = [UINib nibWithNibName:@"MasterCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"MasterCell"];
@@ -42,6 +46,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [self.paraModel removeObserver:self forKeyPath:@"isNeedReloadData"];
 }
 
 #pragma mark - 
@@ -75,13 +84,22 @@
     }
 }
 
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"isNeedReloadData"]) {
+        if (self.paraModel.isNeedReloadData) {
+            [self getUserList];
+            self.paraModel.isNeedReloadData = NO;
+        }
+    }
+}
+
 #pragma mark - Networking
 - (void)getUserList {
-    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userList" params:@{@"uid": uid} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userList" params:self.paraModel.dic success:^(id responseObject) {
+        [self.usersArr removeAllObjects];
+        
         NSArray *resArr = [responseObject objectForKey:@"res"];
         for (NSDictionary *dic in resArr) {
             UserZoneModel *model = [[UserZoneModel alloc] initWithDic:dic];
@@ -121,6 +139,21 @@
     } else {
         button.selected = YES;
         button.backgroundColor = [UIColor colorWithHexString:@"#7167aa"];
+        
+        switch (button.tag) {
+            case 0:
+                self.paraModel.distance = @"1";
+                self.paraModel.order = nil;
+                break;
+            case 1:
+                self.paraModel.distance = nil;
+                self.paraModel.order = OrderTypeOfCommentNum;
+                break;
+            default:
+                self.paraModel.distance = nil;
+                self.paraModel.order = OrderTypeOfHourMoney;
+                break;
+        }
     }
 }
 

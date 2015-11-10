@@ -131,6 +131,8 @@
 		82A49AAA1BF0941400E6106A /* MyAdvisoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AA91BF0941400E6106A /* MyAdvisoryCell.m */; };
 		82A49AAD1BF0AB2800E6106A /* OrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AAC1BF0AB2800E6106A /* OrderDetailModel.m */; };
 		82A49AB81BF1D5D300E6106A /* OrderDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AB71BF1D5D300E6106A /* OrderDateModel.m */; };
+		82A49ABF1BF2061800E6106A /* MasterListParaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49ABE1BF2061800E6106A /* MasterListParaModel.m */; };
+		82A49AC21BF20D5700E6106A /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AC11BF20D5700E6106A /* NSString+Valid.m */; };
 		82A95D501BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */; };
 		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; };
 		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; };
@@ -396,6 +398,10 @@
 		82A49AAC1BF0AB2800E6106A /* OrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailModel.m; sourceTree = "<group>"; };
 		82A49AB61BF1D5D300E6106A /* OrderDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDateModel.h; sourceTree = "<group>"; };
 		82A49AB71BF1D5D300E6106A /* OrderDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDateModel.m; sourceTree = "<group>"; };
+		82A49ABD1BF2061800E6106A /* MasterListParaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterListParaModel.h; sourceTree = "<group>"; };
+		82A49ABE1BF2061800E6106A /* MasterListParaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterListParaModel.m; sourceTree = "<group>"; };
+		82A49AC01BF20D5700E6106A /* NSString+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Valid.h"; sourceTree = "<group>"; };
+		82A49AC11BF20D5700E6106A /* NSString+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Valid.m"; sourceTree = "<group>"; };
 		82A95D4E1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ValueOfStringOrNull.h"; sourceTree = "<group>"; };
 		82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ValueOfStringOrNull.m"; sourceTree = "<group>"; };
 		82C166271BCE46F100F79D38 /* WalletInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletInfoView.h; sourceTree = "<group>"; };
@@ -718,6 +724,8 @@
 				82150F1A1B9C517E00CFDE80 /* 2.2.1Fillter View */,
 				82150F0F1B9BEADB00CFDE80 /* MastersListViewController.h */,
 				82150F101B9BEADB00CFDE80 /* MastersListViewController.m */,
+				82A49ABD1BF2061800E6106A /* MasterListParaModel.h */,
+				82A49ABE1BF2061800E6106A /* MasterListParaModel.m */,
 			);
 			name = "2.2Master List";
 			sourceTree = "<group>";
@@ -1214,6 +1222,8 @@
 				8213C8C51B9008260048B27C /* UILabel+VerticalAlign.m */,
 				82A95D4E1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.h */,
 				82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */,
+				82A49AC01BF20D5700E6106A /* NSString+Valid.h */,
+				82A49AC11BF20D5700E6106A /* NSString+Valid.m */,
 			);
 			path = Category;
 			sourceTree = SOURCE_ROOT;
@@ -1621,6 +1631,7 @@
 				826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */,
 				82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */,
 				820A6F341B95BF18002385A4 /* CarouselCell.m in Sources */,
+				82A49AC21BF20D5700E6106A /* NSString+Valid.m in Sources */,
 				8228E8301BBA828F00F5BBB7 /* CommentModel.m in Sources */,
 				82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */,
 				822A4A5F1BA17F6F0096CA5F /* CommentHeaderView.m in Sources */,
@@ -1704,6 +1715,7 @@
 				82C166351BCFBECE00F79D38 /* BankModel.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,
 				8228E8291BBA29C600F5BBB7 /* ArticleDetailModel.m in Sources */,
+				82A49ABF1BF2061800E6106A /* MasterListParaModel.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
 				822A4A421BA03E120096CA5F /* AdvisoryDetailCommentCell.m in Sources */,
 				82689C6E1BD6254B007A223B /* MessageModel.m in Sources */,
