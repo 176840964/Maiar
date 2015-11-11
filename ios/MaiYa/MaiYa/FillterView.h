@@ -10,4 +10,8 @@
 
 @interface FillterView : UIView
 
+@property (copy, nonatomic) NSString *timeFillterStr;
+
+- (void)setupFillterSubViews;
+
 @end

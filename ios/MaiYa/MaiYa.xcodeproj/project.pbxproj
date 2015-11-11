@@ -133,6 +133,9 @@
 		82A49AB81BF1D5D300E6106A /* OrderDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AB71BF1D5D300E6106A /* OrderDateModel.m */; };
 		82A49ABF1BF2061800E6106A /* MasterListParaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49ABE1BF2061800E6106A /* MasterListParaModel.m */; };
 		82A49AC21BF20D5700E6106A /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AC11BF20D5700E6106A /* NSString+Valid.m */; };
+		82A49AC51BF3296300E6106A /* FillterDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AC41BF3296300E6106A /* FillterDateView.m */; };
+		82A49AC81BF329A800E6106A /* FillterDateCellCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AC71BF329A800E6106A /* FillterDateCellCtrl.m */; };
+		82A49ACB1BF33E5A00E6106A /* NSDate+TodayZeroClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49ACA1BF33E5A00E6106A /* NSDate+TodayZeroClock.m */; };
 		82A95D501BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */; };
 		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; };
 		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; };
@@ -402,6 +405,12 @@
 		82A49ABE1BF2061800E6106A /* MasterListParaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterListParaModel.m; sourceTree = "<group>"; };
 		82A49AC01BF20D5700E6106A /* NSString+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Valid.h"; sourceTree = "<group>"; };
 		82A49AC11BF20D5700E6106A /* NSString+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Valid.m"; sourceTree = "<group>"; };
+		82A49AC31BF3296300E6106A /* FillterDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillterDateView.h; sourceTree = "<group>"; };
+		82A49AC41BF3296300E6106A /* FillterDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillterDateView.m; sourceTree = "<group>"; };
+		82A49AC61BF329A800E6106A /* FillterDateCellCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillterDateCellCtrl.h; sourceTree = "<group>"; };
+		82A49AC71BF329A800E6106A /* FillterDateCellCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillterDateCellCtrl.m; sourceTree = "<group>"; };
+		82A49AC91BF33E5A00E6106A /* NSDate+TodayZeroClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TodayZeroClock.h"; sourceTree = "<group>"; };
+		82A49ACA1BF33E5A00E6106A /* NSDate+TodayZeroClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TodayZeroClock.m"; sourceTree = "<group>"; };
 		82A95D4E1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ValueOfStringOrNull.h"; sourceTree = "<group>"; };
 		82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ValueOfStringOrNull.m"; sourceTree = "<group>"; };
 		82C166271BCE46F100F79D38 /* WalletInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletInfoView.h; sourceTree = "<group>"; };
@@ -744,6 +753,10 @@
 			children = (
 				82150F161B9C516300CFDE80 /* FillterView.h */,
 				82150F171B9C516300CFDE80 /* FillterView.m */,
+				82A49AC31BF3296300E6106A /* FillterDateView.h */,
+				82A49AC41BF3296300E6106A /* FillterDateView.m */,
+				82A49AC61BF329A800E6106A /* FillterDateCellCtrl.h */,
+				82A49AC71BF329A800E6106A /* FillterDateCellCtrl.m */,
 			);
 			name = "2.2.1Fillter View";
 			sourceTree = "<group>";
@@ -1224,6 +1237,8 @@
 				82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */,
 				82A49AC01BF20D5700E6106A /* NSString+Valid.h */,
 				82A49AC11BF20D5700E6106A /* NSString+Valid.m */,
+				82A49AC91BF33E5A00E6106A /* NSDate+TodayZeroClock.h */,
+				82A49ACA1BF33E5A00E6106A /* NSDate+TodayZeroClock.m */,
 			);
 			path = Category;
 			sourceTree = SOURCE_ROOT;
@@ -1714,6 +1729,7 @@
 				821A951F1BB156F000F44790 /* ArticleModel.m in Sources */,
 				82C166351BCFBECE00F79D38 /* BankModel.m in Sources */,
 				820A6F041B94625C002385A4 /* WithdrawalsDetailsViewController.m in Sources */,
+				82A49AC51BF3296300E6106A /* FillterDateView.m in Sources */,
 				8228E8291BBA29C600F5BBB7 /* ArticleDetailModel.m in Sources */,
 				82A49ABF1BF2061800E6106A /* MasterListParaModel.m in Sources */,
 				824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */,
@@ -1731,6 +1747,8 @@
 				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
 				820A6F3F1B969FC9002385A4 /* AdvisoryNaviController.m in Sources */,
 				828C1D911BAA64A100D6FD23 /* BaseModel.m in Sources */,
+				82A49ACB1BF33E5A00E6106A /* NSDate+TodayZeroClock.m in Sources */,
+				82A49AC81BF329A800E6106A /* FillterDateCellCtrl.m in Sources */,
 				82150F151B9C25D300CFDE80 /* SearchViewController.m in Sources */,
 				822A4A361BA03D490096CA5F /* AdvisoryDetailTypeCell.m in Sources */,
 				820A6F201B953BB2002385A4 /* PlazaNaviController.m in Sources */,

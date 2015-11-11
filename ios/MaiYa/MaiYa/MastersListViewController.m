@@ -43,6 +43,12 @@
     [self getUserList];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.fillterView setupFillterSubViews];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -133,6 +139,9 @@
     if (3 == button.tag) {
         if (!self.fillterView.hidden) {
             [self closeFillterView];
+            
+            NSLog(@"%@", self.fillterView.timeFillterStr);
+            
         } else {
             [self showFillterView];
         }
