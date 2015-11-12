@@ -19,5 +19,7 @@
 @property (copy, nonatomic) NSString *updateHorlyStateStr;
 @property (assign, nonatomic) BOOL isNeedToUpdate;
 
+- (NSDictionary *)canSelectHourlyDataDic;
+
 - (instancetype)initWithTimestampStr:(NSString *)timestamp andCustomString:(NSString *)customStr;
 @end

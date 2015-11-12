@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ConsultantDailyViewModel.h"
 
 @interface SelectingServiceDateCell : UIControl
 
-- (void)layoutSelectingServiceDateCellSubviews;
+@property (strong, nonatomic) ConsultantDailyViewModel *dailyViewModel;
+
+- (void)layoutSelectingServiceDateCellSubviewsByConsultantDailyViewModel:(ConsultantDailyViewModel *)dailyViewModel;
 
 @end

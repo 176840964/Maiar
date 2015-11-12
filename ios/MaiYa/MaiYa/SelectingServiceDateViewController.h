@@ -10,4 +10,6 @@
 
 @interface SelectingServiceDateViewController : BaseViewController
 
+@property (copy, nonatomic) NSString *masterId;
+
 @end

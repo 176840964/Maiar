@@ -11,6 +11,7 @@
 #import "ZoneWorkingTimeView.h"
 #import "AbstractViewController.h"
 #import "CommentViewController.h"
+#import "SelectingServiceDateViewController.h"
 
 @interface MyZoneViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
@@ -91,6 +92,9 @@
         CommentViewController *controller = segue.destinationViewController;
         controller.countStr = self.userZoneViewModel.commentNumStr;
         controller.allValueStr = self.userZoneViewModel.commentAllOnlyNumStr;
+    } else if ([segue.identifier isEqualToString:@"ShowSelectingServiceDateViewController"]) {
+        SelectingServiceDateViewController *controller = segue.destinationViewController;
+        controller.masterId = self.cidStr;
     }
 }
 

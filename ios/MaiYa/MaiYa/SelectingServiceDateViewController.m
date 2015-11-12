@@ -9,38 +9,24 @@
 #import "SelectingServiceDateViewController.h"
 #import "SelectingServiceTimeCell.h"
 #import "SelectingServiceDateCell.h"
+#import "ConsultantTimeModel.h"
 
 @interface SelectingServiceDateViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutletCollection(SelectingServiceDateCell) NSArray *dayCell;
 @property (weak, nonatomic) IBOutlet UILabel *selectedDayLab;
 @property (weak, nonatomic) IBOutlet UITableView *talbeView;
-@property (strong, nonatomic) NSMutableArray *dataArr;
+@property (strong, nonatomic) NSDictionary *dataDic;
+@property (strong, nonatomic) ConsultantTimeViewModel *timeViewModel;
 @end
 
 @implementation SelectingServiceDateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    self.dayCell = [self.dayCell sortByUIViewOriginX];
-    for (SelectingServiceDateCell *dayView in self.dayCell) {
-        [dayView addTarget:self action:@selector(onTapDayView:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    self.dataDic = [NSDictionary new];
     
-    self.dataArr = [NSMutableArray new];
-    
-    NSArray *arr0 = @[@"09:00-10:00", @"10:00-11:00", @"11:00-12:00"];
-    NSDictionary *dic0 = @{@"section": @"上午", @"time": arr0};
-    [self.dataArr addObject:dic0];
-    
-    NSArray *arr1 = @[@"13:00-14:00", @"14:00-15:00"];
-    NSDictionary *dic1 = @{@"section": @"中午", @"time": arr1};
-    [self.dataArr addObject:dic1];
-    
-    NSArray *arr2 = @[@"20:00-21:00"];
-    NSDictionary *dic2 = @{@"section": @"下午", @"time": arr2};
-    [self.dataArr addObject:dic2];
+    [self getUserTime];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,13 +36,54 @@
 
 #pragma mark - 
 - (void)onTapDayView:(SelectingServiceDateCell *)dayCell {
-    for (SelectingServiceDateCell *dayView in self.dayCell) {
+    for (NSInteger index = 0; index < self.dayCell.count; index ++) {
+        SelectingServiceDateCell *dayView = [self.dayCell objectAtIndex:index];
         if ([dayView isEqual:dayCell]) {
             dayView.backgroundColor = [UIColor colorWithR:243 g:62 b:118];
+            self.selectedDayLab.text = dayCell.dailyViewModel.theFullTimeStr;
+            
+            ConsultantDailyViewModel *daily = [self.timeViewModel.dailyArr objectAtIndex:index];
+            self.dataDic = [daily canSelectHourlyDataDic];
+            
+            if (self.dataDic.allKeys.count > 0) {
+                self.talbeView.hidden = NO;
+                [self.talbeView reloadData];
+            } else {
+                self.talbeView.hidden = YES;
+            }
         } else {
             dayView.backgroundColor = [UIColor colorWithR:95 g:80 b:154];
         }
     }
+}
+
+- (void)layoutSubviews {
+    self.dayCell = [self.dayCell sortByUIViewOriginX];
+    
+    for (NSInteger index = 0; index < self.dayCell.count; index ++) {
+        SelectingServiceDateCell *dateCell = [self.dayCell objectAtIndex:index];
+        [dateCell addTarget:self action:@selector(onTapDayView:) forControlEvents:UIControlEventTouchUpInside];
+        
+        ConsultantDailyViewModel *viewModel = [self.timeViewModel.dailyArr objectAtIndex:index];
+        [dateCell layoutSelectingServiceDateCellSubviewsByConsultantDailyViewModel:viewModel];
+        
+        if (0 == index) {
+            [self onTapDayView:dateCell];
+        }
+    }
+}
+
+#pragma mark - NetWorking
+- (void)getUserTime {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userTime" params:@{@"cid": self.masterId, @"count": @"7"} success:^(id responseObject) {
+        NSDictionary *resDic = [responseObject objectForKey:@"res"];
+        ConsultantTimeModel *model = [[ConsultantTimeModel alloc] initWithDic:resDic];
+        self.timeViewModel = [[ConsultantTimeViewModel alloc] initWithConsultantTimeModel:model];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self layoutSubviews];
+        });
+    }];
 }
 
 /*
@@ -71,30 +98,35 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataArr.count;
+    return self.dataDic.allKeys.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSDictionary *dic = [self.dataArr objectAtIndex:section];
-    NSArray *arr = [dic objectForKey:@"time"];
+    NSString *key = [self.dataDic.allKeys objectAtIndex:section];
+    NSArray *arr = [self.dataDic objectForKey:key];
     return arr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SelectingServiceTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ServiceCell"];
     
-    NSDictionary *dic = [self.dataArr objectAtIndex:indexPath.section];
-    NSArray *arr = [dic objectForKey:@"time"];
-    NSString *title = [arr objectAtIndex:indexPath.row];
-    cell.titleLab.text = title;
+    NSString *key = [self.dataDic.allKeys objectAtIndex:indexPath.section];
+    NSArray *arr = [self.dataDic objectForKey:key];
+    cell.titleLab.text = [arr objectAtIndex:indexPath.row];
     
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSDictionary *dic = [self.dataArr objectAtIndex:section];
-    NSString *str = [dic objectForKey:@"section"];
-    return str;
+    
+    NSString *str = [self.dataDic.allKeys objectAtIndex:section];
+    if ([str isEqualToString:@"am"]) {
+        return @"上午";
+    } else if ([str isEqualToString:@"pm"]) {
+        return @"下午";
+    } else {
+        return @"晚上";
+    }
 }
 
 #pragma mark - UITableViewDelegate

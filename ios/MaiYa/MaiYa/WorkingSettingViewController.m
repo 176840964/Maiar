@@ -45,7 +45,8 @@
 
 #pragma mark - 
 - (void)getWorkingTime {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userTime" params:@{@"cid": @"1", @"count": @"7"} success:^(id responseObject) {
+#warning test cid
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userTime" params:@{@"cid": @"3", @"count": @"7"} success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         ConsultantTimeModel *model = [[ConsultantTimeModel alloc] initWithDic:resDic];
         self.timeViewModel = [[ConsultantTimeViewModel alloc] initWithConsultantTimeModel:model];
@@ -57,8 +58,9 @@
 }
 
 - (void)saveWorkingTimeBySelectedDaily:(ConsultantDailyViewModel *)selectedDaily {
+#warning test uid
     if (selectedDaily && selectedDaily.isNeedToUpdate) {
-        [[NetworkingManager shareManager] networkingWithGetMethodPath:@"editUserTime" params:@{@"uid": @"1", @"time": selectedDaily.timestampStr, @"time_slot": selectedDaily.updateHorlyStateStr} success:^(id responseObject) {
+        [[NetworkingManager shareManager] networkingWithGetMethodPath:@"editUserTime" params:@{@"uid": @"3", @"time": selectedDaily.timestampStr, @"time_slot": selectedDaily.updateHorlyStateStr} success:^(id responseObject) {
             
         }];
     }

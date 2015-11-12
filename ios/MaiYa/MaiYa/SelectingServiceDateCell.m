@@ -15,7 +15,10 @@
 
 @implementation SelectingServiceDateCell
 
-- (void)layoutSelectingServiceDateCellSubviews {
+- (void)layoutSelectingServiceDateCellSubviewsByConsultantDailyViewModel:(ConsultantDailyViewModel *)dailyViewModel {
+    self.dailyViewModel = dailyViewModel;
+    self.weekLab.text = dailyViewModel.weekStr;
+    self.dateLab.text = dailyViewModel.dateStr;
 }
 
 

@@ -8,6 +8,10 @@
 
 #import "ConsultantDailyViewModel.h"
 
+@interface ConsultantDailyViewModel ()
+@property (strong, nonatomic) NSMutableDictionary *hourlyDic;
+@end
+
 @implementation ConsultantDailyViewModel
 
 - (instancetype)initWithTimestampStr:(NSString *)timestamp andCustomString:(NSString *)customStr {
@@ -39,6 +43,43 @@
     }
     
     return ![self.updateHorlyStateStr isEqualToString:self.originalHorlyStateStr];
+}
+
+- (NSDictionary *)canSelectHourlyDataDic {
+    self.hourlyDic = [NSMutableDictionary new];
+    
+    NSString *amStr = [self.originalHorlyStateStr substringWithRange:NSMakeRange(9, 3)];
+    [self addSectionHourlyArrToDicByKey:@"am" setionStr:amStr offsetHour:9];
+    
+    NSString *pmStr = [self.originalHorlyStateStr substringWithRange:NSMakeRange(13, 5)];
+    [self addSectionHourlyArrToDicByKey:@"pm" setionStr:pmStr offsetHour:13];
+    
+    NSString *nightStr = [self.originalHorlyStateStr substringWithRange:NSMakeRange(19, 4)];
+    [self addSectionHourlyArrToDicByKey:@"night" setionStr:nightStr offsetHour:19];
+    
+    return self.hourlyDic;
+}
+
+#pragma mark - 
+- (void)addSectionHourlyArrToDicByKey:(NSString *)key setionStr:(NSString *)sectionStr offsetHour:(NSInteger)offsetHour {
+    NSMutableArray *arr = nil;
+    
+    for (NSInteger index = 0; index < sectionStr.length; index ++) {
+        NSString *subStr = [sectionStr substringWithRange:NSMakeRange(index, 1)];
+        if ([subStr isEqualToString:@"1"]) {
+            NSString *start = [NSString stringWithFormat:@"%2zd", offsetHour + index];
+            NSString *end = [NSString stringWithFormat:@"%2zd", offsetHour + index];
+            NSString *hour = [NSString stringWithFormat:@"%@:00-%@:00", start, end];
+            if (!arr) {
+                arr = [NSMutableArray new];
+            }
+            [arr addObject:hour];
+        }
+    }
+    
+    if (arr) {
+        [self.hourlyDic setObject:arr forKey:key];
+    }
 }
 
 @end
