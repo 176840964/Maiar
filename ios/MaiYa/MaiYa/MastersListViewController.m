@@ -140,8 +140,11 @@
         if (!self.fillterView.hidden) {
             [self closeFillterView];
             
-            NSLog(@"%@", self.fillterView.timeFillterStr);
+            self.paraModel.money_e = self.fillterView.minPrice;
+            self.paraModel.money_s = self.fillterView.maxPrice;
+            self.paraModel.time = self.fillterView.timeFillterStr;
             
+            self.paraModel.isNeedReloadData = self.paraModel.isChangeMoney_e || self.paraModel.isChangeMoney_s || self.paraModel.isChangeTime;
         } else {
             [self showFillterView];
         }

@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSMutableDictionary *dic;
 
 @property (assign, nonatomic) BOOL isNeedReloadData;
+@property (assign, nonatomic) BOOL isChangeMoney_s;
+@property (assign, nonatomic) BOOL isChangeMoney_e;
+@property (assign, nonatomic) BOOL isChangeTime;
 
 - (instancetype)initWithCatStr:(NSString *)catStr;
 

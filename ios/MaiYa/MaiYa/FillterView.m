@@ -18,14 +18,15 @@
 @property (strong, nonatomic) IBOutletCollection(FillterDateView) NSArray *dateViewArr;
 
 @property (assign, nonatomic) CGPoint beginPoint;
-@property (copy, nonatomic) NSString* minPrice;
-@property (copy, nonatomic) NSString* maxPrice;
 
 @end
 
 @implementation FillterView
 
 - (void)setupFillterSubViews {
+    self.minPrice = @"0";
+    self.maxPrice = @"";
+    
     self.dateViewArr = [self.dateViewArr sortByUIViewOriginX];
     
     NSDate *todayZeroClock = [NSDate todayZeroClock];
@@ -61,19 +62,19 @@
             str = @"0";
             break;
         case 1:
-            str = @"100";
+            str = @"10000";
             break;
         case 2:
-            str = @"150";
+            str = @"15000";
             break;
         case 3:
-            str = @"200";
+            str = @"20000";
             break;
         case 4:
-            str = @"300";
+            str = @"30000";
             break;
         default:
-            str = @"all";
+            str = @"";
             break;
     }
     

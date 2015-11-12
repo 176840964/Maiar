@@ -11,6 +11,8 @@
 @interface FillterView : UIView
 
 @property (copy, nonatomic) NSString *timeFillterStr;
+@property (copy, nonatomic) NSString* minPrice;
+@property (copy, nonatomic) NSString* maxPrice;
 
 - (void)setupFillterSubViews;
 

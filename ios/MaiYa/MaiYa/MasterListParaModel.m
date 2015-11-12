@@ -83,6 +83,8 @@
     } else {
         [self.dic removeObjectForKey:@"money_s"];
     }
+    
+    self.isChangeMoney_s = YES;
 }
 
 - (void)setMoney_e:(NSString *)money_e {
@@ -96,6 +98,23 @@
     } else {
         [self.dic removeObjectForKey:@"money_e"];
     }
+    
+    self.isChangeMoney_e = YES;
+}
+
+- (void)setTime:(NSString *)time {
+    if ([_time isEqualToString:time]) {
+        return;
+    }
+    
+    _time = time;
+    if (time.isValid) {
+        [self.dic setObject:time forKey:@"time"];
+    } else {
+        [self.dic removeObjectForKey:@"time"];
+    }
+    
+    self.isChangeTime = YES;
 }
 
 @end
