@@ -17,6 +17,7 @@
 
 - (instancetype)initWithUserZoneModel:(UserZoneModel *)model {
     if (self = [super init]) {
+        self.uidStr = model.uid;
         self.usernameStr = model.username;
         
         if ([model.gender isEqualToString:@"1"]) {

@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) MasterListParaModel *paraModel;
 @property (strong, nonatomic) NSMutableArray *usersArr;
+@property (copy, nonatomic) NSString *selectedMasterId;
 @end
 
 @implementation MastersListViewController
@@ -175,12 +176,16 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
     if ([segue.identifier isEqualToString:@"ShowMasterZone"]) {
         MyZoneViewController *contrller = segue.destinationViewController;
         contrller.type = ZoneViewControllerTypeOfOther;
+        
+        NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+#warning uid
+        uid = @"1";
+        
+        contrller.cidStr = self.selectedMasterId;
+        contrller.oidStr = uid;
     }
 }
 
@@ -201,6 +206,10 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UserZoneViewModel *viewModel = [self.usersArr objectAtIndex:indexPath.row];
+    self.selectedMasterId = viewModel.uidStr;
+    
     [self performSegueWithIdentifier:@"ShowMasterZone" sender:self];
 }
 

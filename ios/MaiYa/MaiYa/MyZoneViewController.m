@@ -116,10 +116,10 @@
     
     for (NSInteger index = 0; index < self.workTypeLabsArr.count; ++index) {
         UILabel *lab = [self.workTypeLabsArr objectAtIndex:index];
-        NSDictionary *dic = [self.userZoneViewModel.workTypesArr objectAtIndex:index];
-        if (!dic) {
+        if (index >= self.userZoneViewModel.workTypesArr.count) {
             lab.hidden = YES;
         } else {
+            NSDictionary *dic = [self.userZoneViewModel.workTypesArr objectAtIndex:index];
             lab.hidden = NO;
             lab.text = [dic objectForKey:@"text"];
             lab.backgroundColor = [dic objectForKey:@"bgColor"];
@@ -161,8 +161,7 @@
 
 #pragma mark - Networking
 - (void)getUserInfo {
-#warning test cid
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": @"1"} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": self.cidStr, @"oid": self.oidStr} success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         UserZoneModel *model = [[UserZoneModel alloc] initWithDic:resDic];
         self.userZoneViewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];

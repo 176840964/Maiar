@@ -49,6 +49,13 @@
     if ([segue.identifier isEqualToString:@"ShowMyZoneViewController"]) {
         MyZoneViewController *controller = segue.destinationViewController;
         controller.type = ZoneViewControllerTypeOfMine;
+        
+#warning uid
+        NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+        uid = @"1";
+        controller.cidStr = uid;
+        controller.oidStr = uid;
+        
     }
 }
 
