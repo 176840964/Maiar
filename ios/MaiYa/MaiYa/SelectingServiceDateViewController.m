@@ -14,6 +14,7 @@
 @interface SelectingServiceDateViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutletCollection(SelectingServiceDateCell) NSArray *dayCell;
 @property (weak, nonatomic) IBOutlet UILabel *selectedDayLab;
+@property (weak, nonatomic) IBOutlet UIView *noTimeView;
 @property (weak, nonatomic) IBOutlet UITableView *talbeView;
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) ConsultantTimeViewModel *timeViewModel;
@@ -43,12 +44,14 @@
             self.selectedDayLab.text = dayCell.dailyViewModel.theFullTimeStr;
             
             ConsultantDailyViewModel *daily = [self.timeViewModel.dailyArr objectAtIndex:index];
-            self.dataDic = [daily canSelectHourlyDataDic];
+            self.dataDic = daily.canSelectHourlyDataDic;
             
             if (self.dataDic.allKeys.count > 0) {
+                self.noTimeView.hidden = YES;
                 self.talbeView.hidden = NO;
                 [self.talbeView reloadData];
             } else {
+                self.noTimeView.hidden = NO;
                 self.talbeView.hidden = YES;
             }
         } else {

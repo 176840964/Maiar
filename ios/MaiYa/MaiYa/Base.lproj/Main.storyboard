@@ -6439,6 +6439,86 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbg-BN-tMm">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advisory_no_time" translatesAutoresizingMaskIntoConstraints="NO" id="S3d-x9-Co1">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="5na-Kj-0s8"/>
+                                            <constraint firstAttribute="height" constant="110" id="So1-1X-s9f"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="5na-Kj-0s8"/>
+                                                <exclude reference="So1-1X-s9f"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="5na-Kj-0s8"/>
+                                                <include reference="So1-1X-s9f"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="非常抱歉，老师今日已预约满" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-uS-2Pu">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="fI7-ox-0We"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.55294117647058827" green="0.59215686274509804" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="fI7-ox-0We"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="fI7-ox-0We"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4cX-uS-2Pu" secondAttribute="trailing" id="0q6-E1-53b"/>
+                                    <constraint firstItem="4cX-uS-2Pu" firstAttribute="leading" secondItem="Dbg-BN-tMm" secondAttribute="leading" id="6RE-wb-96r"/>
+                                    <constraint firstItem="4cX-uS-2Pu" firstAttribute="top" secondItem="S3d-x9-Co1" secondAttribute="bottom" constant="8" id="avL-qR-U3Z"/>
+                                    <constraint firstItem="S3d-x9-Co1" firstAttribute="centerX" secondItem="Dbg-BN-tMm" secondAttribute="centerX" id="mEd-4U-LCB"/>
+                                    <constraint firstItem="S3d-x9-Co1" firstAttribute="centerY" secondItem="Dbg-BN-tMm" secondAttribute="centerY" id="wl8-3w-4Uc"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="S3d-x9-Co1"/>
+                                        <exclude reference="4cX-uS-2Pu"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="mEd-4U-LCB"/>
+                                        <exclude reference="wl8-3w-4Uc"/>
+                                        <exclude reference="0q6-E1-53b"/>
+                                        <exclude reference="6RE-wb-96r"/>
+                                        <exclude reference="avL-qR-U3Z"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="S3d-x9-Co1"/>
+                                        <include reference="4cX-uS-2Pu"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="mEd-4U-LCB"/>
+                                        <include reference="wl8-3w-4Uc"/>
+                                        <include reference="0q6-E1-53b"/>
+                                        <include reference="6RE-wb-96r"/>
+                                        <include reference="avL-qR-U3Z"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iPI-9s-Qwd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
@@ -6584,8 +6664,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="B3K-Qa-EHf" secondAttribute="trailing" id="2sr-EH-XCC"/>
                             <constraint firstAttribute="trailing" secondItem="prk-fg-ali" secondAttribute="trailing" constant="30" id="Fb3-8z-6Wi"/>
+                            <constraint firstItem="Dbg-BN-tMm" firstAttribute="top" secondItem="B3K-Qa-EHf" secondAttribute="bottom" id="HEI-S7-c7V"/>
                             <constraint firstItem="prk-fg-ali" firstAttribute="top" secondItem="iPI-9s-Qwd" secondAttribute="bottom" constant="10" id="Ju9-Ga-zWz"/>
                             <constraint firstItem="prk-fg-ali" firstAttribute="top" secondItem="9oe-aH-Ynl" secondAttribute="bottom" constant="10" id="M59-ED-ref"/>
+                            <constraint firstItem="prk-fg-ali" firstAttribute="top" secondItem="Dbg-BN-tMm" secondAttribute="bottom" constant="10" id="Pn2-mT-pvz"/>
+                            <constraint firstAttribute="trailing" secondItem="Dbg-BN-tMm" secondAttribute="trailing" id="Qa4-t3-Xpj"/>
                             <constraint firstItem="iPI-9s-Qwd" firstAttribute="top" secondItem="B3K-Qa-EHf" secondAttribute="bottom" id="Qof-G9-iH6"/>
                             <constraint firstItem="B3K-Qa-EHf" firstAttribute="top" secondItem="Jtd-xx-MEm" secondAttribute="top" constant="5" id="U8L-5H-SDQ"/>
                             <constraint firstAttribute="bottom" secondItem="iPI-9s-Qwd" secondAttribute="bottom" id="ZQh-Gj-59s">
@@ -6596,53 +6679,65 @@
                             <constraint firstAttribute="bottom" secondItem="prk-fg-ali" secondAttribute="bottom" constant="10" id="tli-Gv-7CN"/>
                             <constraint firstItem="prk-fg-ali" firstAttribute="leading" secondItem="Jtd-xx-MEm" secondAttribute="leading" constant="30" id="uQ3-CX-3DB"/>
                             <constraint firstItem="iPI-9s-Qwd" firstAttribute="leading" secondItem="Jtd-xx-MEm" secondAttribute="leading" id="wqp-df-ndw"/>
+                            <constraint firstItem="Dbg-BN-tMm" firstAttribute="leading" secondItem="Jtd-xx-MEm" secondAttribute="leading" id="zIa-qK-s85"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="B3K-Qa-EHf"/>
+                                <exclude reference="Dbg-BN-tMm"/>
                                 <exclude reference="iPI-9s-Qwd"/>
                                 <exclude reference="prk-fg-ali"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Fb3-8z-6Wi"/>
-                                <exclude reference="Ju9-Ga-zWz"/>
-                                <exclude reference="M59-ED-ref"/>
-                                <exclude reference="tli-Gv-7CN"/>
-                                <exclude reference="uQ3-CX-3DB"/>
                                 <exclude reference="2sr-EH-XCC"/>
                                 <exclude reference="U8L-5H-SDQ"/>
                                 <exclude reference="n8p-08-qKg"/>
+                                <exclude reference="HEI-S7-c7V"/>
+                                <exclude reference="Qa4-t3-Xpj"/>
+                                <exclude reference="zIa-qK-s85"/>
                                 <exclude reference="Qof-G9-iH6"/>
                                 <exclude reference="ZQh-Gj-59s"/>
                                 <exclude reference="e5d-od-F12"/>
                                 <exclude reference="wqp-df-ndw"/>
+                                <exclude reference="Fb3-8z-6Wi"/>
+                                <exclude reference="Ju9-Ga-zWz"/>
+                                <exclude reference="M59-ED-ref"/>
+                                <exclude reference="Pn2-mT-pvz"/>
+                                <exclude reference="tli-Gv-7CN"/>
+                                <exclude reference="uQ3-CX-3DB"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="B3K-Qa-EHf"/>
+                                <include reference="Dbg-BN-tMm"/>
                                 <include reference="iPI-9s-Qwd"/>
                                 <include reference="prk-fg-ali"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Fb3-8z-6Wi"/>
-                                <include reference="Ju9-Ga-zWz"/>
-                                <exclude reference="M59-ED-ref"/>
-                                <include reference="tli-Gv-7CN"/>
-                                <include reference="uQ3-CX-3DB"/>
                                 <include reference="2sr-EH-XCC"/>
                                 <include reference="U8L-5H-SDQ"/>
                                 <include reference="n8p-08-qKg"/>
+                                <include reference="HEI-S7-c7V"/>
+                                <include reference="Qa4-t3-Xpj"/>
+                                <include reference="zIa-qK-s85"/>
                                 <include reference="Qof-G9-iH6"/>
                                 <include reference="ZQh-Gj-59s"/>
                                 <include reference="e5d-od-F12"/>
                                 <include reference="wqp-df-ndw"/>
+                                <include reference="Fb3-8z-6Wi"/>
+                                <include reference="Ju9-Ga-zWz"/>
+                                <exclude reference="M59-ED-ref"/>
+                                <include reference="Pn2-mT-pvz"/>
+                                <include reference="tli-Gv-7CN"/>
+                                <include reference="uQ3-CX-3DB"/>
                             </mask>
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="选择预约时间" id="4me-7G-5It"/>
                     <connections>
+                        <outlet property="noTimeView" destination="Dbg-BN-tMm" id="O5S-AF-TMU"/>
                         <outlet property="selectedDayLab" destination="M8T-Kp-LG3" id="vKV-rI-CWv"/>
                         <outlet property="talbeView" destination="iPI-9s-Qwd" id="0k5-p3-PQA"/>
                         <outletCollection property="dayCell" destination="mbP-OR-5WQ" id="JqZ-Fw-2OV"/>
@@ -25765,6 +25860,7 @@
         <image name="advisory_date_select0" width="31" height="31"/>
         <image name="advisory_ganqing" width="85" height="130"/>
         <image name="advisory_jiankang" width="85" height="130"/>
+        <image name="advisory_no_time" width="110" height="110"/>
         <image name="advisory_renji" width="85" height="130"/>
         <image name="advisory_search" width="26" height="26"/>
         <image name="advisory_selected" width="43" height="34"/>
@@ -25831,6 +25927,6 @@
         <segue reference="JDl-KK-l6G"/>
         <segue reference="Fco-ea-mTQ"/>
         <segue reference="JEI-Hl-r2e"/>
-        <segue reference="mxu-Ep-7Vo"/>
+        <segue reference="Tua-5Y-gFO"/>
     </inferredMetricsTieBreakers>
 </document>
