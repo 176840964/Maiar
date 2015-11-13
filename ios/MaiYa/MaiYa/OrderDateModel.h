@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSArray *timesArr;
 
 - (instancetype)initWithDateString:(NSString *)dateStr;
+- (instancetype)initWithTimestamp:(NSString *)timestamp andHourArr:(NSArray *)hourArr;
 
 @end

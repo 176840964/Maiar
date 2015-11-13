@@ -49,13 +49,13 @@
     self.hourlyDic = [NSMutableDictionary new];
     
     NSString *amStr = [self.originalHorlyStateStr substringWithRange:NSMakeRange(9, 3)];
-    [self addSectionHourlyArrToDicByKey:@"am" setionStr:amStr offsetHour:9];
+    [self addSectionHourlyArrToDicByKey:@"0" setionStr:amStr offsetHour:9];
     
     NSString *pmStr = [self.originalHorlyStateStr substringWithRange:NSMakeRange(13, 5)];
-    [self addSectionHourlyArrToDicByKey:@"pm" setionStr:pmStr offsetHour:13];
+    [self addSectionHourlyArrToDicByKey:@"1" setionStr:pmStr offsetHour:13];
     
     NSString *nightStr = [self.originalHorlyStateStr substringWithRange:NSMakeRange(19, 4)];
-    [self addSectionHourlyArrToDicByKey:@"night" setionStr:nightStr offsetHour:19];
+    [self addSectionHourlyArrToDicByKey:@"2" setionStr:nightStr offsetHour:19];
     
     return self.hourlyDic;
 }
@@ -67,8 +67,8 @@
     for (NSInteger index = 0; index < sectionStr.length; index ++) {
         NSString *subStr = [sectionStr substringWithRange:NSMakeRange(index, 1)];
         if ([subStr isEqualToString:@"1"]) {
-            NSString *start = [NSString stringWithFormat:@"%2zd", offsetHour + index];
-            NSString *end = [NSString stringWithFormat:@"%2zd", offsetHour + index];
+            NSString *start = [NSString stringWithFormat:@"%02zd", offsetHour + index];
+            NSString *end = [NSString stringWithFormat:@"%02zd", offsetHour + 1 + index];
             NSString *hour = [NSString stringWithFormat:@"%@:00-%@:00", start, end];
             if (!arr) {
                 arr = [NSMutableArray new];

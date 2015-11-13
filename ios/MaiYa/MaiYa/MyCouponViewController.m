@@ -34,7 +34,7 @@
 #warning test uid
     uid = @"1";
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"couponsList" params:@{@"uid": uid} success:^(id responseObject) {
-        NSArray *resArr = [responseObject objectAtIndex:@"res"];
+        NSArray *resArr = [responseObject objectForKey:@"res"];
         self.couponsArr = [NSMutableArray new];
         for (NSDictionary *dic in resArr) {
             CouponsModel *model = [[CouponsModel alloc] initWithDic:dic];

@@ -50,6 +50,7 @@
     self = [super init];
     if (self) {
         _isLogin = NO;
+        _createOrderViewModel = [[CreateOrderViewModel alloc] init];
     }
     
     return self;
@@ -85,6 +86,10 @@
         [self.locationManager requestWhenInUseAuthorization];//使用中授权
     }
     [self.locationManager startUpdatingLocation];
+}
+
+- (void)clearCreateOrderInfo {
+    [self.createOrderViewModel clear];
 }
 
 #pragma mark - NSCoding

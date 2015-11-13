@@ -31,7 +31,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self getOrderDetailInfo];
+    if (self.orderIdStr.isValid) {
+        [self getOrderDetailInfo];
+    } else {
+        [self getUserInfo];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +44,11 @@
 }
 
 #pragma mark -
+- (void)getOrderingDetail {
+    self.orderDetailViewModel = [[OrderDetailViewModel alloc] initWithCreateOrderViewModel:[UserConfigManager shareManager].createOrderViewModel];
+    
+    [self.tableView reloadData];
+}
 
 #pragma mark - networking
 - (void)getOrderDetailInfo {
@@ -55,6 +64,18 @@
             [self.tableView reloadData];
         });
         
+    }];
+}
+
+- (void)getUserInfo {
+    NSString *cid = [UserConfigManager shareManager].userInfo.uidStr;
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": cid} success:^(id responseObject) {
+        NSDictionary *resDic = [responseObject objectForKey:@"res"];
+        [UserConfigManager shareManager].createOrderViewModel.userInfo = [[UserZoneModel alloc] initWithDic:resDic];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self getOrderingDetail];
+        });
     }];
 }
 
@@ -177,6 +198,8 @@
                  
     } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell0"]) {
         AdvisoryDetailPayCell0 *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        cell.balanceLab.text = self.orderDetailViewModel.balanceStr;
+        cell.totalPriceLab.text = self.orderDetailViewModel.moneyAllStr;
         
         return cell;
         

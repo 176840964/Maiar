@@ -137,6 +137,7 @@
 		82A49AC81BF329A800E6106A /* FillterDateCellCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49AC71BF329A800E6106A /* FillterDateCellCtrl.m */; };
 		82A49ACB1BF33E5A00E6106A /* NSDate+TodayZeroClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A49ACA1BF33E5A00E6106A /* NSDate+TodayZeroClock.m */; };
 		82A95D501BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */; };
+		82B81C0E1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B81C0D1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m */; };
 		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; };
 		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; };
 		82C166311BCE5EC800F79D38 /* ApplyMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166301BCE5EC800F79D38 /* ApplyMoneyModel.m */; };
@@ -413,6 +414,8 @@
 		82A49ACA1BF33E5A00E6106A /* NSDate+TodayZeroClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TodayZeroClock.m"; sourceTree = "<group>"; };
 		82A95D4E1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ValueOfStringOrNull.h"; sourceTree = "<group>"; };
 		82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ValueOfStringOrNull.m"; sourceTree = "<group>"; };
+		82B81C0C1BF5BD4C00CFB8D1 /* CreateOrderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrderViewModel.h; sourceTree = "<group>"; };
+		82B81C0D1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderViewModel.m; sourceTree = "<group>"; };
 		82C166271BCE46F100F79D38 /* WalletInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletInfoView.h; sourceTree = "<group>"; };
 		82C166281BCE46F100F79D38 /* WalletInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletInfoView.m; sourceTree = "<group>"; };
 		82C1662B1BCE500300F79D38 /* CouponsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsModel.h; sourceTree = "<group>"; };
@@ -1331,6 +1334,7 @@
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82B81C081BF5BB9700CFB8D1 /* CreateOrderModel */,
 				82A49AA41BEAFC9F00E6106A /* OrderModel */,
 				826A60A11BD4EF4D00C035DC /* MessageModel */,
 				82C166321BCFBEBC00F79D38 /* Bank */,
@@ -1387,6 +1391,15 @@
 				82A49AB71BF1D5D300E6106A /* OrderDateModel.m */,
 			);
 			name = Date;
+			sourceTree = "<group>";
+		};
+		82B81C081BF5BB9700CFB8D1 /* CreateOrderModel */ = {
+			isa = PBXGroup;
+			children = (
+				82B81C0C1BF5BD4C00CFB8D1 /* CreateOrderViewModel.h */,
+				82B81C0D1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m */,
+			);
+			name = CreateOrderModel;
 			sourceTree = "<group>";
 		};
 		82C1662A1BCE4FDF00F79D38 /* CouponsModel */ = {
@@ -1747,6 +1760,7 @@
 				8213C8D61B9061A40048B27C /* MySharingViewController.m in Sources */,
 				820A6F3F1B969FC9002385A4 /* AdvisoryNaviController.m in Sources */,
 				828C1D911BAA64A100D6FD23 /* BaseModel.m in Sources */,
+				82B81C0E1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m in Sources */,
 				82A49ACB1BF33E5A00E6106A /* NSDate+TodayZeroClock.m in Sources */,
 				82A49AC81BF329A800E6106A /* FillterDateCellCtrl.m in Sources */,
 				82150F151B9C25D300CFDE80 /* SearchViewController.m in Sources */,

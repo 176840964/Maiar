@@ -9,6 +9,7 @@
 #import "BaseModel.h"
 #import "UserZoneModel.h"
 #import "CommentModel.h"
+#import "CreateOrderViewModel.h"
 
 typedef NS_ENUM(NSInteger, OrderDetailType){
     OrderDetailTypeOfGoingOn,//进行中
@@ -55,8 +56,11 @@ typedef NS_ENUM(NSInteger, OrderDetailType){
 
 @property (assign, nonatomic) BOOL isConsultant;
 @property (strong, nonatomic) CommentViewModel *commentViewModel;
+
 @property (strong, nonatomic) UserZoneViewModel *userInfoViewModel;
+@property (copy, nonatomic) NSString *balanceStr;
 
 - (instancetype)initWithOrderDetailModel:(OrderDetailModel *)model;
+- (instancetype)initWithCreateOrderViewModel:(CreateOrderViewModel *)viewModel;
 
 @end

@@ -20,8 +20,30 @@
         NSMutableArray *timesArr = [NSMutableArray new];
         NSArray *arr2 = [str2 componentsSeparatedByString:@","];
         for (NSString *sub in arr2) {
-            NSString *start = [NSString stringWithFormat:@"%@%@:00", (sub.integerValue > 9)? @"": @"0", sub];
-            NSString *end = [NSString stringWithFormat:@"%@%zd:00", (sub.integerValue + 1 > 9)? @"": @"0", sub.integerValue + 1];
+            NSString *start = [NSString stringWithFormat:@"%02zd:00", sub.integerValue];
+            NSString *end = [NSString stringWithFormat:@"%02zd:00", sub.integerValue + 1];
+            NSString *timeStr = [NSString stringWithFormat:@"%@-%@", start, end];
+            [timesArr addObject:timeStr];
+        }
+        
+        self.timesArr = [NSArray arrayWithArray:timesArr];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithTimestamp:(NSString *)timestamp andHourArr:(NSArray *)hourArr {
+    if (self = [super init]) {
+        self.dateStr = [CustomTools dateStringFromUnixTimestamp:timestamp.integerValue withFormatString:@"yyyy年MM月dd日(ww)"];\
+        
+        NSArray *arr = [hourArr sortedArrayUsingComparator:^NSComparisonResult(NSString * obj1, NSString * obj2) {
+            return ([obj1 integerValue] < [obj2 integerValue]) ? NSOrderedAscending : ([obj1 integerValue] > [obj2 integerValue]) ? NSOrderedDescending : NSOrderedSame;
+        }];
+        
+        NSMutableArray *timesArr = [NSMutableArray new];
+        for (NSString *sub in arr) {
+            NSString *start = [NSString stringWithFormat:@"%02zd:00", sub.integerValue];
+            NSString *end = [NSString stringWithFormat:@"%02zd:00", sub.integerValue + 1];
             NSString *timeStr = [NSString stringWithFormat:@"%@-%@", start, end];
             [timesArr addObject:timeStr];
         }

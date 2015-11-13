@@ -15,9 +15,10 @@
 @property (strong, nonatomic) IBOutletCollection(SelectingServiceDateCell) NSArray *dayCell;
 @property (weak, nonatomic) IBOutlet UILabel *selectedDayLab;
 @property (weak, nonatomic) IBOutlet UIView *noTimeView;
-@property (weak, nonatomic) IBOutlet UITableView *talbeView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) ConsultantTimeViewModel *timeViewModel;
+@property (copy, nonatomic) NSString *selectedDateTimestampStr;
 @end
 
 @implementation SelectingServiceDateViewController
@@ -45,14 +46,15 @@
             
             ConsultantDailyViewModel *daily = [self.timeViewModel.dailyArr objectAtIndex:index];
             self.dataDic = daily.canSelectHourlyDataDic;
+            self.selectedDateTimestampStr = daily.timestampStr;
             
             if (self.dataDic.allKeys.count > 0) {
                 self.noTimeView.hidden = YES;
-                self.talbeView.hidden = NO;
-                [self.talbeView reloadData];
+                self.tableView.hidden = NO;
+                [self.tableView reloadData];
             } else {
                 self.noTimeView.hidden = NO;
-                self.talbeView.hidden = YES;
+                self.tableView.hidden = YES;
             }
         } else {
             dayView.backgroundColor = [UIColor colorWithR:95 g:80 b:154];
@@ -89,16 +91,6 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataDic.allKeys.count;
@@ -116,6 +108,18 @@
     NSString *key = [self.dataDic.allKeys objectAtIndex:indexPath.section];
     NSArray *arr = [self.dataDic objectForKey:key];
     cell.titleLab.text = [arr objectAtIndex:indexPath.row];
+    cell.isSelected = NO;
+    
+    NSMutableDictionary *dic = [UserConfigManager shareManager].createOrderViewModel.timeDic;
+    NSMutableArray *timeArr = [dic objectForKey:self.selectedDateTimestampStr];
+    if (timeArr) {
+        for (NSString *string in timeArr) {
+            if ([cell.titleLab.text isEqualToString:string]) {
+                cell.isSelected = YES;
+                break;
+            }
+        }
+    }
     
     return cell;
 }
@@ -123,9 +127,9 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     NSString *str = [self.dataDic.allKeys objectAtIndex:section];
-    if ([str isEqualToString:@"am"]) {
+    if ([str isEqualToString:@"0"]) {
         return @"上午";
-    } else if ([str isEqualToString:@"pm"]) {
+    } else if ([str isEqualToString:@"1"]) {
         return @"下午";
     } else {
         return @"晚上";
@@ -135,6 +139,20 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SelectingServiceTimeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.isSelected = !cell.isSelected;
+    
+    NSMutableDictionary *dic = [UserConfigManager shareManager].createOrderViewModel.timeDic;
+    NSMutableArray *arr = [dic objectForKey:self.selectedDateTimestampStr];
+    if (arr) {
+        [arr addObject:cell.titleLab.text];
+    } else {
+        arr = [NSMutableArray new];
+        [arr addObject:cell.titleLab.text];
+        [dic setObject:arr forKey:self.selectedDateTimestampStr];
+    }
+    
 }
 
 @end

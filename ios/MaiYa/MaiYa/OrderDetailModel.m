@@ -23,8 +23,8 @@
         self.problemStr = [NSString stringWithFormat:@"咨询问题：%@", model.problem];
         self.orderTypeStr = model.order_type;
         self.serviceModeStr = [model.order_type isEqualToString:@"1"] ? @"线上" : @"线下";
-        self.moneyStr = model.money;
-        self.moneyAllStr = model.money_all;
+        self.moneyStr = [NSString stringWithFormat:@"￥%.2zd", model.money.integerValue];
+        self.moneyAllStr = [NSString stringWithFormat:@"￥%.2zd", model.money_all.integerValue];
         self.timeStr = model.ctime;
         [self setupCellsCountByStatusString:model.status];
         self.isConsultant = [model.consultant isEqualToString:@"1"];
@@ -44,6 +44,41 @@
         
         UserZoneModel *zoneModel = [[UserZoneModel alloc] initWithDic:model.userinfo];
         self.userInfoViewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:zoneModel];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithCreateOrderViewModel:(CreateOrderViewModel *)viewModel {
+    if (self = [super init]) {
+        self.uidStr = viewModel.userInfo.uid;
+        self.cidStr = viewModel.masterInfo.uid;
+        self.userInfoViewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:viewModel.masterInfo];
+        self.problemStr = [NSString stringWithFormat:@"咨询问题：%@", viewModel.problemStr];
+        self.orderTypeStr = @"1";
+        self.serviceModeStr = [viewModel.servieceModelStr isEqualToString:@"1"] ? @"线上" : @"线下";
+        self.cellCountByStatus = 5;
+        self.orderDetailType = OrderDetailTypeOfOrdering;
+        
+        NSInteger balance = viewModel.userInfo.balance.integerValue;
+        self.balanceStr = [NSString stringWithFormat:@"可用余额￥%zd元", balance / 100];
+        
+        NSArray *allKeys = viewModel.timeDic.allKeys;
+        allKeys = [allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            return (obj1.integerValue < obj2.integerValue) ? NSOrderedAscending : (obj1.integerValue > obj2.integerValue) ? NSOrderedDescending : NSOrderedSame;
+        }];
+        
+        NSInteger hourCount = 0;
+        NSMutableArray *consultingTimeArr = [NSMutableArray new];
+        for (NSString *key in allKeys) {
+            NSArray *arr = [viewModel.timeDic objectForKey:key];
+            OrderDateModel *model = [[OrderDateModel alloc] initWithTimestamp:key andHourArr:arr];
+            [consultingTimeArr addObject:model];
+            hourCount += arr.count;
+        }
+        self.consultingTimeArr = [NSArray arrayWithArray:consultingTimeArr];
+        
+        self.moneyAllStr = [NSString stringWithFormat:@"共%zd小时，总金额￥%zd元", hourCount, viewModel.masterInfo.hour_money.integerValue / 100 * hourCount];
     }
     
     return self;

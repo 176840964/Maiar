@@ -170,6 +170,10 @@
         UserZoneModel *model = [[UserZoneModel alloc] initWithDic:resDic];
         self.userZoneViewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];
         
+        if (self.type == ZoneViewControllerTypeOfOther) {
+            [UserConfigManager shareManager].createOrderViewModel.masterInfo = model;
+        }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self layoutWorkingTime];
         });

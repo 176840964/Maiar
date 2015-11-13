@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UIImageView *markImage;
 
+@property (assign, nonatomic) BOOL isSelected;
+
 @end

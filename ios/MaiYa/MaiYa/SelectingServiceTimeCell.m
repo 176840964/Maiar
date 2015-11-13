@@ -23,4 +23,9 @@
     // Configure the view for the selected state
 }
 
+- (void)setIsSelected:(BOOL)isSelected {
+    _isSelected = isSelected;
+    self.markImage.image = [UIImage imageNamed:_isSelected ? @"advisory_date_select1" : @"advisory_date_select0"];
+}
+
 @end
