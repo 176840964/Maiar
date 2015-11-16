@@ -172,6 +172,7 @@
         
         if (self.type == ZoneViewControllerTypeOfOther) {
             [UserConfigManager shareManager].createOrderViewModel.masterInfo = model;
+            [UserConfigManager shareManager].createOrderViewModel.masterInfo.uid = self.cidStr;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

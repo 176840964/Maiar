@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *useBalanceSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLab;
 
+@property (copy, nonatomic) TapViewHandler tapCommitBtnHandle;
+
 @end

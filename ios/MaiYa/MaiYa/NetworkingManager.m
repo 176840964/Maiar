@@ -24,18 +24,22 @@
 }
 
 - (NSURLSessionDataTask *)networkingWithPostMethodPath:(NSString *)path
-                                                params:(NSDictionary *)parames
-                                               success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                                               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    return [self postWithURLPath:path postParams:parames success:success failure:failure];
+                                            postParams:(NSDictionary *)postParams
+                                               success:(void (^)(NSURLSessionDataTask *task, id responseObject))success {
+    NSString *postPath = [NSString stringWithFormat:@"?m=home&c=User&a=%@", path];
+    return [self POST:postPath parameters:postParams constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        for (NSString *keyStr in postParams.allKeys) {
+            NSString *valueStr = [postParams objectForKey:keyStr];
+            [formData appendPartWithFormData:[valueStr dataUsingEncoding:NSUTF8StringEncoding] name:keyStr];
+        }
+    } success:success failure:^(NSURLSessionDataTask *task, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"error:%@", error);
+            [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];
+        });
+    }];
 }
 
-//- (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
-//                                               params:(NSDictionary *)parames
-//                                              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-//                                              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-//    return [self GET:@"?" parameters:[self setupParamsByParamesDic:parames andPath:path] success:success failure:failure];
-//}
 - (NSURLSessionDataTask *)networkingWithGetMethodPath:(NSString *)path
                                                params:(NSDictionary *)parames
                                               success:(void (^)(id responseObject))success {
@@ -100,15 +104,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     [dic setValuesForKeysWithDictionary:paramesDic];
     
     return dic;
-}
-
-#pragma mark - post method
-- (NSURLSessionDataTask *)postWithURLPath:(NSString *)path
-                               postParams:(NSDictionary *)postParams
-                                  success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                                  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    self.requestSerializer = [AFJSONRequestSerializer serializer];
-    return [self POST:@"?m=home" parameters:[self setupParamsByParamesDic:postParams andPath:path] success:success failure:failure];
 }
 
 @end

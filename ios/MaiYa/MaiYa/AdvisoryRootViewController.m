@@ -133,7 +133,6 @@
     
     UIButton *btn = (UIButton *)sender;
     
-    
     [UserConfigManager shareManager].createOrderViewModel.problemNumStr = [NSString stringWithFormat:@"%zd", btn.tag];
     
     [_catView show];

@@ -79,6 +79,10 @@
         self.consultingTimeArr = [NSArray arrayWithArray:consultingTimeArr];
         
         self.moneyAllStr = [NSString stringWithFormat:@"共%zd小时，总金额￥%zd元", hourCount, viewModel.masterInfo.hour_money.integerValue / 100 * hourCount];
+        
+        [UserConfigManager shareManager].createOrderViewModel.totalTimeStr = [NSString stringWithFormat:@"%zd", hourCount];
+        [UserConfigManager shareManager].createOrderViewModel.moneyAllStr = [NSString stringWithFormat:@"%zd", viewModel.masterInfo.hour_money.integerValue * hourCount];
+        [UserConfigManager shareManager].createOrderViewModel.moneyStr = [UserConfigManager shareManager].createOrderViewModel.moneyAllStr;
     }
     
     return self;

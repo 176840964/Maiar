@@ -20,4 +20,15 @@
     // Configure the view for the selected state
 }
 
+#pragma mark - IBAction
+- (IBAction)onTapCommitBtn:(id)sender {
+    if (self.tapCommitBtnHandle) {
+        self.tapCommitBtnHandle();
+    }
+}
+
+- (IBAction)useBalanceSwitchValueChange:(id)sender {
+    [UserConfigManager shareManager].createOrderViewModel.isUsingBalance = ![UserConfigManager shareManager].createOrderViewModel.isUsingBalance;
+}
+
 @end

@@ -91,10 +91,21 @@
     }];
 }
 
-#pragma mark - IBAction
-- (IBAction)onTapPayBtn:(id)sender {
-    [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
+- (void)commitOrder {
+//    [[NetworkingManager shareManager] networkingWithPostMethodPath:@"order" params:[UserConfigManager shareManager].createOrderViewModel.paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
+//        [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        
+//    }];
+    
+    [[NetworkingManager shareManager] networkingWithPostMethodPath:@"order" postParams:[UserConfigManager shareManager].createOrderViewModel.paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
+        });
+    }];
 }
+
+#pragma mark - IBAction
 
 /*
 #pragma mark - Navigation
@@ -200,11 +211,20 @@
         AdvisoryDetailPayCell0 *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
         cell.balanceLab.text = self.orderDetailViewModel.balanceStr;
         cell.totalPriceLab.text = self.orderDetailViewModel.moneyAllStr;
+        cell.useBalanceSwitch.on = [UserConfigManager shareManager].createOrderViewModel.isUsingBalance;
+        
+        cell.tapCommitBtnHandle = ^() {
+            [self commitOrder];
+        };
         
         return cell;
         
     } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell1"]) {
         AdvisoryDetailPayCell1 *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+        
+        cell.tapCommitBtnHandle = ^() {
+            [self commitOrder];
+        };
         
         return cell;
         

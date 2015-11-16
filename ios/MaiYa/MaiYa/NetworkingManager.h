@@ -23,10 +23,8 @@
     NSURLSessionDataTask
  */
 - (NSURLSessionDataTask *)networkingWithPostMethodPath:(NSString *)path
-                                                params:(NSDictionary *)parames
-                                               success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                                               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
-
+                                            postParams:(NSDictionary *)postParams
+                                               success:(void (^)(NSURLSessionDataTask *task, id responseObject))success;
 /**
  网络请求接口
  @param
@@ -53,5 +51,6 @@
                                                userInfoKey:(NSString *)editKey
                                                      image:(UIImage *)image
                                                    success:(void (^)(id responseObject))success;
+
 
 @end

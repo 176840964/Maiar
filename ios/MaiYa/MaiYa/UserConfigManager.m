@@ -50,10 +50,17 @@
     self = [super init];
     if (self) {
         _isLogin = NO;
-        _createOrderViewModel = [[CreateOrderViewModel alloc] init];
     }
     
     return self;
+}
+
+- (CreateOrderViewModel *)createOrderViewModel {
+    if (nil == _createOrderViewModel) {
+        _createOrderViewModel = [[CreateOrderViewModel alloc] init];
+    }
+    
+    return _createOrderViewModel;
 }
 
 - (void)setIsLogin:(BOOL)isLogin {

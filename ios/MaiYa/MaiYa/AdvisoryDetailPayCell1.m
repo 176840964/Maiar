@@ -20,4 +20,10 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)onTapCommitBtn:(id)sender {
+    if (self.tapCommitBtnHandle) {
+        self.tapCommitBtnHandle();
+    }
+}
+
 @end

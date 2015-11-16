@@ -49,8 +49,8 @@
 #pragma mark - networking
 - (void)getOrderListByType:(NSString *)type {//type == 1 进行中； type == 2 已完成；
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid;
-    uid = @"1";
+//#warning test uid;
+//    uid = @"1";
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderList" params:@{@"uid": uid, @"type": type} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];

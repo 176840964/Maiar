@@ -16,6 +16,8 @@
     if (self) {
         self.timeDic = [NSMutableDictionary new];
         self.servieceModelStr = @"2";//当前版本只有线下服务方式
+        self.isUsingBalance = NO;
+        self.isUsingCoupons = NO;
     }
     return self;
 }
@@ -61,6 +63,68 @@
     }
 }
 
+- (NSMutableDictionary *)paraDic {
+    if (nil == _paraDic) {
+        _paraDic = [NSMutableDictionary new];
+    } else {
+        [_paraDic removeAllObjects];
+    }
+    
+    [_paraDic setObject:[UserConfigManager shareManager].userInfo.uidStr forKey:@"uid"];
+    [_paraDic setObject:self.masterInfo.uid forKey:@"cid"];
+    [_paraDic setObject:self.problemNumStr forKey:@"problem"];
+    [_paraDic setObject:self.servieceModelStr forKey:@"service_mode"];
+    [_paraDic setObject:self.moneyAllStr forKey:@"money_all"];
+    [_paraDic setObject:self.moneyStr forKey:@"money"];
+    [_paraDic setObject:self.totalTimeStr forKey:@"total"];
+    
+    if (self.isUsingBalance) {
+        [_paraDic setObject:self.usingBalanceMoneyStr forKey:@"money_balance"];
+    }
+    
+    if (self.isUsingCoupons) {
+        [_paraDic setObject:self.couponsIdStr forKey:@"couponsid"];
+    }
+    
+    NSArray *allKeys = self.timeDic.allKeys;
+    allKeys = [allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+        return (obj1.integerValue < obj2.integerValue) ? NSOrderedAscending : (obj1.integerValue > obj2.integerValue) ? NSOrderedDescending : NSOrderedSame;
+    }];
+    
+    NSMutableString *timeValueString = nil;
+    
+    for (NSString *keyStr in allKeys) {
+        if (timeValueString.isValid) {
+            [timeValueString appendString:@"|"];
+        } else {
+            timeValueString = [[NSMutableString alloc] init];
+        }
+        
+        NSArray *arr = [self.timeDic objectForKey:keyStr];
+        arr = [arr sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            return (obj1.integerValue < obj2.integerValue) ? NSOrderedAscending : (obj1.integerValue > obj2.integerValue) ? NSOrderedDescending : NSOrderedSame;
+        }];
+        
+        [timeValueString appendString:keyStr];
+        [timeValueString appendString:@"-"];
+        
+        NSString *timeStr = @"";
+        for (NSString *string in arr) {
+            if (!timeStr.isValid) {
+                timeStr = string;
+            } else {
+                timeStr = [NSString stringWithFormat:@"%@,%@", timeStr, string];
+            }
+        }
+        [timeValueString appendString:timeStr];
+    }
+    
+    [_paraDic setObject:timeValueString forKey:@"ctime"];
+    
+    
+    return _paraDic;
+}
+
 - (void)clear {
     self.userInfo = nil;
     self.masterInfo = nil;
@@ -68,10 +132,12 @@
     self.problemStr = nil;
 //    self.servieceModelStr = nil;
     self.couponsIdStr = nil;
+    self.isUsingCoupons = NO;
     self.moneyAllStr = nil;
     self.moneyStr = nil;
     self.totalTimeStr = nil;
     self.usingBalanceMoneyStr = nil;
+    self.isUsingBalance = NO;
     [self.timeDic removeAllObjects];
 }
 

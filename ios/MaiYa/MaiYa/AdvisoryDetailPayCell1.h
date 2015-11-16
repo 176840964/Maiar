@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *actualPriceLab;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 
+@property (copy, nonatomic) TapViewHandler tapCommitBtnHandle;
+
 @end
