@@ -20,23 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self getArticleTypeInfo];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
+    NSString *urlStr = [NSString stringWithFormat:@"http://123.56.107.102:33333/?m=home&c=User&a=articleTypeInfo&type=%@&id=%@", self.catIndexStr, self.articleStr];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - NetWorking
-- (void)getArticleTypeInfo {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeInfo" params:@{@"type": self.catIndexStr, @"id": self.articleStr} success:^(id responseObject) {
-        
-        NSDictionary *resDic = [responseObject objectForKey:@"res"];
-        ArticleDetailModel *model = [[ArticleDetailModel alloc] initWithDic:resDic];
-        self.articleDetailInfo = [[ArticleDetailViewModel alloc] initWithArticleDetailModel:model];
-    }];
 }
 
 /*
