@@ -25,8 +25,10 @@
 @property (copy, nonatomic) NSString *totalTimeStr;
 @property (copy, nonatomic) NSString *usingBalanceMoneyStr;
 @property (assign, nonatomic) BOOL isUsingBalance;
+@property (assign, nonatomic) BOOL isNeedThirdPay;
 
 @property (strong, nonatomic) NSMutableDictionary *timeDic;
+@property (assign, nonatomic) BOOL isHasSelectedTime;
 
 @property (strong, nonatomic) NSMutableDictionary *paraDic;
 

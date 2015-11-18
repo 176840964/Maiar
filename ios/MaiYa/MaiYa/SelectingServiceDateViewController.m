@@ -11,11 +11,12 @@
 #import "SelectingServiceDateCell.h"
 #import "ConsultantTimeModel.h"
 
-@interface SelectingServiceDateViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SelectingServiceDateViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutletCollection(SelectingServiceDateCell) NSArray *dayCell;
 @property (weak, nonatomic) IBOutlet UILabel *selectedDayLab;
 @property (weak, nonatomic) IBOutlet UIView *noTimeView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIButton *nextBtn;
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) ConsultantTimeViewModel *timeViewModel;
 @property (copy, nonatomic) NSString *selectedDateTimestampStr;
@@ -29,11 +30,18 @@
     self.dataDic = [NSDictionary new];
     
     [self getUserTime];
+    
+    self.nextBtn.enabled = [UserConfigManager shareManager].createOrderViewModel.isHasSelectedTime;
+    [[UserConfigManager shareManager].createOrderViewModel addObserver:self forKeyPath:@"isHasSelectedTime" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    [[UserConfigManager shareManager].createOrderViewModel removeObserver:self forKeyPath:@"isHasSelectedTime"];
 }
 
 #pragma mark - 
@@ -76,6 +84,23 @@
             [self onTapDayView:dateCell];
         }
     }
+}
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"isHasSelectedTime"]) {
+        self.nextBtn.enabled = [UserConfigManager shareManager].createOrderViewModel.isHasSelectedTime;
+        if ([UserConfigManager shareManager].createOrderViewModel.isHasSelectedTime) {
+            self.nextBtn.backgroundColor = [UIColor colorWithHexString:@"#a773af"];
+        } else {
+            self.nextBtn.backgroundColor = [UIColor lightGrayColor];
+        }
+    }
+}
+
+#pragma mark - IBAction
+- (IBAction)onTapBackNaviItem:(id)sender {
+    [CustomTools alertShow:@"您尚未完成订单" content:@"您是要继续还是放弃？" cancelBtnTitle:@"继续" okBtnTitle:@"放弃" container:self];
 }
 
 #pragma mark - NetWorking
@@ -145,14 +170,32 @@
     
     NSMutableDictionary *dic = [UserConfigManager shareManager].createOrderViewModel.timeDic;
     NSMutableArray *arr = [dic objectForKey:self.selectedDateTimestampStr];
-    if (arr) {
-        [arr addObject:cell.titleLab.text];
+    if (cell.isSelected) {
+        if (arr) {
+            [arr addObject:cell.titleLab.text];
+        } else {
+            arr = [NSMutableArray new];
+            [arr addObject:cell.titleLab.text];
+            [dic setObject:arr forKey:self.selectedDateTimestampStr];
+        }
     } else {
-        arr = [NSMutableArray new];
-        [arr addObject:cell.titleLab.text];
-        [dic setObject:arr forKey:self.selectedDateTimestampStr];
+        [arr removeObject:cell.titleLab.text];
+        if (arr.count == 0) {
+            [dic removeObjectForKey:self.selectedDateTimestampStr];
+        }
     }
     
+    [UserConfigManager shareManager].createOrderViewModel.isHasSelectedTime = (dic.allKeys.count != 0);
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.cancelButtonIndex != buttonIndex) {
+        [[UserConfigManager shareManager].createOrderViewModel clear];
+        
+        UIViewController *controller = [self.navigationController.viewControllers objectAtIndex:1];
+        [self.navigationController popToViewController:controller animated:YES];
+    }
 }
 
 @end

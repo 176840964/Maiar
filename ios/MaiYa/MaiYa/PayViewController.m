@@ -25,6 +25,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)navigationShouldPopOnBackButton {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    return YES;
+}
+
 #pragma mark - 
 - (void)payByWeChat {
     //从服务器获取支付参数，服务端自定义处理逻辑和格式

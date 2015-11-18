@@ -25,14 +25,27 @@
 
 - (NSURLSessionDataTask *)networkingWithPostMethodPath:(NSString *)path
                                             postParams:(NSDictionary *)postParams
-                                               success:(void (^)(NSURLSessionDataTask *task, id responseObject))success {
+                                               success:(void (^)(id))success {
     NSString *postPath = [NSString stringWithFormat:@"?m=home&c=User&a=%@", path];
     return [self POST:postPath parameters:postParams constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (NSString *keyStr in postParams.allKeys) {
             NSString *valueStr = [postParams objectForKey:keyStr];
             [formData appendPartWithFormData:[valueStr dataUsingEncoding:NSUTF8StringEncoding] name:keyStr];
         }
-    } success:success failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"postParams:%@", postParams);
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic = responseObject;
+        NSNumber *status = [dic objectForKey:@"status"];
+        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
+            NSString *str = [dic objectForKey:@"error"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CustomTools simpleAlertShow:@"出错啦！" content:str container:nil];
+            });
+        } else {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"error:%@", error);
             [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];

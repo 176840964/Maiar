@@ -92,15 +92,15 @@
 }
 
 - (void)commitOrder {
-//    [[NetworkingManager shareManager] networkingWithPostMethodPath:@"order" params:[UserConfigManager shareManager].createOrderViewModel.paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
-//        [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        
-//    }];
-    
-    [[NetworkingManager shareManager] networkingWithPostMethodPath:@"order" postParams:[UserConfigManager shareManager].createOrderViewModel.paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetworkingManager shareManager] networkingWithPostMethodPath:@"order" postParams:[UserConfigManager shareManager].createOrderViewModel.paraDic success:^(id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
+            if ([UserConfigManager shareManager].createOrderViewModel.isNeedThirdPay) {
+                [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
+            } else {
+                [self performSegueWithIdentifier:@"ShowAdvisoryViewController" sender:self];
+            }
+            
+            [[UserConfigManager shareManager].createOrderViewModel clear];
         });
     }];
 }
@@ -222,8 +222,14 @@
     } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell1"]) {
         AdvisoryDetailPayCell1 *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
         
+        cell.totalPriceLab.text = self.orderDetailViewModel.nonPayMoneyAllStr;
+        cell.couponPriceLab.text = self.orderDetailViewModel.nonPayMoneyCouponStr;
+        cell.balancePriceLab.text = self.orderDetailViewModel.nonPayMoneyBalanceStr;
+        cell.actualPriceLab.attributedText = self.orderDetailViewModel.nonPayMoneyStr;
+        cell.dateLab.text = self.orderDetailViewModel.timeStr;
+        
         cell.tapCommitBtnHandle = ^() {
-            [self commitOrder];
+            [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
         };
         
         return cell;

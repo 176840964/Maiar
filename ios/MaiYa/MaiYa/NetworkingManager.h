@@ -24,7 +24,7 @@
  */
 - (NSURLSessionDataTask *)networkingWithPostMethodPath:(NSString *)path
                                             postParams:(NSDictionary *)postParams
-                                               success:(void (^)(NSURLSessionDataTask *task, id responseObject))success;
+                                               success:(void (^)(id responseObject))success;
 /**
  网络请求接口
  @param

@@ -6775,8 +6775,15 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="选择预约时间" id="4me-7G-5It"/>
+                    <navigationItem key="navigationItem" title="选择预约时间" id="4me-7G-5It">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="qAq-ez-OZQ">
+                            <connections>
+                                <action selector="onTapBackNaviItem:" destination="aOu-yS-eZm" id="mRl-eT-aCL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="nextBtn" destination="prk-fg-ali" id="ghU-at-rUe"/>
                         <outlet property="noTimeView" destination="Dbg-BN-tMm" id="O5S-AF-TMU"/>
                         <outlet property="selectedDayLab" destination="M8T-Kp-LG3" id="vKV-rI-CWv"/>
                         <outlet property="tableView" destination="iPI-9s-Qwd" id="f7c-BE-4cD"/>
@@ -13133,6 +13140,7 @@
                     <connections>
                         <outlet property="tableView" destination="GGV-UG-Wb0" id="slM-O4-LoM"/>
                         <segue destination="G6v-00-HEM" kind="show" identifier="ShowPayViewController" id="e2C-bb-XRH"/>
+                        <segue destination="W3g-qU-etZ" kind="show" identifier="ShowAdvisoryViewController" id="XtD-YI-5DL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnO-cz-Xqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25969,7 +25977,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="JDl-KK-l6G"/>
         <segue reference="qFp-dN-tdp"/>
-        <segue reference="Tua-5Y-gFO"/>
         <segue reference="FRV-eB-MVj"/>
+        <segue reference="mxu-Ep-7Vo"/>
+        <segue reference="XtD-YI-5DL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -88,7 +88,6 @@
     [self.orderBtn2 setTitle:viewModel.btn2TitleStr forState:UIControlStateNormal];
     self.orderBtn2.backgroundColor = viewModel.btn2BgColor;
     self.orderBtn2.hidden = viewModel.isBtn2Hidden;
-    
 }
 
 #pragma mark - networking

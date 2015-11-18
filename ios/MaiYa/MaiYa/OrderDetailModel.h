@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger, OrderDetailType){
 @property (copy, nonatomic) NSString *service_mode;
 @property (copy, nonatomic) NSString *money;
 @property (copy, nonatomic) NSString *money_all;
+@property (copy, nonatomic) NSString *coupons_money;
+@property (copy, nonatomic) NSString *money_balance;
 @property (copy, nonatomic) NSString *ctime;
 @property (copy, nonatomic) NSString *status;
 @property (copy, nonatomic) NSString *consultant;
@@ -47,6 +49,11 @@ typedef NS_ENUM(NSInteger, OrderDetailType){
 @property (copy, nonatomic) NSString *moneyStr;
 @property (copy, nonatomic) NSString *moneyAllStr;
 @property (copy, nonatomic) NSString *timeStr;
+
+@property (copy, nonatomic) NSString *nonPayMoneyAllStr;
+@property (copy, nonatomic) NSString *nonPayMoneyCouponStr;
+@property (copy, nonatomic) NSString *nonPayMoneyBalanceStr;
+@property (strong, nonatomic) NSMutableAttributedString *nonPayMoneyStr;
 
 @property (strong, nonatomic) NSArray *consultingTimeArr;
 

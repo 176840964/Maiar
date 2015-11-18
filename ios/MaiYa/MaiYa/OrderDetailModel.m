@@ -25,9 +25,21 @@
         self.serviceModeStr = [model.order_type isEqualToString:@"1"] ? @"线上" : @"线下";
         self.moneyStr = [NSString stringWithFormat:@"￥%.2zd", model.money.integerValue];
         self.moneyAllStr = [NSString stringWithFormat:@"￥%.2zd", model.money_all.integerValue];
-        self.timeStr = model.ctime;
+        
+        self.nonPayMoneyAllStr = [NSString stringWithFormat:@"￥%.2f", model.money_all.doubleValue / 100];
+        self.nonPayMoneyCouponStr = [NSString stringWithFormat:@"￥-%.2f", model.coupons_money.doubleValue / 100];
+        self.nonPayMoneyBalanceStr = [NSString stringWithFormat:@"￥-%.2f", model.money_balance.doubleValue / 100];
+        
+        NSString *nonPayMoney = [NSString stringWithFormat:@"实付款：￥%.2f", model.money.doubleValue / 100];
+        self.nonPayMoneyStr = [[NSMutableAttributedString alloc] initWithString:nonPayMoney];
+        [self.nonPayMoneyStr addAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:25], NSForegroundColorAttributeName : [UIColor colorWithR:135 g:144 b:155]} range:NSMakeRange(0, 4)];
+        [self.nonPayMoneyStr addAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:25], NSForegroundColorAttributeName : [UIColor colorWithR:248 g:142 b:9]} range:NSMakeRange(4, nonPayMoney.length - 4)];
+        
         [self setupCellsCountByStatusString:model.status];
         self.isConsultant = [model.consultant isEqualToString:@"1"];
+        
+        NSString *time = [CustomTools dateStringFromUnixTimestamp:model.ctime.integerValue withFormatString:@"yyyy-MM-dd hh:mm:ss"];
+        self.timeStr = [NSString stringWithFormat:@"下单时间：%@", time];
         
         NSMutableArray *consultingTimeArr = [NSMutableArray new];
         NSArray *arr = [model.consulting_time componentsSeparatedByString:@"|"];
@@ -83,6 +95,7 @@
         [UserConfigManager shareManager].createOrderViewModel.totalTimeStr = [NSString stringWithFormat:@"%zd", hourCount];
         [UserConfigManager shareManager].createOrderViewModel.moneyAllStr = [NSString stringWithFormat:@"%zd", viewModel.masterInfo.hour_money.integerValue * hourCount];
         [UserConfigManager shareManager].createOrderViewModel.moneyStr = [UserConfigManager shareManager].createOrderViewModel.moneyAllStr;
+        [UserConfigManager shareManager].createOrderViewModel.isUsingBalance = NO;
     }
     
     return self;

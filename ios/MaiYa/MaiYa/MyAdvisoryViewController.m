@@ -46,6 +46,13 @@
     self.contentWidth.constant = CGRectGetWidth([UIScreen mainScreen].bounds) * 2;
 }
 
+- (BOOL)navigationShouldPopOnBackButton {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    return YES;
+}
+
+#pragma mark -
+
 #pragma mark - networking
 - (void)getOrderListByType:(NSString *)type {//type == 1 进行中； type == 2 已完成；
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
