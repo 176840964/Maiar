@@ -30,8 +30,12 @@
 @property (strong, nonatomic) NSMutableDictionary *timeDic;
 @property (assign, nonatomic) BOOL isHasSelectedTime;
 
+@property (copy, nonatomic) NSString *orderIdStr;
+
 @property (strong, nonatomic) NSMutableDictionary *paraDic;
 
 - (void)clear;
+- (NSString *)getOrderSubject;
+- (NSString *)getOrderBody;
 
 @end

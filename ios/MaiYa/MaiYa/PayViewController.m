@@ -8,9 +8,17 @@
 
 #import "PayViewController.h"
 #import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "AliOrderModel.h"
+#import "DataSigner.h"
+
+#define AliPartner @"2088021510615456"
+#define AliSeller @"zhifu@zmobi.cn"
+#define AliPrivateKey @"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMFGSMfgmKfkc0/B5OguGXpVmrGPM1wchT5w8/ccOlc1xNrXAsJfceBWlQU0qi0/R+J/bpJLnX0STlAlSthY9e3wSdxOnCnkZC/gEyQ4ypEAYzVpiqUW7raYYgxuCyZd+c0R76cyb9u5coL6IDx1o/8keG9i1+sLAXRg7USJVUr5AgMBAAECgYBo7DjymVEGRBT9hWs5SF14diSGpBDjvm/vV+55hg997KizjOnoj1wIx7ganV6NNb9WjIuATCBxF5EAHV6mWJUY5tpmmAz1YIwK61NubAuwnErWJ/VJObIgkmOpN49S/cfmyDFCbmF1jr6iDrAOHhK8CCMYSl7tk0sBhmg9W9iuAQJBAOwcqoYted/91ppOK3Z+UhSeIcgWxX72MVq96qTZC7vy6ze5rm4UNalYsb7OwBRhcNvRsw1wZLRXGwew0n0ovNkCQQDRjefIFxgcOI+H5KXe/hWBCVCvhD3j5uPBsMUg4Cwuj+iSgCcFos/ssqSf8FO11Eq2UP3UnH+EAcv2SS7icKshAkB4Vpvqyx7EtOE9v/2S5Qr8iyP4kPKTpPK+pvECl8TNRB/yRObMH+zBpPzinQl02bzlrFkvzkrlR0f1gX+mXq7xAkEAhcol+3fTKuFpsgdnZ3GtZQ7/dq/lm8XkD9u+X/j//FJg2Hf9cfm66pI7zOlxaJu7f59CECZCu5MyF3It/uCUQQJAeIO5zIDMsFSrcO7pIl4PCZHI7ibtrnLe+6P1m2bzzWu0qu06P4ey+qZUmoF1V1+E9QCqm3ZFns1+CvZ8WS6g/g=="
+#define AliNotifyUrl @"http://123.56.107.102:33333/?m=home&c=Pay&a=alipayNotifyUrl"
 
 @interface PayViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *needPayMoneyLab;
 @end
 
 @implementation PayViewController
@@ -18,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSString *moneyStr = [UserConfigManager shareManager].createOrderViewModel.moneyStr;
+    self.needPayMoneyLab.text = [NSString stringWithFormat:@"%.2f元", moneyStr.floatValue / 100];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,7 +102,43 @@
 }
 
 - (void)payByAli {
+    AliOrderModel *order = [[AliOrderModel alloc] init];
+    order.partner = AliPartner;
+    order.seller = AliSeller;
+    order.tradeNO = [UserConfigManager shareManager].createOrderViewModel.orderIdStr;
+    order.productName = [[UserConfigManager shareManager].createOrderViewModel getOrderSubject]; //商品标题
+    order.productDescription = [[UserConfigManager shareManager].createOrderViewModel getOrderBody]; //商品描述
+//    order.amount = [NSString stringWithFormat:@"%.2f", [UserConfigManager shareManager].createOrderViewModel.moneyStr.floatValue]; //商品价格
+    order.amount = @"0.01"; //商品价格
+    order.notifyURL =  AliNotifyUrl; //回调URL
     
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m";
+    order.showUrl = @"m.alipay.com";
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"alisdkdemo";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    NSLog(@"orderSpec = %@",orderSpec);
+    
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(AliPrivateKey);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+        }];
+    }
 }
 
 /*
@@ -106,6 +153,7 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (0 == indexPath.row) {
         [self payByWeChat];
     } else {

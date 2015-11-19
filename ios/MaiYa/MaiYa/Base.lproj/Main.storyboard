@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -909,6 +909,7 @@
                                 <exclude reference="8pW-nT-r8E"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Ijs-XX-dIT"/>
                                 <exclude reference="EpR-EX-bIm"/>
                                 <exclude reference="RGX-mh-djF"/>
                                 <exclude reference="SRW-hj-4Sm"/>
@@ -917,7 +918,6 @@
                                 <exclude reference="krH-da-e5Y"/>
                                 <exclude reference="mtf-54-kfm"/>
                                 <exclude reference="xUs-LM-QCa"/>
-                                <exclude reference="Ijs-XX-dIT"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -925,6 +925,7 @@
                                 <include reference="8pW-nT-r8E"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Ijs-XX-dIT"/>
                                 <include reference="EpR-EX-bIm"/>
                                 <include reference="RGX-mh-djF"/>
                                 <exclude reference="SRW-hj-4Sm"/>
@@ -933,7 +934,6 @@
                                 <exclude reference="krH-da-e5Y"/>
                                 <include reference="mtf-54-kfm"/>
                                 <exclude reference="xUs-LM-QCa"/>
-                                <include reference="Ijs-XX-dIT"/>
                             </mask>
                         </variation>
                     </view>
@@ -25179,7 +25179,7 @@
                             <tableViewSection id="XRT-ll-gAJ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="6za-aY-PyB">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6za-aY-PyB" id="3w7-RT-UjM">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -25287,7 +25287,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="egw-nr-QtQ">
-                                        <rect key="frame" x="0.0" y="108" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="egw-nr-QtQ" id="E9m-up-maX">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -25430,7 +25430,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RuE-i9-XcH">
-                                        <rect key="frame" x="0.0" y="152" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RuE-i9-XcH" id="5pd-Oe-Nfl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -25581,6 +25581,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="收银台" id="KXz-xY-a3T"/>
+                    <connections>
+                        <outlet property="needPayMoneyLab" destination="ywX-NL-wQV" id="hBd-sq-bea"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3x-bH-NIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -25987,9 +25990,9 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JDl-KK-l6G"/>
         <segue reference="qFp-dN-tdp"/>
-        <segue reference="FRV-eB-MVj"/>
+        <segue reference="WGm-RP-BNQ"/>
+        <segue reference="JDl-KK-l6G"/>
         <segue reference="mxu-Ep-7Vo"/>
         <segue reference="XtD-YI-5DL"/>
     </inferredMetricsTieBreakers>

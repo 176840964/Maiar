@@ -18,6 +18,7 @@
 #import "AdvisoryDetailPayCell0.h"
 #import "AdvisoryDetailPayCell1.h"
 #import "OrderDetailModel.h"
+#import "PayViewController.h"
 
 @interface AdvisoryDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -93,29 +94,25 @@
 
 - (void)commitOrder {
     [[NetworkingManager shareManager] networkingWithPostMethodPath:@"order" postParams:[UserConfigManager shareManager].createOrderViewModel.paraDic success:^(id responseObject) {
+        NSDictionary *resDic = [responseObject objectForKey:@"res"];
+        [UserConfigManager shareManager].createOrderViewModel.orderIdStr = [resDic objectForKey:@"orderid"];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([UserConfigManager shareManager].createOrderViewModel.isNeedThirdPay) {
                 [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
             } else {
                 [self performSegueWithIdentifier:@"ShowAdvisoryViewController" sender:self];
+                [[UserConfigManager shareManager].createOrderViewModel clear];
             }
-            
-            [[UserConfigManager shareManager].createOrderViewModel clear];
         });
     }];
 }
 
 #pragma mark - IBAction
 
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
