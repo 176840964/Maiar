@@ -23,8 +23,8 @@
         self.problemStr = [NSString stringWithFormat:@"咨询问题：%@", model.problem];
         self.orderTypeStr = model.order_type;
         self.serviceModeStr = [model.order_type isEqualToString:@"1"] ? @"线上" : @"线下";
-        self.moneyStr = [NSString stringWithFormat:@"￥%.2zd", model.money.integerValue];
-        self.moneyAllStr = [NSString stringWithFormat:@"￥%.2zd", model.money_all.integerValue];
+        self.moneyStr = [NSString stringWithFormat:@"%.2f", model.money.doubleValue / 100 ];
+        self.moneyAllStr = [NSString stringWithFormat:@"￥%.2f", model.money_all.doubleValue / 100];
         
         self.nonPayMoneyAllStr = [NSString stringWithFormat:@"￥%.2f", model.money_all.doubleValue / 100];
         self.nonPayMoneyCouponStr = [NSString stringWithFormat:@"￥-%.2f", model.coupons_money.doubleValue / 100];

@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) OrderDetailViewModel *orderDetailViewModel;
+@property (copy, nonatomic) NSString *payMoneyStr;
 @end
 
 @implementation AdvisoryDetailViewController
@@ -95,15 +96,18 @@
 - (void)commitOrder {
     [[NetworkingManager shareManager] networkingWithPostMethodPath:@"order" postParams:[UserConfigManager shareManager].createOrderViewModel.paraDic success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
-        [UserConfigManager shareManager].createOrderViewModel.orderIdStr = [resDic objectForKey:@"orderid"];
+        self.orderIdStr = [resDic objectForKey:@"orderid"];
+        
+        NSString *string = [UserConfigManager shareManager].createOrderViewModel.moneyStr;
+        self.payMoneyStr = [NSString stringWithFormat:@"%.2f", string.doubleValue / 100];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([UserConfigManager shareManager].createOrderViewModel.isNeedThirdPay) {
                 [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
             } else {
                 [self performSegueWithIdentifier:@"ShowAdvisoryViewController" sender:self];
-                [[UserConfigManager shareManager].createOrderViewModel clear];
             }
+            [[UserConfigManager shareManager].createOrderViewModel clear];
         });
     }];
 }
@@ -112,6 +116,11 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowPayViewController"]) {
+        PayViewController *vc = segue.destinationViewController;
+        vc.orderIdStr = self.orderIdStr;
+        vc.moneyStr = self.payMoneyStr;
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -226,6 +235,7 @@
         cell.dateLab.text = self.orderDetailViewModel.timeStr;
         
         cell.tapCommitBtnHandle = ^() {
+            self.payMoneyStr = self.orderDetailViewModel.moneyStr;
             [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
         };
         

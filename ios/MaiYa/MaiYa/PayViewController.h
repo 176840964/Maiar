@@ -10,4 +10,7 @@
 
 @interface PayViewController : UITableViewController
 
+@property (copy, nonatomic) NSString *orderIdStr;
+@property (copy, nonatomic) NSString *moneyStr;
+
 @end

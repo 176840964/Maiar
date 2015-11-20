@@ -52,6 +52,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self getCurentOrder];
+    
     CarouselCell *cell = [[CarouselCell alloc] init];
     cell.frame = self.headerScrollView.bounds;
     [self.headerScrollView addSubview:cell];
@@ -93,8 +95,6 @@
 #pragma mark - networking
 - (void)getCurentOrder {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderList" params:@{@"uid": uid, @"type": @"1", @"start": @"0", @"limit": @"1"} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];

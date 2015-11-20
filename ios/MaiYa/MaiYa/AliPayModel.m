@@ -1,14 +1,14 @@
 //
-//  AliOrderModel.m
+//  AliPayModel.m
 //  MaiYa
 //
-//  Created by zxl on 15/11/19.
+//  Created by zxl on 15/11/20.
 //  Copyright © 2015年 zhongqinglongtu. All rights reserved.
 //
 
-#import "AliOrderModel.h"
+#import "AliPayModel.h"
 
-@implementation AliOrderModel
+@implementation AliPayModel
 
 - (NSString *)description {
     NSMutableString * discription = [NSMutableString string];
@@ -46,8 +46,8 @@
     if (self.inputCharset) {
         [discription appendFormat:@"&_input_charset=\"%@\"",self.inputCharset];//utf-8
     }
-    if (self.itBPay) {
-        [discription appendFormat:@"&it_b_pay=\"%@\"",self.itBPay];//30m
+    if (self.itBPAY) {
+        [discription appendFormat:@"&it_b_pay=\"%@\"",self.itBPAY];//30m
     }
     if (self.showUrl) {
         [discription appendFormat:@"&show_url=\"%@\"",self.showUrl];//m.alipay.com

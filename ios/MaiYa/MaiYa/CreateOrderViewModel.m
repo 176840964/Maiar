@@ -152,17 +152,6 @@
     [self.timeDic removeAllObjects];
 }
 
-- (NSString *)getOrderSubject {
-    NSString *string = [NSString stringWithFormat:@"迈雅大师：%@", self.masterInfo.nick];
-    return string;
-}
-
-- (NSString *)getOrderBody {
-    
-    NSString *string = [NSString stringWithFormat:@"%@小时服务费-%@", self.totalTimeStr, self.problemStr];
-    return string;
-}
-
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"isUsingBalance"]) {

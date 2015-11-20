@@ -118,6 +118,8 @@
 		824CDDCD1B7B2A3300206E0C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDCC1B7B2A3300206E0C /* TabBarViewController.m */; };
 		824CDDD41B7B2C7F00206E0C /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD31B7B2C7F00206E0C /* UIView+frameAdjust.m */; };
 		824CDDD81B7B311900206E0C /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 824CDDD71B7B311900206E0C /* UIColor+Custom.m */; };
+		8264D9491BFED26300215BA5 /* AliPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264D9481BFED26300215BA5 /* AliPayModel.m */; };
+		8264D94C1BFED27300215BA5 /* WechatPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264D94B1BFED27300215BA5 /* WechatPayModel.m */; };
 		82689C6E1BD6254B007A223B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82689C6D1BD6254B007A223B /* MessageModel.m */; };
 		826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */; };
 		826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */; };
@@ -149,7 +151,6 @@
 		82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5A1BB3A910001422B8 /* ArticleDirectoryModel.m */; };
 		82CACB5F1BB3AACB001422B8 /* SentenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5E1BB3AACB001422B8 /* SentenceModel.m */; };
 		82CACB631BB4EB0A001422B8 /* ArticleCatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */; };
-		82D033DC1BFDC64900608692 /* AliOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D033DB1BFDC64900608692 /* AliOrderModel.m */; };
 		82D0343B1BFDD4AF00608692 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D0342B1BFDD4AF00608692 /* base64.m */; };
 		82D0343C1BFDD4AF00608692 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D0342E1BFDD4AF00608692 /* DataSigner.m */; };
 		82D0343D1BFDD4AF00608692 /* DataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D034301BFDD4AF00608692 /* DataVerifier.m */; };
@@ -388,6 +389,10 @@
 		824CDDD51B7B2CB900206E0C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		824CDDD61B7B311900206E0C /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
 		824CDDD71B7B311900206E0C /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
+		8264D9471BFED26300215BA5 /* AliPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayModel.h; sourceTree = "<group>"; };
+		8264D9481BFED26300215BA5 /* AliPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliPayModel.m; sourceTree = "<group>"; };
+		8264D94A1BFED27300215BA5 /* WechatPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatPayModel.h; sourceTree = "<group>"; };
+		8264D94B1BFED27300215BA5 /* WechatPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatPayModel.m; sourceTree = "<group>"; };
 		82689C6C1BD6254B007A223B /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		82689C6D1BD6254B007A223B /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		826A609E1BD4E0D200C035DC /* CompletWithdrawals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletWithdrawals.h; sourceTree = "<group>"; };
@@ -450,8 +455,6 @@
 		82CACB5E1BB3AACB001422B8 /* SentenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentenceModel.m; sourceTree = "<group>"; };
 		82CACB611BB4EB0A001422B8 /* ArticleCatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCatModel.h; sourceTree = "<group>"; };
 		82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCatModel.m; sourceTree = "<group>"; };
-		82D033DA1BFDC64900608692 /* AliOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliOrderModel.h; sourceTree = "<group>"; };
-		82D033DB1BFDC64900608692 /* AliOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliOrderModel.m; sourceTree = "<group>"; };
 		82D0342A1BFDD4AF00608692 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		82D0342B1BFDD4AF00608692 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
 		82D0342C1BFDD4AF00608692 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -1431,6 +1434,17 @@
 			name = 4.Me;
 			sourceTree = "<group>";
 		};
+		8264D9461BFED24700215BA5 /* PayModel */ = {
+			isa = PBXGroup;
+			children = (
+				8264D9471BFED26300215BA5 /* AliPayModel.h */,
+				8264D9481BFED26300215BA5 /* AliPayModel.m */,
+				8264D94A1BFED27300215BA5 /* WechatPayModel.h */,
+				8264D94B1BFED27300215BA5 /* WechatPayModel.m */,
+			);
+			name = PayModel;
+			sourceTree = "<group>";
+		};
 		826A609D1BD4E05700C035DC /* 4.3.5CompletWithdrawals */ = {
 			isa = PBXGroup;
 			children = (
@@ -1452,7 +1466,7 @@
 		828C1D8E1BAA63F000D6FD23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				82D033D91BFDC62C00608692 /* AliOrderModel */,
+				8264D9461BFED24700215BA5 /* PayModel */,
 				82B81C081BF5BB9700CFB8D1 /* CreateOrderModel */,
 				82A49AA41BEAFC9F00E6106A /* OrderModel */,
 				826A60A11BD4EF4D00C035DC /* MessageModel */,
@@ -1595,15 +1609,6 @@
 				82CACB621BB4EB0A001422B8 /* ArticleCatModel.m */,
 			);
 			name = ArticleCatModel;
-			sourceTree = "<group>";
-		};
-		82D033D91BFDC62C00608692 /* AliOrderModel */ = {
-			isa = PBXGroup;
-			children = (
-				82D033DA1BFDC64900608692 /* AliOrderModel.h */,
-				82D033DB1BFDC64900608692 /* AliOrderModel.m */,
-			);
-			name = AliOrderModel;
 			sourceTree = "<group>";
 		};
 		82D034291BFDD4AF00608692 /* Util */ = {
@@ -1893,6 +1898,7 @@
 				826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */,
 				82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */,
 				820A6F341B95BF18002385A4 /* CarouselCell.m in Sources */,
+				8264D94C1BFED27300215BA5 /* WechatPayModel.m in Sources */,
 				82A49AC21BF20D5700E6106A /* NSString+Valid.m in Sources */,
 				8228E8301BBA828F00F5BBB7 /* CommentModel.m in Sources */,
 				82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */,
@@ -1931,7 +1937,6 @@
 				820A6F0A1B9466AC002385A4 /* DetailCell.m in Sources */,
 				820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */,
 				820A6EF01B943956002385A4 /* WorkingDateView.m in Sources */,
-				82D033DC1BFDC64900608692 /* AliOrderModel.m in Sources */,
 				820D09531B8718D10054DB66 /* MeNaviController.m in Sources */,
 				822F1D361BA9206700E3D18A /* ApiXml.mm in Sources */,
 				820A6F391B95C62D002385A4 /* PlazaCategoryViewController.m in Sources */,
@@ -2005,6 +2010,7 @@
 				82D0343B1BFDD4AF00608692 /* base64.m in Sources */,
 				82B81C0E1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m in Sources */,
 				82A49ACB1BF33E5A00E6106A /* NSDate+TodayZeroClock.m in Sources */,
+				8264D9491BFED26300215BA5 /* AliPayModel.m in Sources */,
 				82A49AC81BF329A800E6106A /* FillterDateCellCtrl.m in Sources */,
 				82150F151B9C25D300CFDE80 /* SearchViewController.m in Sources */,
 				822A4A361BA03D490096CA5F /* AdvisoryDetailTypeCell.m in Sources */,
