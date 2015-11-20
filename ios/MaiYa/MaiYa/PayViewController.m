@@ -28,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatPaySuccess) name:@"NotificationForWechatPaySuccess" object:nil];
+    
     self.needPayMoneyLab.text = [NSString stringWithFormat:@"%@元", self.moneyStr];
 }
 
@@ -41,7 +43,16 @@
     return YES;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"NotificationForWechatPaySuccess" object:nil];
+}
+
 #pragma mark - 
+- (void)wechatPaySuccess {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 - (void)payByWeChatModel:(WechatPayModel *)model {
     PayReq *req = [[PayReq alloc] init];
     req.openID = model.appid;
@@ -104,6 +115,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([type isEqualToString:@"1"]) {
+                NSLog(@"%@", resDic);
                 WechatPayModel *model = [[WechatPayModel alloc] initWithDic:resDic];
                 [self payByWeChatModel:model];
             } else {

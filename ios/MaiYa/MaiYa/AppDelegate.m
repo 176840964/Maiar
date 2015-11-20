@@ -75,30 +75,26 @@
     
 }
 
-#pragma mark - 
--(void) onResp:(BaseResp*)resp
-{
-    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
-    NSString *strTitle;
-    
+#pragma mark - WXApiDelegate
+-(void) onResp:(BaseResp*)resp {
     if([resp isKindOfClass:[PayResp class]]){
-        //支付返回结果，实际支付结果需要去微信服务器端查询
-        strTitle = [NSString stringWithFormat:@"支付结果"];
-        
         switch (resp.errCode) {
             case WXSuccess:
-                strMsg = @"支付结果：成功！";
-                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationForWechatPaySuccess" object:nil];
+                [[HintView getInstance] presentMessage:@"支付成功" isAutoDismiss:YES dismissBlock:^{
+                }];
+            }
                 break;
                 
             default:
-                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
-                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+            {
+                NSString *strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                [[HintView getInstance] presentMessage:strMsg isAutoDismiss:NO dismissBlock:nil];
+            }
                 break;
         }
     }
-    
-    [CustomTools simpleAlertShow:strTitle content:strMsg container:nil];
 }
 
 @end
