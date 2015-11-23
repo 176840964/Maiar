@@ -38,7 +38,6 @@
     // Configure the view for the selected state
 }
 
-
 - (void)layoutMyAdvisorySubviewsByOrderViewModel:(OrderViewModel *)viewModel {
     self.dateLab.text = viewModel.timeStr;
     
@@ -71,6 +70,13 @@
     [self.btn2 setTitle:viewModel.btn2TitleStr forState:UIControlStateNormal];
     self.btn2.backgroundColor = viewModel.btn2BgColor;
     self.btn2.hidden = viewModel.isBtn2Hidden;
+}
+
+- (IBAction)onTapBtn:(id)sender {
+    if (self.tapBtnHandler) {
+        UIButton *btn = sender;
+        self.tapBtnHandler(btn.titleLabel.text);
+    }
 }
 
 @end

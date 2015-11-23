@@ -9,8 +9,10 @@
 #import "MyAdvisoryViewController.h"
 #import "MyAdvisoryCell.h"
 #import "AdvisoryDetailViewController.h"
+#import "PayViewController.h"
+#import "MyZoneViewController.h"
 
-@interface MyAdvisoryViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface MyAdvisoryViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *markView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentWidth;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -21,6 +23,8 @@
 @property (strong, nonatomic) NSMutableArray *finishedOrderArr;
 
 @property (copy, nonatomic) NSString *selectedOrderId;
+@property (copy, nonatomic) NSString *payMoneyStr;
+@property (copy, nonatomic) NSString *selectedMasterId;
 @end
 
 @implementation MyAdvisoryViewController
@@ -52,6 +56,33 @@
 }
 
 #pragma mark -
+- (void)reloadTableViews {
+    NSInteger index = self.scrollView.contentOffset.x / self.scrollView.width;
+    [self getOrderListByType:[NSString stringWithFormat:@"%zd", index + 1]];
+}
+
+- (void)tapCellBtnsByBtnTitle:(NSString *)title orderViewModel:(OrderViewModel *)orderViewModel{
+    self.selectedOrderId = orderViewModel.orderIdStr;
+    
+    if ([title isEqualToString:@"取消订单"]) {
+        [CustomTools alertShow:@"您确认取消订单吗？" content:@"一天内3次取消订单，当日将不能再平台预约！\n如果订单已经支付\n1.)资费全部退还（取消订单时间>1小时）\n2.)扣除资费20%违约金（取消订单时间<1小时）" cancelBtnTitle:@"再想想" okBtnTitle:@"确定" container:self];
+    } else if ([title isEqualToString:@"付款"]) {
+        self.payMoneyStr = orderViewModel.realPriceStr;
+        [self performSegueWithIdentifier:@"" sender:self];
+    } else if ([title isEqualToString:@"电话沟通"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", orderViewModel.telStr]]];
+    } else if ([title isEqualToString:@"完成"]) {
+        [self changeSelectedOrderStatusWithOrderId:self.selectedOrderId andStatusStr:@"orderStatus"];
+    } else if ([title isEqualToString:@"评价"]) {
+        self.selectedOrderId = orderViewModel.orderIdStr;
+        [self performSegueWithIdentifier:@"ShowAdvisoryDetailViewController" sender:self];
+    } else if ([title isEqualToString:@"再次预约"]) {
+        self.selectedMasterId = orderViewModel.cidStr;
+        [self performSegueWithIdentifier:@"ShowMasterZone" sender:self];
+    } else {
+        
+    }
+}
 
 #pragma mark - networking
 - (void)getOrderListByType:(NSString *)type {//type == 1 进行中； type == 2 已完成；
@@ -82,14 +113,35 @@
     }];
 }
 
+- (void)changeSelectedOrderStatusWithOrderId:(NSString *)orderId andStatusStr:(NSString *)statusStr {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:statusStr params:@{@"uid": uid, @"orderid": orderId} success:^(id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self reloadTableViews];
+        });
+    }];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    AdvisoryDetailViewController *controller = segue.destinationViewController;
-    controller.orderIdStr = self.selectedOrderId;
+    if ([segue.identifier isEqualToString:@"ShowAdvisoryDetailViewController"]) {
+        AdvisoryDetailViewController *controller = segue.destinationViewController;
+        controller.orderIdStr = self.selectedOrderId;
+    } else if ([segue.identifier isEqualToString:@"ShowPayViewController"]) {
+        PayViewController *vc = segue.destinationViewController;
+        vc.orderIdStr = self.selectedOrderId;
+        vc.moneyStr = self.payMoneyStr;
+    } else if ([segue.identifier isEqualToString:@"ShowMasterZone"]) {
+        MyZoneViewController *contrller = segue.destinationViewController;
+        contrller.type = ZoneViewControllerTypeOfOther;
+        
+        NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+        
+        contrller.cidStr = self.selectedMasterId;
+        contrller.oidStr = uid;
+    }
 }
 
 #pragma mark - IBAction
@@ -119,12 +171,20 @@
         OrderViewModel *viewModel = [self.inOrdersArr objectAtIndex:indexPath.row];
         [cell layoutMyAdvisorySubviewsByOrderViewModel:viewModel];
         
+        cell.tapBtnHandler = ^(NSString *titleStr) {
+            [self tapCellBtnsByBtnTitle:titleStr orderViewModel:viewModel];
+        };
+        
         return  cell;
     } else {
         MyAdvisoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdvisoryFinishCell"];
         
         OrderViewModel *viewModel = [self.finishedOrderArr objectAtIndex:indexPath.row];
         [cell layoutMyAdvisorySubviewsByOrderViewModel:viewModel];
+        
+        cell.tapBtnHandler = ^(NSString *titleStr) {
+            [self tapCellBtnsByBtnTitle:titleStr orderViewModel:viewModel];
+        };
         
         return  cell;
     }
@@ -155,6 +215,13 @@
         } else {
             self.markView.transform = CGAffineTransformMakeTranslation(self.markView.width, 0);
         }
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [self changeSelectedOrderStatusWithOrderId:self.selectedOrderId andStatusStr:@"orderCancel"];
     }
 }
 

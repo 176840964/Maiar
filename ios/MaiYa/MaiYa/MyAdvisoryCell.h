@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "OrderModel.h"
 
+typedef void(^tapBtnHandler)(NSString *btnTitleStr);
+
 @interface MyAdvisoryCell : UITableViewCell
+
+@property (copy, nonatomic) tapBtnHandler tapBtnHandler;
 
 - (void)layoutMyAdvisorySubviewsByOrderViewModel:(OrderViewModel *)viewModel;
 

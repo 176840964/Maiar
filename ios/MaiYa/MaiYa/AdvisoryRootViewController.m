@@ -11,9 +11,11 @@
 #import "MastersListViewController.h"
 #import "OrderModel.h"
 
-@interface AdvisoryRootViewController ()
+@interface AdvisoryRootViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *headerScrollView;
+
+@property (weak, nonatomic) IBOutlet UILabel *noInfoLab;
 
 @property (weak, nonatomic) IBOutlet UIView *orderDateView;
 @property (weak, nonatomic) IBOutlet UILabel *orderDateLab;
@@ -41,7 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self getCurentOrder];
+    [self.noInfoLab addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,8 +53,14 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self getCurentOrder];
+    if ([UserConfigManager shareManager].isLogin) {
+        [self getCurrentOrder];
+    } else {
+        self.orderInfoView.hidden = YES;
+        self.orderDateView.hidden = YES;
+        self.noInfoLab.hidden = NO;
+        self.noInfoLab.text = @"请登录后查看";
+    }
     
     CarouselCell *cell = [[CarouselCell alloc] init];
     cell.frame = self.headerScrollView.bounds;
@@ -66,12 +74,16 @@
     CGFloat width = CGRectGetWidth([UIScreen mainScreen].bounds);
     CGFloat btnWidth = (width - 5 * 2 - 6 * 3) / 4;
     CGFloat btnHeight = 26 / 17.0 * btnWidth;
-    CGFloat height = 107 / 320.0 * width + 10 + 8 + 10 + btnHeight * 2 + 40 + 31 + 164;
+    CGFloat height = 107 / 320.0 * width + 10 + 8 + 10 + btnHeight * 2 + 40 + (self.noInfoLab.hidden ? 31 + 164 : 86);
     self.contentHeightConstraint.constant = height + 6;
 }
 
 #pragma mark -
 - (void)layoutOrderViewByOrderViewModel:(OrderViewModel *)viewModel {
+    self.orderDateView.hidden = NO;
+    self.orderInfoView.hidden = NO;
+    self.noInfoLab.hidden = YES;
+    
     self.orderDateLab.text = viewModel.timeStr;
     self.orderStatusLab.text = viewModel.statusStr;
     
@@ -92,8 +104,15 @@
     self.orderBtn2.hidden = viewModel.isBtn2Hidden;
 }
 
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"hidden"]) {
+        [self.view setNeedsUpdateConstraints];
+    }
+}
+
 #pragma mark - networking
-- (void)getCurentOrder {
+- (void)getCurrentOrder {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderList" params:@{@"uid": uid, @"type": @"1", @"start": @"0", @"limit": @"1"} success:^(id responseObject) {
@@ -101,18 +120,38 @@
         
         if (0 == resArr.count) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                self.noInfoLab.text = @"没有进行中的订单";
+                self.noInfoLab.hidden = NO;
                 self.orderDateView.hidden = YES;
                 self.orderInfoView.hidden = YES;
             });
         } else {
             NSDictionary *dic = resArr.firstObject;
             OrderModel *model = [[OrderModel alloc] initWithDic:dic];
-            OrderViewModel *viewModel = [[OrderViewModel alloc] initWithOrderModel:model];
+            self.orderViewModel = [[OrderViewModel alloc] initWithOrderModel:model];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self layoutOrderViewByOrderViewModel:viewModel];
+                [self layoutOrderViewByOrderViewModel:self.orderViewModel];
             });
         }
+    }];
+}
+
+- (void)cancelCurrentOrder {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderCancel" params:@{@"uid": uid, @"orderid": self.orderViewModel.orderIdStr} success:^(id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self getCurrentOrder];
+        });
+    }];
+}
+
+- (void)completCurrentOrder {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderStatus" params:@{@"uid": uid, @"orderid": self.orderViewModel.orderIdStr} success:^(id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self getCurrentOrder];
+        });
     }];
 }
 
@@ -141,11 +180,37 @@
     [self performSegueWithIdentifier:@"ShowMyAdvisory" sender:self];
 }
 
+- (IBAction)onTapOrderBtn:(id)sender {
+    UIButton *btn = sender;
+    if ([btn.titleLabel.text isEqualToString:@"取消订单"]) {
+        [CustomTools alertShow:@"您确认取消订单吗？" content:@"一天内3次取消订单，当日将不能再平台预约！\n如果订单已经支付\n1.)资费全部退还（取消订单时间>1小时）\n2.)扣除资费20%违约金（取消订单时间<1小时）" cancelBtnTitle:@"再想想" okBtnTitle:@"确定" container:self];
+    } else if ([btn.titleLabel.text isEqualToString:@"付款"]) {
+        
+    } else if ([btn.titleLabel.text isEqualToString:@"电话沟通"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", self.orderViewModel.telStr]]];
+    } else if ([btn.titleLabel.text isEqualToString:@"完成"]) {
+        [self completCurrentOrder];
+    } else if ([btn.titleLabel.text isEqualToString:@"评价"]) {
+        
+    } else if ([btn.titleLabel.text isEqualToString:@"再次预约"]) {
+        
+    } else {
+        
+    }
+}
+
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowMastersListViewController"]) {
         MastersListViewController *controller = segue.destinationViewController;
         controller.selectedCatModel = self.selectedCatModel;
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [self cancelCurrentOrder];
     }
 }
 

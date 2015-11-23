@@ -181,8 +181,6 @@
         contrller.type = ZoneViewControllerTypeOfOther;
         
         NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning uid
-        uid = @"1";
         
         contrller.cidStr = self.selectedMasterId;
         contrller.oidStr = uid;
