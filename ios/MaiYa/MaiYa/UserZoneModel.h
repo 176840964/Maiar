@@ -36,6 +36,7 @@
 @property (copy, nonatomic) NSDictionary *comment;
 @property (strong, nonatomic) NSNumber *collect_is;
 @property (copy, nonatomic) NSString *collect;
+@property (strong, nonatomic) NSNumber *coupons;
 
 @end
 

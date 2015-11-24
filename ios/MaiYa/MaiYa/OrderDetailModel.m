@@ -72,9 +72,6 @@
         self.cellCountByStatus = 5;
         self.orderDetailType = OrderDetailTypeOfOrdering;
         
-        NSInteger balance = viewModel.userInfo.balance.integerValue;
-        self.balanceStr = [NSString stringWithFormat:@"可用余额￥%zd元", balance / 100];
-        
         NSArray *allKeys = viewModel.timeDic.allKeys;
         allKeys = [allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
             return (obj1.integerValue < obj2.integerValue) ? NSOrderedAscending : (obj1.integerValue > obj2.integerValue) ? NSOrderedDescending : NSOrderedSame;
@@ -90,15 +87,24 @@
         }
         self.consultingTimeArr = [NSArray arrayWithArray:consultingTimeArr];
         
-        self.moneyAllStr = [NSString stringWithFormat:@"共%zd小时，总金额￥%zd元", hourCount, viewModel.masterInfo.hour_money.integerValue / 100 * hourCount];
-        
         [UserConfigManager shareManager].createOrderViewModel.totalTimeStr = [NSString stringWithFormat:@"%zd", hourCount];
-        [UserConfigManager shareManager].createOrderViewModel.moneyAllStr = [NSString stringWithFormat:@"%zd", viewModel.masterInfo.hour_money.integerValue * hourCount];
+        [UserConfigManager shareManager].createOrderViewModel.originalMoneyAllStr = [NSString stringWithFormat:@"%zd", viewModel.masterInfo.hour_money.integerValue * hourCount];
+        [UserConfigManager shareManager].createOrderViewModel.moneyAllStr = [UserConfigManager shareManager].createOrderViewModel.originalMoneyAllStr;
         [UserConfigManager shareManager].createOrderViewModel.moneyStr = [UserConfigManager shareManager].createOrderViewModel.moneyAllStr;
         [UserConfigManager shareManager].createOrderViewModel.isUsingBalance = NO;
+        
+        [self layoutOrderDetailViewModelByCreateOrderViewModel:viewModel];
     }
     
     return self;
+}
+
+- (void)layoutOrderDetailViewModelByCreateOrderViewModel:(CreateOrderViewModel *)viewModel {
+    NSInteger balance = viewModel.userInfo.balance.integerValue;
+    self.balanceStr = [NSString stringWithFormat:@"可用余额￥%zd元", balance / 100];
+    
+    NSString *totalTimeStr = [UserConfigManager shareManager].createOrderViewModel.totalTimeStr;
+    self.moneyAllStr = [NSString stringWithFormat:@"共%@小时，总金额￥%.2f元", totalTimeStr, viewModel.moneyAllStr.doubleValue / 100];
 }
 
 - (void)setupCellsCountByStatusString:(NSString *)statusStr {

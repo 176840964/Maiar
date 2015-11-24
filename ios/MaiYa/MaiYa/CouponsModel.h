@@ -22,6 +22,7 @@
 
 @interface CouponsViewModel : NSObject
 
+@property (strong, nonatomic) CouponsModel *couponsModel;
 @property (copy, nonatomic) NSString *cidStr;
 @property (copy, nonatomic) NSString *titleStr;
 @property (strong, nonatomic) NSMutableAttributedString *moneyAttrStr;

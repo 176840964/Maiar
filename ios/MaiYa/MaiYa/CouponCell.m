@@ -12,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
-@property (weak, nonatomic) IBOutlet UIImageView *selectedIcon;
 @end
 
 @implementation CouponCell

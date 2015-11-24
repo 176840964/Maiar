@@ -36,6 +36,14 @@
     if (self.orderIdStr.isValid) {
         [self getOrderDetailInfo];
     } else {
+        [UserConfigManager shareManager].createOrderViewModel.couponInfo = nil;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (!self.orderIdStr.isValid) {
         [self getUserInfo];
     }
 }
@@ -46,10 +54,14 @@
 }
 
 #pragma mark -
-- (void)getOrderingDetail {
-    self.orderDetailViewModel = [[OrderDetailViewModel alloc] initWithCreateOrderViewModel:[UserConfigManager shareManager].createOrderViewModel];
+- (OrderDetailViewModel *)orderDetailViewModel {
+    if (nil == _orderDetailViewModel) {
+        _orderDetailViewModel = [[OrderDetailViewModel alloc] initWithCreateOrderViewModel:[UserConfigManager shareManager].createOrderViewModel];
+    } else {
+        [_orderDetailViewModel layoutOrderDetailViewModelByCreateOrderViewModel:[UserConfigManager shareManager].createOrderViewModel];
+    }
     
-    [self.tableView reloadData];
+    return _orderDetailViewModel;
 }
 
 #pragma mark - networking
@@ -76,7 +88,7 @@
         [UserConfigManager shareManager].createOrderViewModel.userInfo = [[UserZoneModel alloc] initWithDic:resDic];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self getOrderingDetail];
+            [self.tableView reloadData];
         });
     }];
 }
@@ -218,6 +230,10 @@
         cell.balanceLab.text = self.orderDetailViewModel.balanceStr;
         cell.totalPriceLab.text = self.orderDetailViewModel.moneyAllStr;
         cell.useBalanceSwitch.on = [UserConfigManager shareManager].createOrderViewModel.isUsingBalance;
+        
+        BOOL isHasConpons = [UserConfigManager shareManager].createOrderViewModel.isHasCoupons;
+        CouponsModel *couponInfo = [UserConfigManager shareManager].createOrderViewModel.couponInfo;
+        cell.useCouponStatusLab.text = (nil != couponInfo) ? couponInfo.title : (isHasConpons ? @"未使用" : @"无可使用");
         
         cell.tapCommitBtnHandle = ^() {
             [self commitOrder];

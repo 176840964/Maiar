@@ -10,6 +10,7 @@
 #import "CouponsModel.h"
 
 @interface CouponCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *selectedIcon;
 
 - (void)layoutCouponCellSubviewsByCouponsViewModel:(CouponsViewModel *)viewModel;
 

@@ -25,6 +25,8 @@
 
 - (instancetype)initWithCouponsModel:(CouponsModel *)model {
     if (self = [super init]) {
+        self.couponsModel = model;
+        
         self.cidStr = [model.cid stringValue];
         self.titleStr = [model.title stringValue];
         

@@ -69,5 +69,6 @@ typedef NS_ENUM(NSInteger, OrderDetailType){
 
 - (instancetype)initWithOrderDetailModel:(OrderDetailModel *)model;
 - (instancetype)initWithCreateOrderViewModel:(CreateOrderViewModel *)viewModel;
+- (void)layoutOrderDetailViewModelByCreateOrderViewModel:(CreateOrderViewModel *)viewModel;
 
 @end

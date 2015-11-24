@@ -17,9 +17,9 @@
         self.timeDic = [NSMutableDictionary new];
         self.servieceModelStr = @"2";//当前版本只有线下服务方式
         self.isUsingBalance = NO;
-        self.isUsingCoupons = NO;
         
         [self addObserver:self forKeyPath:@"isUsingBalance" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"isUsingCoupon" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -27,6 +27,7 @@
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@"isUsingBalance"];
+    [self removeObserver:self forKeyPath:@"isUsingCoupon"];
 }
 
 - (void)setProblemNumStr:(NSString *)problemNumStr {
@@ -74,6 +75,14 @@
     return self.timeDic.count;
 }
 
+- (BOOL)isHasCoupons {
+    if (nil == self.userInfo) {
+        return NO;
+    } else {
+        return self.userInfo.coupons.boolValue;
+    }
+}
+
 - (NSMutableDictionary *)paraDic {
     if (nil == _paraDic) {
         _paraDic = [NSMutableDictionary new];
@@ -85,7 +94,7 @@
     [_paraDic setObject:self.masterInfo.uid forKey:@"cid"];
     [_paraDic setObject:self.problemNumStr forKey:@"problem"];
     [_paraDic setObject:self.servieceModelStr forKey:@"service_mode"];
-    [_paraDic setObject:self.moneyAllStr forKey:@"money_all"];
+    [_paraDic setObject:self.originalMoneyAllStr forKey:@"money_all"];
     [_paraDic setObject:self.moneyStr forKey:@"money"];
     [_paraDic setObject:self.totalTimeStr forKey:@"total"];
     
@@ -93,8 +102,8 @@
         [_paraDic setObject:self.usingBalanceMoneyStr forKey:@"money_balance"];
     }
     
-    if (self.isUsingCoupons) {
-        [_paraDic setObject:self.couponsIdStr forKey:@"couponsid"];
+    if (self.couponInfo) {
+        [_paraDic setObject:self.couponInfo.cid forKey:@"couponsid"];
     }
     
     NSArray *allKeys = self.timeDic.allKeys;
@@ -142,8 +151,7 @@
 //    self.problemNumStr = nil;
 //    self.problemStr = nil;
 //    self.servieceModelStr = nil;
-    self.couponsIdStr = nil;
-    self.isUsingCoupons = NO;
+    self.originalMoneyAllStr = nil;
     self.moneyAllStr = nil;
     self.moneyStr = nil;
     self.totalTimeStr = nil;
@@ -152,23 +160,43 @@
     [self.timeDic removeAllObjects];
 }
 
+#pragma mark - 
+- (void)resetPriceMoney {
+    NSInteger coupon = 0;
+    if (self.isUsingCoupon) {
+        if ([self.couponInfo.money_full stringValue].isValid) {//满减优惠劵
+            NSInteger count = self.originalMoneyAllStr.integerValue / self.couponInfo.money_full.integerValue;
+            coupon = count * self.couponInfo.money.integerValue;
+        } else {//立减优惠劵
+            coupon = self.couponInfo.money.integerValue;
+        }
+    } else {
+        self.couponInfo = nil;
+    }
+    
+    NSInteger moneyAll = self.originalMoneyAllStr.integerValue - coupon;
+    self.moneyAllStr = [NSString stringWithFormat:@"%zd", (0 <= moneyAll) ? moneyAll : 0];
+    
+    if (self.isUsingBalance) {
+        if (self.userInfo.balance.integerValue >= self.moneyAllStr.integerValue) {
+            self.usingBalanceMoneyStr = self.moneyAllStr;
+            self.moneyStr = @"0";
+            self.isNeedThirdPay = NO;
+        } else {
+            self.isNeedThirdPay = YES;
+            self.moneyStr = [NSString stringWithFormat:@"%zd", self.moneyAllStr.integerValue - self.userInfo.balance.integerValue];
+            self.usingBalanceMoneyStr = self.userInfo.balance;
+        }
+    } else {
+        self.moneyStr = self.moneyAllStr;
+        self.isNeedThirdPay = YES;
+    }
+}
+
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"isUsingBalance"]) {
-        if (self.isUsingBalance) {
-            if (self.userInfo.balance.integerValue >= self.moneyAllStr.integerValue) {
-                self.usingBalanceMoneyStr = self.moneyAllStr;
-                self.moneyStr = @"0.00";
-                self.isNeedThirdPay = NO;
-            } else {
-                self.isNeedThirdPay = YES;
-                self.moneyStr = [NSString stringWithFormat:@"%zd", self.moneyAllStr.integerValue - self.userInfo.balance.integerValue];
-                self.usingBalanceMoneyStr = self.userInfo.balance;
-            }
-        } else {
-            self.moneyStr = self.moneyAllStr;
-            self.isNeedThirdPay = YES;
-        }
+    if ([keyPath isEqualToString:@"isUsingBalance"] || [keyPath isEqualToString:@"isUsingCoupon"]) {
+        [self resetPriceMoney];
     }
 }
 
