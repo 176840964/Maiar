@@ -164,12 +164,7 @@
 - (void)resetPriceMoney {
     NSInteger coupon = 0;
     if (self.isUsingCoupon) {
-        if ([self.couponInfo.money_full stringValue].isValid) {//满减优惠劵
-            NSInteger count = self.originalMoneyAllStr.integerValue / self.couponInfo.money_full.integerValue;
-            coupon = count * self.couponInfo.money.integerValue;
-        } else {//立减优惠劵
-            coupon = self.couponInfo.money.integerValue;
-        }
+        coupon = self.couponInfo.money.integerValue;
     } else {
         self.couponInfo = nil;
     }
@@ -189,7 +184,7 @@
         }
     } else {
         self.moneyStr = self.moneyAllStr;
-        self.isNeedThirdPay = YES;
+        self.isNeedThirdPay = (self.moneyStr.integerValue != 0);
     }
 }
 

@@ -13205,7 +13205,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnO-cz-Xqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="StD-Og-1te">
                     <connections>
-                        <segue destination="YkD-JE-X8Q" kind="show" id="x8w-WO-WOb"/>
+                        <segue destination="YkD-JE-X8Q" kind="show" identifier="ShowMyCouponViewController" id="x8w-WO-WOb"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -16446,7 +16446,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="aOu-yS-eZm" kind="show" identifier="ShowSelectingServiceDateViewController" id="Aqo-DG-a6G"/>
+                                            <action selector="onTapNextBtn:" destination="e4e-u7-PRJ" eventType="touchUpInside" id="YTb-US-ipg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -16595,6 +16595,7 @@
                         <outletCollection property="commentStarArr" destination="XOL-51-Nse" id="p6M-Ti-rXa"/>
                         <outletCollection property="commentStarArr" destination="KYK-S5-8qT" id="pOx-ao-crz"/>
                         <segue destination="fzc-xM-fjm" kind="show" identifier="ShowMySharingViewController" id="73i-la-JWt"/>
+                        <segue destination="aOu-yS-eZm" kind="show" identifier="ShowSelectingServiceDateViewController" id="7BI-PT-QCa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nz-ir-pnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25723,7 +25724,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chl-AH-LSB">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="0.8901960784313725" green="0.44313725490196076" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="kvQ-gU-Zww"/>
                                                     </constraints>
@@ -25907,9 +25908,11 @@
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="bgImgView" destination="duF-Bz-0qC" id="duB-Xl-isO"/>
                                             <outlet property="dateLab" destination="o7B-UN-C3E" id="EiE-KI-hFb"/>
                                             <outlet property="priceLab" destination="Asw-KW-GfJ" id="9cw-mw-Swl"/>
                                             <outlet property="selectedIcon" destination="2dQ-h9-eRB" id="ooX-3y-B6k"/>
+                                            <outlet property="titleLab" destination="phy-bB-pfz" id="9ng-k6-37b"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -26039,9 +26042,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="aOn-LC-M15"/>
         <segue reference="3N6-pV-PIn"/>
-        <segue reference="mxu-Ep-7Vo"/>
         <segue reference="kLw-Ud-r7a"/>
         <segue reference="XEl-TR-64l"/>
+        <segue reference="Tua-5Y-gFO"/>
         <segue reference="JDl-KK-l6G"/>
     </inferredMetricsTieBreakers>
 </document>

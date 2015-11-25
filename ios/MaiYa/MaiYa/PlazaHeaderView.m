@@ -17,6 +17,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        self.pagingEnabled = YES;
     }
     
     return self;

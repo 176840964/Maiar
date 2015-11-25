@@ -28,7 +28,7 @@
         self.couponsModel = model;
         
         self.cidStr = [model.cid stringValue];
-        self.titleStr = [model.title stringValue];
+        self.nameStr = [model.name stringValue];
         
         NSString *moneyStr = [NSString stringWithFormat:@"￥%.0f", [model.money stringValue].doubleValue / 100];
         self.moneyAttrStr = [[NSMutableAttributedString alloc] initWithString:moneyStr];
@@ -36,9 +36,16 @@
         [self.moneyAttrStr addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:60]} range:NSMakeRange(1, moneyStr.length - 1)];
         
         self.moneyFullStr = [model.money_full stringValue];
-        self.typeStr = [model.type stringValue];
         self.validTimeStr = [CustomTools dateStringFromUnixTimestamp:[model.etime stringValue].integerValue withFormatString:@"yyyy-MM-dd hh:mm"];
         self.statusStr = [model.status stringValue];
+        
+        if ([[model.type stringValue] isEqualToString:@"44"]) {
+            self.type = CouponTypeOfMinus;
+        } else if ([[model.type stringValue] isEqualToString:@"45"]) {
+            self.type = CouponTypeOfFullCut;
+        } else {
+            self.type = CouponTypeOfOther;
+        }
     }
     
     return self;

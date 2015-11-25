@@ -11,6 +11,7 @@
 
 @interface CouponCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *selectedIcon;
+@property (assign, nonatomic) BOOL isCanUse;
 
 - (void)layoutCouponCellSubviewsByCouponsViewModel:(CouponsViewModel *)viewModel;
 

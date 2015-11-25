@@ -56,8 +56,8 @@
 
 #pragma mark - Networking
 - (void)getUserInfo {
-#warning test cid
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": @"1"} success:^(id responseObject) {
+    NSString *cid = [UserConfigManager shareManager].userInfo.uidStr;
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": cid} success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         UserZoneModel *model = [[UserZoneModel alloc] initWithDic:resDic];
         self.userZoneViewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];
@@ -70,8 +70,6 @@
 
 - (void)getUserCoupons {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"couponsList" params:@{@"uid": uid} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];
         self.couponsArr = [NSMutableArray new];

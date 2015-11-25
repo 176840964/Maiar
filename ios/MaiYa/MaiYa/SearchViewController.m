@@ -77,10 +77,7 @@
     if ([segue.identifier isEqualToString:@"ShowMasterZone"]) {
         MyZoneViewController *contrller = segue.destinationViewController;
         contrller.type = ZoneViewControllerTypeOfOther;
-        
-        NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
         contrller.cidStr = self.selectedMasterId;
-        contrller.oidStr = uid;
     }
 }
 

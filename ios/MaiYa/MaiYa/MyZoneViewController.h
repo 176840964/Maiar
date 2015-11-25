@@ -17,6 +17,5 @@ typedef NS_ENUM(NSInteger, ZoneViewControllerType) {
 
 @property (assign, nonatomic) ZoneViewControllerType type;
 @property (copy, nonatomic) NSString *cidStr;
-@property (copy, nonatomic) NSString *oidStr;
 
 @end

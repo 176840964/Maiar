@@ -30,6 +30,7 @@
     [WXApi registerApp:WeChat_APP_ID withDescription:@"MaiYa"];
     
     [UserConfigManager shareManager].isLaunching = YES;
+    [[UserConfigManager shareManager] updatingLocation];
     
     return YES;
 }

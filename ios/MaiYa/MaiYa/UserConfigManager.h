@@ -17,6 +17,9 @@
 @property (assign, nonatomic) BOOL isLogin;//是否登录
 @property (assign, nonatomic) BOOL isLaunching;//是否刚刚启动应用
 
+@property (copy, nonatomic) NSString *latStr;
+@property (copy, nonatomic) NSString *lonStr;
+
 + (instancetype)shareManager;
 
 - (void)synchronize;

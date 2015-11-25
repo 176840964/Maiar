@@ -19,6 +19,7 @@
 #import "AdvisoryDetailPayCell1.h"
 #import "OrderDetailModel.h"
 #import "PayViewController.h"
+#import "MyCouponViewController.h"
 
 @interface AdvisoryDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -132,6 +133,9 @@
         PayViewController *vc = segue.destinationViewController;
         vc.orderIdStr = self.orderIdStr;
         vc.moneyStr = self.payMoneyStr;
+    } else if ([segue.identifier isEqualToString:@"ShowMyCouponViewController"]) {
+        MyCouponViewController *vc = segue.destinationViewController;
+        vc.orderPriceStr = [UserConfigManager shareManager].createOrderViewModel.originalMoneyAllStr;
     }
 }
 
@@ -233,7 +237,7 @@
         
         BOOL isHasConpons = [UserConfigManager shareManager].createOrderViewModel.isHasCoupons;
         CouponsModel *couponInfo = [UserConfigManager shareManager].createOrderViewModel.couponInfo;
-        cell.useCouponStatusLab.text = (nil != couponInfo) ? couponInfo.title : (isHasConpons ? @"未使用" : @"无可使用");
+        cell.useCouponStatusLab.text = (nil != couponInfo) ? couponInfo.name : (isHasConpons ? @"未使用" : @"无可使用");
         
         cell.tapCommitBtnHandle = ^() {
             [self commitOrder];

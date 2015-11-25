@@ -38,6 +38,8 @@
         @finally {
             if (nil == s_instance) {
                 s_instance = [[UserConfigManager alloc] init];
+                s_instance.lonStr = @"0";
+                s_instance.latStr = @"0";
             }
         }
     });
@@ -99,6 +101,12 @@
     [self.createOrderViewModel clear];
 }
 
+#pragma mark - networking
+- (void)updateUserCoordinate {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"coordinate" params:@{@"uid": self.userInfo.uidStr, @"longitude": self.lonStr, @"latitude": self.latStr} success:^(id responseObject) {
+    }];
+}
+
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.userInfo forKey:@"userInfo"];
@@ -110,6 +118,9 @@
     if (self) {
         self.userInfo = [aDecoder decodeObjectForKey:@"userInfo"];
         self.isLogin = [aDecoder decodeBoolForKey:@"isLogin"];
+        
+        self.lonStr = @"0";
+        self.latStr = @"0";
         
         [self updatingLocation];
     }
@@ -125,8 +136,12 @@
     NSString *lat = [NSString stringWithFormat:@"%f" ,location.coordinate.latitude];
     NSLog(@"经度:%@, 纬度:%@", lat, lon);
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"coordinate" params:@{@"uid": self.userInfo.uidStr, @"longitude": lon, @"latitude": lat} success:^(id responseObject) {
-    }];
+    self.lonStr = lon;
+    self.latStr = lat;
+    
+    if (self.isLogin) {
+        [self updateUserCoordinate];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

@@ -9,6 +9,6 @@
 #import "BaseViewController.h"
 
 @interface MyCouponViewController : BaseViewController
-@property (assign, nonatomic) BOOL isCanUseCoupon;
+@property (copy, nonatomic) NSString *orderPriceStr;
 
 @end

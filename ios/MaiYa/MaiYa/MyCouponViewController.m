@@ -32,13 +32,7 @@
 - (void)getuserCoupons {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     
-    NSMutableDictionary *paramsDic = [NSMutableDictionary new];
-    [paramsDic setObject:uid forKey:@"uid"];
-    if (self.isCanUseCoupon) {
-        [paramsDic setObject:@"7" forKey:@"status"];
-    }
-    
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"couponsList" params:paramsDic success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"couponsList" params:@{@"uid": uid, @"status": @"7"} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];
         self.couponsArr = [NSMutableArray new];
         for (NSDictionary *dic in resArr) {
@@ -75,6 +69,13 @@
     [cell layoutCouponCellSubviewsByCouponsViewModel:viewModel];
     cell.selectedIcon.hidden = YES;
     
+    cell.isCanUse = YES;
+    if (viewModel.type == CouponTypeOfFullCut) {
+        if (self.orderPriceStr.integerValue < viewModel.moneyFullStr.integerValue) {
+            cell.isCanUse = NO;
+        }
+    }
+    
     CouponsModel *selectedCoupon = [UserConfigManager shareManager].createOrderViewModel.couponInfo;
     if (selectedCoupon && [selectedCoupon.cid isEqualToString:viewModel.couponsModel.cid]) {
         cell.selectedIcon.hidden = NO;
@@ -88,19 +89,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     CouponCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell.selectedIcon.hidden) {
-        CouponsViewModel *viewModel = [self.couponsArr objectAtIndex:indexPath.row];
-        [UserConfigManager shareManager].createOrderViewModel.couponInfo = viewModel.couponsModel;
-        [UserConfigManager shareManager].createOrderViewModel.isUsingCoupon = YES;
-        
-        [tableView reloadData];
-        
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        cell.selectedIcon.hidden = YES;
-        [UserConfigManager shareManager].createOrderViewModel.isUsingCoupon = NO;
+    if (cell.isCanUse) {
+        if (cell.selectedIcon.hidden) {
+            CouponsViewModel *viewModel = [self.couponsArr objectAtIndex:indexPath.row];
+            [UserConfigManager shareManager].createOrderViewModel.couponInfo = viewModel.couponsModel;
+            [UserConfigManager shareManager].createOrderViewModel.isUsingCoupon = YES;
+            
+            [tableView reloadData];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            cell.selectedIcon.hidden = YES;
+            [UserConfigManager shareManager].createOrderViewModel.isUsingCoupon = NO;
+        }
     }
-    
 }
 
 @end

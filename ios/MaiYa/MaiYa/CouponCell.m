@@ -9,6 +9,7 @@
 #import "CouponCell.h"
 
 @interface CouponCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
@@ -28,8 +29,17 @@
 
 - (void)layoutCouponCellSubviewsByCouponsViewModel:(CouponsViewModel *)viewModel {
     self.priceLab.attributedText = viewModel.moneyAttrStr;
-    self.titleLab.text = viewModel.titleStr;
+    self.titleLab.text = viewModel.nameStr;
     self.dateLab.text = viewModel.validTimeStr;
+}
+
+- (void)setIsCanUse:(BOOL)isCanUse {
+    _isCanUse = isCanUse;
+    if (_isCanUse) {
+        self.bgImgView.image = [UIImage imageNamed:@"couponBg"];
+    } else {
+        self.bgImgView.image = [UIImage imageNamed:@"coupon_non_selected_bg"];
+    }
 }
 
 @end

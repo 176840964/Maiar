@@ -165,7 +165,18 @@
 
 #pragma mark - Networking
 - (void)getUserInfo {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": self.cidStr, @"oid": self.oidStr} success:^(id responseObject) {
+    NSMutableDictionary *paramsDic = [NSMutableDictionary new];
+    [paramsDic setObject:self.cidStr forKey:@"cid"];
+    if ([UserConfigManager shareManager].isLogin) {
+        [paramsDic setObject:[UserConfigManager shareManager].userInfo.uidStr forKey:@"oid"];
+    } else {
+        NSString *longitude = [UserConfigManager shareManager].lonStr;
+        NSString *latitude = [UserConfigManager shareManager].latStr;
+        [paramsDic setObject:longitude forKey:@"longitude"];
+        [paramsDic setObject:latitude forKey:@"latitude"];
+    }
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:paramsDic success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         UserZoneModel *model = [[UserZoneModel alloc] initWithDic:resDic];
         self.userZoneViewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];
@@ -188,6 +199,14 @@
 
 - (IBAction)onTapSharingMoreBtn:(id)sender {
     [self performSegueWithIdentifier:@"ShowMySharingViewController" sender:self];
+}
+
+- (IBAction)onTapNextBtn:(id)sender {
+    if ([UserConfigManager shareManager].isLogin) {
+        [self performSegueWithIdentifier:@"ShowSelectingServiceDateViewController" sender:self];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:nil];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
