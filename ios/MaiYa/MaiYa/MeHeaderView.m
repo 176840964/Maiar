@@ -24,11 +24,11 @@
     if (self) {
         self.backgroundColor = [UIColor colorWithR:240 g:241 b:245];
         
-        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 206)];
+        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, self.width, 226)];
         self.contentView.backgroundColor = [UIColor colorWithR:100 g:81 b:152];
         [self addSubview:self.contentView];
         
-        self.userHeadPortrait = [[UIImageView alloc] initWithFrame:CGRectMake(self.center.x - 108 / 2.0, 95 / 2.0, 108, 108)];
+        self.userHeadPortrait = [[UIImageView alloc] initWithFrame:CGRectMake(self.center.x - 108 / 2.0, 75 / 2.0, 108, 108)];
         self.userHeadPortrait.image = [UIImage imageNamed:@"login_bg"];
         self.userHeadPortrait.userInteractionEnabled = YES;
         self.userHeadPortrait.clipsToBounds = YES;
