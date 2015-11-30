@@ -15,8 +15,6 @@
         self.dic = [NSMutableDictionary new];
         
         NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-        uid = @"1";
         
         [self.dic setObject:uid forKey:@"uid"];
         

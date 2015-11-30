@@ -32,8 +32,7 @@
 #pragma mark - NetWorking
 - (void)getUserWithdrawalsDetails {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
+    
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userOrder" params:@{@"uid": uid} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];
         for (NSDictionary *dic in resArr) {

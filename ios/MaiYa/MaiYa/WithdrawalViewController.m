@@ -128,8 +128,6 @@
 #pragma mark - NetWorking
 - (void)getApplyMoney {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getApplyMoney" params:@{@"uid": uid} success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         ApplyMoneyModel *model = [[ApplyMoneyModel alloc] initWithDic:resDic];
@@ -162,17 +160,11 @@
 
 - (IBAction)onTapZhifubaoCommitBtn:(id)sender {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
-    
     [self setApplyMoneyByParamsDic:@{@"uid": uid, @"type": @"1", @"bankid": self.aliAccoutTextField.text, @"money": self.aliMoneyTextField.text}];
 }
 
 - (IBAction)onTapBankCommitBtn:(id)sender {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
-    
     [self setApplyMoneyByParamsDic:@{@"uid": uid, @"type": @"2", @"bankid": self.bankCardTextField.text, @"money": self.bankMoneyTextField.text, @"area": self.applyMoneyViewModel.areaIdStr, @"banktype": self.applyMoneyViewModel.bankTypeStr}];
 }
 

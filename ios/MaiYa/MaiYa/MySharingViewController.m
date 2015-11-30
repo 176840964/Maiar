@@ -34,8 +34,6 @@
 #pragma mark - 
 - (void)getMyArticlesList {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeList" params:@{@"uid": uid} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];
         self.articleArr = [NSMutableArray new];

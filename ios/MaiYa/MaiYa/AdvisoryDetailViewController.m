@@ -68,8 +68,7 @@
 #pragma mark - networking
 - (void)getOrderDetailInfo {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
+    
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderInfo" params:@{@"uid": uid, @"orderid": self.orderIdStr} success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         OrderDetailModel *model = [[OrderDetailModel alloc] initWithDic:resDic];
@@ -96,8 +95,6 @@
 
 - (void)commitCommentWithContent:(NSString *)content andStarValue:(NSString *)starValue {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"comment" params:@{@"uid": uid, @"orderid": self.orderDetailViewModel.orderIdStr, @"star": starValue, @"content": content} success:^(id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{

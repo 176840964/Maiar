@@ -30,8 +30,6 @@
 #pragma mark - 
 - (void)getCollectList {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"collectList" params:@{@"uid": uid} success:^(id responseObject) {
         NSArray *resDic = [responseObject objectForKey:@"res"];

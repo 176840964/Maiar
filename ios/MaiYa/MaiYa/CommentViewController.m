@@ -37,8 +37,9 @@
 
 #pragma mark -
 - (void)getCommentList {
-#warning test uid
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"commentList" params:@{@"uid": @"1"} success:^(id responseObject) {
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"commentList" params:@{@"uid": uid} success:^(id responseObject) {
         NSArray *listArr = [[responseObject objectForKey:@"res"] objectForKey:@"list"];
         for (NSDictionary *dic in listArr) {
             CommentModel *model = [[CommentModel alloc] initWithDic:dic];

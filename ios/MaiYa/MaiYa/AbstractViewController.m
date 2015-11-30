@@ -28,8 +28,7 @@
 #pragma mark - 
 - (void)editUserAbstract {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-#warning test uid
-    uid = @"1";
+    
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"editUserInfo" params:@{@"uid": uid, @"introduce": self.textView.text} success:^(id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
