@@ -121,6 +121,9 @@
 		8264D94C1BFED27300215BA5 /* WechatPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264D94B1BFED27300215BA5 /* WechatPayModel.m */; };
 		8264D94F1C06F9AD00215BA5 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264D94E1C06F9AD00215BA5 /* MeViewController.m */; };
 		8264D9521C0702B000215BA5 /* MeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264D9511C0702B000215BA5 /* MeTableViewCell.m */; };
+		8264D9561C0D845000215BA5 /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264D9551C0D845000215BA5 /* CustomTableView.m */; };
+		8264D95B1C0D849900215BA5 /* RefreshDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264D9581C0D849900215BA5 /* RefreshDropdownView.m */; };
+		8264D95C1C0D849900215BA5 /* ReloadMoreDropupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264D95A1C0D849900215BA5 /* ReloadMoreDropupView.m */; };
 		82689C6E1BD6254B007A223B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82689C6D1BD6254B007A223B /* MessageModel.m */; };
 		826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */; };
 		826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */; };
@@ -396,6 +399,12 @@
 		8264D94E1C06F9AD00215BA5 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		8264D9501C0702B000215BA5 /* MeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeTableViewCell.h; sourceTree = "<group>"; };
 		8264D9511C0702B000215BA5 /* MeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeTableViewCell.m; sourceTree = "<group>"; };
+		8264D9541C0D845000215BA5 /* CustomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableView.h; sourceTree = "<group>"; };
+		8264D9551C0D845000215BA5 /* CustomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableView.m; sourceTree = "<group>"; };
+		8264D9571C0D849900215BA5 /* RefreshDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshDropdownView.h; sourceTree = "<group>"; };
+		8264D9581C0D849900215BA5 /* RefreshDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshDropdownView.m; sourceTree = "<group>"; };
+		8264D9591C0D849900215BA5 /* ReloadMoreDropupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReloadMoreDropupView.h; sourceTree = "<group>"; };
+		8264D95A1C0D849900215BA5 /* ReloadMoreDropupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReloadMoreDropupView.m; sourceTree = "<group>"; };
 		82689C6C1BD6254B007A223B /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		82689C6D1BD6254B007A223B /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		826A609E1BD4E0D200C035DC /* CompletWithdrawals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletWithdrawals.h; sourceTree = "<group>"; };
@@ -1450,6 +1459,19 @@
 			name = PayModel;
 			sourceTree = "<group>";
 		};
+		8264D9531C0D840E00215BA5 /* CustomTableView */ = {
+			isa = PBXGroup;
+			children = (
+				8264D9541C0D845000215BA5 /* CustomTableView.h */,
+				8264D9551C0D845000215BA5 /* CustomTableView.m */,
+				8264D9571C0D849900215BA5 /* RefreshDropdownView.h */,
+				8264D9581C0D849900215BA5 /* RefreshDropdownView.m */,
+				8264D9591C0D849900215BA5 /* ReloadMoreDropupView.h */,
+				8264D95A1C0D849900215BA5 /* ReloadMoreDropupView.m */,
+			);
+			name = CustomTableView;
+			sourceTree = "<group>";
+		};
 		826A609D1BD4E05700C035DC /* 4.3.5CompletWithdrawals */ = {
 			isa = PBXGroup;
 			children = (
@@ -1493,6 +1515,7 @@
 		829D316E1B8486A5001EB9DA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8264D9531C0D840E00215BA5 /* CustomTableView */,
 				822F1D501BA9457C00E3D18A /* NetworkingManager */,
 				820A6F431B96A22D002385A4 /* Carousel Cell */,
 				820A6EE21B93FD7E002385A4 /* ArticleCell */,
@@ -1910,6 +1933,7 @@
 				822A4A5F1BA17F6F0096CA5F /* CommentHeaderView.m in Sources */,
 				8213C8CC1B9011A50048B27C /* NSArray+sortBy.m in Sources */,
 				821689031B8B37CF000A1B2D /* UserSexCell.m in Sources */,
+				8264D95C1C0D849900215BA5 /* ReloadMoreDropupView.m in Sources */,
 				82E1B9CF1BC60DF7001F9035 /* ZoneWorkingTimeCell.m in Sources */,
 				821689001B8B32EA000A1B2D /* UserSexViewController.m in Sources */,
 				820A6F291B955213002385A4 /* PlazaWordCell.m in Sources */,
@@ -1943,6 +1967,7 @@
 				820D09491B86CBD10054DB66 /* UserConfigManager.m in Sources */,
 				820A6EF01B943956002385A4 /* WorkingDateView.m in Sources */,
 				820D09531B8718D10054DB66 /* MeNaviController.m in Sources */,
+				8264D9561C0D845000215BA5 /* CustomTableView.m in Sources */,
 				822F1D361BA9206700E3D18A /* ApiXml.mm in Sources */,
 				820A6F391B95C62D002385A4 /* PlazaCategoryViewController.m in Sources */,
 				822A4A391BA03D6C0096CA5F /* AdvisoryDetailUserCell.m in Sources */,
@@ -1957,6 +1982,7 @@
 				82D0343E1BFDD4AF00608692 /* MD5DataSigner.m in Sources */,
 				8264D94F1C06F9AD00215BA5 /* MeViewController.m in Sources */,
 				829D317D1B858BDC001EB9DA /* BaseNavigationController.m in Sources */,
+				8264D95B1C0D849900215BA5 /* RefreshDropdownView.m in Sources */,
 				820A6F121B94774B002385A4 /* BankViewController.m in Sources */,
 				820A6EFE1B9455C7002385A4 /* CouponCell.m in Sources */,
 				82150F1E1B9D9A3100CFDE80 /* AdvisoryDetailViewController.m in Sources */,

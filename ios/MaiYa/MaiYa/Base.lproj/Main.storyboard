@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="112" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EDG-yN-OaH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="112" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EDG-yN-OaH" customClass="CustomTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -25963,9 +25963,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="JDl-KK-l6G"/>
         <segue reference="BVl-l8-ZXx"/>
-        <segue reference="FRV-eB-MVj"/>
         <segue reference="Tua-5Y-gFO"/>
         <segue reference="XtD-YI-5DL"/>
         <segue reference="e2C-bb-XRH"/>
+        <segue reference="uUM-J1-tbB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,6 +19,7 @@
 #import "CustomTools.h"
 #import "PureLayout.h"
 #import "ReactiveCocoa.h"
+#import "CustomTableView.h"
 
 #import "UIColor+Custom.h"
 #import "UIView+frameAdjust.h"

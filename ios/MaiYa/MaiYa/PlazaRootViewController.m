@@ -14,8 +14,8 @@
 #import "PlazaCategoryViewController.h"
 #import "PlazaDetailViewController.h"
 
-@interface PlazaRootViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface PlazaRootViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
+@property (weak, nonatomic) IBOutlet CustomTableView *tableView;
 @property (strong, nonatomic) PlazaWordCell *commonCell;
 @property (strong, nonatomic) PlazaHeaderView *headerView;
 @property (strong, nonatomic) SquareViewModel *squareViewModel;
@@ -42,12 +42,15 @@
     self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     self.commonCell = [self.tableView dequeueReusableCellWithIdentifier:@"PlazaWordCell"];
     
+    self.tableView.customDelegate = self;
+    
     [self getSquareData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:NO];
 }
 
 #pragma mark -
@@ -57,6 +60,10 @@
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         SquareModel *model = [[SquareModel alloc] initWithDic:resDic];
         self.squareViewModel = [[SquareViewModel alloc] initWithSquareModel:model];
+        
+        if (self.tableView.type != CustomTableViewUpdateTypeReloadMore) {
+            [self.tableView finishRefreshData];
+        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self layoutSubviews];
@@ -157,6 +164,11 @@
     } else {
         return 112;
     }
+}
+
+#pragma mark - CustomCollectionViewDelegate
+- (void)customTableViewRefresh:(CustomTableView *)customTableView {
+    [self getSquareData];
 }
 
 @end
