@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSString *money_s;
 @property (copy, nonatomic) NSString *money_e;
 @property (copy, nonatomic) NSString *time;
+@property (copy, nonatomic) NSString *start;
 
 @property (strong, nonatomic) NSMutableDictionary *dic;
 

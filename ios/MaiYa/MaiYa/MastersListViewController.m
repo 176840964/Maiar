@@ -12,9 +12,9 @@
 #import "MyZoneViewController.h"
 #import "MasterListParaModel.h"
 
-@interface MastersListViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MastersListViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btnsArr;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet CustomTableView *tableView;
 @property (weak, nonatomic) IBOutlet FillterView *fillterView;
 @property (weak, nonatomic) IBOutlet UIView *markView;
 
@@ -28,6 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.tableView.customDelegate = self;
     
     self.usersArr = [NSMutableArray new];
     self.paraModel = [[MasterListParaModel alloc] initWithCatStr:[NSString stringWithFormat:@"%zd", self.selectedCatModel]];
@@ -48,6 +50,7 @@
     [super viewDidAppear:animated];
     
     [self.fillterView setupFillterSubViews];
+    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +98,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"isNeedReloadData"]) {
         if (self.paraModel.isNeedReloadData) {
+            self.paraModel.start = @"0";
             [self getUserList];
             self.paraModel.isNeedReloadData = NO;
         }
@@ -103,15 +107,22 @@
 
 #pragma mark - Networking
 - (void)getUserList {
-    
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userList" params:self.paraModel.dic success:^(id responseObject) {
-        [self.usersArr removeAllObjects];
+        NSMutableArray *usersArr = [NSMutableArray new];
         
         NSArray *resArr = [responseObject objectForKey:@"res"];
         for (NSDictionary *dic in resArr) {
             UserZoneModel *model = [[UserZoneModel alloc] initWithDic:dic];
             UserZoneViewModel *viewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];
-            [self.usersArr addObject:viewModel];
+            [usersArr addObject:viewModel];
+        }
+        
+        if (self.tableView.type == CustomTableViewUpdateTypeReloadMore) {
+            [self.usersArr addObjectsFromArray:usersArr];
+            [self.tableView finishReloadMoreDataWithIsEnd:(0 == usersArr.count)];
+        } else {
+            self.usersArr = usersArr;
+            [self.tableView finishRefreshData];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -205,6 +216,27 @@
     self.selectedMasterId = viewModel.uidStr;
     
     [self performSegueWithIdentifier:@"ShowMasterZone" sender:self];
+}
+
+#pragma mark - CustomTableViewViewDelegate
+- (void)customTableViewRefresh:(CustomTableView*)customTableView {
+    self.paraModel.start = @"0";
+    [self getUserList];
+}
+
+- (void)customTableViewReloadMore:(CustomTableView*)customTableView {
+    self.paraModel.start = [NSString stringWithFormat:@"%zd", self.usersArr.count];
+    [self getUserList];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.tableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
+    [self.tableView.reloadMoreView scrollViewDidScroll:scrollView];
 }
 
 @end

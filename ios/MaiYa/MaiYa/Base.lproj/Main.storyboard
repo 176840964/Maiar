@@ -2380,7 +2380,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="77" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jK4-Dg-sKS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="77" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jK4-Dg-sKS" customClass="CustomTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -13082,6 +13082,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="780"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="L32-2G-m6T" id="lSM-vX-dlP"/>
                                     <outlet property="delegate" destination="L32-2G-m6T" id="iMN-L9-7ic"/>
@@ -25961,11 +25964,11 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JDl-KK-l6G"/>
-        <segue reference="BVl-l8-ZXx"/>
+        <segue reference="qFp-dN-tdp"/>
         <segue reference="Tua-5Y-gFO"/>
         <segue reference="XtD-YI-5DL"/>
         <segue reference="e2C-bb-XRH"/>
+        <segue reference="kOk-pc-gYy"/>
         <segue reference="uUM-J1-tbB"/>
     </inferredMetricsTieBreakers>
 </document>

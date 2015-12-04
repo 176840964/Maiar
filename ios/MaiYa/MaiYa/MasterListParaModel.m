@@ -14,15 +14,29 @@
     if (self = [super init]) {
         self.dic = [NSMutableDictionary new];
         
-        NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+        if ([UserConfigManager shareManager].isLogin) {
+            NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
+            [self.dic setObject:uid forKey:@"uid"];
+        } else {
+            NSString *lon = [UserConfigManager shareManager].lonStr;
+            NSString *lat = [UserConfigManager shareManager].latStr;
+            
+            [self.dic setObject:lon forKey:@"longitude"];
+            [self.dic setObject:lat forKey:@"latitude"];
+        }
         
-        [self.dic setObject:uid forKey:@"uid"];
+        self.start = @"0";
         
         self.type = catStr;
         self.distance = @"1";
     }
     
     return self;
+}
+
+- (void)setStart:(NSString *)start {
+    _start = start;
+    [self.dic setObject:_start forKey:@"start"];
 }
 
 - (void)setType:(NSString *)type {
