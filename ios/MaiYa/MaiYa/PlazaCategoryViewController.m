@@ -18,16 +18,19 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
     ContentTableViewTypeOfCanSelcte,
 };
 
-@interface PlazaCategoryViewController () <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface PlazaCategoryViewController () <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *catScrollView;
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
 @property (strong, nonatomic) UIView *markView;
 @property (strong, nonatomic) NSArray *catsArr;
 @property (strong, nonatomic) NSArray *contentsArr;
 @property (strong, nonatomic) NSDictionary *dataDic;
-@property (strong, nonatomic) UITableView *curTableView;
+
+@property (strong, nonatomic) CustomTableView *curTableView;
 @property (strong, nonatomic) NSMutableArray *curDataArr;
+@property (assign, nonatomic) NSInteger curOffsetIndex;
 @property (assign, nonatomic) NSInteger selectedIndex;
+
 @property (strong, nonatomic) PlazaWordCell *wordCell;
 @end
 
@@ -80,11 +83,13 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
         [btn addTarget:self action:@selector(onTapCatBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.catScrollView addSubview:btn];
         
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(5 + self.contentScrollView.width * index, 5, self.contentScrollView.width - 10, self.contentScrollView.height - 5) style:UITableViewStylePlain];
+        CustomTableView *tableView = [[CustomTableView alloc] initWithFrame:CGRectMake(5 + self.contentScrollView.width * index, 5, self.contentScrollView.width - 10, self.contentScrollView.height - 5) style:UITableViewStylePlain];
         tableView.backgroundColor = [UIColor clearColor];
         tableView.dataSource = self;
         tableView.delegate = self;
+        tableView.customDelegate = self;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
         tableView.tag = viewModel.typeNum.integerValue;//0:每日一句   1:其他
         [self.contentScrollView addSubview:tableView];
         [tableViewsArr addObject:tableView];
@@ -131,7 +136,9 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
         self.curDataArr = [self.dataDic objectForKey:viewModel.aidStr];
         self.catIndexStr = viewModel.aidStr;
         
-        [self getArticleTypeListByType:viewModel.aidStr];
+        if (0 == self.curDataArr.count) {
+            [self getArticleTypeListByType:viewModel.aidStr];
+        }
         
         if (isAnimate) {
             [self.contentScrollView setContentOffset:CGPointMake(index * self.contentScrollView.width, 0) animated:YES];
@@ -159,13 +166,27 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
 }
 
 - (void)getArticleTypeListByType:(NSString *)typeStr {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeList" params:@{@"type": typeStr} success:^(id responseObject) {
+    NSString *startIndex = @"0";
+    if (self.curTableView.type == CustomTableViewUpdateTypeReloadMore) {
+        startIndex = [NSString stringWithFormat:@"%zd", self.curDataArr.count];
+    }
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeList" params:@{@"type": typeStr, @"start": startIndex} success:^(id responseObject) {
+        NSMutableArray *arr = [NSMutableArray new];
         
         NSMutableArray *resArr = [responseObject objectForKey:@"res"];
         for (NSDictionary *dic in resArr) {
             ArticleModel *model = [[ArticleModel alloc] initWithDic:dic];
             ArticleViewModel *viewModel = [[ArticleViewModel alloc] initWithArticleModel:model];
-            [self.curDataArr addObject:viewModel];
+            [arr addObject:viewModel];
+        }
+        
+        if (self.curTableView.type == CustomTableViewUpdateTypeNone || self.curTableView.type == CustomTableViewUpdateTypeRefresh) {
+            self.curDataArr = arr;
+            [self.curTableView finishRefreshData];
+        } else {
+            [self.curDataArr addObjectsFromArray:arr];
+            [self.curTableView finishReloadMoreDataWithIsEnd:(0 == arr.count)];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -180,6 +201,19 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
     if ([scrollView isEqual:self.contentScrollView]) {
         NSInteger index = scrollView.contentOffset.x / scrollView.width;
         [self showInfoByIndex:index isAnimateScrollContentView:NO];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (![scrollView isEqual:self.contentScrollView]) {
+        [self.curTableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (![scrollView isEqual:self.contentScrollView]) {
+        [self.curTableView.refreshView refreshScrollViewDidScroll:scrollView];
+        [self.curTableView.reloadMoreView scrollViewDidScroll:scrollView];
     }
 }
 
@@ -253,6 +287,15 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
         controller.articleStr = viewModel.aidStr;
         controller.title = viewModel.titleStr;
     }
+}
+
+#pragma mark - CustomTableViewViewDelegate
+- (void)customTableViewRefresh:(CustomTableView*)customTableView {
+    [self getArticleTypeListByType:self.catIndexStr];
+}
+
+- (void)customTableViewReloadMore:(CustomTableView*)customTableView {
+    [self getArticleTypeListByType:self.catIndexStr];
 }
 
 @end

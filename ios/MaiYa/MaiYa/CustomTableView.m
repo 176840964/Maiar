@@ -8,18 +8,20 @@
 
 #import "CustomTableView.h"
 
-@interface CustomTableView () <UITableViewDelegate>
+@interface CustomTableView ()
 
 @property (assign, nonatomic) BOOL isCanRefresh;
 @property (assign, nonatomic) BOOL isCanReloadMore;
-
-@property (strong, nonatomic) RefreshDropdownView *refreshView;
 @property (assign, nonatomic) BOOL isRefreshLoading;
 
-@property (strong, nonatomic) ReloadMoreDropupView* reloadMoreView;
 @end
 
 @implementation CustomTableView
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"contentSize"];
+}
 
 - (void)setIsCanRefresh:(BOOL)isCanRefresh {
     _isCanRefresh = isCanRefresh;
@@ -59,7 +61,6 @@
     self.type = CustomTableViewUpdateTypeNone;
     self.isCanRefresh = isCanRefresh;
     self.isCanReloadMore = isCanReloadMore;
-    self.delegate = self;
     [self addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 }
 

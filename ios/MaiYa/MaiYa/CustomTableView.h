@@ -23,6 +23,9 @@ typedef NS_ENUM(NSInteger, CustomTableViewUpdateType) {
 @property (assign, nonatomic) CustomTableViewUpdateType type;
 @property (weak, nonatomic) id<CustomTableViewViewDelegate> customDelegate;
 
+@property (strong, nonatomic) RefreshDropdownView *refreshView;
+@property (strong, nonatomic) ReloadMoreDropupView* reloadMoreView;
+
 - (void)setUpSubviewsIsCanRefresh:(BOOL)isCanRefresh andIsCanReloadMore:(BOOL)isCanReloadMore;
 
 //恢复默认状态
