@@ -20,8 +20,10 @@
 @property (strong, nonatomic) PlazaHeaderView *headerView;
 @property (strong, nonatomic) SquareViewModel *squareViewModel;
 
+@property (assign, nonatomic) PlazaDetailParaType showDetailType;
 @property (copy, nonatomic) NSString *selectedCatStr;
 @property (copy, nonatomic) NSString *selectedIdStr;
+@property (strong, nonatomic) NSURL *selectedHeaderUrl;
 @end
 
 @implementation PlazaRootViewController
@@ -34,7 +36,9 @@
     self.tableView.tableHeaderView = self.headerView;
     
     __weak typeof(self) weakSelf = self;
-    self.headerView.tapHeaderViewHandle = ^(NSNumber *index) {
+    self.headerView.tapHeaderViewHandle = ^(NSURL *url) {
+        weakSelf.showDetailType = PlazaDetailParaTypeOfUrl;
+        weakSelf.selectedHeaderUrl = url;
         [weakSelf performSegueWithIdentifier:@"ShowPlazaDetail" sender:weakSelf];
     };
     
@@ -76,13 +80,13 @@
     [self.headerView layoutPlazeHeaderViewSubviewsByArr:self.squareViewModel.focusArr];
 }
 
-
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
         PlazaDetailViewController *viewController = segue.destinationViewController;
         viewController.catIndexStr = self.selectedCatStr;
         viewController.articleStr = self.selectedIdStr;
+        viewController.url = self.selectedHeaderUrl;
     } else if ([segue.identifier isEqualToString:@"ShowPlazaCategory"]) {
         PlazaCategoryViewController *viewController = segue.destinationViewController;
         viewController.catIndexStr = self.selectedCatStr;
@@ -123,6 +127,7 @@
         cell.tapBtnHandler = ^(NSString *catStr, NSString *idStr) {
             self.selectedCatStr = catStr;
             self.selectedIdStr = idStr;
+            self.showDetailType = PlazaDetailParaTypeOfArticle;
             [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
         };
         

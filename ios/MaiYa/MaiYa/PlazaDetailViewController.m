@@ -20,8 +20,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://123.56.107.102:33333/?m=home&c=User&a=articleTypeInfo&type=%@&id=%@", self.catIndexStr, self.articleStr];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
+    NSURL *url = nil;
+    if (self.type == PlazaDetailParaTypeOfArticle) {
+        NSString *urlStr = [NSString stringWithFormat:@"http://123.56.107.102:33333/?m=home&c=User&a=articleTypeInfo&type=%@&id=%@", self.catIndexStr, self.articleStr];
+        url = [NSURL URLWithString:urlStr];
+    } else {
+        url = self.url;
+    }
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 - (void)didReceiveMemoryWarning {

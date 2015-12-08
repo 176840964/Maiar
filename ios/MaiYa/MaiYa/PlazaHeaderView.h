@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^TapHeaderViewHandle)(NSNumber *);
+typedef void(^TapHeaderViewHandle)(NSURL *);
 
 @interface PlazaHeaderView : UIScrollView
 @property (copy, nonatomic) TapHeaderViewHandle tapHeaderViewHandle;

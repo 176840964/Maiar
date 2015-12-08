@@ -11,5 +11,6 @@
 @interface CarouselCell : UIControl
 
 @property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) NSURL *url;
 
 @end
