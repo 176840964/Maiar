@@ -283,6 +283,7 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
         ArticleViewModel *viewModel = [self.curDataArr objectAtIndex:self.selectedIndex];
         
         PlazaDetailViewController *controller = segue.destinationViewController;
+        controller.type = PlazaDetailParaTypeOfArticle;
         controller.catIndexStr = viewModel.typeStr;
         controller.articleStr = viewModel.aidStr;
         controller.title = viewModel.titleStr;

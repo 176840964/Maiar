@@ -36,6 +36,7 @@
         CarouselCell *cell = [[CarouselCell alloc] init];
         cell.tag = index;
         cell.url = viewModel.url;
+        cell.titleStr = viewModel.titleStr;
         cell.frame = CGRectMake(index * self.width, 0, self.width, self.height);
         [cell.imageView setImageWithURL:viewModel.imgUrl placeholderImage:[UIImage imageNamed:@"testHeader"]];
         [cell addTarget:self action:@selector(onTapCell:) forControlEvents:UIControlEventTouchUpInside];
@@ -48,7 +49,7 @@
 #pragma mark - 
 - (void)onTapCell:(CarouselCell *)cell {
     if (self.tapHeaderViewHandle) {
-        self.tapHeaderViewHandle(cell.url);
+        self.tapHeaderViewHandle(cell.url, cell.titleStr);
     }
 }
 

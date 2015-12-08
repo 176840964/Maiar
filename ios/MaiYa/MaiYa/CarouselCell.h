@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) NSURL *url;
+@property (strong, nonatomic) NSString *titleStr;
 
 @end

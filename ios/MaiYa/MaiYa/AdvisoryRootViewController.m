@@ -7,9 +7,11 @@
 //
 
 #import "AdvisoryRootViewController.h"
-#import "CarouselCell.h"
 #import "MastersListViewController.h"
 #import "OrderModel.h"
+#import "CarouselCell.h"
+#import "ArticleModel.h"
+#import "PlazaDetailViewController.h"
 
 @interface AdvisoryRootViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeightConstraint;
@@ -35,6 +37,11 @@
 @property (assign, nonatomic) AdvisoryCatModel selectedCatModel;
 
 @property (strong, nonatomic) OrderViewModel *orderViewModel;
+
+@property (strong, nonatomic) NSMutableArray *headerDataArr;
+@property (strong, nonatomic) NSURL *selectedHeaderUrl;
+@property (assign, nonatomic) PlazaDetailParaType showDetailType;
+@property (copy, nonatomic) NSString *showDetailTitleStr;
 @end
 
 @implementation AdvisoryRootViewController
@@ -42,6 +49,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.headerDataArr = [NSMutableArray new];
     
     [self.noInfoLab addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
 }
@@ -62,11 +71,7 @@
         self.noInfoLab.text = @"请登录后查看";
     }
     
-    CarouselCell *cell = [[CarouselCell alloc] init];
-    cell.frame = self.headerScrollView.bounds;
-    [self.headerScrollView addSubview:cell];
-    
-    self.headerScrollView.contentSize = CGSizeMake(self.headerScrollView.width, self.headerScrollView.height);
+    [self getAdvisoryCarousel];
 }
 
 - (void)updateViewConstraints {
@@ -79,6 +84,36 @@
 }
 
 #pragma mark -
+- (void)layoutHeaderViewSubviews {
+    for (UIView *view in self.headerScrollView.subviews) {
+        if ([view isKindOfClass:[CarouselCell class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    
+    for (NSInteger index = 0; index < self.headerDataArr.count; ++index) {
+        ArticleViewModel *viewModel = [self.headerDataArr objectAtIndex:index];
+        
+        CarouselCell *cell = [[CarouselCell alloc] init];
+        cell.tag = index;
+        cell.url = viewModel.url;
+        cell.titleStr = viewModel.titleStr;
+        cell.frame = CGRectMake(index * self.headerScrollView.width, 0, self.headerScrollView.width, self.headerScrollView.height);
+        [cell.imageView setImageWithURL:viewModel.imgUrl placeholderImage:[UIImage imageNamed:@"testHeader"]];
+        [cell addTarget:self action:@selector(onTapCarouselCell:) forControlEvents:UIControlEventTouchUpInside];
+        [self.headerScrollView addSubview:cell];
+    }
+    
+    self.headerScrollView.contentSize = CGSizeMake(self.headerScrollView.width * self.headerDataArr.count, self.headerScrollView.height);
+}
+
+- (void)onTapCarouselCell:(CarouselCell *)cell {
+    self.showDetailType = PlazaDetailParaTypeOfUrl;
+    self.selectedHeaderUrl = cell.url;
+    self.showDetailTitleStr = cell.titleStr;
+    [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
+}
+
 - (void)layoutOrderViewByOrderViewModel:(OrderViewModel *)viewModel {
     self.orderDateView.hidden = NO;
     self.orderInfoView.hidden = NO;
@@ -112,6 +147,24 @@
 }
 
 #pragma mark - networking
+- (void)getAdvisoryCarousel {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"newsList" params:@{@"push": @"34"} success:^(id responseObject) {
+        
+        [self.headerDataArr removeAllObjects];
+        
+        NSArray *resArr = [responseObject objectForKey:@"res"];
+        for (NSDictionary *dic in resArr) {
+            ArticleModel *model = [[ArticleModel alloc] initWithDic:dic];
+            ArticleViewModel *viewModel = [[ArticleViewModel alloc] initWithArticleModel:model];
+            [self.headerDataArr addObject:viewModel];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self layoutHeaderViewSubviews];
+        });
+    }];
+}
+
 - (void)getCurrentOrder {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     
@@ -204,6 +257,10 @@
     if ([segue.identifier isEqualToString:@"ShowMastersListViewController"]) {
         MastersListViewController *controller = segue.destinationViewController;
         controller.selectedCatModel = self.selectedCatModel;
+    } else if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
+        PlazaDetailViewController *vc = segue.destinationViewController;
+        vc.title = self.showDetailTitleStr;
+        vc.url = self.selectedHeaderUrl;
     }
 }
 

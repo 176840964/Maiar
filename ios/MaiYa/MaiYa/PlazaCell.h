@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ArticleDirectoryModel.h"
 
-typedef void(^TapBtnHandle)(NSString *, NSString *);
+typedef void(^TapBtnHandle)(NSString *, NSString *, NSString *titleStr);
 typedef void(^TapCategoryBtnHandle)(NSString *);
 
 @interface PlazaCell : UITableViewCell

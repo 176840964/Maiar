@@ -58,7 +58,7 @@
         
         ArticleIndexViewModel* indexViewModel = [self.viewModel.dataArr objectAtIndex:btn.tag];
         
-        self.tapBtnHandler(self.viewModel.typeStr, indexViewModel.aidStr);
+        self.tapBtnHandler(self.viewModel.typeStr, indexViewModel.aidStr, indexViewModel.titleStr);
     }
 }
 

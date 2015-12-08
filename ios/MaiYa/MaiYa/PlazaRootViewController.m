@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSString *selectedCatStr;
 @property (copy, nonatomic) NSString *selectedIdStr;
 @property (strong, nonatomic) NSURL *selectedHeaderUrl;
+@property (copy, nonatomic) NSString *showDetailTitleStr;
 @end
 
 @implementation PlazaRootViewController
@@ -36,9 +37,10 @@
     self.tableView.tableHeaderView = self.headerView;
     
     __weak typeof(self) weakSelf = self;
-    self.headerView.tapHeaderViewHandle = ^(NSURL *url) {
+    self.headerView.tapHeaderViewHandle = ^(NSURL *url, NSString *titleStr) {
         weakSelf.showDetailType = PlazaDetailParaTypeOfUrl;
         weakSelf.selectedHeaderUrl = url;
+        weakSelf.showDetailTitleStr = titleStr;
         [weakSelf performSegueWithIdentifier:@"ShowPlazaDetail" sender:weakSelf];
     };
     
@@ -84,9 +86,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
         PlazaDetailViewController *viewController = segue.destinationViewController;
+        viewController.type = self.showDetailType;
         viewController.catIndexStr = self.selectedCatStr;
         viewController.articleStr = self.selectedIdStr;
         viewController.url = self.selectedHeaderUrl;
+        viewController.title = self.showDetailTitleStr;
     } else if ([segue.identifier isEqualToString:@"ShowPlazaCategory"]) {
         PlazaCategoryViewController *viewController = segue.destinationViewController;
         viewController.catIndexStr = self.selectedCatStr;
@@ -124,10 +128,11 @@
         }
         
         PlazaCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"PlazaCell%zd", indexPath.row]];
-        cell.tapBtnHandler = ^(NSString *catStr, NSString *idStr) {
+        cell.tapBtnHandler = ^(NSString *catStr, NSString *idStr, NSString *titleStr) {
             self.selectedCatStr = catStr;
             self.selectedIdStr = idStr;
             self.showDetailType = PlazaDetailParaTypeOfArticle;
+            self.showDetailTitleStr = titleStr;
             [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
         };
         

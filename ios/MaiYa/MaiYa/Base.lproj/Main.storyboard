@@ -876,7 +876,7 @@
         <!--详情-->
         <scene sceneID="5pF-Lg-L0d">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="7tY-KK-gDJ" customClass="PlazaDetailViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="7tY-KK-gDJ" customClass="PlazaDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YGW-VT-cX2"/>
                         <viewControllerLayoutGuide type="bottom" id="4wY-c7-S3d"/>
@@ -985,7 +985,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0i-MJ-HYa">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-Zi-wTM">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-Zi-wTM">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <animations/>
                                                 <constraints>
@@ -2178,6 +2178,7 @@
                         <outlet property="orderTimeLab" destination="IU2-Pp-f8E" id="3Zk-na-duP"/>
                         <segue destination="W3g-qU-etZ" kind="show" identifier="ShowMyAdvisory" id="aOn-LC-M15"/>
                         <segue destination="JId-ST-Z9S" kind="show" identifier="ShowMastersListViewController" id="8T5-Fp-H98"/>
+                        <segue destination="7tY-KK-gDJ" kind="show" identifier="ShowPlazaDetail" id="hkf-oN-faz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -25964,9 +25965,9 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="aOn-LC-M15"/>
         <segue reference="qFp-dN-tdp"/>
         <segue reference="Tua-5Y-gFO"/>
-        <segue reference="XtD-YI-5DL"/>
         <segue reference="e2C-bb-XRH"/>
         <segue reference="kOk-pc-gYy"/>
         <segue reference="uUM-J1-tbB"/>
