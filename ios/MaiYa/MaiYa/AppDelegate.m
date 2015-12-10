@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "UMSocial.h"
 
 @interface AppDelegate () <WXApiDelegate>
 
@@ -18,17 +19,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //设置状态栏颜色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
+    //设置导航栏颜色
     UIImage *image = [[UIImage imageNamed:@"naviBg"] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
     [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:20], NSFontAttributeName, nil]];
 //    [UINavigationBar appearance].barTintColor = [UIColor blackColor];
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
     
+    //友盟
+    [UMSocialData setAppKey:UMeng_Appkey];
+    
+    //微信注册
     [WXApi registerApp:WeChat_APP_ID withDescription:@"MaiYa"];
     
+    //app config
     [UserConfigManager shareManager].isLaunching = YES;
     [[UserConfigManager shareManager] updatingLocation];
     

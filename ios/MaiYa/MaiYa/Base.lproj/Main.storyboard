@@ -890,6 +890,17 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwy-Ky-Owe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <inset key="titleEdgeInsets" minX="-43" minY="52" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="19"/>
+                                <state key="normal" title="新浪微博" image="sharing_pyq"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="150" y="571" width="42" height="62"/>
+                                </variation>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.94901960784313721" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
@@ -907,6 +918,7 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="8pW-nT-r8E"/>
+                                <exclude reference="hwy-Ky-Owe"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Ijs-XX-dIT"/>
@@ -923,6 +935,7 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="8pW-nT-r8E"/>
+                                <include reference="hwy-Ky-Owe"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Ijs-XX-dIT"/>
@@ -938,7 +951,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="详情" id="UNl-Hr-g7n">
-                        <barButtonItem key="rightBarButtonItem" image="topShareIcon" id="jC5-Ke-rff"/>
+                        <barButtonItem key="rightBarButtonItem" image="topShareIcon" id="jC5-Ke-rff">
+                            <connections>
+                                <action selector="onTapShowSharing:" destination="7tY-KK-gDJ" id="oAm-v8-Kj4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="webView" destination="8pW-nT-r8E" id="eVx-DX-2JK"/>
@@ -25945,6 +25962,7 @@
         <image name="selectedIcon1" width="31" height="31"/>
         <image name="settingIcon1" width="22" height="22"/>
         <image name="settingIcon2" width="22" height="22"/>
+        <image name="sharing_pyq" width="43" height="43"/>
         <image name="smallStar0" width="14" height="13"/>
         <image name="taluoIcon" width="71" height="70"/>
         <image name="testZoneTopImage" width="320" height="107"/>

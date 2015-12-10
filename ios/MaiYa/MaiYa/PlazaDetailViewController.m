@@ -8,10 +8,12 @@
 
 #import "PlazaDetailViewController.h"
 #import "ArticleDetailModel.h"
+#import "SharingView.h"
 
 @interface PlazaDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) ArticleDetailViewModel *articleDetailInfo;
+@property (strong, nonatomic) SharingView *sharingView;
 @end
 
 @implementation PlazaDetailViewController
@@ -34,6 +36,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.sharingView.hidden = NO;
+}
+
+#pragma mark - 
+- (SharingView*)sharingView {
+    if (nil == _sharingView) {
+        _sharingView = [[SharingView alloc] initWithFrame:self.view.bounds];
+        [self.view addSubview:_sharingView];
+    }
+    
+    return _sharingView;
+}
+
+#pragma mark - IBAction
+- (IBAction)onTapShowSharing:(id)sender {
+    [self.sharingView showing];
 }
 
 /*
