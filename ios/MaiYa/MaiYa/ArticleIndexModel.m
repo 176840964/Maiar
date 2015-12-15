@@ -25,6 +25,7 @@
     if (self = [super init]) {
         self.aidStr = model.aid;
         self.titleStr = model.ztitle;
+        self.shareUrlStr = model.share_url;
     }
     
     return self;

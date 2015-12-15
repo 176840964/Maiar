@@ -7,7 +7,6 @@
 //
 
 #import "PlazaCell.h"
-#import "ArticleIndexModel.h"
 
 @interface PlazaCell ()
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
@@ -58,7 +57,7 @@
         
         ArticleIndexViewModel* indexViewModel = [self.viewModel.dataArr objectAtIndex:btn.tag];
         
-        self.tapBtnHandler(self.viewModel.typeStr, indexViewModel.aidStr, indexViewModel.titleStr);
+        self.tapBtnHandler(self.viewModel.typeStr, indexViewModel);
     }
 }
 

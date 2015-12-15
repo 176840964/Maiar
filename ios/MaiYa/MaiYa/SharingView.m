@@ -9,6 +9,7 @@
 #import "SharingView.h"
 #import "WXApi.h"
 #import "UMSocialQQHandler.h"
+#import "UMSocial.h"
 
 @interface SharingView()
 @property (strong, nonatomic) UIControl *markControl;
@@ -77,21 +78,21 @@
         [_sharingPathArr removeAllObjects];
     }
     
-//    if ([WXApi isWXAppInstalled]) {
+    if ([WXApi isWXAppInstalled]) {
         NSDictionary *wxDic = @{@"title": @"微信", @"icon": @"sharing_wx"};
         [_sharingPathArr addObject:wxDic];
         
         NSDictionary *frinedLineDic = @{@"title": @"朋友圈", @"icon": @"sharing_pyq"};
         [_sharingPathArr addObject:frinedLineDic];
-//    }
+    }
 
-//    if ([QQApiInterface isQQInstalled]) {
+    if ([QQApiInterface isQQInstalled]) {
         NSDictionary *qqDic = @{@"title": @"QQ好友", @"icon": @"sharing_qq"};
         [_sharingPathArr addObject:qqDic];
         
         NSDictionary *zoneDic = @{@"title": @"QQ空间", @"icon": @"sharing_zone"};
         [_sharingPathArr addObject:zoneDic];
-//    }
+    }
 
     NSDictionary *weiboDic = @{@"title": @"新浪微博", @"icon": @"sharing_wb"};
     [_sharingPathArr addObject:weiboDic];
@@ -122,7 +123,52 @@
     [btn setTitleEdgeInsets:UIEdgeInsetsMake(52, -43, 0, 0)];
     [btn setImage:[UIImage imageNamed:iconStr] forState:UIControlStateNormal];
     [btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 19, 0)];
+    [btn addTarget:self action:@selector(onTapBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.bgView addSubview:btn];
+}
+
+- (void)onTapBtn:(UIButton *)btn {
+    if ([btn.titleLabel.text isEqualToString:@"微信"]) {
+        [UMSocialData defaultData].extConfig.wechatSessionData.title = self.titleStr;
+        [UMSocialData defaultData].extConfig.wechatSessionData.url = self.shareUrlStr;
+        
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatSession] content:self.titleStr image:[UIImage imageNamed:@"aboutIcon"] location:nil urlResource:nil presentedController:self.parentController completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+    } else if ([btn.titleLabel.text isEqualToString:@"朋友圈"]) {
+        [UMSocialData defaultData].extConfig.wechatTimelineData.title = self.titleStr;
+        [UMSocialData defaultData].extConfig.wechatTimelineData.url = self.shareUrlStr;
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatTimeline] content:self.titleStr image:[UIImage imageNamed:@"aboutIcon"] location:nil urlResource:nil presentedController:self.parentController completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+    } else if ([btn.titleLabel.text isEqualToString:@"QQ好友"]) {
+        [UMSocialData defaultData].extConfig.qqData.title = self.titleStr;
+        [UMSocialData defaultData].extConfig.qqData.url = self.shareUrlStr;
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ] content:self.titleStr image:[UIImage imageNamed:@"aboutIcon"] location:nil urlResource:nil presentedController:self.parentController completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+    } else if ([btn.titleLabel.text isEqualToString:@"QQ空间"]) {
+        [UMSocialData defaultData].extConfig.qzoneData.title = self.titleStr;
+        [UMSocialData defaultData].extConfig.qzoneData.url = self.shareUrlStr;
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQzone] content:self.titleStr image:[UIImage imageNamed:@"aboutIcon"] location:nil urlResource:nil presentedController:self.parentController completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+    } else if ([btn.titleLabel.text isEqualToString:@"新浪微博"]) {
+        NSString *content = [NSString stringWithFormat:@"%@%@", self.titleStr, self.shareUrlStr];
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:content image:[UIImage imageNamed:@"aboutIcon"] location:nil urlResource:nil presentedController:self.parentController completion:^(UMSocialResponseEntity *shareResponse){
+            if (shareResponse.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+    }
 }
 
 @end

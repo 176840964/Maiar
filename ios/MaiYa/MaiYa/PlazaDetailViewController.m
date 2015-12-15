@@ -40,13 +40,16 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.sharingView.hidden = NO;
+    self.sharingView.hidden = YES;
 }
 
 #pragma mark - 
 - (SharingView*)sharingView {
     if (nil == _sharingView) {
         _sharingView = [[SharingView alloc] initWithFrame:self.view.bounds];
+        _sharingView.parentController = self;
+        _sharingView.shareUrlStr = self.shareUrlStr;
+        _sharingView.titleStr = self.title;
         [self.view addSubview:_sharingView];
     }
     

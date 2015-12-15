@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *head;
 @property (copy, nonatomic) NSString *uid;
 @property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *share_url;
 @end
 
 
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) NSURL *headUrl;
 @property (copy, nonatomic) NSString *uidStr;
 @property (copy, nonatomic) NSString *typeStr;
+@property (copy, nonatomic) NSString *shareUrlStr;
 
 - (instancetype)initWithArticleModel:(ArticleModel *)model;
 

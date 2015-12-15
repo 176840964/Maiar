@@ -10,6 +10,9 @@
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSinaSSOHandler.h"
+#import "UMSocialQQHandler.h"
 
 @interface AppDelegate () <WXApiDelegate>
 
@@ -31,9 +34,11 @@
     
     //友盟
     [UMSocialData setAppKey:UMeng_Appkey];
-    
+    [UMSocialWechatHandler setWXAppId:WeChat_APP_ID appSecret:WeChat_APP_SECRET url:nil];
+    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:Weibo_App_Key RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    [UMSocialQQHandler setQQWithAppId:QQ_APP_ID appKey:QQ_APP_Key url:@"http://www.umeng.com/social"];
     //微信注册
-    [WXApi registerApp:WeChat_APP_ID withDescription:@"MaiYa"];
+//    [WXApi registerApp:WeChat_APP_ID withDescription:@"MaiYa"];
     
     //app config
     [UserConfigManager shareManager].isLaunching = YES;
@@ -68,19 +73,16 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-//    NSLog(@"%s, sourceApplication:%@", __func__, sourceApplication);
-    
-    if ([sourceApplication containsString:@"alipay"]) {
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
         //跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
         
         return YES;
-    } else {
-        return  [WXApi handleOpenURL:url delegate:self];
     }
-    
+    return result;
 }
 
 #pragma mark - WXApiDelegate

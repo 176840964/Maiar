@@ -10,6 +10,9 @@
 
 @interface SharingView : UIView
 
+@property (weak, nonatomic) UIViewController *parentController;
+@property (copy, nonatomic) NSString *shareUrlStr;
+@property (copy, nonatomic) NSString *titleStr;
 - (void)showing;
 
 @end

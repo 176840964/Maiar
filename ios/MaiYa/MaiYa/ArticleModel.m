@@ -36,6 +36,8 @@
         self.typeStr = [model.type stringValue];
         
         self.timestampStr = [model.ctime stringValue];
+        
+        self.shareUrlStr = model.share_url;
     }
     
     return self;

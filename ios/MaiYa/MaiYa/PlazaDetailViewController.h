@@ -19,4 +19,5 @@ typedef NS_ENUM(NSInteger, PlazaDetailParaType) {
 @property (copy, nonatomic) NSString *catIndexStr;
 @property (copy ,nonatomic) NSString *articleStr;
 @property (strong, nonatomic) NSURL *url;
+@property (copy, nonatomic) NSString *shareUrlStr;
 @end

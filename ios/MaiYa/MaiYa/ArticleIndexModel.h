@@ -11,11 +11,13 @@
 @interface ArticleIndexModel : BaseModel
 @property (copy, nonatomic) NSString *aid;
 @property (copy, nonatomic) NSString *ztitle;
+@property (copy, nonatomic) NSString *share_url;
 @end
 
 @interface ArticleIndexViewModel : NSObject
 @property (copy, nonatomic) NSString *aidStr;
 @property (copy, nonatomic) NSString *titleStr;
+@property (copy, nonatomic) NSString *shareUrlStr;
 
 - (instancetype)initWithAritcleIndexModel:(ArticleIndexModel *)model;
 @end

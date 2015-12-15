@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *selectedIdStr;
 @property (strong, nonatomic) NSURL *selectedHeaderUrl;
 @property (copy, nonatomic) NSString *showDetailTitleStr;
+@property (copy, nonatomic) NSString *shareDetailUrlStr;
 @end
 
 @implementation PlazaRootViewController
@@ -41,6 +42,7 @@
         weakSelf.showDetailType = PlazaDetailParaTypeOfUrl;
         weakSelf.selectedHeaderUrl = url;
         weakSelf.showDetailTitleStr = titleStr;
+        weakSelf.shareDetailUrlStr = url.absoluteString;
         [weakSelf performSegueWithIdentifier:@"ShowPlazaDetail" sender:weakSelf];
     };
     
@@ -91,6 +93,7 @@
         viewController.articleStr = self.selectedIdStr;
         viewController.url = self.selectedHeaderUrl;
         viewController.title = self.showDetailTitleStr;
+        viewController.shareUrlStr = self.shareDetailUrlStr;
     } else if ([segue.identifier isEqualToString:@"ShowPlazaCategory"]) {
         PlazaCategoryViewController *viewController = segue.destinationViewController;
         viewController.catIndexStr = self.selectedCatStr;
@@ -128,11 +131,12 @@
         }
         
         PlazaCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"PlazaCell%zd", indexPath.row]];
-        cell.tapBtnHandler = ^(NSString *catStr, NSString *idStr, NSString *titleStr) {
+        cell.tapBtnHandler = ^(NSString *catStr, ArticleIndexViewModel *indexViewModel) {
             self.selectedCatStr = catStr;
-            self.selectedIdStr = idStr;
+            self.selectedIdStr = indexViewModel.aidStr;
             self.showDetailType = PlazaDetailParaTypeOfArticle;
-            self.showDetailTitleStr = titleStr;
+            self.showDetailTitleStr = indexViewModel.titleStr;
+            self.shareDetailUrlStr = indexViewModel.shareUrlStr;
             [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
         };
         

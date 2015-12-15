@@ -55,6 +55,13 @@ typedef void(^TapViewHandler)(void);
 //获取服务器端支付数据地址（商户自定义）
 #define WeChat_SP_URL          @"http://wxpay.weixin.qq.com/pub_v2/app/app_pay.php"
 
+#pragma mark - Weibo
+#define Weibo_App_Key @"1792637413"
+
+#pragma mark - QQ
+#define QQ_APP_ID @"1105022154"
+#define QQ_APP_Key @"iXkYu5YDMV8zMNrt"
+
 #define defulteOffsetCount 15
 
 #endif
