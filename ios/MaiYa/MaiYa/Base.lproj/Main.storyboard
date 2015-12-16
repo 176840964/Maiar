@@ -12761,8 +12761,12 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7a-sX-XS9">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testZoneTopImage" translatesAutoresizingMaskIntoConstraints="NO" id="tgn-2L-ZnE">
+                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testZoneTopImage" translatesAutoresizingMaskIntoConstraints="NO" id="tgn-2L-ZnE">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                        <gestureRecognizers/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="LA4-m3-Xmc" appends="YES" id="Z2n-pP-tjV"/>
+                                                        </connections>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1L-ck-NZB">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -15998,11 +16002,163 @@
                         <outletCollection property="commentStarArr" destination="KYK-S5-8qT" id="pOx-ao-crz"/>
                         <segue destination="fzc-xM-fjm" kind="show" identifier="ShowMySharingViewController" id="73i-la-JWt"/>
                         <segue destination="aOu-yS-eZm" kind="show" identifier="ShowSelectingServiceDateViewController" id="7BI-PT-QCa"/>
+                        <segue destination="9Gd-Gh-Ry4" kind="show" identifier="ShowEditImageViewController" id="fdH-C6-Yly"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nz-ir-pnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LA4-m3-Xmc">
+                    <connections>
+                        <action selector="tapTopImageViewGestureRecognizer:" destination="e4e-u7-PRJ" id="CnH-4t-n39"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3016.5" y="1939.125"/>
+        </scene>
+        <!--Edit Top Image View Controller-->
+        <scene sceneID="zNM-bG-3Ob">
+            <objects>
+                <viewController id="9Gd-Gh-Ry4" customClass="EditTopImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0V9-sQ-9Du"/>
+                        <viewControllerLayoutGuide type="bottom" id="74l-P9-QU6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uaq-Ja-S5z">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editImageBg" translatesAutoresizingMaskIntoConstraints="NO" id="J4y-fv-1er">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGF-EF-DIU">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="9eX-UG-HmC"/>
+                                    <constraint firstAttribute="height" constant="64" id="vdk-Qb-dhe"/>
+                                </constraints>
+                                <state key="normal" image="editImage_cancel"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9eX-UG-HmC"/>
+                                        <exclude reference="vdk-Qb-dhe"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="9eX-UG-HmC"/>
+                                        <include reference="vdk-Qb-dhe"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onTapCancelBtn:" destination="9Gd-Gh-Ry4" eventType="touchUpInside" id="YoE-QO-4fk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNe-0Q-Whr">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="R8J-eF-4rB"/>
+                                    <constraint firstAttribute="height" constant="64" id="xFX-lR-HGG"/>
+                                </constraints>
+                                <state key="normal" image="editImage_ok"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="R8J-eF-4rB"/>
+                                        <exclude reference="xFX-lR-HGG"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="R8J-eF-4rB"/>
+                                        <include reference="xFX-lR-HGG"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onTapOkBtn:" destination="9Gd-Gh-Ry4" eventType="touchUpInside" id="2RQ-aq-z8v"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择适合的区域进行裁切" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QjU-Z1-K6U">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ubY-CF-diG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ubY-CF-diG"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ubY-CF-diG"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="74l-P9-QU6" firstAttribute="top" secondItem="J4y-fv-1er" secondAttribute="bottom" id="5UY-HH-Mrk"/>
+                            <constraint firstItem="74l-P9-QU6" firstAttribute="top" secondItem="VNe-0Q-Whr" secondAttribute="bottom" constant="55" id="5qZ-Z9-Msk"/>
+                            <constraint firstItem="J4y-fv-1er" firstAttribute="leading" secondItem="Uaq-Ja-S5z" secondAttribute="leading" id="6OZ-z5-Ntn"/>
+                            <constraint firstItem="QjU-Z1-K6U" firstAttribute="leading" secondItem="Uaq-Ja-S5z" secondAttribute="leading" id="7as-di-gj8"/>
+                            <constraint firstAttribute="trailing" secondItem="QjU-Z1-K6U" secondAttribute="trailing" id="9cf-Rw-7TT"/>
+                            <constraint firstItem="oGF-EF-DIU" firstAttribute="top" secondItem="QjU-Z1-K6U" secondAttribute="bottom" constant="33" id="DJo-xM-n5x"/>
+                            <constraint firstAttribute="trailing" secondItem="VNe-0Q-Whr" secondAttribute="trailing" constant="92" id="HEB-VP-TbB"/>
+                            <constraint firstItem="74l-P9-QU6" firstAttribute="top" secondItem="oGF-EF-DIU" secondAttribute="bottom" constant="55" id="IVf-gr-cWk"/>
+                            <constraint firstAttribute="trailing" secondItem="J4y-fv-1er" secondAttribute="trailing" id="Rwe-2E-82z"/>
+                            <constraint firstItem="J4y-fv-1er" firstAttribute="top" secondItem="0V9-sQ-9Du" secondAttribute="bottom" id="VkQ-fL-u5J"/>
+                            <constraint firstItem="oGF-EF-DIU" firstAttribute="leading" secondItem="Uaq-Ja-S5z" secondAttribute="leading" constant="92" id="aoz-6m-cSb"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="J4y-fv-1er"/>
+                                <exclude reference="oGF-EF-DIU"/>
+                                <exclude reference="VNe-0Q-Whr"/>
+                                <exclude reference="QjU-Z1-K6U"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="6OZ-z5-Ntn"/>
+                                <exclude reference="Rwe-2E-82z"/>
+                                <exclude reference="VkQ-fL-u5J"/>
+                                <exclude reference="7as-di-gj8"/>
+                                <exclude reference="9cf-Rw-7TT"/>
+                                <exclude reference="DJo-xM-n5x"/>
+                                <exclude reference="aoz-6m-cSb"/>
+                                <exclude reference="HEB-VP-TbB"/>
+                                <exclude reference="5UY-HH-Mrk"/>
+                                <exclude reference="5qZ-Z9-Msk"/>
+                                <exclude reference="IVf-gr-cWk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="J4y-fv-1er"/>
+                                <include reference="oGF-EF-DIU"/>
+                                <include reference="VNe-0Q-Whr"/>
+                                <include reference="QjU-Z1-K6U"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="6OZ-z5-Ntn"/>
+                                <include reference="Rwe-2E-82z"/>
+                                <include reference="VkQ-fL-u5J"/>
+                                <include reference="7as-di-gj8"/>
+                                <include reference="9cf-Rw-7TT"/>
+                                <include reference="DJo-xM-n5x"/>
+                                <include reference="aoz-6m-cSb"/>
+                                <include reference="HEB-VP-TbB"/>
+                                <include reference="5UY-HH-Mrk"/>
+                                <include reference="5qZ-Z9-Msk"/>
+                                <include reference="IVf-gr-cWk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="bgImageView" destination="J4y-fv-1er" id="Hdd-bD-qHQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="voz-JZ-R7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4105.5" y="2308.5"/>
         </scene>
         <!--My Collection View Controller-->
         <scene sceneID="j0c-sj-bhC">
@@ -25078,6 +25234,9 @@
         <image name="couponBg" width="272" height="104"/>
         <image name="couponSelectedIcon" width="40" height="40"/>
         <image name="detailsArrow" width="8" height="15"/>
+        <image name="editImageBg" width="375" height="667"/>
+        <image name="editImage_cancel" width="64" height="64"/>
+        <image name="editImage_ok" width="64" height="64"/>
         <image name="filter_price_ruler" width="350" height="9"/>
         <image name="good" width="12" height="10"/>
         <image name="guangchang" width="28" height="28"/>
@@ -25126,6 +25285,6 @@
         <segue reference="mxu-Ep-7Vo"/>
         <segue reference="kLw-Ud-r7a"/>
         <segue reference="JDl-KK-l6G"/>
-        <segue reference="WGm-RP-BNQ"/>
+        <segue reference="XEl-TR-64l"/>
     </inferredMetricsTieBreakers>
 </document>

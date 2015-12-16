@@ -12,8 +12,9 @@
 #import "AbstractViewController.h"
 #import "CommentViewController.h"
 #import "SelectingServiceDateViewController.h"
+#import "EditTopImageViewController.h"
 
-@interface MyZoneViewController () <UIScrollViewDelegate>
+@interface MyZoneViewController () <UIScrollViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -53,8 +54,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
-
 @property (strong, nonatomic) UserZoneViewModel *userZoneViewModel;
+@property (strong, nonatomic) UIImage *selectedImage;
 
 @end
 
@@ -95,6 +96,9 @@
     } else if ([segue.identifier isEqualToString:@"ShowSelectingServiceDateViewController"]) {
         SelectingServiceDateViewController *controller = segue.destinationViewController;
         controller.masterId = self.cidStr;
+    } else if ([segue.identifier isEqualToString:@"ShowEditImageViewController"]) {
+        EditTopImageViewController *vc = segue.destinationViewController;
+        vc.oriImage = self.selectedImage;
     }
 }
 
@@ -163,6 +167,17 @@
     }
 }
 
+- (void)showPickerControllerWithType:(UIImagePickerControllerSourceType)type {
+    if ([UIImagePickerController isSourceTypeAvailable:type]) {
+        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.sourceType = type;
+        [self presentViewController:picker animated:YES completion:^{
+            
+        }];
+    }
+}
+
 #pragma mark - Networking
 - (void)getUserInfo {
     NSMutableDictionary *paramsDic = [NSMutableDictionary new];
@@ -209,6 +224,21 @@
     }
 }
 
+- (IBAction)tapTopImageViewGestureRecognizer:(id)sender {
+    if (self.type != ZoneViewControllerTypeOfMine) {
+        return;
+    }
+    
+    [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    
+    UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:@"相册选择", [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ? @"相机拍摄" : nil, nil];
+    [sheet showInView:self.view];
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if (!self.bottomView.hidden) {
@@ -224,6 +254,25 @@
             self.bottomView.transform = CGAffineTransformIdentity;
         }];
     }
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString* buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if ([buttonTitle isEqualToString:@"相册选择"]) {
+        [self showPickerControllerWithType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+    } else if ([buttonTitle isEqualToString:@"相机拍摄"]) {
+        [self showPickerControllerWithType:UIImagePickerControllerSourceTypeCamera];
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    self.selectedImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self performSegueWithIdentifier:@"ShowEditImageViewController" sender:self];
+    }];
 }
 
 @end

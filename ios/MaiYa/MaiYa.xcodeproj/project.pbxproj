@@ -145,6 +145,8 @@
 		8264DA121C1920A700215BA5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8264D9FB1C1920A600215BA5 /* libWeChatSDK.a */; };
 		8264DA141C1929E700215BA5 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8264DA131C1929E700215BA5 /* ImageIO.framework */; };
 		8264DA181C1939F400215BA5 /* SharingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8264DA171C1939F400215BA5 /* SharingView.m */; };
+		826624471C21510A007110E1 /* EditTopImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 826624461C21510A007110E1 /* EditTopImageViewController.m */; };
+		8266244A1C2171FB007110E1 /* EditPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826624491C2171FB007110E1 /* EditPhotoView.m */; };
 		82689C6E1BD6254B007A223B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82689C6D1BD6254B007A223B /* MessageModel.m */; };
 		826A60A01BD4E0D200C035DC /* CompletWithdrawals.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A609F1BD4E0D200C035DC /* CompletWithdrawals.m */; };
 		826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A60A31BD4EFB900C035DC /* AccountDetailsModel.m */; };
@@ -474,6 +476,10 @@
 		8264DA131C1929E700215BA5 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		8264DA161C1939F400215BA5 /* SharingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharingView.h; sourceTree = "<group>"; };
 		8264DA171C1939F400215BA5 /* SharingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharingView.m; sourceTree = "<group>"; };
+		826624451C21510A007110E1 /* EditTopImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTopImageViewController.h; sourceTree = "<group>"; };
+		826624461C21510A007110E1 /* EditTopImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTopImageViewController.m; sourceTree = "<group>"; };
+		826624481C2171FB007110E1 /* EditPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPhotoView.h; sourceTree = "<group>"; };
+		826624491C2171FB007110E1 /* EditPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPhotoView.m; sourceTree = "<group>"; };
 		82689C6C1BD6254B007A223B /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		82689C6D1BD6254B007A223B /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		826A609E1BD4E0D200C035DC /* CompletWithdrawals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletWithdrawals.h; sourceTree = "<group>"; };
@@ -1012,6 +1018,7 @@
 				8213C8CE1B905FA00048B27C /* 4.1.3WorkingSettingViewController */,
 				8213C8D01B905FEF0048B27C /* 4.1.4CommentViewController */,
 				82E1B9C91BC60D5F001F9035 /* 4.1.5WorkingTimeView */,
+				826624441C2150C3007110E1 /* 4.1.6EditTopImageViewController */,
 				821688D91B8AED83000A1B2D /* MyZoneViewController.h */,
 				821688DA1B8AED83000A1B2D /* MyZoneViewController.m */,
 			);
@@ -1659,6 +1666,17 @@
 			name = SharingView;
 			sourceTree = "<group>";
 		};
+		826624441C2150C3007110E1 /* 4.1.6EditTopImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				826624451C21510A007110E1 /* EditTopImageViewController.h */,
+				826624461C21510A007110E1 /* EditTopImageViewController.m */,
+				826624481C2171FB007110E1 /* EditPhotoView.h */,
+				826624491C2171FB007110E1 /* EditPhotoView.m */,
+			);
+			name = 4.1.6EditTopImageViewController;
+			sourceTree = "<group>";
+		};
 		826A609D1BD4E05700C035DC /* 4.3.5CompletWithdrawals */ = {
 			isa = PBXGroup;
 			children = (
@@ -2156,6 +2174,7 @@
 				82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */,
 				826A60A41BD4EFB900C035DC /* AccountDetailsModel.m in Sources */,
 				82A49AA71BEAFCB200E6106A /* OrderModel.m in Sources */,
+				8266244A1C2171FB007110E1 /* EditPhotoView.m in Sources */,
 				821688F41B8B1A4E000A1B2D /* UserInfoViewController.m in Sources */,
 				82D0343D1BFDD4AF00608692 /* DataVerifier.m in Sources */,
 				821688DE1B8AED95000A1B2D /* MyCollectionViewController.m in Sources */,
@@ -2171,6 +2190,7 @@
 				8264D9561C0D845000215BA5 /* CustomTableView.m in Sources */,
 				822F1D361BA9206700E3D18A /* ApiXml.mm in Sources */,
 				820A6F391B95C62D002385A4 /* PlazaCategoryViewController.m in Sources */,
+				826624471C21510A007110E1 /* EditTopImageViewController.m in Sources */,
 				822A4A391BA03D6C0096CA5F /* AdvisoryDetailUserCell.m in Sources */,
 				820D094C1B86CE050054DB66 /* CustomTools.m in Sources */,
 				82A95D501BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m in Sources */,
