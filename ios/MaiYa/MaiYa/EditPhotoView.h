@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditPhotoView : UIScrollView
+@protocol EditPhotoViewDelegate;
 
-- (void)layoutPhotoViewByImage:(UIImage *)image;
+@interface EditPhotoView : UIView
+@property (strong, nonatomic) UIImage *sourceImage;
+@property (weak, nonatomic) id<EditPhotoViewDelegate> delegate;
+@end
+
+@protocol EditPhotoViewDelegate <NSObject>
+
+- (void)editPhotoViewGestureRecognizerStateBegan:(EditPhotoView*)editPhotoView;
+- (void)editPhotoViewGestureRecognizerStateEnded:(EditPhotoView*)editPhotoView;
 
 @end
