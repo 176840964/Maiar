@@ -20,6 +20,7 @@
 #import "PureLayout.h"
 #import "ReactiveCocoa.h"
 #import "CustomTableView.h"
+#import "UICountingLabel.h"
 
 #import "UIColor+Custom.h"
 #import "UIView+frameAdjust.h"

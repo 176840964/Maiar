@@ -28,15 +28,18 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
   - PureLayout
   - ReactiveCocoa (~> 2.5)
+  - UICountingLabel
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.39.0

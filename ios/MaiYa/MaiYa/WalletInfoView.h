@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WalletInfoView : UIView
-@property (weak, nonatomic) IBOutlet UILabel *balanceLab;
+@property (weak, nonatomic) IBOutlet UICountingLabel *balanceLab;
 @property (weak, nonatomic) IBOutlet UIImageView *comingSoonIcon;
 @property (weak, nonatomic) IBOutlet UILabel *comingSoonMoneyLab;
 @property (weak, nonatomic) IBOutlet UILabel *totalIncomeLab;

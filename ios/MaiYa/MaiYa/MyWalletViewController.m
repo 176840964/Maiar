@@ -43,7 +43,9 @@
 
 #pragma mark - 
 - (void)layoutWalletInfoView {
-    self.walletInfoView.balanceLab.text = self.userZoneViewModel.balanceStr;
+    self.walletInfoView.balanceLab.format = @"%.2f";
+    [self.walletInfoView.balanceLab countFrom:0 to:self.userZoneViewModel.balanceStr.floatValue withDuration:2.0];
+//    self.walletInfoView.balanceLab.text = self.userZoneViewModel.balanceStr;
     self.walletInfoView.totalIncomeLab.text = self.userZoneViewModel.incomeStr;
     self.walletInfoView.totalWithdrawalsLab.text = self.userZoneViewModel.withdrawalsStr;
     
