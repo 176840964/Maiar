@@ -68,7 +68,7 @@
 
 - (void)dealloc
 {
-    [self removeObserver:self forKeyPath:@"contentSize"];
+    [self.searchDisplayController.searchResultsTableView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 #pragma mark - 
