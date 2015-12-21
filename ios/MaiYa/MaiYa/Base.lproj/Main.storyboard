@@ -12665,6 +12665,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="736"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="L32-2G-m6T" id="lSM-vX-dlP"/>
                                     <outlet property="delegate" destination="L32-2G-m6T" id="iMN-L9-7ic"/>
@@ -25283,9 +25286,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="BVl-l8-ZXx"/>
         <segue reference="jTG-GI-y3F"/>
-        <segue reference="JDl-KK-l6G"/>
-        <segue reference="mxu-Ep-7Vo"/>
+        <segue reference="Tua-5Y-gFO"/>
         <segue reference="XtD-YI-5DL"/>
-        <segue reference="e2C-bb-XRH"/>
+        <segue reference="kLw-Ud-r7a"/>
+        <segue reference="JDl-KK-l6G"/>
     </inferredMetricsTieBreakers>
 </document>

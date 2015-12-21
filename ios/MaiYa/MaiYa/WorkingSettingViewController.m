@@ -45,8 +45,8 @@
 
 #pragma mark - 
 - (void)getWorkingTime {
-#warning test cid
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userTime" params:@{@"cid": @"3", @"count": @"7"} success:^(id responseObject) {
+    NSString *cid = [UserConfigManager shareManager].userInfo.uidStr;
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userTime" params:@{@"cid": cid, @"count": @"7"} success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         ConsultantTimeModel *model = [[ConsultantTimeModel alloc] initWithDic:resDic];
         self.timeViewModel = [[ConsultantTimeViewModel alloc] initWithConsultantTimeModel:model];
@@ -58,9 +58,9 @@
 }
 
 - (void)saveWorkingTimeBySelectedDaily:(ConsultantDailyViewModel *)selectedDaily {
-#warning test uid
+    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     if (selectedDaily && selectedDaily.isNeedToUpdate) {
-        [[NetworkingManager shareManager] networkingWithGetMethodPath:@"editUserTime" params:@{@"uid": @"3", @"time": selectedDaily.timestampStr, @"time_slot": selectedDaily.updateHorlyStateStr} success:^(id responseObject) {
+        [[NetworkingManager shareManager] networkingWithGetMethodPath:@"editUserTime" params:@{@"uid": uid, @"time": selectedDaily.timestampStr, @"time_slot": selectedDaily.updateHorlyStateStr} success:^(id responseObject) {
             
         }];
     }
@@ -156,7 +156,7 @@
     
     cell.titleLab.text = titleStr;
     NSInteger titleIntegerValue = titleStr.integerValue;
-    NSString *stateValueStr = [self.selectedDailyViewModel.horlyStateArr objectAtIndex:titleIntegerValue];
+    NSString *stateValueStr = [self.selectedDailyViewModel.horlyStateArr objectAtIndex:titleIntegerValue - 1];
     cell.markImageView.hidden = NO;
     switch (stateValueStr.integerValue) {
         case 1:
