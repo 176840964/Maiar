@@ -248,7 +248,7 @@
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!self.bottomView.hidden) {
         [UIView animateWithDuration:.5 animations:^{
             self.bottomView.transform = CGAffineTransformIdentity;
