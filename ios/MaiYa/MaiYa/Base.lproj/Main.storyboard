@@ -12666,7 +12666,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="736"/>
+                                    <rect key="frame" x="0.0" y="20" width="400" height="780"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="L32-2G-m6T" id="lSM-vX-dlP"/>
@@ -25284,11 +25284,11 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BVl-l8-ZXx"/>
         <segue reference="jTG-GI-y3F"/>
+        <segue reference="qFp-dN-tdp"/>
         <segue reference="Tua-5Y-gFO"/>
+        <segue reference="e2C-bb-XRH"/>
         <segue reference="XtD-YI-5DL"/>
-        <segue reference="kLw-Ud-r7a"/>
         <segue reference="JDl-KK-l6G"/>
     </inferredMetricsTieBreakers>
 </document>

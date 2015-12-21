@@ -30,6 +30,7 @@
     // Do any additional setup after loading the view.
     
     self.tableView.customDelegate = self;
+    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
     
     self.usersArr = [NSMutableArray new];
     self.paraModel = [[MasterListParaModel alloc] initWithCatStr:[NSString stringWithFormat:@"%zd", self.selectedCatModel]];
@@ -50,7 +51,6 @@
     [super viewDidAppear:animated];
     
     [self.fillterView setupFillterSubViews];
-    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
 }
 
 - (void)didReceiveMemoryWarning {
