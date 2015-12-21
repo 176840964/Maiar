@@ -23,9 +23,24 @@
 
 @implementation FillterView
 
-- (void)setupFillterSubViews {
+- (void)dealloc
+{
+    [self.minImg removeObserver:self forKeyPath:@"center"];
+    [self.maxImg removeObserver:self forKeyPath:@"center"];
+}
+
+- (void)setupDidLoad {
+    [super setupDidLoad];
+    
     self.minPrice = @"0";
     self.maxPrice = @"";
+    
+    [self.minImg addObserver:self forKeyPath:@"center" options:0 context:nil];
+    [self.maxImg addObserver:self forKeyPath:@"center" options:0 context:nil];
+}
+
+- (void)layoutViewDidAppear {
+    [super layoutViewDidAppear];
     
     self.dateViewArr = [self.dateViewArr sortByUIViewOriginX];
     
@@ -62,16 +77,16 @@
             str = @"0";
             break;
         case 1:
-            str = @"10000";
+            str = @"5000";
             break;
         case 2:
-            str = @"15000";
-            break;
-        case 3:
             str = @"20000";
             break;
+        case 3:
+            str = @"60000";
+            break;
         case 4:
-            str = @"30000";
+            str = @"80000";
             break;
         default:
             str = @"";
@@ -79,6 +94,16 @@
     }
     
     return str;
+}
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"center"]) {
+//        CGRect frame = self.priceSpaceBg.frame;
+//        frame.origin.x = CGRectGetMidX(_minImg.frame);
+//        frame.size.width = CGRectGetMidX(_maxImg.frame) - CGRectGetMidX(_minImg.frame);
+//        self.priceSpaceBg.frame = frame;
+    }
 }
 
 #pragma mark - IBAction

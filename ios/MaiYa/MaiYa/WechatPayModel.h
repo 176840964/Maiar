@@ -11,7 +11,7 @@
 @interface WechatPayModel : BaseModel
 @property (copy, nonatomic) NSString *appid;
 @property (copy, nonatomic) NSString *noncestr;
-@property (copy, nonatomic) NSString *package;
+@property (copy, nonatomic) NSString *packagestr;
 @property (copy, nonatomic) NSString *partnerid;
 @property (copy, nonatomic) NSString *prepayid;
 @property (copy, nonatomic) NSString *timestamp;

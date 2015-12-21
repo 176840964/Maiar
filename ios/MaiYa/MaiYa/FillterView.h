@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FillterView : UIView
+@interface FillterView : BaseView
 
 @property (copy, nonatomic) NSString *timeFillterStr;
 @property (copy, nonatomic) NSString* minPrice;
 @property (copy, nonatomic) NSString* maxPrice;
-
-- (void)setupFillterSubViews;
 
 @end

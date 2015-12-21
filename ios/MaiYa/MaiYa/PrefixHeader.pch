@@ -21,6 +21,7 @@
 #import "ReactiveCocoa.h"
 #import "CustomTableView.h"
 #import "UICountingLabel.h"
+#import "BaseView.h"
 
 #import "UIColor+Custom.h"
 #import "UIView+frameAdjust.h"

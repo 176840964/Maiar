@@ -60,7 +60,7 @@
     req.prepayId = model.prepayid;
     req.nonceStr = model.noncestr;
     req.timeStamp = model.timestamp.intValue;
-    req.package = model.package;
+    req.package = model.packagestr;
     req.sign = model.sign;
     [WXApi sendReq:req];
 }

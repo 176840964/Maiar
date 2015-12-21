@@ -45,12 +45,14 @@
     btn.backgroundColor = [UIColor colorWithHexString:@"#7167aa"];
     
     [self getUserList];
+    
+    [self.fillterView setupDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self.fillterView setupFillterSubViews];
+    [self.fillterView layoutViewDidAppear];
 }
 
 - (void)didReceiveMemoryWarning {
