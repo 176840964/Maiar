@@ -194,6 +194,7 @@
 		82E1B9D21BC60E0C001F9035 /* ZoneWorkingTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D11BC60E0C001F9035 /* ZoneWorkingTimeView.m */; };
 		82E1B9D61BC77324001F9035 /* ConsultantTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D51BC77324001F9035 /* ConsultantTimeModel.m */; };
 		82E1B9D91BC77B91001F9035 /* ConsultantDailyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D81BC77B91001F9035 /* ConsultantDailyViewModel.m */; };
+		82EB02DF1C2959E000CC83BF /* LoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EB02DE1C2959E000CC83BF /* LoginBaseViewController.m */; };
 		C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4EE198D74EE15090FBD86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -649,6 +650,8 @@
 		82E1B9D51BC77324001F9035 /* ConsultantTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultantTimeModel.m; sourceTree = "<group>"; };
 		82E1B9D71BC77B91001F9035 /* ConsultantDailyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultantDailyViewModel.h; sourceTree = "<group>"; };
 		82E1B9D81BC77B91001F9035 /* ConsultantDailyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultantDailyViewModel.m; sourceTree = "<group>"; };
+		82EB02DD1C2959E000CC83BF /* LoginBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBaseViewController.h; sourceTree = "<group>"; };
+		82EB02DE1C2959E000CC83BF /* LoginBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBaseViewController.m; sourceTree = "<group>"; };
 		C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA4EE198D74EE15090FBD86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1000,6 +1003,8 @@
 				829D31731B84874C001EB9DA /* RegistViewController.m */,
 				829D31781B858AC7001EB9DA /* ForgotViewController.h */,
 				829D31791B858AC7001EB9DA /* ForgotViewController.m */,
+				82EB02DD1C2959E000CC83BF /* LoginBaseViewController.h */,
+				82EB02DE1C2959E000CC83BF /* LoginBaseViewController.m */,
 			);
 			name = 5.Login;
 			sourceTree = "<group>";
@@ -2260,6 +2265,7 @@
 				820A6F151B94775F002385A4 /* BankCityViewController.m in Sources */,
 				82B81C111BFC372900CFB8D1 /* UIViewController+BackBtnHandler.m in Sources */,
 				8264DA181C1939F400215BA5 /* SharingView.m in Sources */,
+				82EB02DF1C2959E000CC83BF /* LoginBaseViewController.m in Sources */,
 				822A4A2F1B9FE6480096CA5F /* SelectingServiceDateCell.m in Sources */,
 				821A951F1BB156F000F44790 /* ArticleModel.m in Sources */,
 				82C166351BCFBECE00F79D38 /* BankModel.m in Sources */,

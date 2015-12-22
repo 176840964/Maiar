@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "LoginBaseViewController.h"
 
-@interface ForgotViewController : BaseViewController
+@interface ForgotViewController : LoginBaseViewController
 
 @end

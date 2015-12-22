@@ -11,10 +11,16 @@
 @interface SettingViewController () <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
 @end
 
 @implementation SettingViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.logoutBtn.hidden = ![UserConfigManager shareManager].isLogin;
+}
 
 #pragma mark - IBAction
 - (IBAction)onTapLogoutBtn:(id)sender {

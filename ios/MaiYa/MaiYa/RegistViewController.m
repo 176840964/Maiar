@@ -9,6 +9,7 @@
 #import "RegistViewController.h"
 
 @interface RegistViewController ()
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextField *telNumTextFiled;
 @property (weak, nonatomic) IBOutlet UITextField *msgTextFiled;
 @property (weak, nonatomic) IBOutlet UITextField *pwTextFiled;
@@ -62,6 +63,12 @@
 
 - (void)dealloc {
     [self.countTimer invalidate];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.telNumTextFiled resignFirstResponder];
+    [self.msgTextFiled resignFirstResponder];
+    [self.pwTextFiled resignFirstResponder];
 }
 
 - (void)oneMinuteCountdown {

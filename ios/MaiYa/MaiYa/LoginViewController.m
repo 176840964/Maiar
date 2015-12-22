@@ -10,6 +10,7 @@
 #import "UserInfoModel.h"
 
 @interface LoginViewController ()
+@property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) IBOutlet UITextField *telNumTextFiled;
 @property (nonatomic, weak) IBOutlet UITextField *passwordTextFiled;
 @property (nonatomic, weak) IBOutlet UIButton *loginBtn;

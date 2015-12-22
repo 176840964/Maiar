@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 zhongqinglongtu. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "LoginBaseViewController.h"
 
-@interface RegistViewController : BaseViewController
+@interface RegistViewController : LoginBaseViewController
 
 @end
