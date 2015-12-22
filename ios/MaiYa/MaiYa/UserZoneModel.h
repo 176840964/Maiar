@@ -69,7 +69,9 @@
 @property (strong, nonatomic) NSArray *workTimeStatusArr;//咨询师7天的预约状态
 @property (assign, nonatomic) BOOL isCollected;//是否收藏
 @property (copy, nonatomic) NSString *beCollectedCountStr;
+@property (assign, nonatomic) BOOL isHasNotArticle;
 @property (strong, nonatomic) ArticleViewModel *articleViewModel;//分享文章
+@property (assign, nonatomic) BOOL isHasNotComment;
 @property (strong, nonatomic) CommentViewModel *commentViewModel;//最新评论
 
 - (instancetype)initWithUserZoneModel:(UserZoneModel *)model;

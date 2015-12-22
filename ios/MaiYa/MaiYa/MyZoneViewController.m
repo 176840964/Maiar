@@ -42,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *articleDateLab;
 @property (weak, nonatomic) IBOutlet UILabel *articleReadCountLab;
 @property (weak, nonatomic) IBOutlet UILabel *articleGoodCountLab;
+@property (weak, nonatomic) IBOutlet UILabel *noShareArticleLab;
 
 @property (weak, nonatomic) IBOutlet UIButton *workingTimeSettingBtn;
 @property (weak, nonatomic) IBOutlet ZoneWorkingTimeView *workingTimeView;
@@ -51,6 +52,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentUserLab;
 @property (weak, nonatomic) IBOutlet UILabel *commentContentLab;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *commentStarArr;
+@property (weak, nonatomic) IBOutlet UIView *noCommentView;
 
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *lovedBtnItem;
@@ -147,6 +149,7 @@
     self.articleDateLab.text = [CustomTools dateStringFromTodayUnixTimestamp:self.userZoneViewModel.todayTimestampStr.integerValue andOtherTimestamp:self.userZoneViewModel.articleViewModel.timestampStr.integerValue];
     self.articleReadCountLab.text = self.userZoneViewModel.articleViewModel.readStr;
     self.articleGoodCountLab.text = self.userZoneViewModel.articleViewModel.praiseStr;
+    self.noShareArticleLab.hidden = !self.userZoneViewModel.isHasNotArticle;
     
     [self.workingTimeView layoutZoneWorkingTimeViewSubviewsByWorkTimeStatusArr:self.userZoneViewModel.workTimeStatusArr];
     
@@ -155,6 +158,7 @@
     self.commentUserLab.text = self.userZoneViewModel.commentViewModel.usernameStr;
     self.commentContentLab.text = self.userZoneViewModel.commentViewModel.contentStr;
     [self layoutCommentStarByStarCountStr:self.userZoneViewModel.commentViewModel.starCountStr];
+    self.noCommentView.hidden = !self.userZoneViewModel.isHasNotComment;
     
     if (self.type == ZoneViewControllerTypeOfOther) {
         self.lovedBtnItem.image = [UIImage imageNamed:self.userZoneViewModel.isCollected ? @"topLoveIconSelected" : @"topLoveIcon"];

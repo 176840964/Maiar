@@ -88,11 +88,21 @@
         self.isCollected = [model.collect_is isEqualToNumber:[NSNumber numberWithInteger:1]];
         self.beCollectedCountStr = [model.collect stringValue];
         
-        ArticleModel *article = [[ArticleModel alloc] initWithDic:model.article];
-        self.articleViewModel = [[ArticleViewModel alloc] initWithArticleModel:article];
+        if (model.article.allKeys.count == 0) {
+            self.isHasNotArticle = YES;
+        } else {
+            self.isHasNotArticle = NO;
+            ArticleModel *article = [[ArticleModel alloc] initWithDic:model.article];
+            self.articleViewModel = [[ArticleViewModel alloc] initWithArticleModel:article];
+        }
         
-        CommentModel *comment = [[CommentModel alloc] initWithDic:model.comment];
-        self.commentViewModel = [[CommentViewModel alloc] initWithCommentModel:comment];
+        if (model.comment.allKeys.count == 0) {
+            self.isHasNotComment = YES;
+        } else {
+            self.isHasNotComment = NO;
+            CommentModel *comment = [[CommentModel alloc] initWithDic:model.comment];
+            self.commentViewModel = [[CommentViewModel alloc] initWithCommentModel:comment];
+        }
         
         NSMutableArray *workTimeStatusArr = [NSMutableArray new];
         NSArray *timeArr = [[model.time stringValue] componentsSeparatedByString:@","];
