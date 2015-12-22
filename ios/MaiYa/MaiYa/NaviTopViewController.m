@@ -35,7 +35,7 @@
 
 #pragma mark -
 - (void)layoutRightBtn:(UIButton *)btn withBtnTitle:(NSString *)str;{
-    if (0 != str.length && [str isKindOfClass:[NSString class]]) {
+    if (str.isValid) {
         btn.hidden = NO;
         [btn setImage:[UIImage imageNamed:str] forState:UIControlStateNormal];
     } else {

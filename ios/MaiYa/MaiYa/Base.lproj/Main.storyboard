@@ -5722,7 +5722,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9oe-aH-Ynl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jtd-xx-MEm">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3K-Qa-EHf">
@@ -12665,9 +12665,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="400" height="780"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="L32-2G-m6T" id="lSM-vX-dlP"/>
                                     <outlet property="delegate" destination="L32-2G-m6T" id="iMN-L9-7ic"/>
@@ -12722,7 +12719,7 @@
             </objects>
             <point key="canvasLocation" x="2344.5" y="945"/>
         </scene>
-        <!--My Zone View Controller-->
+        <!--Title-->
         <scene sceneID="vI8-Yb-JeX">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="e4e-u7-PRJ" customClass="MyZoneViewController" sceneMemberID="viewController">
@@ -15959,11 +15956,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="eWy-vs-SFb">
+                        <barButtonItem key="rightBarButtonItem" image="topLoveIcon" id="e30-Vv-eKA">
+                            <connections>
+                                <action selector="onTapLoveButtonItem:" destination="e4e-u7-PRJ" id="gay-dx-l12"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="titleLabStr" value="我的空间"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="backBtnTitle" value="我"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="rightBtnImgStr" value="topShareIcon"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="rightSecondBtnImgStr" value="topLoveIcon"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="articleDateLab" destination="y1e-2R-phK" id="ILK-wb-ZX9"/>
@@ -15984,6 +15988,7 @@
                         <outlet property="introduceTxtView" destination="ZMD-ml-AiG" id="p96-ID-p2o"/>
                         <outlet property="locationImageView" destination="Ybs-Nf-n61" id="Rdx-8R-9EU"/>
                         <outlet property="locationLab" destination="fER-pt-pgu" id="P1B-oa-WST"/>
+                        <outlet property="lovedBtnItem" destination="e30-Vv-eKA" id="b8j-Ol-jPU"/>
                         <outlet property="mainViewHeight" destination="ka4-Nm-QpH" id="wZs-1d-4pC"/>
                         <outlet property="myShareSettingBtn" destination="SxW-Qg-tlr" id="rKF-Mo-yAR"/>
                         <outlet property="nameLab" destination="J4m-PR-RX7" id="i3Y-77-P0U"/>
@@ -25267,6 +25272,7 @@
         <image name="smallStar0" width="14" height="13"/>
         <image name="taluoIcon" width="71" height="70"/>
         <image name="testZoneTopImage" width="320" height="107"/>
+        <image name="topLoveIcon" width="25" height="25"/>
         <image name="topShareIcon" width="25" height="25"/>
         <image name="userInfoArr" width="7" height="13"/>
         <image name="userInfoIcon1" width="22" height="22"/>
@@ -25284,11 +25290,11 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jTG-GI-y3F"/>
-        <segue reference="qFp-dN-tdp"/>
-        <segue reference="Tua-5Y-gFO"/>
-        <segue reference="e2C-bb-XRH"/>
-        <segue reference="XtD-YI-5DL"/>
+        <segue reference="BVl-l8-ZXx"/>
         <segue reference="JDl-KK-l6G"/>
+        <segue reference="XEl-TR-64l"/>
+        <segue reference="mxu-Ep-7Vo"/>
+        <segue reference="XtD-YI-5DL"/>
+        <segue reference="e2C-bb-XRH"/>
     </inferredMetricsTieBreakers>
 </document>

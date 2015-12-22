@@ -53,6 +53,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *commentStarArr;
 
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *lovedBtnItem;
 
 @property (strong, nonatomic) UserZoneViewModel *userZoneViewModel;
 @property (strong, nonatomic) UIImage *selectedImage;
@@ -154,6 +155,10 @@
     self.commentUserLab.text = self.userZoneViewModel.commentViewModel.usernameStr;
     self.commentContentLab.text = self.userZoneViewModel.commentViewModel.contentStr;
     [self layoutCommentStarByStarCountStr:self.userZoneViewModel.commentViewModel.starCountStr];
+    
+    if (self.type == ZoneViewControllerTypeOfOther) {
+        self.lovedBtnItem.image = [UIImage imageNamed:self.userZoneViewModel.isCollected ? @"topLoveIconSelected" : @"topLoveIcon"];
+    }
 }
 
 - (void)layoutCommentStarByStarCountStr:(NSString *)starCountStr {
@@ -173,7 +178,6 @@
         picker.delegate = self;
         picker.sourceType = type;
         [self presentViewController:picker animated:YES completion:^{
-            
         }];
     }
 }
@@ -203,6 +207,17 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self layoutWorkingTime];
+        });
+    }];
+}
+
+- (void)collectMaster {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"collect" params:@{@"uid": [UserConfigManager shareManager].userInfo.uidStr, @"cid": self.cidStr} success:^(id responseObject) {
+        NSString *resStr = [responseObject objectForKey:@"res"];
+        self.userZoneViewModel.isCollected = !self.userZoneViewModel.isCollected;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.lovedBtnItem.image = [UIImage imageNamed:self.userZoneViewModel.isCollected ? @"topLoveIconSelected" : @"topLoveIcon"];
+            [[HintView getInstance] presentMessage:resStr isAutoDismiss:YES dismissBlock:nil];
         });
     }];
 }
@@ -237,6 +252,10 @@
                                          destructiveButtonTitle:nil
                                               otherButtonTitles:@"相册选择", [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ? @"相机拍摄" : nil, nil];
     [sheet showInView:self.view];
+}
+
+- (IBAction)onTapLoveButtonItem:(id)sender {
+    [self collectMaster];
 }
 
 #pragma mark - UIScrollViewDelegate
