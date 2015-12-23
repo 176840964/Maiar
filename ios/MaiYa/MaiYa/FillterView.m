@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *minImg;
 @property (weak, nonatomic) IBOutlet UIImageView *maxImg;
 @property (weak, nonatomic) IBOutlet UIView *priceSpaceBg;
+@property (weak, nonatomic) IBOutlet UIView *priceView;
 
 @property (strong, nonatomic) IBOutletCollection(FillterDateView) NSArray *dateViewArr;
 
@@ -99,10 +100,14 @@
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"center"]) {
-//        CGRect frame = self.priceSpaceBg.frame;
-//        frame.origin.x = CGRectGetMidX(_minImg.frame);
-//        frame.size.width = CGRectGetMidX(_maxImg.frame) - CGRectGetMidX(_minImg.frame);
-//        self.priceSpaceBg.frame = frame;
+        CGPoint minPoint = [self convertPoint:self.minImg.center toView:self.priceSpaceBg];
+        CGPoint maxPoint = [self convertPoint:self.maxImg.center toView:self.priceSpaceBg];
+        
+        CGRect frame = self.priceView.frame;
+        
+        frame.origin.x = minPoint.x;
+        frame.size.width = maxPoint.x - minPoint.x;
+        self.priceView.frame = frame;
     }
 }
 

@@ -39,11 +39,6 @@
     UINib *cellNib = [UINib nibWithNibName:@"MasterCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"MasterCell"];
     
-    self.btnsArr = [self.btnsArr sortByUIViewOriginX];
-    UIButton *btn = [self.btnsArr objectAtIndex:0];
-    btn.selected = YES;
-    btn.backgroundColor = [UIColor colorWithHexString:@"#7167aa"];
-    
     [self getUserList];
     
     [self.fillterView setupDidLoad];
@@ -52,6 +47,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    self.btnsArr = [self.btnsArr sortByUIViewOriginX];
     [self.fillterView layoutViewDidAppear];
 }
 
@@ -60,7 +56,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc
+- (void)deallocd
 {
     [self.paraModel removeObserver:self forKeyPath:@"isNeedReloadData"];
 }
@@ -74,9 +70,9 @@
         btn.selected = YES;
         btn.backgroundColor = [UIColor colorWithHexString:@"#7167aa"];
         
-        self.fillterView.height = 0.0;
+        self.fillterView.transform = CGAffineTransformMakeTranslation(0, -self.fillterView.height);
         [UIView animateWithDuration:.5 animations:^{
-            self.fillterView.height = 300;
+            self.fillterView.transform = CGAffineTransformIdentity;
             self.markView.alpha = 1.0;
         } completion:^(BOOL finished) {
             
@@ -90,9 +86,12 @@
         btn.selected = NO;
         btn.backgroundColor = self.view.backgroundColor;
         
-        self.fillterView.hidden = YES;
-        self.fillterView.height = 0.0;
-        self.markView.alpha = 0.0;
+        [UIView animateWithDuration:.5 animations:^{
+            self.fillterView.transform = CGAffineTransformMakeTranslation(0, -self.fillterView.height);
+            self.markView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            self.fillterView.hidden = YES;
+        }];
     }
 }
 
