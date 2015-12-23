@@ -156,7 +156,7 @@
     
     cell.titleLab.text = titleStr;
     NSInteger titleIntegerValue = titleStr.integerValue;
-    NSString *stateValueStr = [self.selectedDailyViewModel.horlyStateArr objectAtIndex:titleIntegerValue - 1];
+    NSString *stateValueStr = [self.selectedDailyViewModel.horlyStateArr objectAtIndex:titleIntegerValue];
     cell.markImageView.hidden = NO;
     switch (stateValueStr.integerValue) {
         case 1:
