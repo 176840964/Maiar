@@ -16,8 +16,8 @@
 @property (copy, nonatomic) NSString *distance;
 @property (copy, nonatomic) NSString *order;
 @property (copy, nonatomic) NSString *type;
-@property (copy, nonatomic) NSString *money_s;
-@property (copy, nonatomic) NSString *money_e;
+@property (copy, nonatomic) NSString *money_s;//min
+@property (copy, nonatomic) NSString *money_e;//max
 @property (copy, nonatomic) NSString *time;
 @property (copy, nonatomic) NSString *start;
 

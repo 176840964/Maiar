@@ -154,8 +154,8 @@
         if (!self.fillterView.hidden) {
             [self closeFillterView];
             
-            self.paraModel.money_e = self.fillterView.minPrice;
-            self.paraModel.money_s = self.fillterView.maxPrice;
+            self.paraModel.money_s = self.fillterView.minPrice;
+            self.paraModel.money_e = self.fillterView.maxPrice;
             self.paraModel.time = self.fillterView.timeFillterStr;
             
             self.paraModel.isNeedReloadData = self.paraModel.isChangeMoney_e || self.paraModel.isChangeMoney_s || self.paraModel.isChangeTime;
@@ -180,6 +180,8 @@
                 self.paraModel.order = OrderTypeOfHourMoney;
                 break;
         }
+        
+        self.paraModel.isNeedReloadData = YES;
     }
 }
 

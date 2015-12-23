@@ -50,8 +50,6 @@
     } else {
         [self.dic removeObjectForKey:@"type"];
     }
-    
-    self.isNeedReloadData = YES;
 }
 
 - (void)setDistance:(NSString *)distance {
@@ -65,8 +63,6 @@
     } else {
         [self.dic removeObjectForKey:@"distance"];
     }
-    
-    self.isNeedReloadData = YES;
 }
 
 - (void)setOrder:(NSString *)order {
@@ -80,8 +76,6 @@
     } else {
         [self.dic removeObjectForKey:@"order"];
     }
-    
-    self.isNeedReloadData = YES;
 }
 
 - (void)setMoney_s:(NSString *)money_s {
