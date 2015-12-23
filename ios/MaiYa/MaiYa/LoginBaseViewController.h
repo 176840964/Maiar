@@ -8,9 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginBaseViewController : UIViewController
+@class LoginBaseViewController;
+
+@protocol LoginBaseViewControllerDelegate <NSObject>
+
+- (void)loginBaseViewControllerShowKeyboard:(LoginBaseViewController *)loginBaseViewController;
+- (void)loginBaseViewControllerHiddenKeyboard:(LoginBaseViewController *)loginBaseViewController;
+
+@end
+
+@interface LoginBaseViewController : UIViewController <LoginBaseViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIControl *contentView;
+
+@property (weak, nonatomic) id<LoginBaseViewControllerDelegate> delegate;
+
+- (void)converScrollViewContentSizeWithButtonFrame:(CGRect)frame;
 
 @end

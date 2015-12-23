@@ -9,7 +9,7 @@
 #import "LoginBaseViewController.h"
 
 @interface LoginBaseViewController ()
-
+@property (assign, nonatomic) CGRect kbRect;
 @end
 
 @implementation LoginBaseViewController
@@ -18,8 +18,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.delegate = self;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenKeyboard:) name:UIKeyboardWillHideNotification object:nil];
+    [self.contentView addTarget:self action:@selector(onTapContentView:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,15 +40,25 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-#pragma mark -
-- (void)showKeyboard:(NSNotification *)notify {
-    NSLog(@"%@", notify.userInfo);
-    CGSize size = [[notify.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue].size;
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds) - 64 + size.height);
+- (void)converScrollViewContentSizeWithButtonFrame:(CGRect)frame {
+    if (CGRectGetMaxY(frame) > CGRectGetMinY(self.kbRect)) {
+        self.scrollView.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds) - 64 + CGRectGetMaxY(frame) + 15 - CGRectGetMinY(self.kbRect));
+    }
 }
 
-- (void)hiddenKeyboard:(NSNotification *)notify {
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds) - 64);
+#pragma mark -
+- (void)showKeyboard:(NSNotification *)notify {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(loginBaseViewControllerShowKeyboard:)]) {
+        self.kbRect = [[notify.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+        [self.delegate loginBaseViewControllerShowKeyboard:self];
+    }
+}
+
+- (void)onTapContentView:(UIControl *)ctrl {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(loginBaseViewControllerHiddenKeyboard:)]) {
+        [self.delegate loginBaseViewControllerHiddenKeyboard:self];
+        self.scrollView.contentSize = self.contentView.frame.size;
+    }
 }
 
 /*
@@ -58,5 +70,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - LoginBaseViewControllerDelegate
+- (void)loginBaseViewControllerShowKeyboard:(LoginBaseViewController *)loginBaseViewController {
+    
+}
+
+- (void)loginBaseViewControllerHiddenKeyboard:(LoginBaseViewController *)loginBaseViewController {
+    
+}
 
 @end

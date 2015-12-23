@@ -9,7 +9,6 @@
 #import "RegistViewController.h"
 
 @interface RegistViewController ()
-@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextField *telNumTextFiled;
 @property (weak, nonatomic) IBOutlet UITextField *msgTextFiled;
 @property (weak, nonatomic) IBOutlet UITextField *pwTextFiled;
@@ -63,12 +62,6 @@
 
 - (void)dealloc {
     [self.countTimer invalidate];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.telNumTextFiled resignFirstResponder];
-    [self.msgTextFiled resignFirstResponder];
-    [self.pwTextFiled resignFirstResponder];
 }
 
 - (void)oneMinuteCountdown {
@@ -147,6 +140,18 @@
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+#pragma mark - LoginBaseViewControllerDelegate
+- (void)loginBaseViewControllerShowKeyboard:(LoginBaseViewController *)loginBaseViewController {
+    CGRect frame = [self.view convertRect:self.registBtn.frame fromView:self.contentView];
+    [self converScrollViewContentSizeWithButtonFrame:frame];
+}
+
+- (void)loginBaseViewControllerHiddenKeyboard:(LoginBaseViewController *)loginBaseViewController {
+    [self.telNumTextFiled resignFirstResponder];
+    [self.msgTextFiled resignFirstResponder];
+    [self.pwTextFiled resignFirstResponder];
 }
 
 @end

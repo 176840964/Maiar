@@ -111,7 +111,11 @@
     NSDictionary *dic = 0 == indexPath.section ? [self.group1DataArr objectAtIndex:indexPath.row] : [self.group2DataArr objectAtIndex:indexPath.row];
     
     NSString *segueIdentifier = [dic objectForKey:@"segue"];
-    [self performSegueWithIdentifier:segueIdentifier sender:self];
+    if (![segueIdentifier isEqualToString:@"ShowSettingViewController"] && ![UserConfigManager shareManager].isLogin) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:nil];
+    } else {
+        [self performSegueWithIdentifier:segueIdentifier sender:self];
+    }
 }
 
 @end

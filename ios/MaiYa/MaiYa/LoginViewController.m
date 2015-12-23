@@ -10,7 +10,6 @@
 #import "UserInfoModel.h"
 
 @interface LoginViewController ()
-@property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) IBOutlet UITextField *telNumTextFiled;
 @property (nonatomic, weak) IBOutlet UITextField *passwordTextFiled;
 @property (nonatomic, weak) IBOutlet UIButton *loginBtn;
@@ -42,13 +41,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self.telNumTextFiled becomeFirstResponder];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.telNumTextFiled resignFirstResponder];
-    [self.passwordTextFiled resignFirstResponder];
 }
 
 #pragma mark - IBAction
@@ -69,6 +61,17 @@
             }];
         });
     }];
+}
+
+#pragma mark - LoginBaseViewControllerDelegate
+- (void)loginBaseViewControllerShowKeyboard:(LoginBaseViewController *)loginBaseViewController {
+    CGRect frame = [self.view convertRect:self.loginBtn.frame fromView:self.contentView];
+    [self converScrollViewContentSizeWithButtonFrame:frame];
+}
+
+- (void)loginBaseViewControllerHiddenKeyboard:(LoginBaseViewController *)loginBaseViewController {
+    [self.telNumTextFiled resignFirstResponder];
+    [self.passwordTextFiled resignFirstResponder];
 }
 
 @end
