@@ -26,11 +26,11 @@
         self.cidStr = model.cid;
         
         self.timeStr = [CustomTools dateStringFromUnixTimestamp:model.ctime.integerValue withFormatString:@"MM月dd日（ccc）HH:mm"];
-        [self getStatusStrByModelStatus:model.status];
-        self.starStr = [model.star stringValue];
         
         self.isConsultant = [model.consultant isEqualToString:@"1"];
         self.nameTitleStr = self.isConsultant ? @"会员:" : @"咨询师:";
+        [self getStatusStrByModelStatus:model.status];
+        self.starStr = [model.star stringValue];
         self.nameStr = model.cname;
         self.telStr = model.username;
         self.problemStr = model.problem;
@@ -53,7 +53,7 @@
     if ([modelStatus isEqualToString:@"10"]) {
         self.isFinished = NO;
         str = @"等待付款";
-        if (self.isReservation) {
+        if (self.isConsultant) {
             self.isBtn1Hidden = YES;
             self.isBtn2Hidden = YES;
         } else {
@@ -67,7 +67,7 @@
     } else if ([modelStatus isEqualToString:@"11"]) {
         self.isFinished = NO;
         str = @"等待咨询";
-        if (self.isReservation) {
+        if (self.isConsultant) {
             self.isBtn1Hidden = NO;
             self.btn1TitleStr = @"电话沟通";
             self.btn1BgColor = [UIColor colorWithHexString:@"a773af"];
@@ -85,7 +85,7 @@
     } else if ([modelStatus isEqualToString:@"12"]) {
         self.isFinished = NO;
         str = @"咨询中";
-        if (self.isReservation) {
+        if (self.isConsultant) {
             self.isBtn1Hidden = NO;
             self.btn1TitleStr = @"电话沟通";
             self.btn1BgColor = [UIColor colorWithHexString:@"a773af"];
@@ -101,7 +101,7 @@
     } else if ([modelStatus isEqualToString:@"13"]) {
         self.isFinished = NO;
         str = @"等待评价";
-        if (self.isReservation) {
+        if (self.isConsultant) {
             self.isBtn1Hidden = YES;
             self.isBtn2Hidden = YES;
         } else {
@@ -113,7 +113,7 @@
     } else if ([modelStatus isEqualToString:@"14"]) {
         self.isFinished = YES;
         str = @"已评价";
-        if (self.isReservation) {
+        if (self.isConsultant) {
             self.isBtn1Hidden = YES;
             self.isBtn2Hidden = YES;
         } else {
