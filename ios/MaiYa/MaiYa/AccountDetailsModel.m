@@ -63,7 +63,7 @@
                 break;
         }
         
-        self.moneyStr = [NSString stringWithFormat:@"%@%@", symbol, [model.money stringValue]];
+        self.moneyStr = [NSString stringWithFormat:@"%@%.2f", symbol, model.money.doubleValue / 100];
     }
     
     return self;
