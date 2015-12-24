@@ -15,6 +15,7 @@
 @interface UserInfoViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UserZoneViewModel *userInfoViewModel;
+@property (strong, nonatomic) UIImagePickerController *imagePickerController;
 @end
 
 @implementation UserInfoViewController
@@ -54,11 +55,14 @@
 
 - (void)showPickerControllerWithType:(UIImagePickerControllerSourceType)type {
     if ([UIImagePickerController isSourceTypeAvailable:type]) {
-        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.sourceType = type;
+        if (self.imagePickerController == nil) {
+            self.imagePickerController = [[UIImagePickerController alloc] init];
+            self.imagePickerController.delegate = self;
+            self.imagePickerController.sourceType = type;
+            self.imagePickerController.allowsEditing = YES;
+        }
         
-        [self presentViewController:picker animated:YES completion:^{
+        [self presentViewController:self.imagePickerController animated:YES completion:^{
         }];
     }
 }
@@ -83,9 +87,16 @@
 }
 
 - (void)editUserHeadWithImage:(UIImage *)selectedImage {
+    [[HintView getInstance] presentMessage:@"照片上传中..." isAutoDismiss:NO dismissTimeInterval:2 dismissBlock:nil];
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     [[NetworkingManager shareManager] uploadImageForEditUserInfoWithUid:uid userInfoKey:@"head" image:selectedImage success:^(id responseObject) {
-        NSLog(@"responseObject=======:%@", responseObject);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[HintView getInstance] presentMessage:@"照片上传成功" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:^{
+                [self.imagePickerController dismissViewControllerAnimated:YES completion:^{
+                }];
+            }];
+        });
     }];
 }
 
@@ -136,11 +147,9 @@
 
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    UIImage *selectedImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    UIImage *selectedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
     
-    [picker dismissViewControllerAnimated:YES completion:^{
-        [self editUserHeadWithImage:selectedImage];
-    }];
+    [self editUserHeadWithImage:selectedImage];
 }
 
 @end
