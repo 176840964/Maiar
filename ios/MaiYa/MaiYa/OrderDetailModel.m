@@ -163,7 +163,9 @@
             [self.identifiersArr addObject:self.isConsultant? @"AdvisoryDetailUserCell" : @"AdvisoryDetailMasterCell"];
             [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
             [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
-            [self.identifiersArr addObject:@"AdvisoryDetailCommentCell"];
+            if (!self.isConsultant) {
+                [self.identifiersArr addObject:@"AdvisoryDetailCommentCell"];
+            }
         }
             break;
             
