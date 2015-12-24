@@ -110,7 +110,7 @@
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getPassword" params:@{@"username": self.telNumTextFiled.text, @"password": [CustomTools md5:self.pwTextFiled.text], @"yzm": self.msgTextFiled.text, @"area_code": @"+86"} success:^(id responseObject) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[HintView getInstance] presentMessage:@"密码修改成功" isAutoDismiss:YES dismissBlock:^{
+            [[HintView getInstance] presentMessage:@"密码修改成功" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         });

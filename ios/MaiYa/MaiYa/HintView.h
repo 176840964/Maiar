@@ -11,7 +11,7 @@
 @interface HintView : UIWindow
 
 + (instancetype)getInstance;
-- (void)presentMessage:(NSString *)message isAutoDismiss:(BOOL)isAuto dismissBlock:(void (^)(void))dismissBlock;
+- (void)presentMessage:(NSString *)message isAutoDismiss:(BOOL)isAuto dismissTimeInterval:(NSTimeInterval)seconds dismissBlock:(void (^)(void))dismissBlock;
 - (void)dismissMessage;
 
 @end

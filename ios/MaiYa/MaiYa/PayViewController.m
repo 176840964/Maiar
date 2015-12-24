@@ -96,13 +96,13 @@
             NSString *resultStatus = [resultDic objectForKey:@"resultStatus"];
             NSString *result = [resultDic objectForKey:@"result"];
             if ([resultStatus isEqualToString:@"9000"] && result.isValid) {
-                [[HintView getInstance] presentMessage:@"支付成功" isAutoDismiss:YES dismissBlock:^{
+                [[HintView getInstance] presentMessage:@"支付成功" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:^{
                     [self.navigationController popToRootViewControllerAnimated:YES];
                 }];
             } else if ([resultStatus isEqualToString:@"6001"] && !result.isValid){
-                [[HintView getInstance] presentMessage:@"支付取消" isAutoDismiss:YES dismissBlock:nil];
+                [[HintView getInstance] presentMessage:@"支付取消" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
             } else {
-                [[HintView getInstance] presentMessage:@"未知错误" isAutoDismiss:YES dismissBlock:nil];
+                [[HintView getInstance] presentMessage:@"未知错误" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
             }
         }];
     }

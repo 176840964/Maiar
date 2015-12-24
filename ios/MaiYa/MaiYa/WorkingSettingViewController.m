@@ -31,11 +31,12 @@
     
     __weak typeof(self) weakSelf = self;
     self.dateView.selectedDateHandle = ^(NSNumber *indexNum) {
-        [weakSelf saveWorkingTimeBySelectedDaily:weakSelf.selectedDailyViewModel];//切换时更新
+        [weakSelf saveWorkingTimeBySelectedDaily:weakSelf.selectedDailyViewModel endSaveBlock:^{
+            
+        }];//切换时更新
         weakSelf.selectedDailyViewModel = [weakSelf.timeViewModel.dailyArr objectAtIndex:indexNum.integerValue];
         [weakSelf.tableView reloadData];
     };
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,12 +58,21 @@
     }];
 }
 
-- (void)saveWorkingTimeBySelectedDaily:(ConsultantDailyViewModel *)selectedDaily {
+- (void)saveWorkingTimeBySelectedDaily:(ConsultantDailyViewModel *)selectedDaily endSaveBlock:(void (^)(void))endSave {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     if (selectedDaily && selectedDaily.isNeedToUpdate) {
         [[NetworkingManager shareManager] networkingWithGetMethodPath:@"editUserTime" params:@{@"uid": uid, @"time": selectedDaily.timestampStr, @"time_slot": selectedDaily.updateHorlyStateStr} success:^(id responseObject) {
+            selectedDaily.isNeedToUpdate = NO;
+            selectedDaily.originalHorlyStateStr = selectedDaily.updateHorlyStateStr;
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSString *message = [NSString stringWithFormat:@"周%@数据已保存", selectedDaily.weekStr];
+                [[HintView getInstance] presentMessage:message isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:endSave];
+            });
         }];
+    } else {
+        endSave();
     }
 }
 
@@ -71,8 +81,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     __weak typeof(self) weakSelf = self;
     self.tapNaviRightBtnHandler = ^() {
-        [weakSelf saveWorkingTimeBySelectedDaily:weakSelf.selectedDailyViewModel];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+        [weakSelf saveWorkingTimeBySelectedDaily:weakSelf.selectedDailyViewModel endSaveBlock:^{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }];
     };
     
     [super prepareForSegue:segue sender:sender];

@@ -92,7 +92,7 @@
             case WXSuccess:
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationForWechatPaySuccess" object:nil];
-                [[HintView getInstance] presentMessage:@"支付成功" isAutoDismiss:YES dismissBlock:^{
+                [[HintView getInstance] presentMessage:@"支付成功" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:^{
                 }];
             }
                 break;
@@ -100,7 +100,7 @@
             default:
             {
                 NSString *strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
-                [[HintView getInstance] presentMessage:strMsg isAutoDismiss:NO dismissBlock:nil];
+                [[HintView getInstance] presentMessage:strMsg isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:nil];
             }
                 break;
         }

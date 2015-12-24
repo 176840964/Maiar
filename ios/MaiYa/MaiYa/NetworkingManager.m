@@ -48,7 +48,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"error:%@", error);
-            [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];
+            [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
         });
     }];
 }
@@ -63,7 +63,7 @@
         if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
             NSString *str = [dic objectForKey:@"error"];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissBlock:nil];
+                [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:nil];
             });
         } else {
             success(responseObject);
@@ -71,7 +71,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"error:%@", error);
-            [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissBlock:nil];
+            [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
         });
     }];
 }
@@ -97,7 +97,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
               failure:^(NSURLSessionDataTask *task, NSError *error) {
                   dispatch_async(dispatch_get_main_queue(), ^{
                       NSLog(@"error:%@", error);
-                      [[HintView getInstance] presentMessage:@"图片上传失败" isAutoDismiss:YES dismissBlock:nil];
+                      [[HintView getInstance] presentMessage:@"图片上传失败" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
                   });
     }];
 }

@@ -39,7 +39,7 @@ typedef void(^DismissBlock)();
         [_closeCtrl addTarget:self action:@selector(dismissMessage) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_closeCtrl];
         
-        _messageLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 330, 50)];
+        _messageLab = [UILabel newAutoLayoutView];
         _messageLab.clipsToBounds = YES;
         _messageLab.cornerRadius = 5;
         _messageLab.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.8];
@@ -47,22 +47,33 @@ typedef void(^DismissBlock)();
         _messageLab.textAlignment = NSTextAlignmentCenter;
         _messageLab.font = [UIFont systemFontOfSize:20];
         [self addSubview:_messageLab];
+        
+        [_messageLab autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:CGRectGetHeight(frame) / 5 * 3];
+        [_messageLab autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:15];
+        [_messageLab autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:15];
+        [_messageLab autoSetDimension:ALDimensionHeight toSize:50];
     }
     
     return self;
 }
 
-- (void)presentMessage:(NSString *)message isAutoDismiss:(BOOL)isAuto dismissBlock:(void (^)(void))dismissBlock {
-    self.hidden = NO;
-    self.messageLab.alpha = 1.0;
-    self.messageLab.center = self.center;
+- (void)presentMessage:(NSString *)message isAutoDismiss:(BOOL)isAuto dismissTimeInterval:(NSTimeInterval)seconds dismissBlock:(void (^)(void))dismissBlock {
+    
     self.messageLab.text = message;
+    self.hidden = NO;
+    self.messageLab.alpha = 0.0;
+    [UIView animateWithDuration:seconds / 2 animations:^{
+        self.messageLab.alpha = 1.0;
+        self.messageLab.transform = CGAffineTransformMakeTranslation(0, -10);
+    } completion:^(BOOL finished) {
+        
+    }];
     
     self.dismissBlock = dismissBlock;
     
     if (isAuto) {
         self.closeCtrl.enabled = NO;
-        self.presentTimer = [NSTimer timerWithTimeInterval:2 target:self selector:@selector(dismissMessage) userInfo:nil repeats:NO];
+        self.presentTimer = [NSTimer timerWithTimeInterval:seconds target:self selector:@selector(dismissMessage) userInfo:nil repeats:NO];
         [[NSRunLoop currentRunLoop] addTimer:self.presentTimer forMode:NSRunLoopCommonModes];
     } else {
         self.closeCtrl.enabled = YES;
@@ -72,6 +83,7 @@ typedef void(^DismissBlock)();
 - (void)dismissMessage {
     [UIView animateWithDuration:1 animations:^{
         self.messageLab.alpha = 0.0;
+        self.messageLab.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         self.hidden = YES;
         [self.presentTimer invalidate];

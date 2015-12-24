@@ -56,7 +56,7 @@
         [UserConfigManager shareManager].isLogin = YES;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissBlock:^{
+            [[HintView getInstance] presentMessage:@"登录成功" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:^{
                 [self dismissViewControllerAnimated:YES completion:nil];
             }];
         });

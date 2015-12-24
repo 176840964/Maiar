@@ -221,7 +221,7 @@
         self.userZoneViewModel.isCollected = !self.userZoneViewModel.isCollected;
         dispatch_async(dispatch_get_main_queue(), ^{
             self.lovedBtnItem.image = [UIImage imageNamed:self.userZoneViewModel.isCollected ? @"topLoveIconSelected" : @"topLoveIcon"];
-            [[HintView getInstance] presentMessage:resStr isAutoDismiss:YES dismissBlock:nil];
+            [[HintView getInstance] presentMessage:resStr isAutoDismiss:YES dismissTimeInterval:2 dismissBlock:nil];
         });
     }];
 }
