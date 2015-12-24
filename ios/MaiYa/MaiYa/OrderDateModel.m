@@ -15,7 +15,7 @@
         NSString *str1 = [arr1 objectAtIndex:0];
         NSString *str2 = [arr1 objectAtIndex:1];
         
-        self.dateStr = [CustomTools dateStringFromUnixTimestamp:str1.integerValue withFormatString:@"yyyy年MM月dd日(ww)"];
+        self.dateStr = [CustomTools dateStringFromUnixTimestamp:str1.integerValue withFormatString:@"yyyy年MM月dd日(ccc)"];
         
         NSMutableArray *timesArr = [NSMutableArray new];
         NSArray *arr2 = [str2 componentsSeparatedByString:@","];
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithTimestamp:(NSString *)timestamp andHourArr:(NSArray *)hourArr {
     if (self = [super init]) {
-        self.dateStr = [CustomTools dateStringFromUnixTimestamp:timestamp.integerValue withFormatString:@"yyyy年MM月dd日(ww)"];\
+        self.dateStr = [CustomTools dateStringFromUnixTimestamp:timestamp.integerValue withFormatString:@"yyyy年MM月dd日(ccc)"];\
         
         NSArray *arr = [hourArr sortedArrayUsingComparator:^NSComparisonResult(NSString * obj1, NSString * obj2) {
             return ([obj1 integerValue] < [obj2 integerValue]) ? NSOrderedAscending : ([obj1 integerValue] > [obj2 integerValue]) ? NSOrderedDescending : NSOrderedSame;
