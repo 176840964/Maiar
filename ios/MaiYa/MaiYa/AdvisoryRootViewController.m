@@ -12,6 +12,7 @@
 #import "CarouselCell.h"
 #import "ArticleModel.h"
 #import "PlazaDetailViewController.h"
+#import "PayViewController.h"
 
 @interface AdvisoryRootViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeightConstraint;
@@ -268,6 +269,10 @@
         PlazaDetailViewController *vc = segue.destinationViewController;
         vc.title = self.showDetailTitleStr;
         vc.url = self.selectedHeaderUrl;
+    } else if ([segue.identifier isEqualToString:@"ShowPayViewController"]) {
+        PayViewController *vc = segue.destinationViewController;
+        vc.orderIdStr = self.orderViewModel.orderIdStr;
+        vc.moneyStr = self.orderViewModel.realPriceStr;
     }
 }
 

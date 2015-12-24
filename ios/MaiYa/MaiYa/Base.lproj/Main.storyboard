@@ -2124,6 +2124,7 @@
                         <segue destination="W3g-qU-etZ" kind="show" identifier="ShowMyAdvisory" id="aOn-LC-M15"/>
                         <segue destination="JId-ST-Z9S" kind="show" identifier="ShowMastersListViewController" id="8T5-Fp-H98"/>
                         <segue destination="7tY-KK-gDJ" kind="show" identifier="ShowPlazaDetail" id="hkf-oN-faz"/>
+                        <segue destination="G6v-00-HEM" kind="show" identifier="ShowPayViewController" id="kuh-2k-v9e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -6822,7 +6823,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B48-BE-IsP">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="175" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I4i-k2-s8a">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="175" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I4i-k2-s8a" customClass="CustomTableView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -7543,7 +7544,7 @@
                                                     <outlet property="delegate" destination="W3g-qU-etZ" id="BTS-fT-WPr"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sKS-aR-DHc">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sKS-aR-DHc" customClass="CustomTableView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -13009,9 +13010,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="400" height="780"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="L32-2G-m6T" id="lSM-vX-dlP"/>
                                     <outlet property="delegate" destination="L32-2G-m6T" id="iMN-L9-7ic"/>
@@ -25718,9 +25716,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="hkf-oN-faz"/>
         <segue reference="i2L-Fk-jqD"/>
-        <segue reference="aOn-LC-M15"/>
-        <segue reference="kLw-Ud-r7a"/>
         <segue reference="3N6-pV-PIn"/>
+        <segue reference="XtD-YI-5DL"/>
         <segue reference="mxu-Ep-7Vo"/>
+        <segue reference="kLw-Ud-r7a"/>
     </inferredMetricsTieBreakers>
 </document>

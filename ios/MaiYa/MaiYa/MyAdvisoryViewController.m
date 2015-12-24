@@ -12,12 +12,14 @@
 #import "PayViewController.h"
 #import "MyZoneViewController.h"
 
-@interface MyAdvisoryViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
+@interface MyAdvisoryViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, CustomTableViewViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *markView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentWidth;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UITableView *inTableView;
-@property (weak, nonatomic) IBOutlet UITableView *finishTableView;
+@property (weak, nonatomic) IBOutlet CustomTableView *inTableView;
+@property (weak, nonatomic) IBOutlet CustomTableView *finishTableView;
+@property (strong, nonatomic) CustomTableView *currentTableView;
+@property (assign, nonatomic) BOOL isRefresh;//Yes: refresh  No:add reload;
 
 @property (strong, nonatomic) NSMutableArray *inOrdersArr;
 @property (strong, nonatomic) NSMutableArray *finishedOrderArr;
@@ -33,8 +35,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.inTableView.customDelegate = self;
+    [self.inTableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
+    
+    self.finishTableView.customDelegate = self;
+    [self.finishTableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
+    
     self.inOrdersArr = [NSMutableArray new];
     self.finishedOrderArr = [NSMutableArray new];
+    
+    self.isRefresh = YES;
     
     [self getOrderListByType:@"1"];//进行中
     [self getOrderListByType:@"2"];//已完成
@@ -72,7 +82,7 @@
     } else if ([title isEqualToString:@"电话沟通"]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", orderViewModel.telStr]]];
     } else if ([title isEqualToString:@"完成"]) {
-        [self changeSelectedOrderStatusWithOrderId:self.selectedOrderId andStatusStr:@"orderStatus"];
+        [CustomTools alertShow:@"您确定要完成订单吗？" content:nil cancelBtnTitle:@"稍后" okBtnTitle:@"确定" container:self];
     } else if ([title isEqualToString:@"评价"]) {
         self.selectedOrderId = orderViewModel.orderIdStr;
         [self performSegueWithIdentifier:@"ShowAdvisoryDetailViewController" sender:self];
@@ -84,20 +94,42 @@
     }
 }
 
+- (CustomTableView *)currentTableView {
+    return (self.scrollView.contentOffset.x == 0) ? self.inTableView : self.finishTableView;
+}
+
 #pragma mark - networking
 - (void)getOrderListByType:(NSString *)type {//type == 1 进行中； type == 2 已完成；
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderList" params:@{@"uid": uid, @"type": type} success:^(id responseObject) {
+    
+    NSString *start = self.isRefresh ? @"0" : [NSString stringWithFormat:@"%zd", [type isEqualToString:@"1"] ? self.inOrdersArr.count : self.finishedOrderArr.count];
+    
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"orderList" params:@{@"uid": uid, @"type": type, @"start": start} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];
+        
+        NSMutableArray *ordersArr = [NSMutableArray new];
+        
         for (NSDictionary *dic in resArr) {
             OrderModel *model = [[OrderModel alloc] initWithDic:dic];
             OrderViewModel *viewModel = [[OrderViewModel alloc] initWithOrderModel:model];
             
+            [ordersArr addObject:viewModel];
+        }
+        
+        if (self.currentTableView.type == CustomTableViewUpdateTypeReloadMore) {
             if ([type isEqualToString:@"1"]) {
-                [self.inOrdersArr addObject:viewModel];
+                [self.inOrdersArr addObjectsFromArray:ordersArr];
             } else {
-                [self.finishedOrderArr addObject:viewModel];
+                [self.finishedOrderArr addObjectsFromArray:ordersArr];
             }
+            [self.currentTableView finishReloadMoreDataWithIsEnd:(0 == ordersArr.count)];
+        } else {
+            if ([type isEqualToString:@"1"]) {
+                self.inOrdersArr = ordersArr;
+            } else {
+                self.finishedOrderArr = ordersArr;
+            }
+            [self.currentTableView finishRefreshData];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -114,7 +146,11 @@
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     [[NetworkingManager shareManager] networkingWithGetMethodPath:statusStr params:@{@"uid": uid, @"orderid": orderId} success:^(id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self reloadTableViews];
+            self.isRefresh = YES;
+            [self getOrderListByType:@"1"];
+            if ([statusStr isEqualToString:@"orderCancel"]) {
+                [self getOrderListByType:@"2"];
+            }
         });
     }];
 }
@@ -222,10 +258,38 @@
     }
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if ([self.currentTableView isEqual:scrollView]) {
+        [self.currentTableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([self.currentTableView isEqual:scrollView]) {
+        [self.currentTableView.refreshView refreshScrollViewDidScroll:scrollView];
+        [self.currentTableView.reloadMoreView scrollViewDidScroll:scrollView];
+    }
+}
+
+#pragma mark - CustomTableViewViewDelegate
+- (void)customTableViewRefresh:(CustomTableView*)customTableView {
+    self.isRefresh = YES;
+    [self getOrderListByType:[self.currentTableView isEqual:self.inTableView] ? @"1" : @"2"];
+}
+
+- (void)customTableViewReloadMore:(CustomTableView*)customTableView {
+    self.isRefresh = NO;
+    [self getOrderListByType:[self.currentTableView isEqual:self.inTableView] ? @"1" : @"2"];
+}
+
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != alertView.cancelButtonIndex) {
-        [self changeSelectedOrderStatusWithOrderId:self.selectedOrderId andStatusStr:@"orderCancel"];
+        if ([alertView.title isEqualToString:@"您确定要完成订单吗？"]) {
+            [self changeSelectedOrderStatusWithOrderId:self.selectedOrderId andStatusStr:@"orderStatus"];
+        } else {
+            [self changeSelectedOrderStatusWithOrderId:self.selectedOrderId andStatusStr:@"orderCancel"];
+        }
     }
 }
 
