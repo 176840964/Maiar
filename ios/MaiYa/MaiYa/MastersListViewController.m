@@ -56,7 +56,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)deallocd
+- (void)dealloc
 {
     [self.paraModel removeObserver:self forKeyPath:@"isNeedReloadData"];
 }

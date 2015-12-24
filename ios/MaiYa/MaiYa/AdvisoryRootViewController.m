@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *orderDateLab;
 @property (weak, nonatomic) IBOutlet UILabel *orderStatusLab;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderInfoVIewHeight;
 @property (weak, nonatomic) IBOutlet UIView *orderInfoView;
 @property (weak, nonatomic) IBOutlet UILabel *orderNameTitleLab;
 @property (weak, nonatomic) IBOutlet UILabel *orderNameLab;
@@ -79,7 +80,7 @@
     CGFloat width = CGRectGetWidth([UIScreen mainScreen].bounds);
     CGFloat btnWidth = (width - 5 * 2 - 6 * 3) / 4;
     CGFloat btnHeight = 26 / 17.0 * btnWidth;
-    CGFloat height = 107 / 320.0 * width + 10 + 8 + 10 + btnHeight * 2 + 40 + (self.noInfoLab.hidden ? 31 + 164 : 86);
+    CGFloat height = 107 / 320.0 * width + 10 + 8 + 10 + btnHeight * 2 + 40 + (self.noInfoLab.hidden ? 31 + self.orderInfoVIewHeight.constant : 86);
     self.contentHeightConstraint.constant = height + 6;
 }
 
@@ -121,6 +122,12 @@
     
     self.orderDateLab.text = viewModel.timeStr;
     self.orderStatusLab.text = viewModel.statusStr;
+    if ([viewModel.statusStr isEqualToString:@"等待付款"]) {
+        self.orderInfoVIewHeight.constant = 154;
+    } else {
+        self.orderInfoVIewHeight.constant = 127;
+    }
+    [self updateViewConstraints];
     
     self.orderNameTitleLab.text = viewModel.nameTitleStr;
     self.orderNameLab.text = viewModel.nameStr;

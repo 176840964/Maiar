@@ -44,7 +44,9 @@
 #pragma mark - 
 - (void)layoutWalletInfoView {
     self.walletInfoView.balanceLab.format = @"%.2f";
-    [self.walletInfoView.balanceLab countFrom:0 to:self.userZoneViewModel.balanceStr.floatValue withDuration:2.0];
+    NSLog(@"%f", self.userZoneViewModel.balanceStr.doubleValue);
+    NSLog(@"%f", self.userZoneViewModel.balanceStr.floatValue);
+    [self.walletInfoView.balanceLab countFrom:0 to:self.userZoneViewModel.balanceStr.doubleValue withDuration:2.0];
 //    self.walletInfoView.balanceLab.text = self.userZoneViewModel.balanceStr;
     self.walletInfoView.totalIncomeLab.text = self.userZoneViewModel.incomeStr;
     self.walletInfoView.totalWithdrawalsLab.text = self.userZoneViewModel.withdrawalsStr;

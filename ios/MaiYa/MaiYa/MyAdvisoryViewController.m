@@ -202,6 +202,17 @@
     [self performSegueWithIdentifier:@"ShowAdvisoryDetailViewController" sender:self];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([tableView isEqual:self.inTableView]) {
+        OrderViewModel *viewModel = [self.inOrdersArr objectAtIndex:indexPath.row];
+        if ([viewModel.statusStr isEqualToString:@"等待付款"]) {
+            return 200;
+        }
+    }
+    
+    return 170;
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if ([self.scrollView isEqual:scrollView]) {

@@ -22,7 +22,7 @@
         self.cidStr = model.cid;
         self.problemStr = [NSString stringWithFormat:@"咨询问题：%@", model.problem];
         self.orderTypeStr = model.order_type;
-        self.serviceModeStr = [model.order_type isEqualToString:@"1"] ? @"线上" : @"线下";
+        self.serviceModeStr = [model.service_mode isEqualToString:@"1"] ? @"线上" : @"线下";
         self.moneyStr = [NSString stringWithFormat:@"%.2f", model.money.doubleValue / 100 ];
         self.moneyAllStr = [NSString stringWithFormat:@"￥%.2f", model.money_all.doubleValue / 100];
         
@@ -35,8 +35,8 @@
         [self.nonPayMoneyStr addAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:25], NSForegroundColorAttributeName : [UIColor colorWithR:135 g:144 b:155]} range:NSMakeRange(0, 4)];
         [self.nonPayMoneyStr addAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:25], NSForegroundColorAttributeName : [UIColor colorWithR:248 g:142 b:9]} range:NSMakeRange(4, nonPayMoney.length - 4)];
         
-        [self setupCellsCountByStatusString:model.status];
         self.isConsultant = [model.consultant isEqualToString:@"1"];
+        [self setupCellsCountByStatusString:model.status];
         
         NSString *time = [CustomTools dateStringFromUnixTimestamp:model.ctime.integerValue withFormatString:@"yyyy-MM-dd hh:mm:ss"];
         self.timeStr = [NSString stringWithFormat:@"下单时间：%@", time];

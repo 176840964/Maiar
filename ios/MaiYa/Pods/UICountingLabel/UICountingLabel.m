@@ -87,8 +87,8 @@
 
 @interface UICountingLabel ()
 
-@property float startingValue;
-@property float destinationValue;
+@property double startingValue;
+@property double destinationValue;
 @property NSTimeInterval progress;
 @property NSTimeInterval lastUpdate;
 @property NSTimeInterval totalTime;
@@ -110,7 +110,7 @@
     [self countFrom:value to:endValue withDuration:self.animationDuration];
 }
 
--(void)countFrom:(float)startValue to:(float)endValue withDuration:(NSTimeInterval)duration {
+-(void)countFrom:(double)startValue to:(double)endValue withDuration:(NSTimeInterval)duration {
     
     self.startingValue = startValue;
     self.destinationValue = endValue;
@@ -194,7 +194,7 @@
     }
 }
 
-- (void)setTextValue:(float)value
+- (void)setTextValue:(double)value
 {
     if (self.attributedFormatBlock != nil) {
         self.attributedText = self.attributedFormatBlock(value);

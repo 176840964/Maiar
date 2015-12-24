@@ -25,12 +25,12 @@
         self.uidStr = model.uid;
         self.cidStr = model.cid;
         
-        self.timeStr = [CustomTools dateStringFromUnixTimestamp:model.ctime.integerValue withFormatString:@"MM年dd月(ww) hh:mm"];
+        self.timeStr = [CustomTools dateStringFromUnixTimestamp:model.ctime.integerValue withFormatString:@"MM月dd日（ccc）HH:mm"];
         [self getStatusStrByModelStatus:model.status];
         self.starStr = [model.star stringValue];
         
         self.isConsultant = [model.consultant isEqualToString:@"1"];
-        self.nameTitleStr = self.isConsultant ? @"咨询师:" : @"用户:";
+        self.nameTitleStr = self.isConsultant ? @"会员:" : @"咨询师:";
         self.nameStr = model.cname;
         self.telStr = model.username;
         self.problemStr = model.problem;
@@ -38,7 +38,7 @@
         self.isReservation = [model.order_type isEqualToString:@"1"];
         self.totalStr = [NSString stringWithFormat:@"总计%@小时(%@)", model.total, self.isReservation ? @"预约" : @"即时咨询"];
         
-        self.serviceModeStr = [model.order_type isEqualToString:@"1"] ? @"线上" : @"线下";
+        self.serviceModeStr = [model.service_mode isEqualToString:@"1"] ? @"线上" : @"线下";
         
         self.realPriceStr = [NSString stringWithFormat:@"￥%.2f元", model.money.integerValue / 100.0];
         self.totalPriceStr = [NSString stringWithFormat:@"￥%.2f元", model.money_all.integerValue / 100.0];
