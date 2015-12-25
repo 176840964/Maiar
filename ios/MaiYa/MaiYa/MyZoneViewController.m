@@ -94,6 +94,7 @@
         controller.abstractStr = self.introduceTxtView.text;
     } else if ([segue.identifier isEqualToString:@"ShowCommentViewController"]) {
         CommentViewController *controller = segue.destinationViewController;
+        controller.masterIdStr = self.cidStr;
         controller.countStr = self.userZoneViewModel.commentNumStr;
         controller.allValueStr = self.userZoneViewModel.commentAllOnlyNumStr;
     } else if ([segue.identifier isEqualToString:@"ShowSelectingServiceDateViewController"]) {

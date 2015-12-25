@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *string = @"注册即视为同意《会员服务协议》";
-    NSMutableAttributedString* attString = [[NSMutableAttributedString alloc] initWithString:@"注册即视为同意《会员服务协议》"];
+    NSMutableAttributedString* attString = [[NSMutableAttributedString alloc] initWithString:string];
     NSRange range = [string rangeOfString:@"《"];
     [attString addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18], NSForegroundColorAttributeName: self.telNumTextFiled.placeholderTextColor} range:NSMakeRange(0, range.location)];
     [attString addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18], NSForegroundColorAttributeName: [UIColor colorWithHexString:@"#81cde6"]} range:NSMakeRange(range.location, string.length - range.location)];

@@ -21,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"全部评论";
+    
     self.dateArr = [NSMutableArray new];
     
     CommentHeaderView *headerView = [[CommentHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), 45)];
@@ -37,9 +39,7 @@
 
 #pragma mark -
 - (void)getCommentList {
-    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-    
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"commentList" params:@{@"uid": uid} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"commentList" params:@{@"uid": self.masterIdStr} success:^(id responseObject) {
         NSArray *listArr = [[responseObject objectForKey:@"res"] objectForKey:@"list"];
         for (NSDictionary *dic in listArr) {
             CommentModel *model = [[CommentModel alloc] initWithDic:dic];
