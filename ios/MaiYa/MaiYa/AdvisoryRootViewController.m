@@ -13,6 +13,7 @@
 #import "ArticleModel.h"
 #import "PlazaDetailViewController.h"
 #import "PayViewController.h"
+#import "AdvisoryDetailViewController.h"
 
 @interface AdvisoryRootViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeightConstraint;
@@ -241,6 +242,10 @@
     [self performSegueWithIdentifier:@"ShowMyAdvisory" sender:self];
 }
 
+- (IBAction)onTapShowAdvisoryDetail:(id)sender {
+    [self performSegueWithIdentifier:@"ShowAdvisoryDetailViewController" sender:self];
+}
+
 - (IBAction)onTapOrderBtn:(id)sender {
     UIButton *btn = sender;
     if ([btn.titleLabel.text isEqualToString:@"取消订单"]) {
@@ -250,7 +255,7 @@
     } else if ([btn.titleLabel.text isEqualToString:@"电话沟通"]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", self.orderViewModel.telStr]]];
     } else if ([btn.titleLabel.text isEqualToString:@"完成"]) {
-        [self completCurrentOrder];
+        [CustomTools alertShow:@"您确定要完成订单吗？" content:nil cancelBtnTitle:@"稍后" okBtnTitle:@"确定" container:self];
     } else if ([btn.titleLabel.text isEqualToString:@"评价"]) {
         
     } else if ([btn.titleLabel.text isEqualToString:@"再次预约"]) {
@@ -273,13 +278,20 @@
         PayViewController *vc = segue.destinationViewController;
         vc.orderIdStr = self.orderViewModel.orderIdStr;
         vc.moneyStr = self.orderViewModel.realPriceStr;
+    } else if ([segue.identifier isEqualToString:@"ShowAdvisoryDetailViewController"]) {
+        AdvisoryDetailViewController *vc = segue.destinationViewController;
+        vc.orderIdStr = self.orderViewModel.orderIdStr;
     }
 }
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != alertView.cancelButtonIndex) {
-        [self cancelCurrentOrder];
+        if ([alertView.title isEqualToString:@"您确定要完成订单吗？"]) {
+            [self completCurrentOrder];
+        } else {
+            [self cancelCurrentOrder];
+        }
     }
 }
 

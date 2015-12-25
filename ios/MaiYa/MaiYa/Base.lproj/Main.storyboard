@@ -1641,6 +1641,7 @@
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="pIE-cl-bgr" secondAttribute="trailing" constant="8" id="1eU-pI-5vu"/>
                                                     <constraint firstItem="wJR-k0-hMt" firstAttribute="leading" secondItem="veY-l9-N9c" secondAttribute="trailing" constant="8" id="4rC-8Z-umb"/>
@@ -1823,6 +1824,9 @@
                                                         <include reference="gOp-6T-QDa"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="8xc-NM-WIN" appends="YES" id="InL-9N-PhT"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2125,12 +2129,18 @@
                         <segue destination="JId-ST-Z9S" kind="show" identifier="ShowMastersListViewController" id="8T5-Fp-H98"/>
                         <segue destination="7tY-KK-gDJ" kind="show" identifier="ShowPlazaDetail" id="hkf-oN-faz"/>
                         <segue destination="G6v-00-HEM" kind="show" identifier="ShowPayViewController" id="kuh-2k-v9e"/>
+                        <segue destination="L32-2G-m6T" kind="show" identifier="ShowAdvisoryDetailViewController" id="7d0-I8-eFF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="hBk-J7-W0Z">
                     <connections>
                         <action selector="onTapMyAdvisory:" destination="8rJ-Kc-sve" id="MPN-Oc-Bf1"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="8xc-NM-WIN">
+                    <connections>
+                        <action selector="onTapShowAdvisoryDetail:" destination="8rJ-Kc-sve" id="swd-Lb-B0g"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -10222,7 +10232,7 @@
         <!--详情-->
         <scene sceneID="McF-cb-7hn">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="L32-2G-m6T" customClass="AdvisoryDetailViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="L32-2G-m6T" customClass="AdvisoryDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zn2-MQ-vsg"/>
                         <viewControllerLayoutGuide type="bottom" id="nTw-Mt-QkU"/>
@@ -13027,6 +13037,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="780"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="L32-2G-m6T" id="lSM-vX-dlP"/>
                                     <outlet property="delegate" destination="L32-2G-m6T" id="iMN-L9-7ic"/>
@@ -25735,10 +25748,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BVl-l8-ZXx"/>
-        <segue reference="JDl-KK-l6G"/>
-        <segue reference="jTG-GI-y3F"/>
-        <segue reference="e2C-bb-XRH"/>
-        <segue reference="mxu-Ep-7Vo"/>
+        <segue reference="hkf-oN-faz"/>
+        <segue reference="7d0-I8-eFF"/>
         <segue reference="XtD-YI-5DL"/>
+        <segue reference="e2C-bb-XRH"/>
+        <segue reference="jTG-GI-y3F"/>
     </inferredMetricsTieBreakers>
 </document>
