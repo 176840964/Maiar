@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSString *head;
 @property (copy, nonatomic) NSString *gender;
 @property (copy, nonatomic) NSString *token;
+@property (copy, nonatomic) NSString *consultant;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) UIImage *sexImage;
 @property (copy, nonatomic) NSString *sexStr;
 @property (copy, nonatomic) NSString *tokenStr;
+@property (assign, nonatomic) BOOL isConsultant;
 
 - (instancetype)initWithModel:(UserInfoModel *)model;
 @end

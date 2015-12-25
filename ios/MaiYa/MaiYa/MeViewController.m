@@ -58,7 +58,7 @@
     self.group1DataArr = [NSMutableArray new];
     
     NSDictionary *dic = nil;
-    if ([UserConfigManager shareManager].isLogin) {
+    if ([UserConfigManager shareManager].isLogin && [UserConfigManager shareManager].userInfo.isConsultant) {
         dic = @{@"title": @"我的空间", @"img": @"myZone", @"segue": @"ShowMyZoneViewController"};
         [self.group1DataArr addObject:dic];
     }

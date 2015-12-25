@@ -36,6 +36,8 @@
         } else {
             self.sexStr = @"女";
         }
+        
+        self.isConsultant = [model.consultant isEqualToString:@"1"];
     }
     
     return self;
@@ -58,6 +60,7 @@
     [aCoder encodeObject:self.headUrl forKey:@"head_url"];
     [aCoder encodeObject:self.sexImage forKey:@"sex_image"];
     [aCoder encodeObject:self.sexStr forKey:@"sex"];
+    [aCoder encodeBool:self.isConsultant forKey:@"consultant"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -68,6 +71,7 @@
         self.headUrl = [aDecoder decodeObjectForKey:@"head_url"];
         self.sexImage = [aDecoder decodeObjectForKey:@"sex_image"];
         self.sexStr = [aDecoder decodeObjectForKey:@"sex"];
+        self.isConsultant = [aDecoder decodeBoolForKey:@"consultant"];
     }
     
     return self;
