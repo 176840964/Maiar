@@ -34,6 +34,7 @@
         self.topImageUrl = [NSURL URLWithString:[model.background stringValue]];
         self.sharedArticleCountStr = [NSString stringWithFormat:@"(%@)", [model.share stringValue]];
         
+        self.nickStr = [model.nick stringValue];
         self.nickAndWorkAgeStr = [NSString stringWithFormat:@"%@ | %@", [model.nick stringValue], [model.age stringValue]];
         
         NSString *nickAndAgeStr = [NSString stringWithFormat:@"%@(%@)", [model.nick stringValue], [model.age stringValue]];

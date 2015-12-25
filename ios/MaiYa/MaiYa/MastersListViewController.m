@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) MasterListParaModel *paraModel;
 @property (strong, nonatomic) NSMutableArray *usersArr;
-@property (copy, nonatomic) NSString *selectedMasterId;
+@property (strong, nonatomic) UserZoneViewModel *selectedMasterViewModel;
 @end
 
 @implementation MastersListViewController
@@ -193,7 +193,8 @@
     if ([segue.identifier isEqualToString:@"ShowMasterZone"]) {
         MyZoneViewController *contrller = segue.destinationViewController;
         contrller.type = ZoneViewControllerTypeOfOther;
-        contrller.cidStr = self.selectedMasterId;
+        contrller.cidStr = self.selectedMasterViewModel.uidStr;
+        contrller.title = self.selectedMasterViewModel.nickStr;
     }
 }
 
@@ -216,7 +217,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     UserZoneViewModel *viewModel = [self.usersArr objectAtIndex:indexPath.row];
-    self.selectedMasterId = viewModel.uidStr;
+    self.selectedMasterViewModel = viewModel;
     
     [self performSegueWithIdentifier:@"ShowMasterZone" sender:self];
 }

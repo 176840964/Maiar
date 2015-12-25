@@ -67,7 +67,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"咨询师";
     self.bottomView.hidden = (ZoneViewControllerTypeOfMine == self.type);
     self.introduceSettingBtn.hidden = !self.bottomView.hidden;
     self.myShareSettingBtn.hidden = !self.bottomView.hidden;
