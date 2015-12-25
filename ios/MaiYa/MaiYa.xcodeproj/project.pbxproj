@@ -169,6 +169,7 @@
 		82A95D501BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A95D4F1BABA4E20016EA75 /* NSObject+ValueOfStringOrNull.m */; };
 		82B81C0E1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B81C0D1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m */; };
 		82B81C111BFC372900CFB8D1 /* UIViewController+BackBtnHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B81C101BFC372900CFB8D1 /* UIViewController+BackBtnHandler.m */; };
+		82BC35BE1C2D3D8A001902C0 /* CommonWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BC35BD1C2D3D8A001902C0 /* CommonWebViewController.m */; };
 		82C166291BCE46F100F79D38 /* WalletInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166281BCE46F100F79D38 /* WalletInfoView.m */; };
 		82C1662D1BCE500300F79D38 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C1662C1BCE500300F79D38 /* CouponsModel.m */; };
 		82C166311BCE5EC800F79D38 /* ApplyMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166301BCE5EC800F79D38 /* ApplyMoneyModel.m */; };
@@ -526,6 +527,8 @@
 		82B81C0D1BF5BD4C00CFB8D1 /* CreateOrderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderViewModel.m; sourceTree = "<group>"; };
 		82B81C0F1BFC372900CFB8D1 /* UIViewController+BackBtnHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackBtnHandler.h"; sourceTree = "<group>"; };
 		82B81C101BFC372900CFB8D1 /* UIViewController+BackBtnHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackBtnHandler.m"; sourceTree = "<group>"; };
+		82BC35BC1C2D3D8A001902C0 /* CommonWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWebViewController.h; sourceTree = "<group>"; };
+		82BC35BD1C2D3D8A001902C0 /* CommonWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonWebViewController.m; sourceTree = "<group>"; };
 		82C166271BCE46F100F79D38 /* WalletInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletInfoView.h; sourceTree = "<group>"; };
 		82C166281BCE46F100F79D38 /* WalletInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletInfoView.m; sourceTree = "<group>"; };
 		82C1662B1BCE500300F79D38 /* CouponsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsModel.h; sourceTree = "<group>"; };
@@ -1745,6 +1748,8 @@
 				829D317C1B858BDC001EB9DA /* BaseNavigationController.m */,
 				825BF1461C27FB3800F800DC /* BaseView.h */,
 				825BF1471C27FB3800F800DC /* BaseView.m */,
+				82BC35BC1C2D3D8A001902C0 /* CommonWebViewController.h */,
+				82BC35BD1C2D3D8A001902C0 /* CommonWebViewController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -2243,6 +2248,7 @@
 				821688D61B8ADB63000A1B2D /* NaviTopViewController.m in Sources */,
 				820A6F181B947A1A002385A4 /* BankCell.m in Sources */,
 				820A6F4B1B970158002385A4 /* MyAdvisoryViewController.m in Sources */,
+				82BC35BE1C2D3D8A001902C0 /* CommonWebViewController.m in Sources */,
 				8213C8C61B9008260048B27C /* UILabel+VerticalAlign.m in Sources */,
 				821688ED1B8B0CF3000A1B2D /* NoticeViewController.m in Sources */,
 				82150F181B9C516300CFDE80 /* FillterView.m in Sources */,

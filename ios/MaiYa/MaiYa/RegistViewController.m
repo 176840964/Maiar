@@ -7,6 +7,7 @@
 //
 
 #import "RegistViewController.h"
+#import "CommonWebViewController.h"
 
 @interface RegistViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *telNumTextFiled;
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *pwTextFiled;
 @property (weak, nonatomic) IBOutlet UIButton *msgBtn;
 @property (weak, nonatomic) IBOutlet UIButton *registBtn;
+@property (weak, nonatomic) IBOutlet UIButton *registrationProtocolBtn;
 
 @property (strong, nonatomic) NSTimer *countTimer;
 @property (assign, nonatomic) NSInteger countIndex;
@@ -23,6 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *string = @"注册即视为同意《会员服务协议》";
+    NSMutableAttributedString* attString = [[NSMutableAttributedString alloc] initWithString:@"注册即视为同意《会员服务协议》"];
+    NSRange range = [string rangeOfString:@"《"];
+    [attString addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18], NSForegroundColorAttributeName: self.telNumTextFiled.placeholderTextColor} range:NSMakeRange(0, range.location)];
+    [attString addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:18], NSForegroundColorAttributeName: [UIColor colorWithHexString:@"#81cde6"]} range:NSMakeRange(range.location, string.length - range.location)];
+    [self.registrationProtocolBtn setAttributedTitle:attString forState:UIControlStateNormal];
     
     RACSignal *validTelFiled = [self.telNumTextFiled.rac_textSignal map:^id(NSString *text) {
         return @([CustomTools is11DigitNumber:text]);
@@ -105,6 +113,16 @@
         });
     }];
 }
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowCommonWebViewController"]) {
+        CommonWebViewController *vc = segue.destinationViewController;
+        vc.title = @"《会员服务协议》";
+        vc.urlStr = [NSString stringWithFormat:@"%@?m=home&c=User&a=xieyi", BaseURLString];
+    }
+}
+
 
 #pragma mark - IBAction
 - (IBAction)onTapMsgBtn:(id)sender {
