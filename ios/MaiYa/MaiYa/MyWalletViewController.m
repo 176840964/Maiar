@@ -81,11 +81,18 @@
             CouponsModel *model = [[CouponsModel alloc] initWithDic:dic];
             CouponsViewModel *viewModel = [[CouponsViewModel alloc] initWithCouponsModel:model];
             [self.couponsArr addObject:viewModel];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (0 == self.couponsArr.count) {
+                self.tableView.hidden = YES;
+                self.noneCouponImageView.hidden = NO;
+            } else {
+                self.tableView.hidden = NO;
+                self.noneCouponImageView.hidden = YES;
+                [self.tableView reloadData];
+            }
+        });
     }];
 }
 

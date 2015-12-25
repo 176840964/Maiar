@@ -17377,6 +17377,7 @@
                                                             <constraint firstAttribute="height" constant="128" id="62k-Tv-C7B">
                                                                 <variation key="heightClass=regular-widthClass=compact" constant="104"/>
                                                             </constraint>
+                                                            <constraint firstAttribute="width" secondItem="hCM-UY-XwJ" secondAttribute="height" multiplier="34:13" id="p0z-Be-qPM"/>
                                                             <constraint firstAttribute="width" constant="240" id="wgJ-zg-i3I">
                                                                 <variation key="heightClass=regular-widthClass=compact" constant="172"/>
                                                             </constraint>
@@ -17384,13 +17385,15 @@
                                                         <variation key="default">
                                                             <mask key="constraints">
                                                                 <exclude reference="62k-Tv-C7B"/>
+                                                                <exclude reference="p0z-Be-qPM"/>
                                                                 <exclude reference="wgJ-zg-i3I"/>
                                                             </mask>
                                                         </variation>
                                                         <variation key="heightClass=regular-widthClass=compact">
                                                             <mask key="constraints">
-                                                                <include reference="62k-Tv-C7B"/>
-                                                                <include reference="wgJ-zg-i3I"/>
+                                                                <exclude reference="62k-Tv-C7B"/>
+                                                                <include reference="p0z-Be-qPM"/>
+                                                                <exclude reference="wgJ-zg-i3I"/>
                                                             </mask>
                                                         </variation>
                                                     </imageView>
@@ -25733,7 +25736,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="BVl-l8-ZXx"/>
         <segue reference="JDl-KK-l6G"/>
-        <segue reference="JEI-Hl-r2e"/>
+        <segue reference="jTG-GI-y3F"/>
         <segue reference="e2C-bb-XRH"/>
         <segue reference="mxu-Ep-7Vo"/>
         <segue reference="XtD-YI-5DL"/>
