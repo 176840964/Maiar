@@ -36,6 +36,7 @@
         [self.nonPayMoneyStr addAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:25], NSForegroundColorAttributeName : [UIColor colorWithR:248 g:142 b:9]} range:NSMakeRange(4, nonPayMoney.length - 4)];
         
         self.isConsultant = [model.consultant isEqualToString:@"1"];
+        self.statusStr = model.status;
         [self setupCellsCountByStatusString:model.status];
         
         NSString *time = [CustomTools dateStringFromUnixTimestamp:model.ctime.integerValue withFormatString:@"yyyy-MM-dd hh:mm:ss"];
@@ -158,14 +159,15 @@
             
         case OrderDetailTypeOfNoComment:
         {
+            if (!self.isConsultant) {
+                [self.identifiersArr addObject:@"AdvisoryDetailCommentCell"];
+            }
             [self.identifiersArr addObject:@"AdvisoryDetailNumCell"];
             [self.identifiersArr addObject:@"AdvisoryDetailTypeCell"];
             [self.identifiersArr addObject:self.isConsultant? @"AdvisoryDetailUserCell" : @"AdvisoryDetailMasterCell"];
             [self.identifiersArr addObject:@"AdvisoryDetailTimeCell"];
             [self.identifiersArr addObject:@"AdvisoryDetailServiceCell"];
-            if (!self.isConsultant) {
-                [self.identifiersArr addObject:@"AdvisoryDetailCommentCell"];
-            }
+           
         }
             break;
             

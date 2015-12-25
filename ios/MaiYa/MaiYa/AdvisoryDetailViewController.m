@@ -26,6 +26,9 @@
 
 @property (strong, nonatomic) OrderDetailViewModel *orderDetailViewModel;
 @property (copy, nonatomic) NSString *payMoneyStr;
+
+@property (assign, nonatomic) CGFloat kbHeight;//评论cell 调整tableview可以滑动的区域
+@property (assign, nonatomic) CGPoint currentOffset;//评论cell 滑动tableview范围判断关闭键盘
 @end
 
 @implementation AdvisoryDetailViewController
@@ -94,9 +97,14 @@
 }
 
 - (void)commitCommentWithContent:(NSString *)content andStarValue:(NSString *)starValue {
+    if (!content.isValid) {
+        [CustomTools simpleAlertShow:@"错误" content:@"评价内容不能为空" container:nil];
+        return;
+    }
+    
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"comment" params:@{@"uid": uid, @"orderid": self.orderDetailViewModel.orderIdStr, @"star": starValue, @"content": content} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"comment" params:@{@"uid": uid, @"orderid": self.orderIdStr, @"star": starValue, @"content": content} success:^(id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });
@@ -294,6 +302,22 @@
     }
     
     return height;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ([self.tableView isEqual:scrollView] && [self.orderDetailViewModel.statusStr isEqualToString:@"13"]) {
+        self.currentOffset = scrollView.contentOffset;
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if ([self.tableView isEqual:scrollView] && [self.orderDetailViewModel.statusStr isEqualToString:@"13"]) {
+        if (scrollView.contentOffset.y - self.currentOffset.y > 50) {
+            AdvisoryDetailCommentCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            [cell.textView resignFirstResponder];
+        }
+    }
 }
 
 @end

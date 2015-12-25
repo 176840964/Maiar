@@ -14,6 +14,7 @@
     // Initialization code
     
     self.starBtnsArr = [self.starBtnsArr sortByUIViewOriginX];
+    self.selectedStarCountStr = @"5";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

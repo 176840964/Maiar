@@ -49,6 +49,7 @@ typedef NS_ENUM(NSInteger, OrderDetailType){
 @property (copy, nonatomic) NSString *moneyStr;
 @property (copy, nonatomic) NSString *moneyAllStr;
 @property (copy, nonatomic) NSString *timeStr;
+@property (copy, nonatomic) NSString *statusStr;
 
 @property (copy, nonatomic) NSString *nonPayMoneyAllStr;
 @property (copy, nonatomic) NSString *nonPayMoneyCouponStr;
