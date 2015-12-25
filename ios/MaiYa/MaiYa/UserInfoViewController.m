@@ -87,12 +87,12 @@
 }
 
 - (void)editUserHeadWithImage:(UIImage *)selectedImage {
-    [[HintView getInstance] presentMessage:@"照片上传中..." isAutoDismiss:NO dismissTimeInterval:2 dismissBlock:nil];
+    [[HintView getInstance] startLoadingMessage:@"照片上传中..."];
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     [[NetworkingManager shareManager] uploadImageForEditUserInfoWithUid:uid userInfoKey:@"head" image:selectedImage success:^(id responseObject) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[HintView getInstance] presentMessage:@"照片上传成功" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:^{
+            [[HintView getInstance] endLoadingMessage:@"照片上传成功" dismissTimeInterval:1 dismissBlock:^{
                 [self.imagePickerController dismissViewControllerAnimated:YES completion:^{
                 }];
             }];

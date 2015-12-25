@@ -82,12 +82,13 @@
 
 #pragma mark - NetWorking
 - (void)uploadEditImage:(UIImage *)selectedImage {
+    [[HintView getInstance] startLoadingMessage:@"图片上传中..."];
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     [[NetworkingManager shareManager] uploadImageForEditUserInfoWithUid:uid userInfoKey:@"background" image:selectedImage success:^(id responseObject) {
-        NSLog(@"responseObject=======:%@", responseObject);
-        
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
+            [[HintView getInstance] endLoadingMessage:@"图片上传成功" dismissTimeInterval:1 dismissBlock:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
         });
     }];
 }

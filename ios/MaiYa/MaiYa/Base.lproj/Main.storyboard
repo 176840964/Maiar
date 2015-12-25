@@ -16470,7 +16470,7 @@
                         <viewControllerLayoutGuide type="top" id="0V9-sQ-9Du"/>
                         <viewControllerLayoutGuide type="bottom" id="74l-P9-QU6"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Uaq-Ja-S5z">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Uaq-Ja-S5z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

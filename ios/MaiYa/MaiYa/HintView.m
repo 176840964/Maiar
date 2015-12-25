@@ -69,7 +69,9 @@ typedef void(^DismissBlock)();
         
     }];
     
-    self.dismissBlock = dismissBlock;
+    if (dismissBlock) {
+        self.dismissBlock = dismissBlock;
+    }
     
     if (isAuto) {
         self.closeCtrl.enabled = NO;
@@ -80,12 +82,37 @@ typedef void(^DismissBlock)();
     }
 }
 
+- (void)startLoadingMessage:(NSString *)startMessage {
+    self.closeCtrl.enabled = NO;
+    self.messageLab.text = startMessage;
+    self.hidden = NO;
+    self.messageLab.alpha = 0.0;
+    [UIView animateWithDuration:1 animations:^{
+        self.messageLab.alpha = 1.0;
+        self.messageLab.transform = CGAffineTransformMakeTranslation(0, -10);
+    }];
+}
+
+- (void)endLoadingMessage:(NSString *)endMessage dismissTimeInterval:(NSTimeInterval)seconds dismissBlock:(void (^) (void))dismissBlock {
+    if (endMessage.isValid) {
+        self.messageLab.text = endMessage;
+    }
+    
+    if (dismissBlock) {
+        self.dismissBlock = dismissBlock;
+    }
+    
+    self.presentTimer = [NSTimer timerWithTimeInterval:seconds target:self selector:@selector(dismissMessage) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:self.presentTimer forMode:NSRunLoopCommonModes];
+}
+
 - (void)dismissMessage {
     [UIView animateWithDuration:1 animations:^{
         self.messageLab.alpha = 0.0;
         self.messageLab.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         self.hidden = YES;
+        self.messageLab.text = @"";
         [self.presentTimer invalidate];
         if (self.dismissBlock) {
             self.dismissBlock();

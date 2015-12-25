@@ -14,4 +14,8 @@
 - (void)presentMessage:(NSString *)message isAutoDismiss:(BOOL)isAuto dismissTimeInterval:(NSTimeInterval)seconds dismissBlock:(void (^)(void))dismissBlock;
 - (void)dismissMessage;
 
+//过程
+- (void)startLoadingMessage:(NSString *)startMessage;
+- (void)endLoadingMessage:(NSString *)endMessage dismissTimeInterval:(NSTimeInterval)seconds dismissBlock:(void (^) (void))dismissBlock;
+
 @end
