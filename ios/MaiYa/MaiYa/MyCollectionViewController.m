@@ -9,8 +9,8 @@
 #import "MyCollectionViewController.h"
 #import "MasterCell.h"
 
-@interface MyCollectionViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@interface MyCollectionViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
+@property (nonatomic, weak) IBOutlet CustomTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @end
 
@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.customDelegate = self;
+    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
     
     UINib *cellNib = [UINib nibWithNibName:@"MasterCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"MasterCell"];
@@ -31,12 +34,23 @@
 - (void)getCollectList {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"collectList" params:@{@"uid": uid} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"collectList" params:@{@"uid": uid, @"start": self.tableView.startOffsetStr} success:^(id responseObject) {
         NSArray *resDic = [responseObject objectForKey:@"res"];
+        
+        NSMutableArray *dataArr = [NSMutableArray new];
+        
         for (NSDictionary *dic in resDic) {
             UserZoneModel *model = [[UserZoneModel alloc] initWithDic:dic];
             UserZoneViewModel *viewModel = [[UserZoneViewModel alloc] initWithUserZoneModel:model];
-            [self.dataArr addObject:viewModel];
+            [dataArr addObject:viewModel];
+        }
+        
+        if (self.tableView.type == CustomTableViewUpdateTypeReloadMore) {
+            [self.dataArr addObjectsFromArray:dataArr];
+            [self.tableView finishReloadMoreDataWithIsEnd:(0 == dataArr.count)];
+        } else {
+            self.dataArr = dataArr;
+            [self.tableView finishRefreshData];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -60,6 +74,27 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - CustomTableViewViewDelegate
+- (void)customTableViewRefresh:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = @"0";
+    [self getCollectList];
+}
+
+- (void)customTableViewReloadMore:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = [NSString stringWithFormat:@"%zd", self.dataArr.count];
+    [self getCollectList];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.tableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
+    [self.tableView.reloadMoreView scrollViewDidScroll:scrollView];
 }
 
 @end

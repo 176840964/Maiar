@@ -58,6 +58,7 @@
 }
 
 - (void)setUpSubviewsIsCanRefresh:(BOOL)isCanRefresh andIsCanReloadMore:(BOOL)isCanReloadMore {
+    self.startOffsetStr = @"0";
     self.type = CustomTableViewUpdateTypeNone;
     self.isCanRefresh = isCanRefresh;
     self.isCanReloadMore = isCanReloadMore;

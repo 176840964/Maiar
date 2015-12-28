@@ -56,6 +56,12 @@
                 symbol = @"+";
                 break;
                 
+            case 55:
+                self.typeStr = @"订单取消";
+                self.moneyColor = [UIColor colorWithHexString:@"#ff9c00"];
+                symbol = @"-";
+                break;
+                
             default:
                 self.typeStr = @"其他";
                 self.moneyColor = [UIColor colorWithHexString:@"#8ccf18"];

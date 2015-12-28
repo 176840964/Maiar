@@ -10,8 +10,8 @@
 #import "CommentCell.h"
 #import "CommentHeaderView.h"
 
-@interface CommentViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface CommentViewController () <CustomTableViewViewDelegate>
+@property (weak, nonatomic) IBOutlet CustomTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dateArr;
 @end
 
@@ -19,9 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     self.title = @"全部评论";
+    
+    self.tableView.customDelegate = self;
+    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
     
     self.dateArr = [NSMutableArray new];
     
@@ -39,12 +40,23 @@
 
 #pragma mark -
 - (void)getCommentList {
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"commentList" params:@{@"uid": self.masterIdStr} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"commentList" params:@{@"uid": self.masterIdStr, @"start": self.tableView.startOffsetStr} success:^(id responseObject) {
         NSArray *listArr = [[responseObject objectForKey:@"res"] objectForKey:@"list"];
+        
+        NSMutableArray *dateArr = [NSMutableArray new];
+        
         for (NSDictionary *dic in listArr) {
             CommentModel *model = [[CommentModel alloc] initWithDic:dic];
             CommentViewModel *viewModel = [[CommentViewModel alloc] initWithCommentModel:model];
-            [self.dateArr addObject:viewModel];
+            [dateArr addObject:viewModel];
+        }
+        
+        if (self.tableView.type == CustomTableViewUpdateTypeReloadMore) {
+            [self.dateArr addObjectsFromArray:dateArr];
+            [self.tableView finishReloadMoreDataWithIsEnd:(0 == dateArr.count)];
+        } else {
+            self.dateArr = dateArr;
+            [self.tableView finishRefreshData];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -75,6 +87,27 @@
     [cell layoutCommentCellSubviewsByCommentViewModel:viewModel];
     
     return cell;
+}
+
+#pragma mark - CustomTableViewViewDelegate
+- (void)customTableViewRefresh:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = @"0";
+    [self getCommentList];
+}
+
+- (void)customTableViewReloadMore:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = [NSString stringWithFormat:@"%zd", self.dateArr.count];
+    [self getCommentList];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.tableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
+    [self.tableView.reloadMoreView scrollViewDidScroll:scrollView];
 }
 
 @end

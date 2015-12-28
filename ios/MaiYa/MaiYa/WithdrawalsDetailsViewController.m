@@ -9,8 +9,8 @@
 #import "WithdrawalsDetailsViewController.h"
 #import "DetailCell.h"
 
-@interface WithdrawalsDetailsViewController () <UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface WithdrawalsDetailsViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
+@property (weak, nonatomic) IBOutlet CustomTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArr;
 @end
 
@@ -19,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.tableView.customDelegate = self;
+    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
     
     self.dataArr = [NSMutableArray new];
     [self getUserWithdrawalsDetails];
@@ -33,12 +36,23 @@
 - (void)getUserWithdrawalsDetails {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userOrder" params:@{@"uid": uid} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userOrder" params:@{@"uid": uid, @"start": self.tableView.startOffsetStr} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];
+        
+        NSMutableArray *dataArr = [NSMutableArray new];
+        
         for (NSDictionary *dic in resArr) {
             AccountDetailsModel *model = [[AccountDetailsModel alloc] initWithDic:dic];
             AccountDetailsViewModel *viewModel = [[AccountDetailsViewModel alloc] initWithAccountDetailsModel:model];
-            [self.dataArr addObject:viewModel];
+            [dataArr addObject:viewModel];
+        }
+        
+        if (self.tableView.type == CustomTableViewUpdateTypeReloadMore) {
+            [self.dataArr addObjectsFromArray:dataArr];
+            [self.tableView finishReloadMoreDataWithIsEnd:(0 == dataArr.count)];
+        } else {
+            self.dataArr = dataArr;
+            [self.tableView finishRefreshData];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -69,6 +83,27 @@
     [cell layoutDetailCellSubviewsByAccountDetailsViewModel:viewModel];
     
     return cell;
+}
+
+#pragma mark - CustomTableViewViewDelegate
+- (void)customTableViewRefresh:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = @"0";
+    [self getUserWithdrawalsDetails];
+}
+
+- (void)customTableViewReloadMore:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = [NSString stringWithFormat:@"%zd", self.dataArr.count];
+    [self getUserWithdrawalsDetails];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.tableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
+    [self.tableView.reloadMoreView scrollViewDidScroll:scrollView];
 }
 
 @end

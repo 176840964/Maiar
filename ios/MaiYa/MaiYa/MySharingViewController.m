@@ -9,8 +9,8 @@
 #import "MySharingViewController.h"
 #import "MySharingCell.h"
 
-@interface MySharingViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak ,nonatomic) IBOutlet UITableView *tableView;
+@interface MySharingViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
+@property (weak ,nonatomic) IBOutlet CustomTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *articleArr;
 @end
 
@@ -19,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.tableView.customDelegate = self;
+    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
+    
+    self.articleArr = [NSMutableArray new];
     
     UINib *cellNib = [UINib nibWithNibName:@"MySharingCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"MySharingCell"];
@@ -33,14 +38,21 @@
 
 #pragma mark - 
 - (void)getMyArticlesList {
-    NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeList" params:@{@"uid": uid} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleTypeList" params:@{@"uid": self.masterIdStr, @"start": self.tableView.startOffsetStr} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];
-        self.articleArr = [NSMutableArray new];
+        NSMutableArray *articleArr = [NSMutableArray new];
         for (NSDictionary *dic in resArr) {
             ArticleModel *model = [[ArticleModel alloc] initWithDic:dic];
             ArticleViewModel *viewModel = [[ArticleViewModel alloc] initWithArticleModel:model];
-            [self.articleArr addObject:viewModel];
+            [articleArr addObject:viewModel];
+        }
+        
+        if (self.tableView.type == CustomTableViewUpdateTypeReloadMore) {
+            [self.articleArr addObjectsFromArray:articleArr];
+            [self.tableView finishReloadMoreDataWithIsEnd:(0 == articleArr.count)];
+        } else {
+            self.articleArr = articleArr;
+            [self.tableView finishRefreshData];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -75,6 +87,27 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+#pragma mark - CustomTableViewViewDelegate
+- (void)customTableViewRefresh:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = @"0";
+    [self getMyArticlesList];
+}
+
+- (void)customTableViewReloadMore:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = [NSString stringWithFormat:@"%zd", self.articleArr.count];
+    [self getMyArticlesList];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.tableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
+    [self.tableView.reloadMoreView scrollViewDidScroll:scrollView];
 }
 
 @end

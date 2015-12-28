@@ -10,4 +10,6 @@
 
 @interface MySharingViewController : BaseViewController
 
+@property (copy, nonatomic) NSString *masterIdStr;
+
 @end

@@ -13,6 +13,7 @@
 #import "CommentViewController.h"
 #import "SelectingServiceDateViewController.h"
 #import "EditTopImageViewController.h"
+#import "MySharingViewController.h"
 
 @interface MyZoneViewController () <UIScrollViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
@@ -103,6 +104,9 @@
     } else if ([segue.identifier isEqualToString:@"ShowEditImageViewController"]) {
         EditTopImageViewController *vc = segue.destinationViewController;
         vc.oriImage = self.selectedImage;
+    } else if ([segue.identifier isEqualToString:@"ShowMySharingViewController"]) {
+        MySharingViewController *vc = segue.destinationViewController;
+        vc.masterIdStr = self.cidStr;
     }
 }
 

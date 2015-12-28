@@ -9,8 +9,8 @@
 #import "NoticeViewController.h"
 #import "NoticeCell.h"
 
-@interface NoticeViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@interface NoticeViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
+@property (nonatomic, weak) IBOutlet CustomTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) NoticeCell *commonCell;
 @end
@@ -19,6 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.customDelegate = self;
+    [self.tableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
     
     [self.tableView registerClass:[NoticeCell class] forCellReuseIdentifier:@"NoticeCell"];
     self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
@@ -36,12 +39,23 @@
 - (void)getMessageList {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     
-    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"message" params:@{@"uid": uid} success:^(id responseObject) {
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"message" params:@{@"uid": uid, @"start": self.tableView.startOffsetStr} success:^(id responseObject) {
         NSArray *resArr = [responseObject objectForKey:@"res"];
+        
+        NSMutableArray *dataArr = [NSMutableArray new];
+        
         for (NSDictionary *dic in resArr) {
             MessageModel *model = [[MessageModel alloc] initWithDic:dic];
             MessageViewModel *viewModel = [[MessageViewModel alloc] initWithMessageModel:model];
-            [self.dataArr addObject:viewModel];
+            [dataArr addObject:viewModel];
+        }
+        
+        if (self.tableView.type == CustomTableViewUpdateTypeReloadMore) {
+            [self.dataArr addObjectsFromArray:dataArr];
+            [self.tableView finishReloadMoreDataWithIsEnd:(0 == dataArr.count)];
+        } else {
+            self.dataArr = dataArr;
+            [self.tableView finishRefreshData];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -85,6 +99,27 @@
     CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
     return height;
+}
+
+#pragma mark - CustomTableViewViewDelegate
+- (void)customTableViewRefresh:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = @"0";
+    [self getMessageList];
+}
+
+- (void)customTableViewReloadMore:(CustomTableView*)customTableView {
+    self.tableView.startOffsetStr = [NSString stringWithFormat:@"%zd", self.dataArr.count];
+    [self getMessageList];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.tableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
+    [self.tableView.reloadMoreView scrollViewDidScroll:scrollView];
 }
 
 @end
