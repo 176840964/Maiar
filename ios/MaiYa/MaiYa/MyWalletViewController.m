@@ -15,9 +15,11 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property (weak, nonatomic) IBOutlet UIView *markView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightWalletInfoView;
 @property (weak, nonatomic) IBOutlet WalletInfoView *walletInfoView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *noneCouponImageView;
+@property (weak, nonatomic) IBOutlet UIButton *cashBtn;
 
 @property (strong, nonatomic) UserZoneViewModel *userZoneViewModel;
 @property (strong, nonatomic) NSMutableArray *couponsArr;
@@ -39,6 +41,7 @@
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     self.widthConstraint.constant = self.view.width * 2;
+    self.heightWalletInfoView.constant = CGRectGetMaxY(self.cashBtn.frame) + 20;
 }
 
 #pragma mark - 
