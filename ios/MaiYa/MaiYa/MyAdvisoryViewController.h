@@ -10,4 +10,6 @@
 
 @interface MyAdvisoryViewController : BaseViewController
 
+@property (assign, nonatomic) BOOL isNeedRefreshWhenShowing;
+
 @end

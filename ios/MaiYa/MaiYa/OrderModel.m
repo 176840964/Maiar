@@ -32,6 +32,8 @@
         [self getStatusStrByModelStatus:model.status];
         self.starStr = [model.star stringValue];
         self.nameStr = model.cname;
+        self.nameStrWithMoneyPerHour = model.cname;
+        self.nameStr = [model.cname componentsSeparatedByString:@"|"].firstObject;
         self.telStr = model.username;
         self.problemStr = model.problem;
         

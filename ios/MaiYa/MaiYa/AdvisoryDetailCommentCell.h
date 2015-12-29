@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AdvisoryDetailCommentCell : UITableViewCell
+@interface AdvisoryDetailCommentCell : UITableViewCell <UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *starBtnsArr;
+@property (weak, nonatomic) IBOutlet UILabel *countLab;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @property (copy, nonatomic) NSString *selectedStarCountStr;

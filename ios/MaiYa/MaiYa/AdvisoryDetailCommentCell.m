@@ -44,4 +44,17 @@
     }
 }
 
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    BOOL returnValue = YES;
+    
+    if (range.location + 1 > 140) {
+        returnValue = NO;
+    }
+    
+    self.countLab.text = [NSString stringWithFormat:@"(还可以输入%zd字)", 141 - range.location - 1];
+    
+    return returnValue;
+}
+
 @end

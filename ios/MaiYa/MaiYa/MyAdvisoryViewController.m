@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSString *selectedOrderId;
 @property (copy, nonatomic) NSString *payMoneyStr;
 @property (copy, nonatomic) NSString *selectedMasterId;
+@property (copy, nonatomic) NSString *selectedMasterName;
 @end
 
 @implementation MyAdvisoryViewController
@@ -34,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.isNeedRefreshWhenShowing = NO;
     
     self.inTableView.customDelegate = self;
     [self.inTableView setUpSubviewsIsCanRefresh:YES andIsCanReloadMore:YES];
@@ -53,6 +56,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.isNeedRefreshWhenShowing) {
+        [self getOrderListByType:@"1"];//进行中
+        [self getOrderListByType:@"2"];//已完成
+    }
 }
 
 - (void)updateViewConstraints {
@@ -88,6 +100,7 @@
         [self performSegueWithIdentifier:@"ShowAdvisoryDetailViewController" sender:self];
     } else if ([title isEqualToString:@"再次预约"]) {
         self.selectedMasterId = orderViewModel.cidStr;
+        self.selectedMasterName = orderViewModel.nameStr;
         [self performSegueWithIdentifier:@"ShowMasterZone" sender:self];
     } else {
         
@@ -161,6 +174,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowAdvisoryDetailViewController"]) {
         AdvisoryDetailViewController *controller = segue.destinationViewController;
+        controller.parentController = self;
         controller.orderIdStr = self.selectedOrderId;
     } else if ([segue.identifier isEqualToString:@"ShowPayViewController"]) {
         PayViewController *vc = segue.destinationViewController;
@@ -170,6 +184,7 @@
         MyZoneViewController *contrller = segue.destinationViewController;
         contrller.type = ZoneViewControllerTypeOfOther;
         contrller.cidStr = self.selectedMasterId;
+        contrller.title = self.selectedMasterName;
     }
 }
 

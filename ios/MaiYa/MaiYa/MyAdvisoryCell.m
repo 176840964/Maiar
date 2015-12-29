@@ -58,7 +58,7 @@
     self.finishAdvisoryLab.text = viewModel.statusStr;
     
     self.nameTitleLab.text = viewModel.nameTitleStr;
-    self.nameLab.text = viewModel.nameStr;
+    self.nameLab.text = viewModel.nameStrWithMoneyPerHour;
     self.problemLab.text = viewModel.problemStr;
     self.timeLab.text = viewModel.totalStr;
     self.serviceModeLab.text = viewModel.serviceModeStr;

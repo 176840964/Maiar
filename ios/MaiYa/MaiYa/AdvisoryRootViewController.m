@@ -251,7 +251,7 @@
     if ([btn.titleLabel.text isEqualToString:@"取消订单"]) {
         [CustomTools alertShow:@"您确认取消订单吗？" content:@"一天内3次取消订单，当日将不能再平台预约！\n如果订单已经支付\n1.)资费全部退还（取消订单时间>1小时）\n2.)扣除资费20%违约金（取消订单时间<1小时）" cancelBtnTitle:@"再想想" okBtnTitle:@"确定" container:self];
     } else if ([btn.titleLabel.text isEqualToString:@"付款"]) {
-        
+        [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
     } else if ([btn.titleLabel.text isEqualToString:@"电话沟通"]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", self.orderViewModel.telStr]]];
     } else if ([btn.titleLabel.text isEqualToString:@"完成"]) {

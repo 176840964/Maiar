@@ -7,8 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "MyAdvisoryViewController.h"
 
 @interface AdvisoryDetailViewController : BaseViewController
+@property (weak, nonatomic) MyAdvisoryViewController *parentController;
 @property (copy, nonatomic) NSString *orderIdStr;
 
 @end

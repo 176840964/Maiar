@@ -105,8 +105,13 @@
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"comment" params:@{@"uid": uid, @"orderid": self.orderIdStr, @"star": starValue, @"content": content} success:^(id responseObject) {
+        
+        self.parentController.isNeedRefreshWhenShowing = YES;
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
+            [[HintView getInstance] presentMessage:@"订单评价成功" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
         });
     }];
 }

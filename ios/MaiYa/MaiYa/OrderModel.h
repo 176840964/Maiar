@@ -39,6 +39,7 @@
 @property (assign, nonatomic) BOOL isFinished;
 
 @property (assign, nonatomic) BOOL isConsultant;
+@property (copy, nonatomic) NSString *nameStrWithMoneyPerHour;
 @property (copy, nonatomic) NSString *nameTitleStr;
 @property (copy, nonatomic) NSString *nameStr;
 @property (copy, nonatomic) NSString *telStr;
