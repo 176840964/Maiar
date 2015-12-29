@@ -10,5 +10,6 @@
 #import "CommentModel.h"
 
 @interface CommentCell : UITableViewCell
+
 - (void)layoutCommentCellSubviewsByCommentViewModel:(CommentViewModel *)viewModel;
 @end

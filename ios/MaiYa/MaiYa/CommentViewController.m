@@ -10,7 +10,7 @@
 #import "CommentCell.h"
 #import "CommentHeaderView.h"
 
-@interface CommentViewController () <CustomTableViewViewDelegate>
+@interface CommentViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
 @property (weak, nonatomic) IBOutlet CustomTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dateArr;
 @end
@@ -29,6 +29,9 @@
     CommentHeaderView *headerView = [[CommentHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), 45)];
     [headerView layoutCommentHeaderViewSubviewsCountString:self.countStr andAllValueString:self.allValueStr];
     self.tableView.tableHeaderView = headerView;
+    
+    [self.tableView registerClass:[CommentCell class] forCellReuseIdentifier:@"CommentCell"];
+    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     
     [self getCommentList];
 }
@@ -86,7 +89,34 @@
     CommentViewModel *viewModel = [self.dateArr objectAtIndex:indexPath.row];
     [cell layoutCommentCellSubviewsByCommentViewModel:viewModel];
     
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static CommentCell *cell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+    });
+    
+    CommentViewModel *viewModel = [self.dateArr objectAtIndex:indexPath.row];
+    [cell layoutCommentCellSubviewsByCommentViewModel:viewModel];
+    
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    cell.bounds = CGRectMake(0, 0, self.tableView.width, cell.height);
+    
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+    
+    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    return height + 1;
 }
 
 #pragma mark - CustomTableViewViewDelegate

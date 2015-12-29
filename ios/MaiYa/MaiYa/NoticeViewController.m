@@ -98,7 +98,7 @@
     
     CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
-    return height;
+    return height + 1;
 }
 
 #pragma mark - CustomTableViewViewDelegate

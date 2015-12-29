@@ -58,7 +58,7 @@
         
         [self.titleLab autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:18];
         [self.titleLab autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:18];
-        [self.titleLab autoSetDimension:ALDimensionHeight toSize:17];
+        [self.titleLab autoSetDimension:ALDimensionHeight toSize:15];
         [self.titleLab autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.dateLab];
         
         [self.dateLab autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:18];
@@ -70,10 +70,10 @@
 //        [NSLayoutConstraint autoSetPriority:UILayoutPriorityRequired forConstraints:^{
 //            [self.contentLab autoSetContentCompressionResistancePriorityForAxis:ALAxisVertical];
 //        }];
-        [self.contentLab autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.titleLab withOffset:8];
+        [self.contentLab autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.titleLab withOffset:4];
         [self.contentLab autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:18];
         [self.contentLab autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:18];
-        [self.contentLab autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:8];
+        [self.contentLab autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:4];
         
         self.didSetupConstraints = YES;
     }
