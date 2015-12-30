@@ -23100,7 +23100,7 @@
         <!--我的分享-->
         <scene sceneID="HYM-Fa-lId">
             <objects>
-                <viewController id="fzc-xM-fjm" customClass="MySharingViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fzc-xM-fjm" customClass="MySharingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7ot-PF-b5z"/>
                         <viewControllerLayoutGuide type="bottom" id="a1V-0e-ngw"/>
@@ -23151,6 +23151,7 @@
                     <navigationItem key="navigationItem" title="我的分享" id="OB4-8B-wdM"/>
                     <connections>
                         <outlet property="tableView" destination="nzI-GT-s01" id="08w-Qp-Ic8"/>
+                        <segue destination="7tY-KK-gDJ" kind="show" identifier="ShowPlazaDetail" id="LR1-Ua-rDS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Us0-VO-zi4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24665,10 +24666,10 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hkf-oN-faz"/>
         <segue reference="7d0-I8-eFF"/>
         <segue reference="e2C-bb-XRH"/>
         <segue reference="XtD-YI-5DL"/>
         <segue reference="aMq-cj-7S0"/>
+        <segue reference="LR1-Ua-rDS"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,10 +8,13 @@
 
 #import "MySharingViewController.h"
 #import "MySharingCell.h"
+#import "PlazaDetailViewController.h"
 
 @interface MySharingViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
 @property (weak ,nonatomic) IBOutlet CustomTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *articleArr;
+
+@property (strong, nonatomic) ArticleViewModel *selectedArticleViewModel;
 @end
 
 @implementation MySharingViewController
@@ -61,15 +64,19 @@
     }];
 }
 
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
+        
+        PlazaDetailViewController *controller = segue.destinationViewController;
+        controller.type = PlazaDetailParaTypeOfArticle;
+        controller.catIndexStr = self.selectedArticleViewModel.typeStr;
+        controller.articleStr = self.selectedArticleViewModel.aidStr;
+        controller.title = self.selectedArticleViewModel.titleStr;
+        controller.shareUrlStr = self.selectedArticleViewModel.shareUrlStr;
+        controller.articleOwnerIdStr = self.selectedArticleViewModel.uidStr;
+    }
 }
-*/
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -87,6 +94,11 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    self.selectedArticleViewModel = [self.articleArr objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
 }
 
 #pragma mark - CustomTableViewViewDelegate

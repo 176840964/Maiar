@@ -24,7 +24,9 @@
     
     NSURL *url = nil;
     if (self.type == PlazaDetailParaTypeOfArticle) {
-        [self setArticleRead];
+        if (![self.articleOwnerIdStr isEqualToString:[UserConfigManager shareManager].userInfo.uidStr]) {
+            [self setArticleRead];
+        }
         NSString *urlStr = [NSString stringWithFormat:@"http://123.56.107.102:33333/?m=home&c=User&a=articleTypeInfo&type=%@&id=%@", self.catIndexStr, self.articleStr];
         url = [NSURL URLWithString:urlStr];
     } else {
@@ -60,7 +62,6 @@
 #pragma mark - Networking
 - (void)setArticleRead {
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleRead" params:@{@"type": self.catIndexStr, @"id": self.articleStr} success:^(id responseObject) {
-        
     }];
 }
 

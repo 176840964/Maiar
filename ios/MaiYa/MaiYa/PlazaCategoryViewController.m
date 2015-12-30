@@ -288,6 +288,7 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
         controller.articleStr = viewModel.aidStr;
         controller.title = viewModel.titleStr;
         controller.shareUrlStr = viewModel.shareUrlStr;
+        controller.articleOwnerIdStr = viewModel.uidStr;
     }
 }
 
