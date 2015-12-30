@@ -247,6 +247,10 @@
 
 - (IBAction)onTapNextBtn:(id)sender {
     if ([UserConfigManager shareManager].isLogin) {
+        if (![UserConfigManager shareManager].createOrderViewModel.problemNumStr.isValid) {
+            [UserConfigManager shareManager].createOrderViewModel.problemNumStr = @"54";//我的收藏进入
+        }
+        
         [self performSegueWithIdentifier:@"ShowSelectingServiceDateViewController" sender:self];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:nil];

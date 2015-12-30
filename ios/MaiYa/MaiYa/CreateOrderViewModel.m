@@ -92,11 +92,11 @@
     
     [_paraDic setObject:[UserConfigManager shareManager].userInfo.uidStr forKey:@"uid"];
     [_paraDic setObject:self.masterInfo.uid forKey:@"cid"];
-    [_paraDic setObject:self.problemNumStr forKey:@"problem"];
     [_paraDic setObject:self.servieceModelStr forKey:@"service_mode"];
     [_paraDic setObject:self.originalMoneyAllStr forKey:@"money_all"];
     [_paraDic setObject:self.moneyStr forKey:@"money"];
     [_paraDic setObject:self.totalTimeStr forKey:@"total"];
+    [_paraDic setObject:self.problemNumStr forKey:@"problem"];
     
     if (self.isUsingBalance) {
         [_paraDic setObject:self.usingBalanceMoneyStr forKey:@"money_balance"];

@@ -11,7 +11,9 @@
 @implementation UserInfoModel
 - (instancetype)initWithDic:(NSDictionary *)dic {
     if (self = [super initWithDic:dic]) {
-        
+        if (!self.uid.isValid) {
+            self.uid = [dic objectForKey:@"id"];
+        }
     }
     
     return self;

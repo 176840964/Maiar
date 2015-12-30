@@ -8,10 +8,12 @@
 
 #import "MyCollectionViewController.h"
 #import "MasterCell.h"
+#import "MyZoneViewController.h"
 
 @interface MyCollectionViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
 @property (nonatomic, weak) IBOutlet CustomTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArr;
+@property (strong, nonatomic) UserZoneViewModel *selectedMasterViewModel;
 @end
 
 @implementation MyCollectionViewController
@@ -64,6 +66,16 @@
     }];
 }
 
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowMasterZone"]) {
+        MyZoneViewController *contrller = segue.destinationViewController;
+        contrller.type = ZoneViewControllerTypeOfOther;
+        contrller.cidStr = self.selectedMasterViewModel.uidStr;
+        contrller.title = self.selectedMasterViewModel.nickStr;
+    }
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArr.count;
@@ -79,6 +91,12 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UserZoneViewModel *viewModel = [self.dataArr objectAtIndex:indexPath.row];
+    self.selectedMasterViewModel = viewModel;
+    
+    [self performSegueWithIdentifier:@"ShowMasterZone" sender:self];
+    
 }
 
 #pragma mark - CustomTableViewViewDelegate

@@ -45,7 +45,6 @@
 @property (copy, nonatomic) NSString *usernameStr;//手机号
 @property (copy, nonatomic) NSString *introduceStr;//自我介绍
 @property (strong, nonatomic) NSURL *topImageUrl;//背景图地址
-@property (copy, nonatomic) NSString *nickStr;
 @property (copy, nonatomic) NSString *nickAndWorkAgeStr;//昵称和工作年限
 @property (strong, nonatomic) NSMutableAttributedString *nickAndWorkAgeAttributedStr;//格式：昵称(工作年限)
 @property (copy, nonatomic) NSString *sharedArticleCountStr;//分享文章数量
