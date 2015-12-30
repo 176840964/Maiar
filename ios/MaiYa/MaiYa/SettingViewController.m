@@ -22,6 +22,11 @@
     self.logoutBtn.hidden = ![UserConfigManager shareManager].isLogin;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 #pragma mark - IBAction
 - (IBAction)onTapLogoutBtn:(id)sender {
     [CustomTools alertShow:@"确定退出么？" content:nil cancelBtnTitle:@"稍后" okBtnTitle:@"确定" container:self];

@@ -20,29 +20,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddTopView"]) {
-        NaviTopViewController* controller = segue.destinationViewController;
-        controller.titleLabStr = self.titleLabStr;
-        controller.backBtnTitle = self.backBtnTitle;
-        controller.rightBtnImgStr = self.rightBtnImgStr;
-        controller.rightSecondBtnImgStr = self.rightSecondBtnImgStr;
-        
-        __weak typeof(self) weakSelf = self;
-        controller.tapBackBtnHandler = ^() {
-            if (weakSelf.isBackToRootViewController) {
-                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-            } else {
-                [weakSelf.navigationController popViewControllerAnimated:YES];
-            }
-        };
-        controller.tapRightBtnHandler = self.tapNaviRightBtnHandler;
-        controller.tapRightSecondBtnHandler = self.tapNaviRightSecondBtnHandler;
-    }
-}
-
-#pragma mark - IBAction
-- (IBAction)onTapBackBtn:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 @end

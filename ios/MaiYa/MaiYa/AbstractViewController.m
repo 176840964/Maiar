@@ -36,12 +36,13 @@
     }];
 }
 
+#pragma mark - IBAction
+- (IBAction)onTapSaveItem:(id)sender {
+    [self editUserAbstract];
+}
+
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    __weak typeof(self) weakSelf = self;
-    self.tapNaviRightBtnHandler = ^() {
-        [weakSelf editUserAbstract];
-    };
     [super prepareForSegue:segue sender:sender];
 }
 

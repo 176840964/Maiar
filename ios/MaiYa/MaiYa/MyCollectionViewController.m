@@ -30,6 +30,11 @@
     [self getCollectList];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 #pragma mark - 
 - (void)getCollectList {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;

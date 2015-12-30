@@ -38,14 +38,13 @@
         });
     }];
 }
+#pragma mark - IBAction
+- (IBAction)onTapSaveItem:(id)sender {
+    [self editUserName];
+}
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    __weak typeof(self) weakSelf = self;
-    self.tapNaviRightBtnHandler = ^() {
-        [weakSelf editUserName];
-    };
-    
     [super prepareForSegue:segue sender:sender];
 }
 

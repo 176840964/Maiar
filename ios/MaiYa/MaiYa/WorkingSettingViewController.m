@@ -76,16 +76,15 @@
     }
 }
 
+#pragma mark - IBAction
+- (IBAction)onTapSaveItem:(id)sender {
+    [self saveWorkingTimeBySelectedDaily:self.selectedDailyViewModel endSaveBlock:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    __weak typeof(self) weakSelf = self;
-    self.tapNaviRightBtnHandler = ^() {
-        [weakSelf saveWorkingTimeBySelectedDaily:weakSelf.selectedDailyViewModel endSaveBlock:^{
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }];
-    };
-    
     [super prepareForSegue:segue sender:sender];
 }
 
