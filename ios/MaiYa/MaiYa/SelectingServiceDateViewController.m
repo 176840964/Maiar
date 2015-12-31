@@ -40,6 +40,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if ([UserConfigManager shareManager].createOrderViewModel.isHasErrorTime) {
+        [self getUserTime];
+    }
+}
+
 - (void)dealloc {
     [[UserConfigManager shareManager].createOrderViewModel removeObserver:self forKeyPath:@"isHasSelectedTime"];
 }
@@ -110,8 +118,57 @@
         ConsultantTimeModel *model = [[ConsultantTimeModel alloc] initWithDic:resDic];
         self.timeViewModel = [[ConsultantTimeViewModel alloc] initWithConsultantTimeModel:model];
         
+        if ([UserConfigManager shareManager].createOrderViewModel.isHasErrorTime) {//出现错误订单时间
+            
+            NSMutableDictionary *timeDic = [UserConfigManager shareManager].createOrderViewModel.timeDic;
+            
+            for (NSString *key in timeDic.allKeys) {
+                BOOL isValidTimestamp = NO;//是否是有效的时间挫，例如跨天后，之前选择的时间挫是无效的
+                
+                for (ConsultantDailyViewModel *daily in self.timeViewModel.dailyArr) {
+                    if ([key isEqualToString:daily.timestampStr]) {
+                        isValidTimestamp = YES;
+                        NSMutableArray *userSelectedTimeArr = [timeDic objectForKey:key];
+                        NSMutableArray *needRemoveArr = [NSMutableArray new];
+                        for (NSString *selectedTime in userSelectedTimeArr) {
+                            NSString *sectionKey = nil;
+                            if (selectedTime.integerValue >= 9 && selectedTime.integerValue <= 11) {
+                                sectionKey = @"0";
+                            } else if (selectedTime.integerValue >= 13 && selectedTime.integerValue <= 17) {
+                                sectionKey = @"1";
+                            } else if (selectedTime.integerValue >= 19 && selectedTime.integerValue <= 22){
+                                sectionKey = @"2";
+                            }
+                            
+                            NSArray *hourlyArr = [daily.canSelectHourlyDataDic objectForKey:sectionKey];
+                            BOOL isContains = [hourlyArr containsObject:selectedTime];
+                            if (!isContains) {
+                                [needRemoveArr addObject:selectedTime];
+                            }
+                        }
+                        
+                        if (needRemoveArr.count > 0) {
+                            [userSelectedTimeArr removeObjectsInArray:needRemoveArr];
+                        }
+                        
+                        break;
+                    }
+                }
+                
+                if (isValidTimestamp) {
+                    continue;
+                } else {
+                    [timeDic removeObjectForKey:key];
+                }
+            }
+        }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self layoutSubviews];
+            if ([UserConfigManager shareManager].createOrderViewModel.isHasErrorTime) {
+                [self.tableView reloadData];
+                [UserConfigManager shareManager].createOrderViewModel.isHasErrorTime = NO;
+            }
         });
     }];
 }

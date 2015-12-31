@@ -118,20 +118,32 @@
 
 - (void)commitOrder {
     [[NetworkingManager shareManager] networkingWithPostMethodPath:@"order" postParams:[UserConfigManager shareManager].createOrderViewModel.paraDic success:^(id responseObject) {
-        NSDictionary *resDic = [responseObject objectForKey:@"res"];
-        self.orderIdStr = [resDic objectForKey:@"orderid"];
         
-        NSString *string = [UserConfigManager shareManager].createOrderViewModel.moneyStr;
-        self.payMoneyStr = [NSString stringWithFormat:@"%.2f", string.doubleValue / 100];
+        NSDictionary *dic = responseObject;
+        NSNumber *status = [dic objectForKey:@"status"];
+        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
+            [UserConfigManager shareManager].createOrderViewModel.isHasErrorTime = YES;
+            NSString *str = [dic objectForKey:@"error"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CustomTools simpleAlertShow:@"出错啦！" content:str container:nil];
+            });
+        } else {
+            NSDictionary *resDic = [responseObject objectForKey:@"res"];
+            self.orderIdStr = [resDic objectForKey:@"orderid"];
+            
+            NSString *string = [UserConfigManager shareManager].createOrderViewModel.moneyStr;
+            self.payMoneyStr = [NSString stringWithFormat:@"%.2f", string.doubleValue / 100];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([UserConfigManager shareManager].createOrderViewModel.isNeedThirdPay) {
+                    [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
+                } else {
+                    [self performSegueWithIdentifier:@"ShowAdvisoryViewController" sender:self];
+                }
+                [[UserConfigManager shareManager].createOrderViewModel clear];
+            });
+        }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if ([UserConfigManager shareManager].createOrderViewModel.isNeedThirdPay) {
-                [self performSegueWithIdentifier:@"ShowPayViewController" sender:self];
-            } else {
-                [self performSegueWithIdentifier:@"ShowAdvisoryViewController" sender:self];
-            }
-            [[UserConfigManager shareManager].createOrderViewModel clear];
-        });
     }];
 }
 

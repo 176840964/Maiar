@@ -36,6 +36,7 @@
 //订单时间
 @property (strong, nonatomic) NSMutableDictionary *timeDic;
 @property (assign, nonatomic) BOOL isHasSelectedTime;
+@property (assign, nonatomic) BOOL isHasErrorTime;
 
 //提交订单时的参数dictionary
 @property (strong, nonatomic) NSMutableDictionary *paraDic;

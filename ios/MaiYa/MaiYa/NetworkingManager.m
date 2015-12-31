@@ -35,16 +35,7 @@
         NSLog(@"postParams:%@", postParams);
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = responseObject;
-        NSNumber *status = [dic objectForKey:@"status"];
-        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-            NSString *str = [dic objectForKey:@"error"];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [CustomTools simpleAlertShow:@"出错啦！" content:str container:nil];
-            });
-        } else {
-            success(responseObject);
-        }
+        success(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"error:%@", error);
