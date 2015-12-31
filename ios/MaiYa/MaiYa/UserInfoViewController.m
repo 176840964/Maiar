@@ -73,6 +73,7 @@
 }
 
 - (void)getUserInfo {
+    [[HintView getInstance] showSimpleLoading];
     NSString *cid = [UserConfigManager shareManager].userInfo.uidStr;
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:@{@"cid": cid} success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
@@ -87,6 +88,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            [[HintView getInstance] endSimpleLoading];
         });
     }];
 }

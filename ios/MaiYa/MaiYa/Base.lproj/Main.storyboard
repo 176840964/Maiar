@@ -16486,7 +16486,13 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="我的空间" id="lwP-DU-xxs"/>
+                    <navigationItem key="navigationItem" title="我的空间" id="lwP-DU-xxs">
+                        <barButtonItem key="rightBarButtonItem" image="topLoveIcon" id="bdT-25-pVy">
+                            <connections>
+                                <action selector="onTapLoveButtonItem:" destination="e4e-u7-PRJ" id="Hgg-ck-nF8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -16508,6 +16514,7 @@
                         <outlet property="introduceTxtView" destination="ZMD-ml-AiG" id="p96-ID-p2o"/>
                         <outlet property="locationImageView" destination="Ybs-Nf-n61" id="Rdx-8R-9EU"/>
                         <outlet property="locationLab" destination="fER-pt-pgu" id="P1B-oa-WST"/>
+                        <outlet property="lovedBtnItem" destination="bdT-25-pVy" id="oaB-JW-dY9"/>
                         <outlet property="mainViewHeight" destination="ka4-Nm-QpH" id="wZs-1d-4pC"/>
                         <outlet property="myShareSettingBtn" destination="SxW-Qg-tlr" id="rKF-Mo-yAR"/>
                         <outlet property="nameLab" destination="J4m-PR-RX7" id="i3Y-77-P0U"/>
@@ -24649,6 +24656,7 @@
         <image name="smallStar0" width="14" height="13"/>
         <image name="taluoIcon" width="71" height="70"/>
         <image name="testZoneTopImage" width="320" height="107"/>
+        <image name="topLoveIcon" width="25" height="25"/>
         <image name="topShareIcon" width="25" height="25"/>
         <image name="userInfoArr" width="7" height="13"/>
         <image name="userInfoIcon1" width="22" height="22"/>

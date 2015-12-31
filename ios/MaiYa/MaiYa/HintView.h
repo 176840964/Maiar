@@ -18,4 +18,8 @@
 - (void)startLoadingMessage:(NSString *)startMessage;
 - (void)endLoadingMessage:(NSString *)endMessage dismissTimeInterval:(NSTimeInterval)seconds dismissBlock:(void (^) (void))dismissBlock;
 
+//无文字
+- (void)showSimpleLoading;
+- (void)endSimpleLoading;
+
 @end

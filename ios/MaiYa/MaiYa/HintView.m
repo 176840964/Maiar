@@ -15,6 +15,8 @@ typedef void(^DismissBlock)();
 @property (nonatomic, strong) UILabel *messageLab;
 @property (nonatomic, strong) NSTimer *presentTimer;
 @property (nonatomic, copy) DismissBlock dismissBlock;
+@property (nonatomic, strong) UIView *activityBg;
+@property (nonatomic, strong) UIActivityIndicatorView *activityView;
 @end
 
 @implementation HintView
@@ -35,11 +37,13 @@ typedef void(^DismissBlock)();
         self.backgroundColor = [UIColor clearColor];
         
         _closeCtrl = [[UIControl alloc] initWithFrame:frame];
+        _closeCtrl.enabled = NO;
         _closeCtrl.backgroundColor = [UIColor clearColor];
         [_closeCtrl addTarget:self action:@selector(dismissMessage) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_closeCtrl];
         
         _messageLab = [UILabel newAutoLayoutView];
+        _messageLab.hidden = YES;
         _messageLab.clipsToBounds = YES;
         _messageLab.cornerRadius = 5;
         _messageLab.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.8];
@@ -52,6 +56,25 @@ typedef void(^DismissBlock)();
         [_messageLab autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:15];
         [_messageLab autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:15];
         [_messageLab autoSetDimension:ALDimensionHeight toSize:50];
+        
+        _activityBg = [UIView newAutoLayoutView];
+        _activityBg.hidden = YES;
+        _activityBg.backgroundColor = [UIColor grayColor];
+        _activityBg.cornerRadius = 5;
+        [self addSubview:_activityBg];
+        
+        [_activityBg autoAlignAxisToSuperviewAxis:ALAxisVertical];
+        [_activityBg autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+        [_activityBg autoSetDimension:ALDimensionWidth toSize:50];
+        [_activityBg autoSetDimension:ALDimensionHeight toSize:50];
+        
+        _activityView = [UIActivityIndicatorView newAutoLayoutView];
+        _activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        _activityView.hidden = YES;
+        [_activityBg addSubview:_activityView];
+        
+        [_activityView autoAlignAxisToSuperviewAxis:ALAxisVertical];
+        [_activityView autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
     }
     
     return self;
@@ -61,6 +84,7 @@ typedef void(^DismissBlock)();
     
     self.messageLab.text = message;
     self.hidden = NO;
+    self.messageLab.hidden = NO;
     self.messageLab.alpha = 0.0;
     [UIView animateWithDuration:seconds / 2 animations:^{
         self.messageLab.alpha = 1.0;
@@ -86,6 +110,7 @@ typedef void(^DismissBlock)();
     self.closeCtrl.enabled = NO;
     self.messageLab.text = startMessage;
     self.hidden = NO;
+    self.messageLab.hidden = NO;
     self.messageLab.alpha = 0.0;
     [UIView animateWithDuration:1 animations:^{
         self.messageLab.alpha = 1.0;
@@ -111,13 +136,28 @@ typedef void(^DismissBlock)();
         self.messageLab.alpha = 0.0;
         self.messageLab.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
+        [self endSimpleLoading];
         self.hidden = YES;
+        self.messageLab.hidden = YES;
         self.messageLab.text = @"";
         [self.presentTimer invalidate];
         if (self.dismissBlock) {
             self.dismissBlock();
         }
     }];
+}
+
+- (void)showSimpleLoading {
+    self.hidden = NO;
+    self.activityBg.hidden = NO;
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)endSimpleLoading {
+    self.hidden = YES;
+    self.activityBg.hidden = YES;
+    self.activityView.hidden = YES;
 }
 
 @end

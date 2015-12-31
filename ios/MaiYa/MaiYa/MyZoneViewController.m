@@ -72,6 +72,7 @@
     self.introduceSettingBtn.hidden = !self.bottomView.hidden;
     self.myShareSettingBtn.hidden = !self.bottomView.hidden;
     self.workingTimeSettingBtn.hidden = !self.bottomView.hidden;
+    self.lovedBtnItem.enabled = !self.bottomView.hidden;
     
     self.workTypeLabsArr = [self.workTypeLabsArr sortByUIViewOriginX];
     self.commentStarArr = [self.commentStarArr sortByUIViewOriginX];

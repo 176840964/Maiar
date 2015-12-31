@@ -127,6 +127,10 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (usersArr.count == 0 && [self.paraModel.start isEqualToString:@"0"]) {
+                [[HintView getInstance] presentMessage:@"没有找到咨询师" isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:^{
+                }];
+            }
             [self.tableView reloadData];
         });
     }];
