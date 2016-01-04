@@ -63,6 +63,13 @@
     [self.countTimer invalidate];
 }
 
+#pragma mark -
+- (void)textFiledResignFirstResponder {
+    [self.telNumTextFiled resignFirstResponder];
+    [self.msgTextFiled resignFirstResponder];
+    [self.pwTextFiled resignFirstResponder];
+}
+
 - (void)oneMinuteCountdown {
     self.msgBtn.titleLabel.font = [UIFont systemFontOfSize:20];
     [self.msgBtn setTitle:[NSString stringWithFormat:@"%zd", self.countIndex] forState:UIControlStateNormal];
@@ -90,6 +97,7 @@
 
 #pragma mark - IBAction
 - (IBAction)onTapMsgBtn:(id)sender {
+    [self textFiledResignFirstResponder];
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getCode" params:@{@"username": self.telNumTextFiled.text, @"type": @"2", @"area_code": @"+86"} success:^(id responseObject) {
         
@@ -103,9 +111,7 @@
 }
 
 - (IBAction)onTapCommitBtn:(id)sender {
-    [self.telNumTextFiled resignFirstResponder];
-    [self.msgTextFiled resignFirstResponder];
-    [self.pwTextFiled resignFirstResponder];
+    [self textFiledResignFirstResponder];
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getPassword" params:@{@"username": self.telNumTextFiled.text, @"password": [CustomTools md5:self.pwTextFiled.text], @"yzm": self.msgTextFiled.text, @"area_code": @"+86"} success:^(id responseObject) {
         

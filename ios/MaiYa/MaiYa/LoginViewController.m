@@ -45,6 +45,9 @@
 
 #pragma mark - IBAction
 - (IBAction)onTapLoginBtn:(id)sender {
+    [self.telNumTextFiled resignFirstResponder];
+    [self.passwordTextFiled resignFirstResponder];
+    
     NSLog(@"pw:%@", [CustomTools md5:self.passwordTextFiled.text]);
     
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"login" params:@{@"username": self.telNumTextFiled.text, @"password": [CustomTools md5:self.passwordTextFiled.text], @"area_code": @"+86"} success:^(id responseObject) {
