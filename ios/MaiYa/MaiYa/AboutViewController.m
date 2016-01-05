@@ -25,7 +25,11 @@
     
     self.nameLab.text = name;
     self.versionLab.text = [NSString stringWithFormat:@"V%@正式版", version];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -40,7 +44,10 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 2) {
+        [self performSegueWithIdentifier:@"ShowLoadingViewController" sender:self];
+    }
 }
 
 @end

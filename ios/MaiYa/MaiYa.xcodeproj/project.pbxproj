@@ -175,6 +175,7 @@
 		82C166381BCFBEE400F79D38 /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C166371BCFBEE400F79D38 /* AreaModel.m */; };
 		82CA5FD71C3A1AAE00A8425F /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82CA5FD21C3A1AAE00A8425F /* libSocialWechat.a */; };
 		82CA5FD81C3A1AAE00A8425F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82CA5FD31C3A1AAE00A8425F /* libWeChatSDK.a */; };
+		82CA5FDC1C3BA97000A8425F /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA5FDB1C3BA97000A8425F /* LoadingViewController.m */; };
 		82CACB531BB3995D001422B8 /* SquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB521BB3995D001422B8 /* SquareModel.m */; };
 		82CACB571BB3A196001422B8 /* ArticleIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB561BB3A196001422B8 /* ArticleIndexModel.m */; };
 		82CACB5B1BB3A910001422B8 /* ArticleDirectoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CACB5A1BB3A910001422B8 /* ArticleDirectoryModel.m */; };
@@ -539,6 +540,8 @@
 		82CA5FD41C3A1AAE00A8425F /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
 		82CA5FD51C3A1AAE00A8425F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		82CA5FD61C3A1AAE00A8425F /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		82CA5FDA1C3BA97000A8425F /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
+		82CA5FDB1C3BA97000A8425F /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		82CACB511BB3995D001422B8 /* SquareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareModel.h; sourceTree = "<group>"; };
 		82CACB521BB3995D001422B8 /* SquareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareModel.m; sourceTree = "<group>"; };
 		82CACB551BB3A196001422B8 /* ArticleIndexModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleIndexModel.h; sourceTree = "<group>"; };
@@ -1130,6 +1133,7 @@
 		8219379D1B8C2C8B0061C002 /* 4.5.2About */ = {
 			isa = PBXGroup;
 			children = (
+				82CA5FD91C3BA95D00A8425F /* LoadingViewController */,
 				821937A11B8C2D1D0061C002 /* AboutViewController.h */,
 				821937A21B8C2D1D0061C002 /* AboutViewController.m */,
 			);
@@ -1815,6 +1819,15 @@
 			path = Wechat;
 			sourceTree = "<group>";
 		};
+		82CA5FD91C3BA95D00A8425F /* LoadingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				82CA5FDA1C3BA97000A8425F /* LoadingViewController.h */,
+				82CA5FDB1C3BA97000A8425F /* LoadingViewController.m */,
+			);
+			name = LoadingViewController;
+			sourceTree = "<group>";
+		};
 		82CACB501BB39933001422B8 /* SquareModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2232,6 +2245,7 @@
 				829D317A1B858AC7001EB9DA /* ForgotViewController.m in Sources */,
 				82CACB631BB4EB0A001422B8 /* ArticleCatModel.m in Sources */,
 				822A4A3C1BA03DC70096CA5F /* AdvisoryDetailMasterCell.m in Sources */,
+				82CA5FDC1C3BA97000A8425F /* LoadingViewController.m in Sources */,
 				82D0343F1BFDD4AF00608692 /* NSDataEx.m in Sources */,
 				82D0343E1BFDD4AF00608692 /* MD5DataSigner.m in Sources */,
 				8264D94F1C06F9AD00215BA5 /* MeViewController.m in Sources */,
