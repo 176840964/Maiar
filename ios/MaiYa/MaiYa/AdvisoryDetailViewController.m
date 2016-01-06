@@ -309,7 +309,7 @@
     } else if ([indentifier isEqualToString:@"AdvisoryDetailCommentCell"]) {
         height = 340;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailEndCell"]) {
-        height = 172;
+        height = 194;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell0"]) {
         height = 132;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailPayCell1"]) {
