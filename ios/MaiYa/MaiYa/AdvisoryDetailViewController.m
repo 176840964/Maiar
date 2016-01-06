@@ -100,6 +100,9 @@
     if (!content.isValid) {
         [CustomTools simpleAlertShow:@"错误" content:@"评价内容不能为空" container:nil];
         return;
+    } else if (content.length > 140) {
+        [CustomTools simpleAlertShow:@"错误" content:@"评价内容超过了140字" container:nil];
+        return;
     }
     
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;

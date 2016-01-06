@@ -46,15 +46,31 @@
 
 #pragma mark - UITextViewDelegate
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    BOOL returnValue = YES;
+//    NSLog(@"textView.text:%@(%zd)", textView.text, textView.text.length);
+//    NSLog(@"replacementText:%@(%zd)", text, text.length);
+//    NSLog(@"range:%@", NSStringFromRange(range));
     
-    if (range.location + 1 > 140) {
-        returnValue = NO;
+    NSInteger count;
+    if (text.isValid) {//replacementText有效->增加字数
+        count = textView.text.length + text.length;
+    } else if(!text.isValid && textView.text.isValid) {//replacementText无效+textView.text有效->减少字数
+        count = textView.text.length - 1;
+    } else {//同时无效->清空textView
+        count = 0;
     }
     
-    self.countLab.text = [NSString stringWithFormat:@"(还可以输入%zd字)", 141 - range.location - 1];
+    NSString *string = [NSString stringWithFormat:@"(还可以输入%zd字)", 140 - count];
+    if (140 - count < 0) {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+        [attributedString addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15], NSForegroundColorAttributeName: [UIColor colorWithR:197 g:199 b:199]} range:NSMakeRange(0, 6)];
+        [attributedString addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:16], NSForegroundColorAttributeName: [UIColor redColor]} range:NSMakeRange(6, string.length - 6 - 2)];
+        [attributedString addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15], NSForegroundColorAttributeName: [UIColor colorWithR:197 g:199 b:199]} range:NSMakeRange(string.length - 2, 2)];
+        self.countLab.attributedText = attributedString;
+    } else {
+        self.countLab.text = string;
+    }
     
-    return returnValue;
+    return YES;
 }
 
 @end
