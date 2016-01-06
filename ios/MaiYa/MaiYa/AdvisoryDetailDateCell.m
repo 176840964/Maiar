@@ -43,6 +43,7 @@
     
     NSString *timeStr = [self.dataArr objectAtIndex:indexPath.row];
     cell.timeLab.text = timeStr;
+    cell.timeLab.adjustsFontSizeToFitWidth = YES;
     
     return cell;
 }

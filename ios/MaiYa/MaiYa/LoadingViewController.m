@@ -9,10 +9,11 @@
 #import "LoadingViewController.h"
 
 @interface LoadingViewController ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentSizeWidth;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *imageViewsArr;
 @property (weak, nonatomic) IBOutlet UIButton *closeBtn;
+@property (copy, nonatomic) NSString *deviceIdentifier;
+@property (assign, nonatomic) CGRect btnFrame;
+@property (assign, nonatomic) CGFloat btnLableFont;
 @end
 
 @implementation LoadingViewController
@@ -24,25 +25,30 @@
     self.closeBtn.cornerRadius = 4.0;
     self.closeBtn.borderWidth = 3;
     self.closeBtn.borderColor = [UIColor whiteColor];
-    [self.closeBtn setTitle:@"跳过" forState:UIControlStateNormal];
-    
-    self.imageViewsArr = [self.imageViewsArr sortByUIViewOriginX];
+    [self.closeBtn setTitle:self.isFirstLanuching? @"跳过" : @"关闭" forState:UIControlStateNormal];
     
     NSString *str = @"";
     if (CGRectGetHeight([UIScreen mainScreen].bounds) == 480) {
         str = @"4";
+        self.btnLableFont = 17;
+        self.btnFrame = CGRectMake((CGRectGetWidth([UIScreen mainScreen].bounds) - 130) / 2.0, CGRectGetHeight([UIScreen mainScreen].bounds) - 35 - 33, 130, 33);
     } else if (CGRectGetHeight([UIScreen mainScreen].bounds) == 568) {
         str = @"5";
+        self.btnLableFont = 17;
+        self.btnFrame = CGRectMake((CGRectGetWidth([UIScreen mainScreen].bounds) - 130) / 2.0, CGRectGetHeight([UIScreen mainScreen].bounds) - 64 - 33, 130, 33);
     } else if (CGRectGetHeight([UIScreen mainScreen].bounds) == 667) {
         str = @"6";
+        self.btnLableFont = 20;
+        self.btnFrame = CGRectMake((CGRectGetWidth([UIScreen mainScreen].bounds) - 150) / 2.0, CGRectGetHeight([UIScreen mainScreen].bounds) - 75 - 40, 150, 40);
     } else {
         str = @"+";
+        self.btnLableFont = 33;
+        self.btnFrame = CGRectMake((CGRectGetWidth([UIScreen mainScreen].bounds) - 250) / 2.0, CGRectGetHeight([UIScreen mainScreen].bounds) - 74 - 65, 250, 65);
     }
     
-    for (NSInteger index = 0; index < 5; index ++) {
-        UIImageView *imageView = [self.imageViewsArr objectAtIndex:index];
-        imageView.image = [UIImage imageNamed:[self stringWithImageNameByIndex:index andDeviceTypeStr:str]];
-    }
+    self.deviceIdentifier = str;
+    
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) * 5, CGRectGetHeight([UIScreen mainScreen].bounds));
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,9 +56,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateViewConstraints {
-    [super updateViewConstraints];
-    self.contentSizeWidth.constant = CGRectGetWidth([UIScreen mainScreen].bounds) * self.imageViewsArr.count;
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    for (NSInteger index = 0; index < 5; index ++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.width * index, 0, self.view.width, self.view.height)];
+        imageView.image = [UIImage imageNamed:[self stringWithImageNameByIndex:index andDeviceTypeStr:self.deviceIdentifier]];
+        [self.scrollView addSubview:imageView];
+        
+        if (self.isFirstLanuching && index == 4) {
+            imageView.userInteractionEnabled = YES;
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.backgroundColor = [UIColor colorWithHexString:@"#c53b56"];
+            btn.frame = self.btnFrame;
+            btn.cornerRadius = CGRectGetHeight(self.btnFrame) / 2.0;
+            btn.titleLabel.font = [UIFont systemFontOfSize:self.btnLableFont];
+            [btn setTitle:@"立即咨询" forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(onTapCloseBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [imageView addSubview:btn];
+        }
+    }
 }
 
 #pragma mark - 

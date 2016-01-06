@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LoadingViewController : UIViewController
+@property (assign, nonatomic) BOOL isFirstLanuching;
 
 @end
