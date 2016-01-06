@@ -9,8 +9,10 @@
 #import "LoadingViewController.h"
 
 @interface LoadingViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentSizeWidth;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) UIButton *closeBtn;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *imageViewsArr;
+@property (weak, nonatomic) IBOutlet UIButton *closeBtn;
 @end
 
 @implementation LoadingViewController
@@ -18,6 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.closeBtn.cornerRadius = 4.0;
+    self.closeBtn.borderWidth = 3;
+    self.closeBtn.borderColor = [UIColor whiteColor];
+    [self.closeBtn setTitle:@"跳过" forState:UIControlStateNormal];
+    
+    self.imageViewsArr = [self.imageViewsArr sortByUIViewOriginX];
     
     NSString *str = @"";
     if (CGRectGetHeight([UIScreen mainScreen].bounds) == 480) {
@@ -31,12 +40,9 @@
     }
     
     for (NSInteger index = 0; index < 5; index ++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds) * index, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];
+        UIImageView *imageView = [self.imageViewsArr objectAtIndex:index];
         imageView.image = [UIImage imageNamed:[self stringWithImageNameByIndex:index andDeviceTypeStr:str]];
-        [self.scrollView addSubview:imageView];
     }
-    
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) * 5, CGRectGetHeight([UIScreen mainScreen].bounds));
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,23 +50,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    self.closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.closeBtn.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds) - 6 - 46, 26, 46, 26);
-    self.closeBtn.cornerRadius = 4.0;
-    self.closeBtn.borderWidth = 3;
-    self.closeBtn.borderColor = [UIColor whiteColor];
-    [self.closeBtn setTitle:@"跳过" forState:UIControlStateNormal];
-    [self.closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.closeBtn addTarget:self action:@selector(onTapCloseBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.closeBtn];
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    self.contentSizeWidth.constant = CGRectGetWidth([UIScreen mainScreen].bounds) * self.imageViewsArr.count;
 }
 
 #pragma mark - 
@@ -91,8 +83,13 @@
     return str;
 }
 
-- (void)onTapCloseBtn:(UIButton *)btn {
-    [self.navigationController popViewControllerAnimated:YES];
+#pragma mark - IBAction
+- (IBAction)onTapCloseBtn:(UIButton *)btn {
+    NSString *currentVersion = [NSString stringWithFormat:@"%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:@"recordVersion"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 @end

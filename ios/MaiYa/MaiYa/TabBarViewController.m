@@ -53,16 +53,21 @@
         self.selectedIndex = 1;
         [UserConfigManager shareManager].isLaunching = NO;
     }
+    
+    [self showingLodingView];
 }
 
 #pragma mark - 
 - (void)showingLogin {
-//    NSString* userTelStr = [UserConfigManager shareManager].userTelNumStr;
-//    if ([userTelStr isKindOfClass:[NSString class]] && 0 != userTelStr.length) {
-//        self.selectedIndex = 1;
-//    } else {
-        [self performSegueWithIdentifier:@"PresentLoginNaviController" sender:self];
-//    }
+    [self performSegueWithIdentifier:@"PresentLoginNaviController" sender:self];
+}
+
+- (void)showingLodingView {
+    NSString *currentVersion = [NSString stringWithFormat:@"%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    NSString *recordVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"recordVersion"];
+    if (!recordVersion.isValid || ![recordVersion isEqualToString:currentVersion]) {
+        [self performSegueWithIdentifier:@"PresentLoadingViewController" sender:self];
+    }
 }
 
 /*

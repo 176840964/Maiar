@@ -27,11 +27,6 @@
     self.versionLab.text = [NSString stringWithFormat:@"V%@正式版", version];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
-
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 4;
@@ -46,7 +41,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"ShowLoadingViewController" sender:self];
+        [self performSegueWithIdentifier:@"PresentLoadingViewController" sender:self];
     }
 }
 
