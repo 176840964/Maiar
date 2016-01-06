@@ -14,6 +14,7 @@
 #import "SelectingServiceDateViewController.h"
 #import "EditTopImageViewController.h"
 #import "MySharingViewController.h"
+#import "PlazaDetailViewController.h"
 
 @interface MyZoneViewController () <UIScrollViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewHeight;
@@ -113,6 +114,14 @@
     } else if ([segue.identifier isEqualToString:@"ShowMySharingViewController"]) {
         MySharingViewController *vc = segue.destinationViewController;
         vc.masterIdStr = self.cidStr;
+    } else if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
+        PlazaDetailViewController *controller = segue.destinationViewController;
+        controller.type = PlazaDetailParaTypeOfArticle;
+        controller.catIndexStr = self.userZoneViewModel.articleViewModel.typeStr;
+        controller.articleStr = self.userZoneViewModel.articleViewModel.aidStr;
+        controller.title = self.userZoneViewModel.articleViewModel.titleStr;
+        controller.shareUrlStr = self.userZoneViewModel.articleViewModel.shareUrlStr;
+        controller.articleOwnerIdStr = self.userZoneViewModel.articleViewModel.uidStr;
     }
 }
 
@@ -275,6 +284,10 @@
 
 - (IBAction)onTapLoveButtonItem:(id)sender {
     [self collectMaster];
+}
+
+- (IBAction)onTapTopShareGestureRecognizer:(id)sender {
+    [self performSegueWithIdentifier:@"ShowPlazaDetail" sender:self];
 }
 
 #pragma mark - UIScrollViewDelegate
