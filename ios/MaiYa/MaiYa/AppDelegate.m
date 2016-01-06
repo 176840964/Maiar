@@ -74,11 +74,15 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     BOOL result = [UMSocialSnsService handleOpenURL:url];
-    if (result == FALSE) {
-        //跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@",resultDic);
-        }];
+    if (!result) {
+        if ([sourceApplication isEqualToString:@"com.tencent.xin"]) {
+            [WXApi handleOpenURL:url delegate:self];
+        } else {
+            //跳转支付宝钱包进行支付，处理支付结果
+            [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+                NSLog(@"result = %@",resultDic);
+            }];
+        }
         
         return YES;
     }
@@ -99,8 +103,7 @@
                 
             default:
             {
-                NSString *strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
-                [[HintView getInstance] presentMessage:strMsg isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:nil];
+                [[HintView getInstance] presentMessage:@"支付失败" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
             }
                 break;
         }
