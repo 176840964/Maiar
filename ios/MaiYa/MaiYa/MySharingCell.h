@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ArticleModel.h"
 
-typedef void(^DeleteAriticleHandle)(NSString *aidStr);
+typedef void(^DeleteAriticleHandle)(NSString *aidStr, NSString *aTitle);
 
 @interface MySharingCell : UITableViewCell
 

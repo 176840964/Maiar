@@ -45,7 +45,7 @@
 #pragma mark - IBAction
 - (IBAction)onTapArticleDelBtn:(id)sender {
     if (self.delAriticleHandle) {
-        self.delAriticleHandle(self.aidStr);
+        self.delAriticleHandle(self.aidStr, self.articleTitleLab.text);
     }
 }
 

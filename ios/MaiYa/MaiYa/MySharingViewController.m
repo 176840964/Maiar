@@ -10,11 +10,13 @@
 #import "MySharingCell.h"
 #import "PlazaDetailViewController.h"
 
-@interface MySharingViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate>
+@interface MySharingViewController () <UITableViewDataSource, UITableViewDelegate, CustomTableViewViewDelegate, UIAlertViewDelegate>
 @property (weak ,nonatomic) IBOutlet CustomTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *articleArr;
 
 @property (strong, nonatomic) ArticleViewModel *selectedArticleViewModel;
+@property (copy, nonatomic) NSString *selectedAidStr;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @end
 
 @implementation MySharingViewController
@@ -67,8 +69,8 @@
 - (void)delArticleById:(NSString *)aidStr indexPath:(NSIndexPath *)indexPath{
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleDel" params:@{@"id": aidStr} success:^(id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.articleArr removeObjectAtIndex:indexPath.row];
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadData];
         });
     }];
 }
@@ -94,9 +96,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MySharingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MySharingCell"];
-    cell.delAriticleHandle = ^(NSString *aidStr) {
-        [self.tableView reloadData];//如果去掉这行代码，连续删除同一个位置的数据会出错
-        [self delArticleById:aidStr indexPath:indexPath];
+    cell.delAriticleHandle = ^(NSString *aidStr, NSString *titleStr) {
+        self.selectedAidStr = aidStr;
+        self.selectedIndexPath = indexPath;
+        [CustomTools alertShow:@"您确定要删除这篇文章吗？" content:titleStr cancelBtnTitle:@"稍后" okBtnTitle:@"确定" container:self];
     };
     
     ArticleViewModel* viewModel = [self.articleArr objectAtIndex:indexPath.row];
@@ -134,5 +137,14 @@
     [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
     [self.tableView.reloadMoreView scrollViewDidScroll:scrollView];
 }
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [self.articleArr removeObjectAtIndex:self.selectedIndexPath.row];
+        [self delArticleById:self.selectedAidStr indexPath:self.selectedIndexPath];
+    }
+}
+
 
 @end
