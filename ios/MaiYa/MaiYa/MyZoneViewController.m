@@ -219,6 +219,7 @@
         [paramsDic setObject:latitude forKey:@"latitude"];
     }
     
+    [[HintView getInstance] showSimpleLoading];
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"userInfo" params:paramsDic success:^(id responseObject) {
         NSDictionary *resDic = [responseObject objectForKey:@"res"];
         UserZoneModel *model = [[UserZoneModel alloc] initWithDic:resDic];
@@ -231,6 +232,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self layoutWorkingTime];
+            [[HintView getInstance] endSimpleLoading];
         });
     }];
 }
