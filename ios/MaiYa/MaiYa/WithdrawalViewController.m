@@ -17,12 +17,16 @@
 @property (weak, nonatomic) IBOutlet UIView *markView;
 
 //zhifubao
+@property (weak, nonatomic) IBOutlet UIScrollView *aliScrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *aliContentHeight;
 @property (weak, nonatomic) IBOutlet UITextField *aliAccoutTextField;
 @property (weak, nonatomic) IBOutlet UILabel *aliNameLab;
 @property (weak, nonatomic) IBOutlet UITextField *aliMoneyTextField;
 @property (weak, nonatomic) IBOutlet UIButton *aliCommitBtn;
 
 //bank
+@property (weak, nonatomic) IBOutlet UIScrollView *bankScrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bankContentHeight;
 @property (weak, nonatomic) IBOutlet UILabel *bankNameLab;
 @property (weak, nonatomic) IBOutlet UIImageView *bankIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *bankAddrLab;
@@ -43,6 +47,8 @@
     
     [self getApplyMoney];
     [self setupRACSignal];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -66,6 +72,8 @@
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     self.widthConstraint.constant = self.view.width * 2;
+    self.aliContentHeight.constant = CGRectGetHeight([UIScreen mainScreen].bounds) - 64 - 43;
+    self.bankContentHeight.constant = CGRectGetHeight([UIScreen mainScreen].bounds) - 64 - 43;
 }
 
 #pragma mark - 
@@ -125,6 +133,35 @@
     }
 }
 
+- (void)textFieldResignFirstResponder {
+    [self.aliAccoutTextField resignFirstResponder];
+    [self.aliMoneyTextField resignFirstResponder];
+    
+    [self.bankCardTextField resignFirstResponder];
+    [self.bankMoneyTextField resignFirstResponder];
+    
+    self.aliScrollView.contentSize = self.scrollView.frame.size;
+    self.bankScrollView.contentSize = self.scrollView.frame.size;
+}
+
+- (void)showKeyboard:(NSNotification *)notify {
+    CGRect kbRect = [[notify.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    
+    CGRect frame;
+    UIScrollView *scrollView;
+    if (0 == self.scrollView.contentOffset.x) {
+        scrollView = self.aliScrollView;
+        frame = [self.view convertRect:self.aliCommitBtn.frame fromView:self.aliScrollView];
+    } else {
+        scrollView = self.bankScrollView;
+        frame = [self.view convertRect:self.bankCommitBtn.frame fromView:self.bankScrollView];
+    }
+    
+    if (CGRectGetMaxY(frame) > CGRectGetMinY(kbRect)) {
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds) - 64 + CGRectGetMaxY(frame) + 15 - CGRectGetMinY(kbRect));
+    }
+}
+
 #pragma mark - NetWorking
 - (void)getApplyMoney {
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
@@ -149,11 +186,13 @@
 
 #pragma mark - IBAction
 - (IBAction)onTapZhifubaoBtn:(id)sender {
+    [self textFieldResignFirstResponder];
     self.markView.transform = CGAffineTransformIdentity;
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 - (IBAction)onTapBankCardBtn:(id)sender {
+    [self textFieldResignFirstResponder];
     self.markView.transform = CGAffineTransformMakeTranslation(self.view.width / 2.0, 0);
     [self.scrollView setContentOffset:CGPointMake(self.view.width, 0) animated:YES];
 }
@@ -188,10 +227,28 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (0 == scrollView.contentOffset.x) {
-        self.markView.transform = CGAffineTransformIdentity;
-    } else {
-        self.markView.transform = CGAffineTransformMakeTranslation(self.view.width / 2.0, 0);
+    if ([scrollView isEqual:self.scrollView]) {
+        [self textFieldResignFirstResponder];
+        if (0 == scrollView.contentOffset.x) {
+            self.markView.transform = CGAffineTransformIdentity;
+        } else {
+            self.markView.transform = CGAffineTransformMakeTranslation(self.view.width / 2.0, 0);
+        }
+    }
+}
+
+static CGFloat beginDragging = 0.0;
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (![scrollView isEqual:self.scrollView]) {
+        beginDragging = scrollView.contentOffset.y;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (![scrollView isEqual:self.scrollView]) {
+        if (beginDragging - scrollView.contentOffset.y > 15) {
+            [self textFieldResignFirstResponder];
+        }
     }
 }
 
