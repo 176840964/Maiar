@@ -23250,6 +23250,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="textView" destination="Cpm-fj-zSK" id="mT7-Mv-ZRb"/>
+                        <outlet property="textViewHeight" destination="LwG-2Q-u6i" id="0mP-35-t4p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dal-PB-Dm2" userLabel="First Responder" sceneMemberID="firstResponder"/>

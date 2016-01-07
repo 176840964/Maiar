@@ -9,6 +9,7 @@
 #import "AbstractViewController.h"
 
 @interface AbstractViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
 
@@ -23,6 +24,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    if (CGRectGetHeight([UIScreen mainScreen].bounds) == 480) {
+        self.textViewHeight.constant = 110;
+    }
 }
 
 #pragma mark - 
