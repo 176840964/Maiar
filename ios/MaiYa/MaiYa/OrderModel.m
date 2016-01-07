@@ -42,7 +42,8 @@
         
         self.serviceModeStr = [model.service_mode isEqualToString:@"1"] ? @"线上" : @"线下";
         
-        self.realPriceStr = [NSString stringWithFormat:@"￥%.2f元", model.money.integerValue / 100.0];
+        self.realPriceStr = [NSString stringWithFormat:@"%.2f", model.money.integerValue / 100.0];
+        self.realPriceWithUnitStr = [NSString stringWithFormat:@"￥%.2f元", model.money.integerValue / 100.0];
         self.totalPriceStr = [NSString stringWithFormat:@"￥%.2f元", model.money_all.integerValue / 100.0];
     }
     

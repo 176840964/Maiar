@@ -48,6 +48,7 @@
 @property (copy, nonatomic) NSString *serviceModeStr;
 
 @property (copy, nonatomic) NSString *realPriceStr;
+@property (copy, nonatomic) NSString *realPriceWithUnitStr;
 @property (copy, nonatomic) NSString *totalPriceStr;
 
 @property (copy, nonatomic) NSString *btn1TitleStr;
