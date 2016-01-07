@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *articleReadLab;
 @property (weak, nonatomic) IBOutlet UILabel *articleGoodLab;
 @property (weak, nonatomic) IBOutlet UIButton *articleDelBtn;
+
+@property (copy, nonatomic) NSString *aidStr;
 @end
 
 @implementation MySharingCell
@@ -37,11 +39,14 @@
     self.articleDateLab.text = articleViewModel.timestampStr;
     self.articleReadLab.text = articleViewModel.readStr;
     self.articleGoodLab.text = articleViewModel.praiseStr;
+    self.aidStr = articleViewModel.aidStr;
 }
 
 #pragma mark - IBAction
 - (IBAction)onTapArticleDelBtn:(id)sender {
-    
+    if (self.delAriticleHandle) {
+        self.delAriticleHandle(self.aidStr);
+    }
 }
 
 @end

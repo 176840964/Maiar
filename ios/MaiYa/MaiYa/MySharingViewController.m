@@ -64,6 +64,15 @@
     }];
 }
 
+- (void)delArticleById:(NSString *)aidStr indexPath:(NSIndexPath *)indexPath{
+    [[NetworkingManager shareManager] networkingWithGetMethodPath:@"articleDel" params:@{@"id": aidStr} success:^(id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.articleArr removeObjectAtIndex:indexPath.row];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        });
+    }];
+}
+
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
@@ -85,6 +94,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MySharingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MySharingCell"];
+    cell.delAriticleHandle = ^(NSString *aidStr) {
+        [self.tableView reloadData];//如果去掉这行代码，连续删除同一个位置的数据会出错
+        [self delArticleById:aidStr indexPath:indexPath];
+    };
     
     ArticleViewModel* viewModel = [self.articleArr objectAtIndex:indexPath.row];
     [cell layoutMySharingCellSubviewsByArticleViewModel:viewModel];

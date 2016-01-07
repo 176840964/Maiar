@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ArticleModel.h"
 
+typedef void(^DeleteAriticleHandle)(NSString *aidStr);
+
 @interface MySharingCell : UITableViewCell
+
+@property (copy, nonatomic) DeleteAriticleHandle delAriticleHandle;
 
 - (void)layoutMySharingCellSubviewsByArticleViewModel:(ArticleViewModel *)articleViewModel;
 
