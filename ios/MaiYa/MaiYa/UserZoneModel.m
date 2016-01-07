@@ -85,7 +85,7 @@
         self.withdrawalsStr = [NSString stringWithFormat:@"%.2f", [model.withdrawals stringValue].doubleValue / 100];
         self.realNameStr = [model.idname stringValue];
         self.isIdentification = [model.id_status isEqualToString:@"1"];
-        self.soonMoneyStr = [NSString stringWithFormat:@"即将到账%@.00元", [model.soon_money stringValue]];
+        self.soonMoneyStr = [NSString stringWithFormat:@"即将到账%.2f元", [model.soon_money stringValue].doubleValue / 100];
         self.isCollected = [model.collect_is isEqualToNumber:[NSNumber numberWithInteger:1]];
         self.beCollectedCountStr = [model.collect stringValue];
         
