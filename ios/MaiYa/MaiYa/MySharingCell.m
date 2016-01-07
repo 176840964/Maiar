@@ -33,7 +33,7 @@
 }
 
 - (void)layoutMySharingCellSubviewsByArticleViewModel:(ArticleViewModel *)articleViewModel {
-    [self.articleIconView setImageWithURL:articleViewModel.imgUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    [self.articleIconView setImageWithURL:articleViewModel.imgUrl placeholderImage:[UIImage imageNamed:articleViewModel.defulteImgStr]];
     self.articleTitleLab.text = articleViewModel.titleStr;
     self.articleContentLab.text = articleViewModel.digestStr;
     self.articleDateLab.text = articleViewModel.timestampStr;

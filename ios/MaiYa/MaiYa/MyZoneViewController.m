@@ -163,7 +163,7 @@
     self.introduceTxtView.text = self.userZoneViewModel.introduceStr;
     
     self.shareArticlesCountLab.text = self.userZoneViewModel.sharedArticleCountStr;
-    [self.articleImageView setImageWithURL:self.userZoneViewModel.articleViewModel.imgUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    [self.articleImageView setImageWithURL:self.userZoneViewModel.articleViewModel.imgUrl placeholderImage:[UIImage imageNamed:self.userZoneViewModel.articleViewModel.defulteImgStr]];
     self.articleTitleLab.text = self.userZoneViewModel.articleViewModel.titleStr;
     self.articleDigestLab.text = self.userZoneViewModel.articleViewModel.digestStr;
     self.articleDateLab.text = [CustomTools dateStringFromTodayUnixTimestamp:self.userZoneViewModel.todayTimestampStr.integerValue andOtherTimestamp:self.userZoneViewModel.articleViewModel.timestampStr.integerValue];

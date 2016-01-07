@@ -29,6 +29,7 @@
 @property (copy, nonatomic) NSString *aidStr;
 @property (copy, nonatomic) NSString *titleStr;
 @property (copy, nonatomic) NSString *digestStr;
+@property (copy, nonatomic) NSString *defulteImgStr;
 @property (strong, nonatomic) NSURL *imgUrl;
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic) NSString *readStr;

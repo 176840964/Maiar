@@ -26,6 +26,7 @@
         self.aidStr = [model.aid stringValue];
         self.titleStr = [model.title stringValue];
         self.digestStr = [model.digest stringValue];
+        self.defulteImgStr = [NSString stringWithFormat:@"article%@", model.type.stringValue];
         self.imgUrl = [NSURL URLWithString:[model.img stringValue]];
         self.url = [NSURL URLWithString:[model.url stringValue]];
         self.readStr = [NSString stringWithFormat:@"阅读%@", [model.read stringValue]];

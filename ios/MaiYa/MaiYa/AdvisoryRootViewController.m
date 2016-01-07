@@ -102,7 +102,7 @@
         cell.url = viewModel.url;
         cell.titleStr = viewModel.titleStr;
         cell.frame = CGRectMake(index * self.headerScrollView.width, 0, self.headerScrollView.width, self.headerScrollView.height);
-        [cell.imageView setImageWithURL:viewModel.imgUrl placeholderImage:[UIImage imageNamed:@"testHeader"]];
+        [cell.imageView setImageWithURL:viewModel.imgUrl placeholderImage:[UIImage imageNamed:@"defaultCarousel"]];
         [cell addTarget:self action:@selector(onTapCarouselCell:) forControlEvents:UIControlEventTouchUpInside];
         [self.headerScrollView addSubview:cell];
     }

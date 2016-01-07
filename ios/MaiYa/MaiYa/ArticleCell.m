@@ -31,7 +31,7 @@
 }
 
 - (void)layoutArticleCellSubviewsByArticleViewModel:(ArticleViewModel *)viewModel {
-    [self.iconImgView setImageWithURL:viewModel.imgUrl placeholderImage:[UIImage imageNamed:@"aboutIcon"]];
+    [self.iconImgView setImageWithURL:viewModel.imgUrl placeholderImage:[UIImage imageNamed:viewModel.defulteImgStr]];
     self.titleLab.text = viewModel.titleStr;
     self.digestLab.text = viewModel.digestStr;
     self.nickLab.text = viewModel.nickStr;

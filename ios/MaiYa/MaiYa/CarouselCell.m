@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"testHeader"]];
+        self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"defaultCarousel"]];
         [self addSubview:self.imageView];
         
         [self.imageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
