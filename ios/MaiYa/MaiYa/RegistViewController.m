@@ -133,6 +133,10 @@
 
 #pragma mark - IBAction
 - (IBAction)onTapMsgBtn:(id)sender {
+    if (self.countTimer.valid) {
+        return;
+    }
+    
     [self textFiledResignFirstResponder];
     [[NetworkingManager shareManager] networkingWithGetMethodPath:@"getCode" params:@{@"username": self.telNumTextFiled.text, @"type": @"1", @"area_code": @"+86"} success:^(id responseObject) {
         

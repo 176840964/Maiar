@@ -51,6 +51,9 @@
                                                userInfoKey:(NSString *)editKey
                                                      image:(UIImage *)image
                                                    success:(void (^)(id responseObject))success;
-
+//上传真实信息
+- (NSURLSessionDataTask*)editUserRealInfoByInfoDic:(NSDictionary*)infoDic
+                                          imageDic:(NSDictionary *)imageDic
+                                           success:(void (^)(id responseObject))success;
 
 @end

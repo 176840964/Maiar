@@ -31,6 +31,7 @@
         self.textLab = [UILabel newAutoLayoutView];
         [self.textLab setLineBreakMode:NSLineBreakByTruncatingTail];
         [self.textLab setNumberOfLines:0];
+        self.textLab.font = [UIFont systemFontOfSize:15];
         [self.textLab setTextAlignment:NSTextAlignmentLeft];
         [self.textLab setTextColor:[UIColor colorWithHexString:@"#667785"]];
         self.textLab.backgroundColor = [UIColor clearColor];

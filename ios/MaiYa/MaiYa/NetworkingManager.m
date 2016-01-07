@@ -93,6 +93,30 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     }];
 }
 
+- (NSURLSessionDataTask*)editUserRealInfoByInfoDic:(NSDictionary*)infoDic
+                                          imageDic:(NSDictionary *)imageDic
+                                           success:(void (^)(id responseObject))success {
+    self.requestSerializer = [AFJSONRequestSerializer serializer];//申明请求的数据是json类型
+    return [self POST:@"?m=home&c=User&a=editUserReal"
+           parameters:infoDic
+constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    for (NSString *key in imageDic.allKeys) {
+        UIImage *image = [imageDic objectForKey:key];
+        NSData *data = UIImageJPEGRepresentation(image, 1);
+        [formData appendPartWithFormData:data name:key];
+    }
+}
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                  success(responseObject);
+              }
+              failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      NSLog(@"error:%@", error);
+                      [[HintView getInstance] presentMessage:@"资料上传失败" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
+                  });
+              }];
+}
+
 #pragma mark -
 - (NSDictionary *)setupParamsByParamesDic:(NSDictionary *)paramesDic andPath:(NSString *)path{
     NSMutableDictionary *dic = [NSMutableDictionary new];
