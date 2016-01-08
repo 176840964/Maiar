@@ -26,7 +26,8 @@
 - (NSURLSessionDataTask *)networkingWithPostMethodPath:(NSString *)path
                                             postParams:(NSDictionary *)postParams
                                                success:(void (^)(id))success {
-    return [self POST:@"?" parameters:[self setupParamsByParamesDic:postParams andPath:path] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    NSString *postPath = [NSString stringWithFormat:@"?m=home&c=User&a=%@", path];
+    return [self POST:postPath parameters:[self setTokenParamInParamsDic:postParams] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (NSString *keyStr in postParams.allKeys) {
             NSString *valueStr = [postParams objectForKey:keyStr];
             [formData appendPartWithFormData:[valueStr dataUsingEncoding:NSUTF8StringEncoding] name:keyStr];
@@ -92,12 +93,12 @@
                                                 success:(void (^)(id responseObject))success {
     self.requestSerializer = [AFJSONRequestSerializer serializer];//申明请求的数据是json类型
     
-//    NSString *postPath = [NSString stringWithFormat:@"?m=home&c=User&a=%@", path];
+    NSString *postPath = [NSString stringWithFormat:@"?m=home&c=User&a=%@", path];
     
-    return [self POST:@"?"
-           parameters:[self setupParamsByParamesDic:paramsDic andPath:path]
+    return [self POST:postPath
+           parameters:[self setTokenParamInParamsDic:paramsDic]
 constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-    NSLog(@"%@", imageDic);
+//    NSLog(@"%@", imageDic);
     for (NSString *key in imageDic.allKeys) {
         UIImage *image = [imageDic objectForKey:key];
         NSData *data = UIImageJPEGRepresentation(image, 1);
@@ -142,14 +143,19 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     
     [dic setObject:path forKey:@"a"];
     
+    [dic setValuesForKeysWithDictionary:[self setTokenParamInParamsDic:paramesDic]];
+    
+    return dic;
+}
+
+- (NSDictionary *)setTokenParamInParamsDic:(NSDictionary *)paramesDic {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:paramesDic];
     for (NSString *key in paramesDic.allKeys) {
         if ([key isEqualToString:@"uid"]) {
             [dic setObject:[UserConfigManager shareManager].userInfo.tokenStr forKey:@"token"];
             break;
         }
     }
-    
-    [dic setValuesForKeysWithDictionary:paramesDic];
     
     return dic;
 }
