@@ -306,7 +306,7 @@
     } else if ([indentifier isEqualToString:@"AdvisoryDetailUserCell"]) {
         height = 104;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailTimeCell"]) {
-        height = 33 + 70 * self.orderDetailViewModel.consultingTimeArr.count;
+        height = 33 + 70 * self.orderDetailViewModel.consultingTimeArr.count + 10;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailServiceCell"]) {
         height = 80;
     } else if ([indentifier isEqualToString:@"AdvisoryDetailCommentCell"]) {

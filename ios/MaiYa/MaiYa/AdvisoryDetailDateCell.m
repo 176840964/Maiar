@@ -19,6 +19,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    [self.collectionView registerClass:[TimeCollectionViewCell class] forCellWithReuseIdentifier:@"TimeCollectionViewCell"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -43,14 +45,14 @@
     
     NSString *timeStr = [self.dataArr objectAtIndex:indexPath.row];
     cell.timeLab.text = timeStr;
-    cell.timeLab.adjustsFontSizeToFitWidth = YES;
+    cell.timeLab.frame = cell.bounds;
     
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(73, 28);
+    return CGSizeMake(80, 28);
 }
 
 @end
