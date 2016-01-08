@@ -83,7 +83,16 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFormData:data name:editKey];
     }
               success:^(NSURLSessionDataTask *task, id responseObject) {
-                  success(responseObject);
+                  NSDictionary *dic = responseObject;
+                  NSNumber *status = [dic objectForKey:@"status"];
+                  if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
+                      NSString *str = [dic objectForKey:@"error"];
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:nil];
+                      });
+                  } else {
+                      success(responseObject);
+                  }
               }
               failure:^(NSURLSessionDataTask *task, NSError *error) {
                   dispatch_async(dispatch_get_main_queue(), ^{
@@ -107,7 +116,16 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     }
 }
               success:^(NSURLSessionDataTask *task, id responseObject) {
-                  success(responseObject);
+                  NSDictionary *dic = responseObject;
+                  NSNumber *status = [dic objectForKey:@"status"];
+                  if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
+                      NSString *str = [dic objectForKey:@"error"];
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:nil];
+                      });
+                  } else {
+                      success(responseObject);
+                  }
               }
               failure:^(NSURLSessionDataTask *task, NSError *error) {
                   dispatch_async(dispatch_get_main_queue(), ^{

@@ -207,6 +207,10 @@
     [self setApplyMoneyByParamsDic:@{@"uid": uid, @"type": @"2", @"bankid": self.bankCardTextField.text, @"money": self.bankMoneyTextField.text, @"area": self.applyMoneyViewModel.areaIdStr, @"banktype": self.applyMoneyViewModel.bankTypeStr}];
 }
 
+- (IBAction)onTapNaviLeftItem:(id)sender {
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+}
+
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:self];

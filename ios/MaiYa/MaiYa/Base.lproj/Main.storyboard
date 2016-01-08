@@ -18922,6 +18922,7 @@
                         <outlet property="nameTextField" destination="TQs-Oi-yeq" id="7qY-cM-nPU"/>
                         <outlet property="scrollHeight" destination="GWK-3s-BXP" id="H4M-kA-gtD"/>
                         <outlet property="scrollView" destination="eMM-dW-mpS" id="SWb-Hf-u8Q"/>
+                        <segue destination="RLy-MU-hCY" kind="show" identifier="ShowWithdrawalViewController" id="Zw5-sR-MBQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLU-p4-F0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -20166,7 +20167,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="申请提现" id="h9l-MK-Ecp"/>
+                    <navigationItem key="navigationItem" title="申请提现" id="h9l-MK-Ecp">
+                        <barButtonItem key="leftBarButtonItem" title="钱包" id="NNe-wE-x93">
+                            <connections>
+                                <action selector="onTapNaviLeftItem:" destination="RLy-MU-hCY" id="9dC-vI-4MI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="aliAccoutTextField" destination="0Dt-rk-cm6" id="0Fv-pa-lRr"/>
                         <outlet property="aliCommitBtn" destination="rKm-3W-nmf" id="F3s-iC-Cgl"/>
@@ -20201,7 +20208,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6255" y="4246.5"/>
+            <point key="canvasLocation" x="6243" y="4310.25"/>
         </scene>
         <!--选择银行-->
         <scene sceneID="Khg-9c-0UM">
@@ -24960,6 +24967,7 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Zw5-sR-MBQ"/>
         <segue reference="iuV-oL-R76"/>
         <segue reference="JDl-KK-l6G"/>
         <segue reference="BVl-l8-ZXx"/>

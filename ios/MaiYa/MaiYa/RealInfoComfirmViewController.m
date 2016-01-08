@@ -106,6 +106,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [[HintView getInstance] endSimpleLoading];
+            [self performSegueWithIdentifier:@"ShowWithdrawalViewController" sender:self];
         });
         
     }];
