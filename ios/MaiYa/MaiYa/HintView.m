@@ -43,6 +43,7 @@ typedef void(^DismissBlock)();
         [self addSubview:_closeCtrl];
         
         _messageLab = [UILabel newAutoLayoutView];
+        _messageLab.numberOfLines = 2;
         _messageLab.hidden = YES;
         _messageLab.clipsToBounds = YES;
         _messageLab.cornerRadius = 5;
@@ -55,7 +56,7 @@ typedef void(^DismissBlock)();
         [_messageLab autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:CGRectGetHeight(frame) / 5 * 3];
         [_messageLab autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:15];
         [_messageLab autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:15];
-        [_messageLab autoSetDimension:ALDimensionHeight toSize:50];
+        [_messageLab autoSetDimension:ALDimensionHeight toSize:60];
         
         _activityBg = [UIView newAutoLayoutView];
         _activityBg.hidden = YES;

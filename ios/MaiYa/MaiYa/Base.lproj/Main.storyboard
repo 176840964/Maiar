@@ -13363,7 +13363,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbW-U2-jke" userLabel="Info View">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutIcon" translatesAutoresizingMaskIntoConstraints="NO" id="urd-vF-2dN">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defulteHead" translatesAutoresizingMaskIntoConstraints="NO" id="urd-vF-2dN">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="108" id="DrC-cP-czw"/>
@@ -18651,7 +18651,7 @@
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5I-lE-0ie">
                                                         <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -24969,8 +24969,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="Zw5-sR-MBQ"/>
         <segue reference="iuV-oL-R76"/>
-        <segue reference="JDl-KK-l6G"/>
         <segue reference="BVl-l8-ZXx"/>
+        <segue reference="GfO-Kr-Okn"/>
         <segue reference="Tua-5Y-gFO"/>
         <segue reference="e2C-bb-XRH"/>
         <segue reference="XtD-YI-5DL"/>

@@ -102,14 +102,24 @@
 #pragma mark - Networking
 - (void)editUserReal {
     [[HintView getInstance] showSimpleLoading];
-    [[NetworkingManager shareManager] editUserRealInfoByInfoDic:@{@"uid": [UserConfigManager shareManager].userInfo.uidStr, @"idname": self.nameTextField.text, @"idcard": self.idTextField.text, @"yzm": self.msgTextField.text} imageDic:@{@"idimg_p": self.idCardPositiveImage, @"idimg_o": self.idCardOppositeImage} success:^(id responseObject) {
+    
+    
+    [[NetworkingManager shareManager] editUserInfoWithPostMethodPath:@"editUserReal" paramsDic:@{@"uid": [UserConfigManager shareManager].userInfo.uidStr, @"idname": self.nameTextField.text, @"idcard": self.idTextField.text, @"yzm": self.msgTextField.text} imageDic:@{@"idimg_p": self.idCardPositiveImage, @"idimg_o": self.idCardOppositeImage} success:^(id responseObject) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [[HintView getInstance] endSimpleLoading];
             [self performSegueWithIdentifier:@"ShowWithdrawalViewController" sender:self];
         });
-        
     }];
+    
+//    [[NetworkingManager shareManager] editUserRealInfoByInfoDic:@{@"uid": [UserConfigManager shareManager].userInfo.uidStr, @"idname": self.nameTextField.text, @"idcard": self.idTextField.text, @"yzm": self.msgTextField.text} imageDic:@{@"idimg_p": self.idCardPositiveImage, @"idimg_o": self.idCardOppositeImage} success:^(id responseObject) {
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [[HintView getInstance] endSimpleLoading];
+//            [self performSegueWithIdentifier:@"ShowWithdrawalViewController" sender:self];
+//        });
+//        
+//    }];
 }
 
 #pragma mark - IBAction

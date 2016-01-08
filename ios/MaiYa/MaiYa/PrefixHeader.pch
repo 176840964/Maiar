@@ -37,7 +37,7 @@
 typedef void(^TapViewHandler)(void);
 
 #pragma mark - Test Image
-#define DefaultUserHeaderImage @"aboutIcon"
+#define DefaultUserHeaderImage @"defulteHead"
 
 #pragma mark - Networking
 #define BaseURLString @"http://123.56.107.102:33333/"

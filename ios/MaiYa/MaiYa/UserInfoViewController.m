@@ -96,8 +96,7 @@
 - (void)editUserHeadWithImage:(UIImage *)selectedImage {
     [[HintView getInstance] startLoadingMessage:@"照片上传中..."];
     NSString *uid = [UserConfigManager shareManager].userInfo.uidStr;
-    [[NetworkingManager shareManager] uploadImageForEditUserInfoWithUid:uid userInfoKey:@"head" image:selectedImage success:^(id responseObject) {
-        
+    [[NetworkingManager shareManager] editUserInfoWithPostMethodPath:@"editUserInfo" paramsDic:@{@"uid": uid} imageDic:@{@"head": selectedImage} success:^(id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[HintView getInstance] endLoadingMessage:@"照片上传成功" dismissTimeInterval:1 dismissBlock:^{
                 [self.imagePickerController dismissViewControllerAnimated:YES completion:^{
@@ -105,6 +104,15 @@
             }];
         });
     }];
+//    [[NetworkingManager shareManager] uploadImageForEditUserInfoWithUid:uid userInfoKey:@"head" image:selectedImage success:^(id responseObject) {
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [[HintView getInstance] endLoadingMessage:@"照片上传成功" dismissTimeInterval:1 dismissBlock:^{
+//                [self.imagePickerController dismissViewControllerAnimated:YES completion:^{
+//                }];
+//            }];
+//        });
+//    }];
 }
 
 #pragma mark - UITableViewDataSource

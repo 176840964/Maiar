@@ -26,8 +26,7 @@
 - (NSURLSessionDataTask *)networkingWithPostMethodPath:(NSString *)path
                                             postParams:(NSDictionary *)postParams
                                                success:(void (^)(id))success {
-    NSString *postPath = [NSString stringWithFormat:@"?m=home&c=User&a=%@", path];
-    return [self POST:postPath parameters:postParams constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    return [self POST:@"?" parameters:[self setupParamsByParamesDic:postParams andPath:path] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (NSString *keyStr in postParams.allKeys) {
             NSString *valueStr = [postParams objectForKey:keyStr];
             [formData appendPartWithFormData:[valueStr dataUsingEncoding:NSUTF8StringEncoding] name:keyStr];
@@ -35,7 +34,21 @@
         NSLog(@"postParams:%@", postParams);
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        success(responseObject);
+        NSDictionary *dic = responseObject;
+        NSNumber *status = [dic objectForKey:@"status"];
+        if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
+            NSString *str = [dic objectForKey:@"error"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:^{
+                    if ([self isNeedReloadingByStatusNumber:status]) {
+                        [UserConfigManager shareManager].isLogin = NO;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:self];
+                    }
+                }];
+            });
+        } else {
+            success(responseObject);
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"error:%@", error);
@@ -54,7 +67,12 @@
         if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
             NSString *str = [dic objectForKey:@"error"];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:nil];
+                [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:^{
+                    if ([self isNeedReloadingByStatusNumber:status]) {
+                        [UserConfigManager shareManager].isLogin = NO;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:self];
+                    }
+                }];
             });
         } else {
             success(responseObject);
@@ -67,48 +85,19 @@
     }];
 }
 
-//修改用户信息相关的上传图片
-- (NSURLSessionDataTask*)uploadImageForEditUserInfoWithUid:(NSString*)uid
-                                                   userInfoKey:(NSString *)editKey
-                                                         image:(UIImage *)image
-                                                       success:(void (^)(id responseObject))success {
-    
-    self.requestSerializer = [AFJSONRequestSerializer serializer];//申明请求的数据是json类型
-    
-    NSData *data = UIImageJPEGRepresentation(image, 1);
-    
-    return [self POST:@"?m=home&c=User&a=editUserInfo"
-           parameters:@{@"uid": uid}
-constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFormData:data name:editKey];
-    }
-              success:^(NSURLSessionDataTask *task, id responseObject) {
-                  NSDictionary *dic = responseObject;
-                  NSNumber *status = [dic objectForKey:@"status"];
-                  if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
-                      NSString *str = [dic objectForKey:@"error"];
-                      dispatch_async(dispatch_get_main_queue(), ^{
-                          [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:nil];
-                      });
-                  } else {
-                      success(responseObject);
-                  }
-              }
-              failure:^(NSURLSessionDataTask *task, NSError *error) {
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                      NSLog(@"error:%@", error);
-                      [[HintView getInstance] presentMessage:@"图片上传失败" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
-                  });
-    }];
-}
 
-- (NSURLSessionDataTask*)editUserRealInfoByInfoDic:(NSDictionary*)infoDic
-                                          imageDic:(NSDictionary *)imageDic
-                                           success:(void (^)(id responseObject))success {
+- (NSURLSessionDataTask*)editUserInfoWithPostMethodPath:(NSString*)path
+                                              paramsDic:(NSDictionary *)paramsDic
+                                               imageDic:(NSDictionary *)imageDic
+                                                success:(void (^)(id responseObject))success {
     self.requestSerializer = [AFJSONRequestSerializer serializer];//申明请求的数据是json类型
-    return [self POST:@"?m=home&c=User&a=editUserReal"
-           parameters:infoDic
+    
+//    NSString *postPath = [NSString stringWithFormat:@"?m=home&c=User&a=%@", path];
+    
+    return [self POST:@"?"
+           parameters:[self setupParamsByParamesDic:paramsDic andPath:path]
 constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    NSLog(@"%@", imageDic);
     for (NSString *key in imageDic.allKeys) {
         UIImage *image = [imageDic objectForKey:key];
         NSData *data = UIImageJPEGRepresentation(image, 1);
@@ -121,7 +110,12 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                   if (![status isEqualToNumber:[NSNumber numberWithInteger:1]]) {
                       NSString *str = [dic objectForKey:@"error"];
                       dispatch_async(dispatch_get_main_queue(), ^{
-                          [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:nil];
+                          [[HintView getInstance] presentMessage:str isAutoDismiss:NO dismissTimeInterval:1 dismissBlock:^{
+                              if ([self isNeedReloadingByStatusNumber:status]) {
+                                  [UserConfigManager shareManager].isLogin = NO;
+                                  [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationOfShowingLogin" object:self];
+                              }
+                          }];
                       });
                   } else {
                       success(responseObject);
@@ -130,7 +124,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
               failure:^(NSURLSessionDataTask *task, NSError *error) {
                   dispatch_async(dispatch_get_main_queue(), ^{
                       NSLog(@"error:%@", error);
-                      [[HintView getInstance] presentMessage:@"资料上传失败" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
+                      [[HintView getInstance] presentMessage:@"无网络连接" isAutoDismiss:YES dismissTimeInterval:1 dismissBlock:nil];
                   });
               }];
 }
@@ -147,9 +141,25 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     }
     
     [dic setObject:path forKey:@"a"];
+    
+    for (NSString *key in paramesDic.allKeys) {
+        if ([key isEqualToString:@"uid"]) {
+            [dic setObject:[UserConfigManager shareManager].userInfo.tokenStr forKey:@"token"];
+            break;
+        }
+    }
+    
     [dic setValuesForKeysWithDictionary:paramesDic];
     
     return dic;
+}
+
+- (BOOL)isNeedReloadingByStatusNumber:(NSNumber *)statusNum {
+    if ([statusNum isEqualToNumber:[NSNumber numberWithInteger:-2]]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end

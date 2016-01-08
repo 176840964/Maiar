@@ -44,16 +44,10 @@
                                                params:(NSDictionary *)parames
                                               success:(void (^)(id responseObject))success;
 
-
-
-//修改用户信息相关的上传图片
-- (NSURLSessionDataTask*)uploadImageForEditUserInfoWithUid:(NSString*)uid
-                                               userInfoKey:(NSString *)editKey
-                                                     image:(UIImage *)image
-                                                   success:(void (^)(id responseObject))success;
-//上传真实信息
-- (NSURLSessionDataTask*)editUserRealInfoByInfoDic:(NSDictionary*)infoDic
-                                          imageDic:(NSDictionary *)imageDic
-                                           success:(void (^)(id responseObject))success;
+//post image
+- (NSURLSessionDataTask*)editUserInfoWithPostMethodPath:(NSString*)path
+                                              paramsDic:(NSDictionary *)paramsDic
+                                               imageDic:(NSDictionary *)imageDic
+                                                success:(void (^)(id responseObject))success;
 
 @end
