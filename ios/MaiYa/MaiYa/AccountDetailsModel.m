@@ -17,7 +17,7 @@
 
 - (instancetype)initWithAccountDetailsModel:(AccountDetailsModel *)model {
     if (self = [super init]) {
-        self.orderIdStr = [NSString stringWithFormat:@"订单号：%@", model.orderid];
+        self.orderIdStr = [NSString stringWithFormat:@"%@", model.orderid];
         self.timeStr = [CustomTools dateStringFromUnixTimestamp:model.ctime.integerValue withFormatString:@"yyyy年MM月dd日 hh:mm"];
         
         NSString *symbol = @"";
