@@ -15,9 +15,10 @@
 #import "PayViewController.h"
 #import "AdvisoryDetailViewController.h"
 
-@interface AdvisoryRootViewController () <UIAlertViewDelegate>
+@interface AdvisoryRootViewController () <UIAlertViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *headerScrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @property (weak, nonatomic) IBOutlet UILabel *noInfoLab;
 
@@ -45,6 +46,8 @@
 @property (strong, nonatomic) NSURL *selectedHeaderUrl;
 @property (assign, nonatomic) PlazaDetailParaType showDetailType;
 @property (copy, nonatomic) NSString *showDetailTitleStr;
+
+@property (strong, nonatomic) NSTimer *headerViewAutoScrollingTime;
 @end
 
 @implementation AdvisoryRootViewController
@@ -56,6 +59,8 @@
     self.headerDataArr = [NSMutableArray new];
     
     [self.noInfoLab addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self headerViewAddAutoScrollingTimer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,6 +113,8 @@
     }
     
     self.headerScrollView.contentSize = CGSizeMake(self.headerScrollView.width * self.headerDataArr.count, self.headerScrollView.height);
+    self.headerScrollView.delegate = self;
+    self.pageControl.numberOfPages = self.headerDataArr.count;
 }
 
 - (void)onTapCarouselCell:(CarouselCell *)cell {
@@ -146,6 +153,27 @@
     [self.orderBtn2 setTitle:viewModel.btn2TitleStr forState:UIControlStateNormal];
     self.orderBtn2.backgroundColor = viewModel.btn2BgColor;
     self.orderBtn2.hidden = viewModel.isBtn2Hidden;
+}
+
+- (void)headerViewAddAutoScrollingTimer {
+    self.headerViewAutoScrollingTime = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(autoScrollingHeaderViewToNext) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.headerViewAutoScrollingTime forMode:NSRunLoopCommonModes];
+}
+
+- (void)autoScrollingHeaderViewToNext {
+    NSInteger page = self.pageControl.currentPage;
+    if (page == self.headerDataArr.count - 1) {
+        page = 0;
+    } else {
+        page++;
+    }
+    
+    CGFloat x = page * CGRectGetWidth(self.headerScrollView.frame);
+    [self.headerScrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+}
+
+- (void)headerViewScrollViewRemoveTimer {
+    [self.headerViewAutoScrollingTime invalidate];
 }
 
 #pragma mark - KVO
@@ -292,6 +320,31 @@
         } else {
             [self cancelCurrentOrder];
         }
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ([scrollView isEqual:self.headerScrollView]) {
+        [self headerViewScrollViewRemoveTimer];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if ([self.headerScrollView isEqual:scrollView]) {
+        [self headerViewAddAutoScrollingTimer];
+    } else {
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([self.headerScrollView isEqual:scrollView]) {
+        CGFloat width = CGRectGetWidth(scrollView.frame);
+        CGFloat offsetX = scrollView.contentOffset.x;
+        
+        NSInteger page = (offsetX + width / 2) / width;
+        self.pageControl.currentPage = page;
+    } else {
     }
 }
 

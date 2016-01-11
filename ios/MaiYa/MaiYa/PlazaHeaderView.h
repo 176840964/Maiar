@@ -10,8 +10,10 @@
 
 typedef void(^TapHeaderViewHandle)(NSURL *url, NSString *titleStr);
 
-@interface PlazaHeaderView : UIScrollView
+@interface PlazaHeaderView : UIView
 @property (copy, nonatomic) TapHeaderViewHandle tapHeaderViewHandle;
+@property (strong, nonatomic) UIScrollView *scrollView;
+@property (strong, nonatomic) UIPageControl *pageControl;
 
 - (void)layoutPlazeHeaderViewSubviewsByArr:(NSArray *)arr;
 @end

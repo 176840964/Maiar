@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet CustomTableView *tableView;
 @property (strong, nonatomic) PlazaWordCell *commonCell;
 @property (strong, nonatomic) PlazaHeaderView *headerView;
+@property (strong, nonatomic) NSTimer *headerViewAutoScrollingTime;
 @property (strong, nonatomic) SquareViewModel *squareViewModel;
 
 @property (assign, nonatomic) PlazaDetailParaType showDetailType;
@@ -53,6 +54,9 @@
     self.tableView.customDelegate = self;
     
     [self getSquareData];
+    
+    self.headerView.scrollView.delegate = self;
+    [self headerViewAddAutoScrollingTimer];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -82,6 +86,27 @@
 - (void)layoutSubviews {
     [self.tableView reloadData];
     [self.headerView layoutPlazeHeaderViewSubviewsByArr:self.squareViewModel.focusArr];
+}
+
+- (void)headerViewAddAutoScrollingTimer {
+    self.headerViewAutoScrollingTime = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(autoScrollingHeaderViewToNext) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.headerViewAutoScrollingTime forMode:NSRunLoopCommonModes];
+}
+
+- (void)autoScrollingHeaderViewToNext {
+    NSInteger page = self.headerView.pageControl.currentPage;
+    if (page == self.squareViewModel.focusArr.count - 1) {
+        page = 0;
+    } else {
+        page++;
+    }
+    
+    CGFloat x = page * CGRectGetWidth(self.headerView.frame);
+    [self.headerView.scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+}
+
+- (void)headerViewScrollViewRemoveTimer {
+    [self.headerViewAutoScrollingTime invalidate];
 }
 
 #pragma mark - Navigation
@@ -186,12 +211,30 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ([scrollView isEqual:self.headerView.scrollView]) {
+        [self headerViewScrollViewRemoveTimer];
+    }
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self.tableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+    if ([self.headerView.scrollView isEqual:scrollView]) {
+        [self headerViewAddAutoScrollingTimer];
+    } else {
+        [self.tableView.refreshView refreshScrollViewDidEndDragging:scrollView];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
+    if ([self.headerView.scrollView isEqual:scrollView]) {
+        CGFloat width = CGRectGetWidth(scrollView.frame);
+        CGFloat offsetX = scrollView.contentOffset.x;
+        
+        NSInteger page = (offsetX + width / 2) / width;
+        self.headerView.pageControl.currentPage = page;
+    } else {
+        [self.tableView.refreshView refreshScrollViewDidScroll:scrollView];
+    }
 }
 
 @end

@@ -17,7 +17,16 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.pagingEnabled = YES;
+        
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrollView.pagingEnabled = YES;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        [self addSubview:_scrollView];
+        
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(frame) - 13 - 10, CGRectGetWidth(frame), 13)];
+        [_pageControl addTarget:self action:@selector(onTapPageControl:) forControlEvents:UIControlEventValueChanged];
+        [self addSubview:_pageControl];
     }
     
     return self;
@@ -40,10 +49,11 @@
         cell.frame = CGRectMake(index * self.width, 0, self.width, self.height);
         [cell.imageView setImageWithURL:viewModel.imgUrl placeholderImage:[UIImage imageNamed:@"defaultCarousel"]];
         [cell addTarget:self action:@selector(onTapCell:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:cell];
+        [self.scrollView addSubview:cell];
     }
     
-    self.contentSize = CGSizeMake(self.width * arr.count, self.height);
+    self.scrollView.contentSize = CGSizeMake(self.width * arr.count, self.height);
+    self.pageControl.numberOfPages = arr.count;
 }
 
 #pragma mark - 
@@ -51,6 +61,10 @@
     if (self.tapHeaderViewHandle) {
         self.tapHeaderViewHandle(cell.url, cell.titleStr);
     }
+}
+
+- (void)onTapPageControl:(UIPageControl*)pageCtrl {
+    [self.scrollView setContentOffset:CGPointMake(CGRectGetWidth(self.scrollView.frame) * pageCtrl.currentPage, 0) animated:YES];
 }
 
 /*
