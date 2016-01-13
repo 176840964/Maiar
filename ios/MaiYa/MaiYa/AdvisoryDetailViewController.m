@@ -37,6 +37,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.tableView.hidden = YES;
+    [[HintView getInstance] showSimpleLoading];
+    
     if (self.orderIdStr.isValid) {
         [self getOrderDetailInfo];
     } else {
@@ -79,6 +82,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            self.tableView.hidden = NO;
+            [[HintView getInstance] endSimpleLoading];
         });
         
     }];
@@ -92,6 +97,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            self.tableView.hidden = NO;
+            [[HintView getInstance] endSimpleLoading];
         });
     }];
 }
