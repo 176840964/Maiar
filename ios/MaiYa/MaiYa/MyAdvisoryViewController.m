@@ -262,6 +262,17 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ([self.scrollView isEqual:scrollView]) {
+        [UIView animateWithDuration:.2 animations:^{
+            self.inTableView.transform = CGAffineTransformMakeScale(0.98, 0.98);
+            self.finishTableView.transform = CGAffineTransformMakeScale(0.98, 0.98);
+        } completion:^(BOOL finished) {
+        }];
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if ([self.scrollView isEqual:scrollView]) {
         NSInteger index = scrollView.contentOffset.x / scrollView.width;
@@ -270,6 +281,12 @@
         } else {
             self.markView.transform = CGAffineTransformMakeTranslation(self.markView.width, 0);
         }
+        
+        [UIView animateWithDuration:.2 animations:^{
+            self.inTableView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            self.finishTableView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+        }];
     }
 }
 

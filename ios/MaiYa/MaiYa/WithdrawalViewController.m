@@ -230,6 +230,8 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if ([scrollView isEqual:self.scrollView]) {
         [self textFieldResignFirstResponder];
@@ -238,6 +240,13 @@
         } else {
             self.markView.transform = CGAffineTransformMakeTranslation(self.view.width / 2.0, 0);
         }
+        
+        [UIView animateWithDuration:.2 animations:^{
+            self.aliScrollView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            self.bankScrollView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+        }];
+        
     }
 }
 
@@ -245,6 +254,12 @@ static CGFloat beginDragging = 0.0;
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if (![scrollView isEqual:self.scrollView]) {
         beginDragging = scrollView.contentOffset.y;
+    } else {
+        [UIView animateWithDuration:.2 animations:^{
+            self.aliScrollView.transform = CGAffineTransformMakeScale(0.98, 0.98);
+            self.bankScrollView.transform = CGAffineTransformMakeScale(0.98, 0.98);
+        } completion:^(BOOL finished) {
+        }];
     }
 }
 

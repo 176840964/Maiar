@@ -16,7 +16,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property (weak, nonatomic) IBOutlet UIView *markView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightWalletInfoView;
+@property (weak, nonatomic) IBOutlet UIScrollView *walletInfoScrollView;
 @property (weak, nonatomic) IBOutlet WalletInfoView *walletInfoView;
+@property (weak, nonatomic) IBOutlet UIView *couponView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *noneCouponImageView;
 @property (weak, nonatomic) IBOutlet UIButton *walletRuleBtn;
@@ -138,11 +140,29 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ([scrollView isEqual:self.scrollView]) {
+        [UIView animateWithDuration:.2 animations:^{
+            self.walletInfoScrollView.transform = CGAffineTransformMakeScale(0.98, 0.98);
+            self.couponView.transform = CGAffineTransformMakeScale(0.98, 0.98);
+        } completion:^(BOOL finished) {
+        }];
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (0 == scrollView.contentOffset.x) {
-        self.markView.transform = CGAffineTransformIdentity;
-    } else {
-        self.markView.transform = CGAffineTransformMakeTranslation(self.view.width / 2.0, 0);
+    if ([self.scrollView isEqual:scrollView]) {
+        if (0 == scrollView.contentOffset.x) {
+            self.markView.transform = CGAffineTransformIdentity;
+        } else {
+            self.markView.transform = CGAffineTransformMakeTranslation(self.view.width / 2.0, 0);
+        }
+        
+        [UIView animateWithDuration:.2 animations:^{
+            self.walletInfoScrollView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            self.couponView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+        }];
     }
 }
 

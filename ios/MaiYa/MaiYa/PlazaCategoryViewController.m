@@ -201,6 +201,13 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
     if ([scrollView isEqual:self.contentScrollView]) {
         NSInteger index = scrollView.contentOffset.x / scrollView.width;
         [self showInfoByIndex:index isAnimateScrollContentView:NO];
+        
+        [UIView animateWithDuration:.2 animations:^{
+            for (UITableView *tableView in self.contentsArr) {
+                tableView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            }
+        } completion:^(BOOL finished) {
+        }];
     }
 }
 
@@ -214,6 +221,17 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
     if (![scrollView isEqual:self.contentScrollView]) {
         [self.curTableView.refreshView refreshScrollViewDidScroll:scrollView];
         [self.curTableView.reloadMoreView scrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ([scrollView isEqual:self.contentScrollView]) {
+        [UIView animateWithDuration:.2 animations:^{
+            for (UITableView *tableView in self.contentsArr) {
+                tableView.transform = CGAffineTransformMakeScale(0.98, 0.98);
+            }
+        } completion:^(BOOL finished) {
+        }];
     }
 }
 
