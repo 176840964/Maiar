@@ -267,7 +267,9 @@
 }
 
 - (IBAction)onTapMyAdvisory:(id)sender {
-    [self performSegueWithIdentifier:@"ShowMyAdvisory" sender:self];
+    if ([UserConfigManager shareManager].isLogin) {
+        [self performSegueWithIdentifier:@"ShowMyAdvisory" sender:self];
+    }
 }
 
 - (IBAction)onTapShowAdvisoryDetail:(id)sender {
