@@ -21937,6 +21937,7 @@
                         <outlet property="tableview" destination="7Cd-pc-90i" id="BeK-fu-M4x"/>
                         <outlet property="versionLab" destination="HbI-Bi-UDw" id="rGO-Rl-PzH"/>
                         <segue destination="ZX6-lB-Zsr" kind="presentation" identifier="PresentLoadingViewController" id="vR0-TV-D1w"/>
+                        <segue destination="a9d-yQ-3zX" kind="show" identifier="ShowBeginnerGuide" id="ytk-5K-4jv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GrV-YY-1xh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24206,7 +24207,7 @@
                             <tableViewSection id="XRT-ll-gAJ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="6za-aY-PyB">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6za-aY-PyB" id="3w7-RT-UjM">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -24309,7 +24310,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="egw-nr-QtQ">
-                                        <rect key="frame" x="0.0" y="108" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="egw-nr-QtQ" id="E9m-up-maX">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -24446,7 +24447,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RuE-i9-XcH">
-                                        <rect key="frame" x="0.0" y="152" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RuE-i9-XcH" id="5pd-Oe-Nfl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -24989,12 +24990,13 @@
         <image name="zoneSetting" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kLw-Ud-r7a"/>
+        <segue reference="ytk-5K-4jv"/>
+        <segue reference="vR0-TV-D1w"/>
+        <segue reference="asp-c9-9z5"/>
+        <segue reference="3N6-pV-PIn"/>
         <segue reference="XtD-YI-5DL"/>
         <segue reference="mxu-Ep-7Vo"/>
-        <segue reference="3N6-pV-PIn"/>
-        <segue reference="kOk-pc-gYy"/>
-        <segue reference="asp-c9-9z5"/>
-        <segue reference="vR0-TV-D1w"/>
+        <segue reference="e2C-bb-XRH"/>
+        <segue reference="LR1-Ua-rDS"/>
     </inferredMetricsTieBreakers>
 </document>
