@@ -124,6 +124,7 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
 }
 
 - (void)onTapCatBtn:(UIButton *)btn {
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [self showInfoByIndex:btn.tag isAnimateScrollContentView:YES];
 }
 
@@ -142,6 +143,7 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
         
         if (isAnimate) {
             [self.contentScrollView setContentOffset:CGPointMake(index * self.contentScrollView.width, 0) animated:YES];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         }
     }];
 }
@@ -298,6 +300,9 @@ typedef NS_ENUM(NSInteger, ContentTableViewType){
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowPlazaDetail"]) {
+        if (self.curDataArr.count == 0) {
+            return;
+        }
         ArticleViewModel *viewModel = [self.curDataArr objectAtIndex:self.selectedIndex];
         
         PlazaDetailViewController *controller = segue.destinationViewController;
