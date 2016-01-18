@@ -39,7 +39,7 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,9 +50,11 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 2) {
+    if (indexPath.row == 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id1070071969?mt=8"]];
+    } else if (indexPath.row == 1) {
         [self performSegueWithIdentifier:@"PresentLoadingViewController" sender:self];
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.row == 2) {
         [self performSegueWithIdentifier:@"ShowBeginnerGuide" sender:self];
     }
 }
