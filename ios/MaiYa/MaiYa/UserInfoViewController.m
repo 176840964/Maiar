@@ -63,9 +63,9 @@
         if (self.imagePickerController == nil) {
             self.imagePickerController = [[UIImagePickerController alloc] init];
             self.imagePickerController.delegate = self;
-            self.imagePickerController.sourceType = type;
             self.imagePickerController.allowsEditing = YES;
         }
+        self.imagePickerController.sourceType = type;
         
         [self presentViewController:self.imagePickerController animated:YES completion:^{
         }];
