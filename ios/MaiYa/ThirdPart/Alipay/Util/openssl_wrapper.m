@@ -75,9 +75,9 @@ int rsa_verify_with_public_key_pem(char *message, int message_length
 
 NSString *base64StringFromData(NSData *signature)
 {
-    int signatureLength = [signature length];
+    unsigned long signatureLength = [signature length];
     unsigned char *outputBuffer = (unsigned char *)malloc(2 * 4 * (signatureLength / 3 + 1));
-    int outputLength = EVP_EncodeBlock(outputBuffer, [signature bytes], signatureLength);
+    int outputLength = EVP_EncodeBlock(outputBuffer, [signature bytes], (int)signatureLength);
     outputBuffer[outputLength] = '\0';
     NSString *base64String = [NSString stringWithCString:(char *)outputBuffer encoding:NSASCIIStringEncoding];
     free(outputBuffer);
@@ -86,13 +86,13 @@ NSString *base64StringFromData(NSData *signature)
 
 NSData *dataFromBase64String(NSString *base64String)
 {
-    int stringLength = [base64String length];
+    unsigned long stringLength = [base64String length];
     const unsigned char *strBuffer = (const unsigned char *)[base64String UTF8String];
     unsigned char *outputBuffer = (unsigned char *)malloc(2 * 3 * (stringLength / 4 + 1));
-    int outputLength = EVP_DecodeBlock(outputBuffer, strBuffer, stringLength);
+    int outputLength = EVP_DecodeBlock(outputBuffer, strBuffer, (int)stringLength);
     
     int zeroByteCounter = 0;
-    for (int i = stringLength - 1; i >= 0; i--)
+    for (int i = (int)stringLength - 1; i >= 0; i--)
     {
         if (strBuffer[i] == '=')
         {
@@ -112,11 +112,11 @@ NSData *dataFromBase64String(NSString *base64String)
 NSString *rsaSignString(NSString *stringToSign, NSString *privateKeyFilePath, BOOL *signSuccess)
 {
     const char *message = [stringToSign cStringUsingEncoding:NSUTF8StringEncoding];
-    int messageLength = strlen(message);
+    unsigned long messageLength = strlen(message);
     unsigned char *sig = (unsigned char *)malloc(256);
     unsigned int sig_len;
     char *filePath = (char *)[privateKeyFilePath cStringUsingEncoding:NSUTF8StringEncoding];
-    int sign_ok = rsa_sign_with_private_key_pem((char *)message, messageLength
+    int sign_ok = rsa_sign_with_private_key_pem((char *)message, (int)messageLength
                                                 , sig, &sig_len
                                                 , filePath);
     NSString *signedString = nil;
@@ -136,13 +136,13 @@ NSString *rsaSignString(NSString *stringToSign, NSString *privateKeyFilePath, BO
 void rsaVerifyString(NSString *stringToVerify, NSString *signature, NSString *publicKeyFilePath, BOOL *verifySuccess)
 {
     const char *message = [stringToVerify cStringUsingEncoding:NSUTF8StringEncoding];
-    int messageLength = [stringToVerify lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    unsigned long messageLength = [stringToVerify lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     NSData *signatureData = dataFromBase64String(signature);
     unsigned char *sig = (unsigned char *)[signatureData bytes];
-    unsigned int sig_len = [signatureData length];
+    unsigned long sig_len = [signatureData length];
     char *filePath = (char *)[publicKeyFilePath cStringUsingEncoding:NSUTF8StringEncoding];
-    int verify_ok = rsa_verify_with_public_key_pem((char *)message, messageLength
-                                                   , sig, sig_len
+    int verify_ok = rsa_verify_with_public_key_pem((char *)message, (int)messageLength
+                                                   , sig, (int)sig_len
                                                    , filePath);
     if (1 == verify_ok)
     {
@@ -158,7 +158,7 @@ NSString *formattedPEMString(NSString *originalString)
 {    
     NSString *trimmedString = [originalString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     const char *c = [trimmedString UTF8String];
-    int len = [trimmedString length];
+    unsigned long len = [trimmedString length];
     NSMutableString *result = [NSMutableString string];
     [result appendString:@"-----BEGIN PRIVATE KEY-----\n"];
     int index = 0;
