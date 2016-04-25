@@ -197,7 +197,7 @@
 		82E1B9D61BC77324001F9035 /* ConsultantTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D51BC77324001F9035 /* ConsultantTimeModel.m */; };
 		82E1B9D91BC77B91001F9035 /* ConsultantDailyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E1B9D81BC77B91001F9035 /* ConsultantDailyViewModel.m */; };
 		82EB02DF1C2959E000CC83BF /* LoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EB02DE1C2959E000CC83BF /* LoginBaseViewController.m */; };
-		C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4EE198D74EE15090FBD86 /* libPods.a */; };
+		D3FBD8D06B6F9C457C79EF04 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4002D448019BE0EAD0C4A2C4 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +211,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4002D448019BE0EAD0C4A2C4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7F37D8B9CF9D5B38F7E3F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		820A6EE31B93FDAA002385A4 /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
 		820A6EE41B93FDAA002385A4 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
@@ -659,7 +660,6 @@
 		82EB02DD1C2959E000CC83BF /* LoginBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBaseViewController.h; sourceTree = "<group>"; };
 		82EB02DE1C2959E000CC83BF /* LoginBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBaseViewController.m; sourceTree = "<group>"; };
 		C1C8CDFD8A601C5B6225EE1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		DEA4EE198D74EE15090FBD86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -688,7 +688,7 @@
 				822F1D3C1BA921B500E3D18A /* libsqlite3.0.dylib in Frameworks */,
 				822F1D3A1BA921A900E3D18A /* SystemConfiguration.framework in Frameworks */,
 				82D034951BFDDC2200608692 /* libcrypto.a in Frameworks */,
-				C0F586265EDEBB1DD14D11DB /* libPods.a in Frameworks */,
+				D3FBD8D06B6F9C457C79EF04 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,7 +715,7 @@
 				822F1D3D1BA921BC00E3D18A /* libz.dylib */,
 				822F1D3B1BA921B500E3D18A /* libsqlite3.0.dylib */,
 				822F1D391BA921A900E3D18A /* SystemConfiguration.framework */,
-				DEA4EE198D74EE15090FBD86 /* libPods.a */,
+				4002D448019BE0EAD0C4A2C4 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2388,6 +2388,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -2437,6 +2438,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -2477,6 +2479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2486,7 +2489,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Maiya/PrefixHeader.pch";
 				INFOPLIST_FILE = MaiYa/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2511,6 +2514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2520,7 +2524,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Maiya/PrefixHeader.pch";
 				INFOPLIST_FILE = MaiYa/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,6 +1,8 @@
-platform :ios, '7.0'
+platform :ios, '8.0'
 pod 'AFNetworking', '~> 2.5.4'
 pod 'PureLayout'
 pod 'ReactiveCocoa', '~> 2.5'
-pod 'UICountingLabel'
+pod 'UICountingLabel', '~> 1.4.0'
+
+use_frameworks!
 
